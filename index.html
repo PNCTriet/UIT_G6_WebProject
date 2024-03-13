@@ -19,7 +19,7 @@
     <div class="navbar">
         <div class="navbar-container">
             <div class="logo-container">
-                <h1 class="logo">Netflix</h1>
+                <h1 class="logo">Netflop</h1>
             </div>
             <div class="menu-container">
                 <ul class="menu-list">
@@ -27,11 +27,11 @@
                         <a href="">Trang chủ</a>
                     </li>
 
-                    <li class="menu-list-item"><a title="Phim" href="/">Phim T.Hình</a></li>
-                    <li class="menu-list-item "><a title="Phim" href="/">Phim</a></li>
-                    <li class="menu-list-item"><a title="Phim" href="/">Mới &amp Phổ biến</a></li>
-                    <li class="menu-list-item"><a title="Phim" href="/">Danh sách của tôi</a></li>
-                    <li class="menu-list-item"><a title="Phim" href="/">Duyệt tìm theo ngôn ngữ</a></li>
+                    <li class="menu-list-item"><a title="Phim" href="">Phim T.Hình</a></li>
+                    <li class="menu-list-item "><a title="Phim" href="">Phim</a></li>
+                    <li class="menu-list-item"><a title="Phim" href="">Mới &amp Phổ biến</a></li>
+                    <li class="menu-list-item"><a title="Phim" href="">Danh sách của tôi</a></li>
+                    <li class="menu-list-item"><a title="Phim" href="">Duyệt tìm theo ngôn ngữ</a></li>
 
                 </ul>
             </div>
@@ -39,7 +39,7 @@
                 <i ><a title="Phim" href="/" class="fa-solid fa-magnifying-glass"></a></i>
                 <a href="" style="padding: 15px;">Trẻ em</a>
                 <i ><a title="Phim" href="/" class="fa-regular fa-bell"></a></i>              
-                <img class="profile-picture" src="img/profile.jpg" alt="">
+                <img class="profile-picture" src="datasources/img/profile.jpg" alt="">
                 <div class="profile-text-container">
                     <i class="fas fa-caret-down"></i>               
                 </div>               
@@ -60,11 +60,159 @@
         </article>
     </section>
     <!-- ---------------------------- -->
-    <section class="sec-2">
+    <script src="./backround.js"></script>
 
-    </section>
-    <!-- <script src="./netflix.js"></script> -->
+    <!-- RankBar -->
+    <!-- <br /><br /><br /><br /><br /><br /><br /><br /><br /> -->
+    
+    <div class="overflow-container">
+        <h2 style="color: white; margin-left:20px; margin-top:20px;">Top 10 phim hot trong ngày</h2>
+        <div class="number-row">
+            <div class="number-cell">
+                <span>1</span>
+                <div class="empty-cell" style="position: relative;">
+                    <a href="">
+                        <img src="datasources/imageranking/img1.png" alt="" />
+                    </a>
+                </div>
+            </div>
 
+            <div class="number-cell">
+                <span>2</span>
+                <div class="empty-cell" style="position: relative;">
+                    <a href="#">
+                        <img src="datasources/imageranking/img2.png" alt="" />
+                    </a>
+                </div>
+                
+            </div>
+            <div class="number-cell">
+                <span>3</span>
+                <div class="empty-cell" style="position: relative;">
+                    <a href="">
+                        <img src="datasources/imageranking/img3.png" alt="" />
+                    </a>
+                </div>
+                
+            </div>
+
+            <div class="number-cell">
+                <span>4</span>
+                <div class="empty-cell" style="position: relative;">
+                    <a href="">
+                        <img src="datasources/imageranking/img4.png" alt="" />
+                    </a>
+                </div>
+                
+            </div>
+            <div class="number-cell">
+                <span>5</span>
+                <div class="empty-cell" style="position: relative;">
+                    <a href="">
+                        <img src="datasources/imageranking/img5.png" alt="" />
+                    </a>
+                </div>
+                
+            </div>
+
+            <div class="number-cell">
+                <span>6</span>
+                <div class="empty-cell" style="position: relative;">
+                    <a href="">
+                        <img src="datasources/imageranking/img6.png" alt="" />
+                    </a>
+                </div>
+                
+            </div>
+            <div class="number-cell">
+                <span>7</span>
+                <div class="empty-cell" style="position: relative;">
+                    <a href="">
+                        <img src="datasources/imageranking/img7.png" alt="" />
+                    </a>
+                </div>
+                
+            </div>
+
+            <div class="number-cell">
+                <span>8</span>
+                <div class="empty-cell" style="position: relative;">
+                    <a href="">
+                        <img src="datasources/imageranking/img8.png" alt="" />
+                    </a>
+                </div>
+                
+            </div>
+            <div class="number-cell">
+                <span>9</span>
+                <div class="empty-cell" style="position: relative;">
+                    <a href="">
+                        <img src="datasources/imageranking/img9.png" alt="" />
+                    </a>
+                </div>
+                
+            </div>
+
+            <div class="number-cell">
+                <span>10</span>
+                <div class="empty-cell" style="position: relative;">
+                    <a href="">
+                        <img src="datasources/imageranking/img10.png" alt="" />
+                    </a>
+                </div>
+                
+            </div>
+
+            <!-- Repeat this structure for the rest of the images -->
+            
+        </div>
+        <button  class="scroll-right"> > </button>
+        
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const numberRow = document.querySelector(".number-row");
+            const scrollRightButton = document.querySelector(".scroll-right");
+            const numberCellWidth = document.querySelector(".number-cell").offsetWidth;
+            const arrowKeys = [37, 38, 39, 40];
+            const emptycell = document.querySelectorAll(".empty-cell");
+            const popup = document.querySelectorAll(".pop-up");
+
+            emptycell.forEach(function (cell, index) {
+                cell.addEventListener("mouseover", function () {
+                    popup[index].style.display = "block";
+                });
+
+                cell.addEventListener("mouseout", function () {
+                    popup[index].style.display = "none";
+                });
+            });
+
+            scrollRightButton.addEventListener("click", function () {
+                const currentLeft = parseFloat(getComputedStyle(numberRow).left);
+                const newLeft = currentLeft - numberCellWidth * 4;
+                numberRow.style.left = newLeft + "px";
+                if (newLeft <= -numberCellWidth * 5) {
+                    numberRow.style.left = "0";
+                }
+            });
+
+            document.addEventListener("keydown", function (event) {
+                if (arrowKeys.includes(event.keyCode)) {
+                    event.preventDefault();
+                    if (event.keyCode === 37) {
+                        currentPosition--;
+                    } else if (event.keyCode === 39) {
+                        currentPosition++;
+                    }
+                    updatePosition();
+                }
+            });
+        });
+    </script>
+
+    
     <!-- body -->
     <div class='row'>
         <h2>Danh sách của tôi</h2>
@@ -76,15 +224,14 @@
             <img src="datasources/filmphoto_[body]/filmphoto_[body]_5.png" alt="" class="row-poster row-posterLarge">
             <img src="datasources/filmphoto_[body]/filmphoto_[body]_6.png" alt="" class="row-poster row-posterLarge">
             <img src="datasources/filmphoto_[body]/filmphoto_[body]_7.png" alt="" class="row-poster row-posterLarge">
-            
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_8.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_9.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_10.png" alt="" class="row-poster">
           </div>
       </div>
           <div class='row'>
         <h2>Danh sách tiếp tục xem</h2>
           <div class='row-posters'>
-            <img src="datasources/filmphoto_[body]/filmphoto_[body]_8.png" alt="" class="row-poster">
-            <img src="datasources/filmphoto_[body]/filmphoto_[body]_9.png" alt="" class="row-poster">
-            <img src="datasources/filmphoto_[body]/filmphoto_[body]_10.png" alt="" class="row-poster">
             <img src="datasources/filmphoto_[body]/filmphoto_[body]_11.png" alt="" class="row-poster">
             <img src="datasources/filmphoto_[body]/filmphoto_[body]_12.png" alt="" class="row-poster">
             <img src="datasources/filmphoto_[body]/filmphoto_[body]_13.png" alt="" class="row-poster">
@@ -95,13 +242,13 @@
             <img src="datasources/filmphoto_[body]/filmphoto_[body]_18.png" alt="" class="row-poster">
             <img src="datasources/filmphoto_[body]/filmphoto_[body]_19.png" alt="" class="row-poster">
             <img src="datasources/filmphoto_[body]/filmphoto_[body]_20.png" alt="" class="row-poster">
-            <img src="datasources/filmphoto_[body]/filmphoto_[body]_21.png" alt="" class="row-poster">
             
           </div>
       </div>
       <div class='row'>
         <h2>Hiện đang thịnh hành</h2>
           <div class='row-posters'>
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_21.png" alt="" class="row-poster">
             <img src="datasources/filmphoto_[body]/filmphoto_[body]_22.png" alt="" class="row-poster">
             <img src="datasources/filmphoto_[body]/filmphoto_[body]_23.png" alt="" class="row-poster">
             <img src="datasources/filmphoto_[body]/filmphoto_[body]_24.png" alt="" class="row-poster">
@@ -111,11 +258,54 @@
             <img src="datasources/filmphoto_[body]/filmphoto_[body]_28.png" alt="" class="row-poster">
             <img src="datasources/filmphoto_[body]/filmphoto_[body]_29.png" alt="" class="row-poster">
             <img src="datasources/filmphoto_[body]/filmphoto_[body]_30.png" alt="" class="row-poster">
+          </div>
+      </div>
+
+      <div class='row'>
+        <h2>Phim truyền hình lãng mạng</h2>
+          <div class='row-posters'>
             <img src="datasources/filmphoto_[body]/filmphoto_[body]_31.png" alt="" class="row-poster">
             <img src="datasources/filmphoto_[body]/filmphoto_[body]_32.png" alt="" class="row-poster">
             <img src="datasources/filmphoto_[body]/filmphoto_[body]_33.png" alt="" class="row-poster">
             <img src="datasources/filmphoto_[body]/filmphoto_[body]_34.png" alt="" class="row-poster">
             <img src="datasources/filmphoto_[body]/filmphoto_[body]_35.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_36.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_37.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_38.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_39.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_40.png" alt="" class="row-poster">
+          </div>
+      </div>
+
+      <div class='row'>
+        <h2>Phim truyền hình Trung Quốc lãng mạng</h2>
+          <div class='row-posters'>
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_41.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_42.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_43.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_44.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_45.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_46.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_47.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_48.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_49.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_50.png" alt="" class="row-poster">
+          </div>
+      </div>
+
+      <div class='row'>
+        <h2>Phim truyền hình giành giải thưởng châu Á</h2>
+          <div class='row-posters'>
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_51.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_52.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_53.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_54.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_55.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_56.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_57.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_58.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_59.png" alt="" class="row-poster">
+            <img src="datasources/filmphoto_[body]/filmphoto_[body]_60.png" alt="" class="row-poster">
           </div>
       </div>
 
