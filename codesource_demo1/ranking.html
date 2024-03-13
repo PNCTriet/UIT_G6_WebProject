@@ -38,7 +38,17 @@
         .empty-cell {
             left: 0;
         }
-
+        
+        .scroll-right{
+            position: relative;
+            left:1420px;
+            bottom: 265px;
+            opacity: 0.1;
+            width: 50px;
+            height: 236px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 40px;
+        }
         .overflow-container {
             width: 2500px;
             overflow: hidden;
@@ -155,6 +165,7 @@
             const arrowKeys = [37, 38, 39, 40];
             const emptycell = document.querySelectorAll(".empty-cell");
             const popup = document.querySelectorAll(".pop-up");
+            const scrollright = document.getElementById('scroll-right');
 
             emptycell.forEach(function (cell, index) {
                 cell.addEventListener("mouseover", function () {
@@ -164,6 +175,11 @@
                 cell.addEventListener("mouseout", function () {
                     popup[index].style.display = "none";
                 });
+            });
+
+            window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            scrollright.style.top = `${50 + scrolled}px`; // Thay đổi vị trí dọc của nút khi trang được cuộn
             });
 
             scrollRightButton.addEventListener("click", function () {
@@ -190,17 +206,7 @@
     </script>
 
     <div>
-        <button class="scroll-right" style="
-          position: fixed;
-          right: 0;
-          bottom: 215px;
-          opacity: 0.1;
-          width: 50px;
-          height: 236px;
-          font-family: Arial, Helvetica, sans-serif;
-          font-size: 40px;
-        ">
-            >
+        <button class="scroll-right">
         </button>
     </div>
 </body>
