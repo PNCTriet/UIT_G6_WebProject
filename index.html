@@ -181,15 +181,14 @@
 
         <!-- Repeat this structure for the rest of the images -->
       </div>
-      <button class="scroll-right">></button>
+      <button class="scroll-right" >▶</button>
     </div>
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const numberRow = document.querySelector(".number-row");
         const scrollRightButton = document.querySelector(".scroll-right");
-        const numberCellWidth =
-          document.querySelector(".number-cell").offsetWidth;
+        const numberCellWidth =document.querySelector(".number-cell").offsetWidth;
         const arrowKeys = [37, 38, 39, 40];
         const emptycell = document.querySelectorAll(".empty-cell");
         const popup = document.querySelectorAll(".pop-up");
@@ -203,7 +202,6 @@
             popup[index].style.display = "none";
           });
         });
-
         scrollRightButton.addEventListener("click", function () {
           const currentLeft = parseFloat(getComputedStyle(numberRow).left);
           const newLeft = currentLeft - numberCellWidth * 4;
@@ -229,8 +227,9 @@
 
     <!-- body -->
     <div class="row">
+      <br>
       <h2>Danh sách của tôi</h2>
-      <div class="row-posters">
+      <div class="row-posters" id="rowpost1">
         <img
           src="datasources/filmphoto_[body]/filmphoto_[body]_1.png"
           alt=""
@@ -282,10 +281,83 @@
           class="row-poster"
         />
       </div>
+      <button class="scroll-right-poster" id="scrollpost1" >▶</button>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const rowposterwidth=document.querySelector(".row-poster").offsetWidth;
+          const rowposters1 =document.getElementById('rowpost1');
+          const rowposters2 =document.getElementById('rowpost2');
+          const rowposters3 =document.getElementById('rowpost3');
+          const rowposters4 =document.getElementById('rowpost4');
+          const rowposters5 =document.getElementById('rowpost5');
+          const rowposters6 =document.getElementById('rowpost6');
+          const scrollRightPoster1=document.getElementById('scrollpost1');
+          const scrollRightPoster2=document.getElementById('scrollpost2');
+          const scrollRightPoster3=document.getElementById('scrollpost3');
+          const scrollRightPoster4=document.getElementById('scrollpost4');
+          const scrollRightPoster5=document.getElementById('scrollpost5');
+          const scrollRightPoster6=document.getElementById('scrollpost6');
+
+          scrollRightPoster1.addEventListener("click", function () {
+          const currentLeft = parseFloat(getComputedStyle(rowposters1).left);
+          const newLeft = currentLeft - rowposterwidth * 4;
+          rowposters1.style.left = newLeft + "px";
+          if (newLeft <= -rowposterwidth * 5) {
+            rowposters1.style.left = "0";
+          }
+          });
+
+          scrollRightPoster2.addEventListener("click", function () {
+          const currentLeft = parseFloat(getComputedStyle(rowposters2).left);
+          const newLeft = currentLeft - rowposterwidth * 4;
+          rowposters2.style.left = newLeft + "px";
+          if (newLeft <= -rowposterwidth * 5) {
+            rowposters2.style.left = "0";
+          }
+          });
+
+          scrollRightPoster3.addEventListener("click", function () {
+          const currentLeft = parseFloat(getComputedStyle(rowposters3).left);
+          const newLeft = currentLeft - rowposterwidth * 4;
+          rowposters3.style.left = newLeft + "px";
+          if (newLeft <= -rowposterwidth * 5) {
+            rowposters3.style.left = "0";
+          }
+          });
+
+          scrollRightPoster4.addEventListener("click", function () {
+          const currentLeft = parseFloat(getComputedStyle(rowposters4).left);
+          const newLeft = currentLeft - rowposterwidth * 4;
+          rowposters4.style.left = newLeft + "px";
+          if (newLeft <= -rowposterwidth * 5) {
+            rowposters4.style.left = "0";
+          }
+          });
+
+          scrollRightPoster5.addEventListener("click", function () {
+          const currentLeft = parseFloat(getComputedStyle(rowposters5).left);
+          const newLeft = currentLeft - rowposterwidth * 4;
+          rowposters5.style.left = newLeft + "px";
+          if (newLeft <= -rowposterwidth * 5) {
+            rowposters5.style.left = "0";
+          }
+          });
+
+          scrollRightPoster6.addEventListener("click", function () {
+          const currentLeft = parseFloat(getComputedStyle(rowposters6).left);
+          const newLeft = currentLeft - rowposterwidth * 4;
+          rowposters6.style.left = newLeft + "px";
+          if (newLeft <= -rowposterwidth * 5) {
+            rowposters6.style.left = "0";
+          }
+          });
+        })
+    </script>
+
     <div class="row">
       <h2>Danh sách tiếp tục xem</h2>
-      <div class="row-posters">
+      <div class="row-posters" id="rowpost2">
         <img
           src="datasources/filmphoto_[body]/filmphoto_[body]_11.png"
           alt=""
@@ -337,10 +409,12 @@
           class="row-poster"
         />
       </div>
+      <button class="scroll-right-poster" id="scrollpost2">▶</button>
     </div>
+
     <div class="row">
       <h2>Hiện đang thịnh hành</h2>
-      <div class="row-posters">
+      <div class="row-posters" id="rowpost3">
         <img
           src="datasources/filmphoto_[body]/filmphoto_[body]_21.png"
           alt=""
@@ -392,11 +466,12 @@
           class="row-poster"
         />
       </div>
+      <button class="scroll-right-poster" id="scrollpost3">▶</button>
     </div>
 
     <div class="row">
       <h2>Phim truyền hình lãng mạng</h2>
-      <div class="row-posters">
+      <div class="row-posters" id="rowpost4">
         <img
           src="datasources/filmphoto_[body]/filmphoto_[body]_31.png"
           alt=""
@@ -448,11 +523,12 @@
           class="row-poster"
         />
       </div>
+      <button class="scroll-right-poster" id="scrollpost4">▶</button>
     </div>
 
     <div class="row">
       <h2>Phim truyền hình Trung Quốc lãng mạng</h2>
-      <div class="row-posters">
+      <div class="row-posters" id="rowpost5">
         <img
           src="datasources/filmphoto_[body]/filmphoto_[body]_41.png"
           alt=""
@@ -504,11 +580,12 @@
           class="row-poster"
         />
       </div>
+      <button class="scroll-right-poster" id="scrollpost5">▶</button>
     </div>
 
     <div class="row">
       <h2>Phim truyền hình giành giải thưởng châu Á</h2>
-      <div class="row-posters">
+      <div class="row-posters" id="rowpost6">
         <img
           src="datasources/filmphoto_[body]/filmphoto_[body]_51.png"
           alt=""
@@ -560,7 +637,9 @@
           class="row-poster"
         />
       </div>
+      <button class="scroll-right-poster" id="scrollpost6">▶</button>
     </div>
+
 
     <!-- footer -->
     <div class="member-footer">
