@@ -226,63 +226,86 @@
     </script>
 
     <!-- body -->
-    <div class="row">
+    <div class="row" style="height: 250px;">
       <br>
       <h2>Danh sách của tôi</h2>
       <div class="row-posters" id="rowpost1">
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_1.png"
-          alt=""
-          class="row-poster row-posterLarge"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_2.png"
-          alt=""
-          class="row-poster row-posterLarge"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_3.png"
-          alt=""
-          class="row-poster row-posterLarge"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_4.png"
-          alt=""
-          class="row-poster row-posterLarge"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_5.png"
-          alt=""
-          class="row-poster row-posterLarge"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_6.png"
-          alt=""
-          class="row-poster row-posterLarge"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_7.png"
-          alt=""
-          class="row-poster row-posterLarge"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_8.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_9.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_10.png"
-          alt=""
-          class="row-poster"
-        />
+        <div>
+          <div class="row-poster">
+            <a href="xemphim.html">
+              <img src="datasources/filmphoto_[body]/filmphoto_[body]_1.png" alt="" style="position:relative;max-height: 150px"/>
+            </a>
+          </div>
+          </div>
+      
+          <div>
+            <div class="row-poster">
+              <a href="xemphim.html">
+                <img src="datasources/filmphoto_[body]/filmphoto_[body]_2.png" alt="" style="position:relative;max-height: 150px"/>
+              </a>
+            </div>
+            </div>
+            <div>
+              <div class="row-poster">
+                <a href="xemphim.html">
+                  <img src="datasources/filmphoto_[body]/filmphoto_[body]_3.png" alt="" style="position:relative;max-height: 150px"/>
+                </a>
+              </div>
+              </div>
+              <div>
+                <div class="row-poster">
+                  <a href="xemphim.html">
+                    <img src="datasources/filmphoto_[body]/filmphoto_[body]_4.png" alt="" style="position:relative;max-height: 150px"/>
+                  </a>
+                </div>
+                </div>
+                <div>
+                  <div class="row-poster">
+                    <a href="xemphim.html">
+                      <img src="datasources/filmphoto_[body]/filmphoto_[body]_5.png" alt="" style="position:relative;max-height: 150px"/>
+                    </a>
+                  </div>
+                  </div>
+                  <div>
+                    <div class="row-poster">
+                      <a href="xemphim.html">
+                        <img src="datasources/filmphoto_[body]/filmphoto_[body]_6.png" alt="" style="position:relative;max-height: 150px"/>
+                      </a>
+                    </div>
+                    </div>
+                    <div>
+                      <div class="row-poster">
+                        <a href="xemphim.html">
+                          <img src="datasources/filmphoto_[body]/filmphoto_[body]_7.png" alt="" style="position:relative;max-height: 150px"/>
+                        </a>
+                      </div>
+                      </div>
+                      <div>
+                        <div class="row-poster">
+                          <a href="xemphim.html">
+                            <img src="datasources/filmphoto_[body]/filmphoto_[body]_8.png" alt="" style="position:relative;max-height: 150px"/>
+                          </a>
+                        </div>
+                        </div>
+                        <div>
+                          <div class="row-poster">
+                            <a href="xemphim.html">
+                              <img src="datasources/filmphoto_[body]/filmphoto_[body]_9.png" alt="" style="position:relative;max-height: 150px"/>
+                            </a>
+                          </div>
+                          </div>
+                          <div>
+                            <div class="row-poster">
+                              <a href="xemphim.html">
+                                <img src="datasources/filmphoto_[body]/filmphoto_[body]_10.png" alt="" style="position:relative;max-height: 150px"/>
+                              </a>
+                            </div>
+                            </div>
       </div>
       <button class="scroll-right-poster" id="scrollpost1" >▶</button>
     </div>
+
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
           const rowposterwidth=document.querySelector(".row-poster").offsetWidth;
@@ -298,6 +321,32 @@
           const scrollRightPoster4=document.getElementById('scrollpost4');
           const scrollRightPoster5=document.getElementById('scrollpost5');
           const scrollRightPoster6=document.getElementById('scrollpost6');
+          const getprogress1=document.getElementById('prog1');
+          const getprogress2=document.getElementById('prog2');
+          const getprogress3=document.getElementById('prog3');
+          const getprogress4=document.getElementById('prog4');
+          const getprogress5=document.getElementById('prog5');
+          const getprogress6=document.getElementById('prog6');
+          const getprogress7=document.getElementById('prog7');
+          const getprogress8=document.getElementById('prog8');
+          const getprogress9=document.getElementById('prog9');
+          const getprogress10=document.getElementById('prog10');
+          const progbar=document.querySelector(".progress-bar");
+
+      /*    const urlParams = new URLSearchParams(window.location.search);
+          const currentTime = urlParams.get('time');
+          if (currentTime !== null) {
+            updateProgress(parseFloat(currentTime));
+          } 
+
+          function updateProgress(currentTime) {
+            const video = document.createElement('film');
+            video.src = 'datasources/randomvideo/mylivewallpapers-com-Punishing-Gray-Raven-Lee.mp4'; // Thay đổi đường dẫn đến video của bạn
+            const duration = video.duration;
+            const progress = (currentTime / duration) * 100;
+            prog1.style.width = `${progress}%`;
+          } */ 
+
 
           scrollRightPoster1.addEventListener("click", function () {
           const currentLeft = parseFloat(getComputedStyle(rowposters1).left);
@@ -355,287 +404,417 @@
         })
     </script>
 
-    <div class="row">
-      <h2>Danh sách tiếp tục xem</h2>
-      <div class="row-posters" id="rowpost2">
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_11.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_12.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_13.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_14.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_15.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_16.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_17.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_18.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_19.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_20.png"
-          alt=""
-          class="row-poster"
-        />
+    <div class="row"  style="height: 250px;">
+      <h2>Danh sách tiếp tục xem</h2> 
+      <div class="row-posters" id="rowpost2"> 
+          <div>
+          <div class="row-poster">
+            <a href="xemphim.html">
+              <img src="datasources/filmphoto_[body]/filmphoto_[body]_11.png" alt="" style="position:relative;max-height: 150px"/>
+            </a>
+            <div class="progress-bar" >
+            </div>
+          </div>
+          </div>
+
+        <div>
+          <div class="row-poster">
+            <a href="xemphim.html">
+              <img src="datasources/filmphoto_[body]/filmphoto_[body]_12.png" alt="" style="position:relative;max-height: 150px"/>
+            </a>
+            <div class="progress-bar">
+            </div>
+          </div>
+          </div>
+
+        <div>
+          <div class="row-poster">
+            <a href="xemphim.html">
+              <img src="datasources/filmphoto_[body]/filmphoto_[body]_13.png" alt="" style="position:relative;max-height: 150px"/>
+            </a>
+            <div class="progress-bar">
+            </div>
+          </div>
+          </div>
+
+        <div>
+          <div class="row-poster">
+            <a href="xemphim.html">
+              <img src="datasources/filmphoto_[body]/filmphoto_[body]_14.png" alt="" style="position:relative;max-height: 150px"/>
+            </a>
+            <div class="progress-bar" >
+            </div>
+          </div>
+          </div>
+
+        <div>
+          <div class="row-poster">
+            <a href="xemphim.html">
+              <img src="datasources/filmphoto_[body]/filmphoto_[body]_15.png" alt="" style="position:relative;max-height: 150px"/>
+            </a>
+            <div class="progress-bar" >
+            </div>
+          </div>
+          </div>
+
+        <div>
+          <div class="row-poster">
+            <a href="xemphim.html">
+              <img src="datasources/filmphoto_[body]/filmphoto_[body]_16.png" alt="" style="position:relative;max-height: 150px"/>
+            </a>
+            <div class="progress-bar" >
+            </div>
+          </div>
+          </div>
+
+        <div>
+          <div class="row-poster">
+            <a href="xemphim.html">
+              <img src="datasources/filmphoto_[body]/filmphoto_[body]_17.png" alt="" style="position:relative;max-height: 150px"/>
+            </a>
+            <div class="progress-bar" >
+            </div>
+          </div>
+          </div>
+
+        <div>
+          <div class="row-poster">
+            <a href="xemphim.html">
+              <img src="datasources/filmphoto_[body]/filmphoto_[body]_18.png" alt="" style="position:relative;max-height: 150px"/>
+            </a>
+            <div class="progress-bar" >
+            </div>
+          </div>
+          </div>
+
+        <div>
+          <div class="row-poster">
+            <a href="xemphim.html">
+              <img src="datasources/filmphoto_[body]/filmphoto_[body]_19.png" alt="" style="position:relative;max-height: 150px"/>
+            </a>
+            <div class="progress-bar" >
+            </div>
+          </div>
+          </div>
+
+        <div>
+          <div class="row-poster">
+            <a href="xemphim.html">
+              <img src="datasources/filmphoto_[body]/filmphoto_[body]_20.png" alt="" style="position:relative;max-height: 150px"/>
+            </a>
+            <div class="progress-bar" >
+            </div>
+          </div>
+          </div>
+
       </div>
       <button class="scroll-right-poster" id="scrollpost2">▶</button>
     </div>
 
-    <div class="row">
+    <div class="row" style="height: 250px;">
       <h2>Hiện đang thịnh hành</h2>
       <div class="row-posters" id="rowpost3">
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_21.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_22.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_23.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_24.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_25.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_26.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_27.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_28.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_29.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_30.png"
-          alt=""
-          class="row-poster"
-        />
+        <div>
+          <div class="row-poster">
+            <a href="xemphim.html">
+              <img src="datasources/filmphoto_[body]/filmphoto_[body]_21.png" alt="" style="position:relative;max-height: 150px"/>
+            </a>
+          </div>
+          </div>
+          <div>
+            <div class="row-poster">
+              <a href="xemphim.html">
+                <img src="datasources/filmphoto_[body]/filmphoto_[body]_22.png" alt="" style="position:relative;max-height: 150px"/>
+              </a>
+            </div>
+            </div>
+            <div>
+              <div class="row-poster">
+                <a href="xemphim.html">
+                  <img src="datasources/filmphoto_[body]/filmphoto_[body]_23.png" alt="" style="position:relative;max-height: 150px"/>
+                </a>
+              </div>
+              </div>
+              <div>
+                <div class="row-poster">
+                  <a href="xemphim.html">
+                    <img src="datasources/filmphoto_[body]/filmphoto_[body]_24.png" alt="" style="position:relative;max-height: 150px"/>
+                  </a>
+                </div>
+                </div>
+                <div>
+                  <div class="row-poster">
+                    <a href="xemphim.html">
+                      <img src="datasources/filmphoto_[body]/filmphoto_[body]_25.png" alt="" style="position:relative;max-height: 150px"/>
+                    </a>
+                  </div>
+                  </div>
+                  <div>
+                    <div class="row-poster">
+                      <a href="xemphim.html">
+                        <img src="datasources/filmphoto_[body]/filmphoto_[body]_26.png" alt="" style="position:relative;max-height: 150px"/>
+                      </a>
+                    </div>
+                    </div>
+                    <div>
+                      <div class="row-poster">
+                        <a href="xemphim.html">
+                          <img src="datasources/filmphoto_[body]/filmphoto_[body]_27.png" alt="" style="position:relative;max-height: 150px"/>
+                        </a>
+                      </div>
+                      </div>
+                      <div>
+                        <div class="row-poster">
+                          <a href="xemphim.html">
+                            <img src="datasources/filmphoto_[body]/filmphoto_[body]_28.png" alt="" style="position:relative;max-height: 150px"/>
+                          </a>
+                        </div>
+                        </div>
+                        <div>
+                          <div class="row-poster">
+                            <a href="xemphim.html">
+                              <img src="datasources/filmphoto_[body]/filmphoto_[body]_29.png" alt="" style="position:relative;max-height: 150px"/>
+                            </a>
+                          </div>
+                          </div>
+                          <div>
+                            <div class="row-poster">
+                              <a href="xemphim.html">
+                                <img src="datasources/filmphoto_[body]/filmphoto_[body]_30.png" alt="" style="position:relative;max-height: 150px"/>
+                              </a>
+                            </div>
+                            </div>
       </div>
       <button class="scroll-right-poster" id="scrollpost3">▶</button>
     </div>
 
-    <div class="row">
+    <div class="row" style="height: 250px;">
       <h2>Phim truyền hình lãng mạng</h2>
       <div class="row-posters" id="rowpost4">
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_31.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_32.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_33.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_34.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_35.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_36.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_37.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_38.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_39.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_40.png"
-          alt=""
-          class="row-poster"
-        />
+        <div>
+          <div class="row-poster">
+            <a href="xemphim.html">
+              <img src="datasources/filmphoto_[body]/filmphoto_[body]_31.png" alt="" style="position:relative;max-height: 150px"/>
+            </a>
+          </div>
+          </div>
+          <div>
+            <div class="row-poster">
+              <a href="xemphim.html">
+                <img src="datasources/filmphoto_[body]/filmphoto_[body]_32.png" alt="" style="position:relative;max-height: 150px"/>
+              </a>
+            </div>
+            </div>
+            <div>
+              <div class="row-poster">
+                <a href="xemphim.html">
+                  <img src="datasources/filmphoto_[body]/filmphoto_[body]_33.png" alt="" style="position:relative;max-height: 150px"/>
+                </a>
+              </div>
+              </div>
+              <div>
+                <div class="row-poster">
+                  <a href="xemphim.html">
+                    <img src="datasources/filmphoto_[body]/filmphoto_[body]_34.png" alt="" style="position:relative;max-height: 150px"/>
+                  </a>
+                </div>
+                </div>
+                <div>
+                  <div class="row-poster">
+                    <a href="xemphim.html">
+                      <img src="datasources/filmphoto_[body]/filmphoto_[body]_35.png" alt="" style="position:relative;max-height: 150px"/>
+                    </a>
+                  </div>
+                  </div>
+                  <div>
+                    <div class="row-poster">
+                      <a href="xemphim.html">
+                        <img src="datasources/filmphoto_[body]/filmphoto_[body]_36.png" alt="" style="position:relative;max-height: 150px"/>
+                      </a>
+                    </div>
+                    </div>
+                    <div>
+                      <div class="row-poster">
+                        <a href="xemphim.html">
+                          <img src="datasources/filmphoto_[body]/filmphoto_[body]_37.png" alt="" style="position:relative;max-height: 150px"/>
+                        </a>
+                      </div>
+                      </div>
+                      <div>
+                        <div class="row-poster">
+                          <a href="xemphim.html">
+                            <img src="datasources/filmphoto_[body]/filmphoto_[body]_38.png" alt="" style="position:relative;max-height: 150px"/>
+                          </a>
+                        </div>
+                        </div>
+                        <div>
+                          <div class="row-poster">
+                            <a href="xemphim.html">
+                              <img src="datasources/filmphoto_[body]/filmphoto_[body]_39.png" alt="" style="position:relative;max-height: 150px"/>
+                            </a>
+                          </div>
+                          </div>
+                          <div>
+                            <div class="row-poster">
+                              <a href="xemphim.html">
+                                <img src="datasources/filmphoto_[body]/filmphoto_[body]_40.png" alt="" style="position:relative;max-height: 150px"/>
+                              </a>
+                            </div>
+                            </div>
       </div>
       <button class="scroll-right-poster" id="scrollpost4">▶</button>
     </div>
 
-    <div class="row">
+    <div class="row" style="height: 250px;">
       <h2>Phim truyền hình Trung Quốc lãng mạng</h2>
       <div class="row-posters" id="rowpost5">
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_41.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_42.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_43.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_44.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_45.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_46.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_47.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_48.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_49.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_50.png"
-          alt=""
-          class="row-poster"
-        />
+        <div>
+          <div class="row-poster">
+            <a href="xemphim.html">
+              <img src="datasources/filmphoto_[body]/filmphoto_[body]_41.png" alt="" style="position:relative;max-height: 150px"/>
+            </a>
+          </div>
+          </div>
+          <div>
+            <div class="row-poster">
+              <a href="xemphim.html">
+                <img src="datasources/filmphoto_[body]/filmphoto_[body]_42.png" alt="" style="position:relative;max-height: 150px"/>
+              </a>
+            </div>
+            </div>
+            <div>
+              <div class="row-poster">
+                <a href="xemphim.html">
+                  <img src="datasources/filmphoto_[body]/filmphoto_[body]_43.png" alt="" style="position:relative;max-height: 150px"/>
+                </a>
+              </div>
+              </div>
+              <div>
+                <div class="row-poster">
+                  <a href="xemphim.html">
+                    <img src="datasources/filmphoto_[body]/filmphoto_[body]_44.png" alt="" style="position:relative;max-height: 150px"/>
+                  </a>
+                </div>
+                </div>
+                <div>
+                  <div class="row-poster">
+                    <a href="xemphim.html">
+                      <img src="datasources/filmphoto_[body]/filmphoto_[body]_45.png" alt="" style="position:relative;max-height: 150px"/>
+                    </a>
+                  </div>
+                  </div>
+                  <div>
+                    <div class="row-poster">
+                      <a href="xemphim.html">
+                        <img src="datasources/filmphoto_[body]/filmphoto_[body]_46.png" alt="" style="position:relative;max-height: 150px"/>
+                      </a>
+                    </div>
+                    </div>
+                    <div>
+                      <div class="row-poster">
+                        <a href="xemphim.html">
+                          <img src="datasources/filmphoto_[body]/filmphoto_[body]_47.png" alt="" style="position:relative;max-height: 150px"/>
+                        </a>
+                      </div>
+                      </div>
+                      <div>
+                        <div class="row-poster">
+                          <a href="xemphim.html">
+                            <img src="datasources/filmphoto_[body]/filmphoto_[body]_48.png" alt="" style="position:relative;max-height: 150px"/>
+                          </a>
+                        </div>
+                        </div>
+                        <div>
+                          <div class="row-poster">
+                            <a href="xemphim.html">
+                              <img src="datasources/filmphoto_[body]/filmphoto_[body]_49.png" alt="" style="position:relative;max-height: 150px"/>
+                            </a>
+                          </div>
+                          </div>
+                          <div>
+                            <div class="row-poster">
+                              <a href="xemphim.html">
+                                <img src="datasources/filmphoto_[body]/filmphoto_[body]_50.png" alt="" style="position:relative;max-height: 150px"/>
+                              </a>
+                            </div>
+                            </div>
       </div>
       <button class="scroll-right-poster" id="scrollpost5">▶</button>
     </div>
 
-    <div class="row">
+    <div class="row" style="height: 250px;">
       <h2>Phim truyền hình giành giải thưởng châu Á</h2>
       <div class="row-posters" id="rowpost6">
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_51.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_52.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_53.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_54.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_55.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_56.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_57.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_58.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_59.png"
-          alt=""
-          class="row-poster"
-        />
-        <img
-          src="datasources/filmphoto_[body]/filmphoto_[body]_60.png"
-          alt=""
-          class="row-poster"
-        />
+        <div>
+          <div class="row-poster">
+            <a href="xemphim.html">
+              <img src="datasources/filmphoto_[body]/filmphoto_[body]_51.png" alt="" style="position:relative;max-height: 150px"/>
+            </a>
+          </div>
+          </div>
+          <div>
+            <div class="row-poster">
+              <a href="xemphim.html">
+                <img src="datasources/filmphoto_[body]/filmphoto_[body]_52.png" alt="" style="position:relative;max-height: 150px"/>
+              </a>
+            </div>
+            </div>
+            <div>
+              <div class="row-poster">
+                <a href="xemphim.html">
+                  <img src="datasources/filmphoto_[body]/filmphoto_[body]_53.png" alt="" style="position:relative;max-height: 150px"/>
+                </a>
+              </div>
+              </div>
+              <div>
+                <div class="row-poster">
+                  <a href="xemphim.html">
+                    <img src="datasources/filmphoto_[body]/filmphoto_[body]_54.png" alt="" style="position:relative;max-height: 150px"/>
+                  </a>
+                </div>
+                </div>
+                <div>
+                  <div class="row-poster">
+                    <a href="xemphim.html">
+                      <img src="datasources/filmphoto_[body]/filmphoto_[body]_55.png" alt="" style="position:relative;max-height: 150px"/>
+                    </a>
+                  </div>
+                  </div>
+                  <div>
+                    <div class="row-poster">
+                      <a href="xemphim.html">
+                        <img src="datasources/filmphoto_[body]/filmphoto_[body]_56.png" alt="" style="position:relative;max-height: 150px"/>
+                      </a>
+                    </div>
+                    </div>
+                    <div>
+                      <div class="row-poster">
+                        <a href="xemphim.html">
+                          <img src="datasources/filmphoto_[body]/filmphoto_[body]_57.png" alt="" style="position:relative;max-height: 150px"/>
+                        </a>
+                      </div>
+                      </div>
+                      <div>
+                        <div class="row-poster">
+                          <a href="xemphim.html">
+                            <img src="datasources/filmphoto_[body]/filmphoto_[body]_58.png" alt="" style="position:relative;max-height: 150px"/>
+                          </a>
+                        </div>
+                        </div>
+                        <div>
+                          <div class="row-poster">
+                            <a href="xemphim.html">
+                              <img src="datasources/filmphoto_[body]/filmphoto_[body]_59.png" alt="" style="position:relative;max-height: 150px"/>
+                            </a>
+                          </div>
+                          </div>
+                          <div>
+                            <div class="row-poster">
+                              <a href="xemphim.html">
+                                <img src="datasources/filmphoto_[body]/filmphoto_[body]_60.png" alt="" style="position:relative;max-height: 150px"/>
+                              </a>
+                            </div>
+                            </div>
       </div>
       <button class="scroll-right-poster" id="scrollpost6">▶</button>
     </div>

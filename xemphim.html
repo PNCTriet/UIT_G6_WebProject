@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chiếu phim</title>
+<style>
+    body, html {
+        background-color: grey;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    #progress-bar {
+        position: absolute;
+        bottom: 0;
+        left: 41%;
+        width: 18%;
+        height: 1px;
+        background-color: #ddd;
+    }
+
+    #progress {
+        height: 100%;
+        background-color: red;
+        width: 0;
+    }
+
+    #video-container {
+        position: relative;
+        top:15%;
+        left: 20% ;
+        width: 60%;
+        height: 60%;
+    }
+
+    #video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    #watched-time {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+</style>
+</head>
+<body>
+<div id="video-container">
+    <video id="video" controls>
+        <source src="datasources/randomvideo/mylivewallpapers-com-Punishing-Gray-Raven-Lee.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+   <!-- <button id="expand-button">Mở rộng</button> -->
+   <div id="progress-bar">
+    <div id="progress"></div>
+</div>
+</div>
+
+<script>
+    const video = document.getElementById('video');
+    const progressBar = document.getElementById('progress');
+    const progressContainer = document.getElementById('progress-bar');
+
+  /*  video.addEventListener('timeupdate', () => {
+            const currentTime = video.currentTime;
+            window.location.href = `index.html?time=${currentTime}`;
+    }); */
+
+
+
+  /*  video.addEventListener('timeupdate', () => {
+        const progress = (video.currentTime / video.duration) * 100;
+        progressBar.style.width = `${progress}%`;
+    }) */
+
+
+    
+</script>
+</body>
+</html>
