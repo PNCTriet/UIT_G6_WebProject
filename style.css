@@ -594,7 +594,7 @@ user agent stylesheet div {
   border-left-style: hidden;
   border-right-style: hidden;
   color: white;
-  bottom: 170px;
+  bottom: 172px;
   opacity: 0.1;
   width: 150px;
   height: 150px;
@@ -654,5 +654,5 @@ user agent stylesheet div {
 .progress {
   height: 100%;
   background-color: red;
-  width: 0;
+  width: 40%;
 }
