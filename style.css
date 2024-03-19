@@ -76,15 +76,10 @@ h3 {
   transform: scale(1.08);
   display: inline-block;
 }
-<<<<<<< HEAD
-=======
-
-
->>>>>>> fb3019eb180435c7fd84b88567d4464c44767a66
 .overflow-container {
   width: 100%;
   height: 300px;
-  background-color:black;
+  /* background-color:black; */
   overflow: hidden;
   position: relative;
 }
@@ -501,6 +496,7 @@ body {
   margin-left: 20px;
   overflow: hidden;
   position:relative;
+  height: 250px;
 }
 
 .member-footer {
