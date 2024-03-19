@@ -1,0 +1,231 @@
+/* ------------------- *\
+#CUSTOM PROPERTY
+/* --------------------- */
+
+:root{
+    /* Light mode */
+    --light-background: #f5f7fa;
+    --light-on-background: hsl(0, 3%, 13%);
+    --light-on-background-variant: hsl(20, 3%, 19%);
+    --light-primary:#eff2f6;
+    --light-primary-hover: hsl(11, 60%, 50%);
+    --light-primary-container: hsl(14, 57%, 95%);
+    --light-error: hsl(1, 73%, 42%);
+    --light-active-indicator: hsl(12, 58%, 88%);
+    --light-image-background: hsl(0, 0%, 70%);
+    --light-badge-btn: hsl(30, 58%, 88%);
+    --light-on-badge-btn: hsl(24, 7%, 14%);
+    --light-outline: hsl(10, 19%, 88%);
+    --light-input-outline: hsl(7, 7%, 73%);
+    --light-input-outline-hover: hsl(9, 3%, 52%);
+    --light-alpha-10: hsla(0, 0%, 0%, 0.1);
+    --light-alpha-20: hsla(0, 0%, 0%, 0.2);
+
+    /* Dark mode */
+    --dark-background: #0f111a;
+    --dark-on-background: hsl(11, 3%, 87%);
+    --dark-on-background-variant: hsl(11, 3%, 81%);
+    --dark-primary: #31374a;
+    --dark-primary-hover: hsl(11, 51%, 51%);
+    --dark-primary-container: hsl(15, 3%, 15%);
+    --dark-error: hsl(1, 69%, 59%);
+    --dark-active-indicator: hsl(15, 25%, 22%);
+    --dark-image-background: hsl(0, 0%, 30%);
+    --dark-badge-btn: hsl(30, 28%, 13%);
+    --dark-on-badge-btn: hsl(30, 8%, 86%);
+    --dark-outline: hsl(11, 3%, 20%);
+    --dark-input-outline: hsl(11, 3%, 29%);
+    --dark-input-outline-hover: hsl(0, 4%, 58%);
+    --dark-alpha-10: hsla(0, 0%, 100%, 0.1);
+    --dark-alpha-20: hsla(0, 0%, 100%, 0.2);
+ 
+
+
+    /* Font family */
+  --font-primary: 'Outfit', sans-serif;
+
+  /* Font size */
+  --fs-base: 62.5%;
+  --fs-display-large: 5.7rem;
+  --fs-display-medium: 4.5rem;
+  --fs-display-small: 3.6rem;
+  --fs-headline-large: 3.2rem;
+  --fs-headline-medium: 2.8rem;
+  --fs-headline-small: 2.4rem;
+  --fs-title-large: 2.2rem;
+  --fs-title-medium: 1.6rem;
+  --fs-title-small: 1.4rem;
+  --fs-body-large: 1.6rem;
+  --fs-body-medium: 1.4rem;
+  --fs-body-small: 1.2rem;
+  --fs-label-large: 1.4rem;
+  --fs-label-medium: 1.2rem;
+  --fs-label-small: 1.1rem;
+
+  /* Line height */
+  --lh-base: 20px;
+  --lh-display-large: 64px;
+  --lh-display-medium: 52px;
+  --lh-display-small: 44px;
+  --lh-headline-large: 40px;
+  --lh-headline-medium: 36px;
+  --lh-headline-small: 32px;
+  --lh-title-large: 28px;
+  --lh-title-medium: 24px;
+  --lh-title-small: 20px;
+  --lh-body-large: 24px;
+  --lh-body-medium: 20px;
+  --lh-body-small: 16px;
+  --lh-label-large: 20px;
+  --lh-label-medium: 16px;
+  --lh-label-small: 16px;
+
+  /* Font weight */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-black: 900;
+  
+  /* Letter spacing */
+  --ls-n-025: -0.25px;
+  --ls-p-010: 0.10px;
+  --ls-p-015: 0.15px;
+  --ls-p-025: 0.25px;
+  --ls-p-040: 0.40px;
+  --ls-p-050: 0.50px;
+
+  /**
+   * SPACING
+   */
+  
+  --space-base: 4px;
+  --space-05: calc(var(--space-base) * 0.5);
+  --space-1: calc(var(--space-base) * 1);
+  --space-2: calc(var(--space-base) * 2);
+  --space-3: calc(var(--space-base) * 3);
+  --space-4: calc(var(--space-base) * 4);
+  --space-5: calc(var(--space-base) * 5);
+  --space-6: calc(var(--space-base) * 6);
+  --space-7: calc(var(--space-base) * 7);
+  --space-8: calc(var(--space-base) * 8);
+  --space-9: calc(var(--space-base) * 9);
+  --space-10: calc(var(--space-base) * 10);
+  --space-11: calc(var(--space-base) * 11);
+  --space-12: calc(var(--space-base) * 12);
+  --space-13: calc(var(--space-base) * 13);
+  --space-14: calc(var(--space-base) * 14);
+  --space-15: calc(var(--space-base) * 15);
+  --space-16: calc(var(--space-base) * 16);
+  --space-17: calc(var(--space-base) * 17);
+  --space-18: calc(var(--space-base) * 18);
+  --space-19: calc(var(--space-base) * 19);
+  --space-20: calc(var(--space-base) * 20);
+
+  /**
+   * BOX SHADOW
+   */
+
+  --shadow-1: 0px 1px 3px 1px #00000026, 0px 1px 2px 0px #0000004d;
+  --shadow-2: 0px 2px 6px 2px #00000026, 0px 1px 2px 0px #0000004d;
+  --shadow-3: 0px 1px 3px 0px #0000004d, 0px 4px 8px 3px #00000026;
+  --shadow-4: 0px 2px 3px 0px #0000004d, 0px 6px 10px 4px #00000026;
+  --shadow-5: 0px 4px 4px 0px #0000004d, 0px 8px 12px 6px #00000026;
+
+  /**
+   * BORDER RADIUS
+   */
+
+  --radius-extra-small: 4px;
+  --radius-small: 8px;
+  --radius-medium: 12px;
+  --radius-large: 16px;
+  --radius-extra-large: 28px;
+  --radius-full: 1000px;
+
+  /**
+   * TRANSITION
+   */
+  
+  --tr-duration-short-1: 50ms;
+  --tr-duration-short-2: 100ms;
+  --tr-duration-short-3: 150ms;
+  --tr-duration-short-4: 200ms;
+  --tr-duration-medium-1: 250ms;
+  --tr-duration-medium-2: 300ms;
+  --tr-duration-medium-3: 350ms;
+  --tr-duration-medium-4: 400ms;
+  --tr-duration-long-1: 450ms;
+  --tr-duration-long-2: 500ms;
+  --tr-duration-long-3: 550ms;
+  --tr-duration-long-4: 600ms;
+  --tr-duration-extra-long-1: 700ms;
+  --tr-duration-extra-long-2: 800ms;
+  --tr-duration-extra-long-3: 900ms;
+  --tr-duration-extra-long-4: 1000ms;
+  --tr-easing-linear: cubic-bezier(0, 0, 1, 1);
+  --tr-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --tr-easing-standard-decelerate: cubic-bezier(0, 0, 0, 1);
+  --tr-easing-standard-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --tr-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --tr-easing-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --tr-easing-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+
+  /**
+   * OTHERS
+   */
+
+  --top-bar-height: 64px;
+  --bottom-nav-height: 80px;
+  --player-sm-height: 80px;
+  --player-lg-height: 96px;
+  --navigation-rail-width: 80px;
+
+  --header-height: 64px;
+  --mobile-nav-height: 80px;
+  --section-gap: 32px;
+  --transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  --transition-short: 200ms var(--transition-timing-function);
+  --transition-medium: 500ms var(--transition-timing-function);
+  --transition-large:1000ms var(var(--transition-timing-function))
+}
+
+
+[theme="light"]{
+    color-scheme: light;
+
+    --background:var(--light-background);
+    --on-background:var(--light-on-background);
+    --background-variant:var(--light-on-background-variant);
+    --primary:var(--light-primary);
+    --primary-hover:var(--light-primary-hover);
+    --primary-container:var(--light-primary-container);
+    --error:var(--light-error);
+    --active-indicator:var(--light-active-indicator);
+    --image-background:var(--light-image-background);
+    --badge-btn:var(--light-badge-btn);
+    --on-badge-btn:var(--light-on-badge-btn);
+    --outline:var(--light-outline);
+    --input-outline:var(--light-input-outline);
+    --outline-hover:var(--light-input-outline-hover);
+    --alpha-10:var(--light-alpha-10);
+    --alpha-20:var(--light-alpha-20);
+}
+
+[theme="dark"]{
+    color-scheme:dark;
+    --background:var(--dark-background);
+    --on-background:var(--dark-on-background);
+    --background-variant:var(--dark-on-background-variant);
+    --primary:var(--dark-primary);
+    --primary-hover:var(--dark-primary-hover);
+    --primary-container:var(--dark-primary-container);
+    --error:var(--dark-error);
+    --active-indicator:var(--dark-active-indicator);
+    --image-background:var(--dark-image-background);
+    --badge-btn:var(--dark-badge-btn);
+    --on-badge-btn:var(--dark-on-badge-btn);
+    --outline:var(--dark-outline);
+    --input-outline:var(--dark-input-outline);
+    --outline-hover:var(--dark-input-outline-hover);
+    --alpha-10:var(--dark-alpha-10);
+    --alpha-20:var(--dark-alpha-20);
+}
