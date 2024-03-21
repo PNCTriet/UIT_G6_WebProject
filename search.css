@@ -1,0 +1,69 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:#111;
+  }
+  
+  .row-poster{
+    width: calc(100% / 6);
+    transition: transform 450ms;
+    padding: 0 5px;
+  }
+  
+  .row-posters{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -5px;
+    margin-bottom: 50px;
+  }
+  
+  .row-poster:hover{
+    transform: scale(1.08);
+  }
+  
+  .row-posters::-webkit-scrollbar{
+    display: none;
+  }
+  
+  .row-posterLarge{
+    max-height: 150px;
+  }
+  
+  .row-posterLarge:hover{
+    transform: scale(1.09);
+  }
+  
+  .row{
+    color: white;
+    width: calc(100% - 30px);
+    margin: auto;
+    max-width: 1500px;
+  }
+
+
+  .c-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.language-f>span {
+    font-size: 14px;
+}
+
+.language-f>select>option, .language-f>select {
+    background-color: transparent;
+    border-width: 2px;
+    border-color: #fff;
+    font-size: 16px;
+    color: #fff;
+}
+
+.language-f>select>option {
+    background: black;
+}
