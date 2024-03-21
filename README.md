@@ -11,7 +11,7 @@ Trang web phải đảm bảo được các mục tiêu:
 
 | STT| Họ tên                   | Email                  |
 |:--:|--------------------------|------------------------|
-| 1  | Phạm Nguyễn Cao Triết    | triet.pnc@gmail.comn   |
+| 1  | Phạm Nguyễn Cao Triết    | triet.pnc@gmail.com   |
 | 2  | Đinh Tiến Đạt            | 19521331@gm.uit.edu.vn |
 | 3  | Lê Hoàng Đức             | 22520351@gm.uit.edu.vn |
 | 4  | Nguyễn Trần Thành Tâm    | 21522786@gm.uit.edu.vn |
