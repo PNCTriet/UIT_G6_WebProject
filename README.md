@@ -17,7 +17,17 @@ Trang web phải đảm bảo được các mục tiêu:
 | 4  | Nguyễn Trần Thành Tâm    | 21522786@gm.uit.edu.vn |
 | 5  | Nguyễn Hoàng Vĩ          | 21521404@gm.uit.edu.vn |
 
-# Các công nghệ sử dụng trong project
+# Mô hình usecase
+![admin_usecase](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/datasources/photodata_readme/admin_usecase.jpg)
+![admin_usecasedetails](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/datasources/photodata_readme/admin_usecasedetails.jpg)
+![user_usecase](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/datasources/photodata_readme/user_usecase.jpg)
+![user_usecasedetails](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/datasources/photodata_readme/user_usecasedetails.jpg)
+
+# Mô hình ERD
+![ERD_demo1](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/datasources/sqldatabase/ERD_demo1.png)
+
+
+ # Các công nghệ sử dụng trong project
 - Front-end: 
 - Back-end: 
 # Các modules
