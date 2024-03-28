@@ -14,7 +14,7 @@ Trang web phải đảm bảo được các mục tiêu:
 | 1  | Phạm Nguyễn Cao Triết    | 19521050@gm.uit.edu.vn |
 | 2  | Đinh Tiến Đạt            | 19521331@gm.uit.edu.vn |
 | 3  | Lê Hoàng Đức             | 22520351@gm.uit.edu.vn |
-| 4  | Nguyễn Trần Thành Tâm    | 21522786@gm.uit.edu.vn |
+| 4  | Nguyễn Trần Thành Tâm    | 21521404@gm.uit.edu.vn |
 | 5  | Nguyễn Hoàng Vĩ          | 21522786@gm.uit.edu.vn |
 
 # Mô hình usecase
