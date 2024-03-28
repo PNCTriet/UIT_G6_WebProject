@@ -68,6 +68,7 @@ CREATE TABLE `User_playlist` (
 
 CREATE TABLE `Playlist_detail` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
+  `user_playlist_id` integer,
   `movie_id` integer,
   `status` varchar(50),
   `currentime` integer,
@@ -107,9 +108,9 @@ CREATE TABLE `Voucher` (
   `status` varchar(50)
 );
 
-ALTER TABLE `Playlist_detail` ADD FOREIGN KEY (`id`) REFERENCES `Movie` (`id`);
+ALTER TABLE `Playlist_detail` ADD FOREIGN KEY (`movie_id`) REFERENCES `Movie` (`id`);
 
-ALTER TABLE `Playlist_detail` ADD FOREIGN KEY (`id`) REFERENCES `User_playlist` (`playlist_detail_id`);
+ALTER TABLE `Playlist_detail` ADD FOREIGN KEY (`user_playlist_id`) REFERENCES `User_playlist` (`playlist_detail_id`);
 
 ALTER TABLE `User_playlist` ADD FOREIGN KEY (`user_id`) REFERENCES `User` (`id`);
 
@@ -123,22 +124,9 @@ ALTER TABLE `Deposit_detail` ADD FOREIGN KEY (`deposit_id`) REFERENCES `User_dep
 
 ALTER TABLE `User` ADD FOREIGN KEY (`id`) REFERENCES `User_credential` (`id`);
 
-CREATE TABLE `MovieCategory_Movie` (
-  `MovieCategory_id` integer,
-  `Movie_category_id` integer,
-  PRIMARY KEY (`MovieCategory_id`, `Movie_category_id`)
-);
-
 ALTER TABLE `MovieCategory_Movie` ADD FOREIGN KEY (`MovieCategory_id`) REFERENCES `MovieCategory` (`id`);
 
 ALTER TABLE `MovieCategory_Movie` ADD FOREIGN KEY (`Movie_category_id`) REFERENCES `Movie` (`category_id`);
-
-
-CREATE TABLE `SpecialGroup_Movie` (
-  `SpecialGroup_id` integer,
-  `Movie_specialgroup_id` integer,
-  PRIMARY KEY (`SpecialGroup_id`, `Movie_specialgroup_id`)
-);
 
 ALTER TABLE `SpecialGroup_Movie` ADD FOREIGN KEY (`SpecialGroup_id`) REFERENCES `SpecialGroup` (`id`);
 
