@@ -23,7 +23,6 @@ CREATE TABLE `User_role` (
 
 CREATE TABLE `User_credential` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
-  `user_id` integer,
   `account` varchar(50),
   `password` varchar(32),
   `created_at` datetime,
