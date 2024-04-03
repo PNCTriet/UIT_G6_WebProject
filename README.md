@@ -1,4 +1,4 @@
-# Tên đề tài: Website xem phim trực tuyến <a href="https://pnctriet.github.io/UIT_G6_WebProject/">DEMO HERE</a>
+# Tên đề tài: Website xem phim trực tuyến <a href="https://pnctriet.github.io/PER_MyPorfolio/">DEMO</a>
 # Giới thiệu
 ## Mục tiêu của project
 Đây là project của môn học Phát triển ứng dụng Web - UIT. Nội dung là tạo một trang web cho phép người dùng xem phim trực tuyến, tạo playlist
