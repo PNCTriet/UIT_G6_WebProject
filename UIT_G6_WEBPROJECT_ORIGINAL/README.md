@@ -17,30 +17,30 @@ Trang web phải đảm bảo được các mục tiêu:
 | 4  | Nguyễn Trần Thành Tâm    | 21521404@gm.uit.edu.vn |
 | 5  | Nguyễn Hoàng Vĩ          | 21522786@gm.uit.edu.vn |
 
-# Mô hình usecase
-![admin_usecase](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/datasources/photodata_readme/admin_usecase.jpg)
-![admin_usecasedetails](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/datasources/photodata_readme/admin_usecasedetails.jpg)
-![user_usecase](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/datasources/photodata_readme/user_usecase.jpg)
-![user_usecasedetails](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/datasources/photodata_readme/user_usecasedetails.jpg)
+# Mô hình usecase   
+![admin_usecase](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/UIT_G6_WEBPROJECT_ORIGINAL/datasources/photodata_readme/admin_usecase.jpg)
+![admin_usecasedetails](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/UIT_G6_WEBPROJECT_ORIGINAL/datasources/photodata_readme/admin_usecasedetails.jpg)
+![user_usecase](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/UIT_G6_WEBPROJECT_ORIGINAL/datasources/photodata_readme/user_usecase.jpg)
+![user_usecasedetails](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/UIT_G6_WEBPROJECT_ORIGINAL/datasources/photodata_readme/user_usecasedetails.jpg)
 
 # Mô hình ERD
-![ERD_demo1](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/datasources/sqldatabase/ERD_demo1.png)
+![ERD_demo1](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/UIT_G6_WEBPROJECT_ORIGINAL/datasources/sqldatabase/ERD_demo1.png)
 
 # Demo front-end
 1. user page
-![mainpage_1](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/demo/mainpage_1.png)
-![mainpage_2](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/demo/mainpage_2.png)
-![mainpage_3](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/demo/mainpage_3.png)
-![profilepage](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/demo/profilepage.png)
-![detailpage](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/demo/detailpage.png)
-![streamingpage](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/demo/streamingpage.png)
+![mainpage_1](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/UIT_G6_WEBPROJECT_ORIGINAL/demo/mainpage_1.png)
+![mainpage_2](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/UIT_G6_WEBPROJECT_ORIGINAL/demo/mainpage_2.png)
+![mainpage_3](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/UIT_G6_WEBPROJECT_ORIGINAL/demo/mainpage_3.png)
+![profilepage](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/UIT_G6_WEBPROJECT_ORIGINAL/demo/profilepage.png)
+![detailpage](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/UIT_G6_WEBPROJECT_ORIGINAL/demo/detailpage.png)
+![streamingpage](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/UIT_G6_WEBPROJECT_ORIGINAL/demo/streamingpage.png)
 2. authentication page
-![signinpage](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/demo/signinpage.png)
-![signuppage](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/demo/signuppage.png)
+![signinpage](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/UIT_G6_WEBPROJECT_ORIGINAL/demo/signinpage.png)
+![signuppage](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/UIT_G6_WEBPROJECT_ORIGINAL/demo/signuppage.png)
 3. admin page
-![adminpage_1](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/demo/adminpage_1.png)
-![adminpage_2](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/demo/adminpage_2.png)
-![adminpage_3](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/demo/adminpage_3.png)
+![adminpage_1](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/UIT_G6_WEBPROJECT_ORIGINAL/demo/adminpage_1.png)
+![adminpage_2](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/UIT_G6_WEBPROJECT_ORIGINAL/demo/adminpage_2.png)
+![adminpage_3](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/UIT_G6_WEBPROJECT_ORIGINAL/demo/adminpage_3.png)
 
 
 # Các công nghệ sử dụng trong project
