@@ -1,0 +1,181 @@
+
+
+td,th{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){
+    background-color: #dddddd;
+}
+
+.btn-outline-success{
+    color: white !important;
+}
+.btn-outline-danger{
+    color: white !important;
+    font-size: bold;
+}
+
+.overflow-x-hidden{
+    overflow-x: hidden;
+}
+
+.rounded{
+    border-radius: 7px;
+}
+
+
+/* form */
+
+form.car{
+    position: fixed;
+    
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    /* display: grid; */
+    /* display: flex; */
+    flex-direction: column;
+    padding-inline: 20px;
+    padding-block: 40px;
+    background-color: #dddddd;
+    z-index: 5;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 20px 10px 5px 10px #888888;
+    transition: all 1s linear;
+    color: black;
+    padding-top: 5px;
+    /* margin: auto; */
+    /* margin-inline: auto; */
+    /* justify-content: center; */
+}
+form.car {
+    display: none;
+    flex-direction: column;
+    /* padding: 40px; */
+}
+
+
+label {
+    margin-bottom: 0 !important;
+    margin-top: 0.5rem;
+}
+
+.gap-lg-4{
+    gap: 40px;
+}
+.gap-sm-1{
+    gap: 20px;
+}
+form > input {
+    border: 1px;
+    outline-color: white;
+    padding-left: 10px;
+    
+}
+form > textarea {
+    border: 1px;
+    outline-color: white;
+    padding-left: 10px;
+}
+.form{
+    box-shadow:10px 20px  30px #888888 ;
+    border-radius: 6px;
+    border: 1px solid;
+}
+
+:where(.error1,.error2,.error3){
+    font-size: smaller !important;
+    color: rgb(225, 29, 29) !important;
+    margin-top: 4px;
+}
+
+.link:has(.error1) #movie_link{
+    border: 1px solid rgb(218, 55, 55);
+}
+.link:has(.error2) #poster_link{
+    border: 1px solid rgb(218, 55, 55);
+}
+:has(.error2) #discount{
+    border: 1px solid rgb(218, 55, 55);
+}
+.link:has(.error3) #trailer_link{
+    border: 1px solid rgb(218, 55, 55);
+}
+
+.closes {
+    display: flex;
+    /* float: right; */
+    margin-left: auto;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+
+}
+
+.closes:hover{
+    transform: scale(1.2);
+    color:#4e73df;
+}
+
+/* delete form */
+.form_delete{
+    position: fixed;
+    background-color: #fff;
+    display: none;
+    flex-direction: column;
+    margin: auto;
+    border-radius: 5px;
+    top: 30%;
+    z-index: 5;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 500px;
+    width: 100%;
+    padding-inline: 20px;
+    padding-block: 40px;
+    align-items: center;
+    animation: delete_form 200ms ease-in-out  forwards;
+   
+
+}
+@keyframes delete_form {
+    0%{
+        scale: 0.5;
+
+    }
+    90%{
+        scale: 1.1;
+    }
+    100%{
+        scale: 1;
+    }
+}
+:has(.no_active) .card-body{
+    background-color: rgba(0, 0, 0, .4) !important;
+    opacity: 0.7;
+}
+:has(.no_active) #content{
+    background-color: rgba(0, 0, 0, .4) !important;
+    opacity: 0.7;
+}
+
+.line_vertical{
+    border-right: 1px bold gray;
+}
+
+.voucher{
+    display: flex;
+    flex-direction: column;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
