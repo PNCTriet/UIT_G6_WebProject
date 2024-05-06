@@ -10,7 +10,7 @@ use App\Http\Controllers\testController;
 //     return view('home');
 // });
 
-Route::get('/',[testController::class,'home']);
+Route::get('/home',[testController::class,'home']);
 
 // Movie 
 Route::get('/tables',[testController::class,'table']);
@@ -34,9 +34,12 @@ Route::get('/users-management',[testController::class,'users_management']);
 Route::get('/live-search-users',[testController::class,'live_search_users']);
 Route::post('/add-user',[testController::class,'add_user']);
 
+// ============
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -46,7 +49,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::get('register', [AuthController::class, 'registration'])->name('register');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('registration.post');

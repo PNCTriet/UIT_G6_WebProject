@@ -14,14 +14,14 @@ class AuthController extends Controller
     {
         // return view('auth.login');
         if (Auth::check()) {
-            return view('dashboard');
-        }
+            return view('home');
+        }   
         return view('auth.login');
     }
     public function registration()
     {
         if (Auth::check()) {
-            return view('dashboard');
+            return view('login');
         }
         return view('auth.registration');
     }
@@ -56,7 +56,7 @@ class AuthController extends Controller
         ]);
         $checkLoginCredentials = $request->only('email', 'password');
         if (Auth::attempt($checkLoginCredentials)) {
-            return redirect('/')->withSuccess('You are successfully loggedin.');
+            return redirect('home')->withSuccess('You are successfully loggedin.');
         }
         return redirect('login')->withSuccess('You login credentials are incorrect.');
     }
@@ -70,7 +70,7 @@ class AuthController extends Controller
     public function dashboard()
     {
         if (Auth::check()) {
-            return view('/');
+            return view('home');
         }
         return redirect('login')->withSuccess('Please login to access the dashboard page.');
     }
