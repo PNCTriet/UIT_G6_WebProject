@@ -1,3 +1,20 @@
+.menu-list-item a {
+  word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .menu-list-item {
+      width: 100%;
+      text-align: center;
+  }
+
+  .menu-list-item a {
+      margin-top: 1px;
+      display: block;
+  }
+}
+
+
 @media screen and (min-width: 100%) and (max-width: 100%) and (orientation: landscape) {
     body,
     html {
@@ -17,7 +34,7 @@
   
   .navbar {
     width: 100%;
-    height: 50px;
+    height: 60px;
     background-color: black;
     
     top: 0;
@@ -104,8 +121,10 @@
   }
   
   .logo {
+    max-width: 100px;
     font-size: 30px;
     color: red;
+    margin-right: 30px;
   }
   
   .menu-container {
@@ -118,6 +137,8 @@
   }
   
   .menu-list-item {
+    margin-top: 5px;
+    margin-bottom: 5px;
     margin-right: 25px;
     font-size: small;
   }
@@ -127,7 +148,7 @@
   }
   .profile-container {
     display: none;
-    padding: 30px;
+    padding: 0 20px;
     flex: 2;
     display: flex;
     align-items: center;
@@ -140,10 +161,11 @@
   
   .profile-picture {
     margin-left: 10px;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
+    display: flex;
+    width: 32px; /* Điều chỉnh chiều rộng của hình ảnh */
+    height: 32px; /* Điều chỉnh chiều cao của hình ảnh */
+    border-radius: 50%; /* Đảm bảo hình ảnh là hình tròn */
+    object-fit: cover; */
   }
   
   .toggle {

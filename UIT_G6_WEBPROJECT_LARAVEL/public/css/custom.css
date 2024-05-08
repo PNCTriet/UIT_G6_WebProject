@@ -179,3 +179,57 @@ form > textarea {
     z-index: 10;
 }
 
+
+.menu-container {
+    flex: 6;
+  }
+  
+  .menu-list {
+    display: flex;
+    list-style: none;
+  }
+  
+  .menu-list-item {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 25px;
+    font-size: small;
+  }
+  
+  .menu-list-item.active {
+    font-weight: bold;
+  }
+  .profile-container {
+    display: none;
+    padding: 0 20px;
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .profile-text-container {
+    margin: 10px;
+  }
+  
+  .profile-picture {
+    margin-left: 10px;
+    display: flex;
+    width: 32px; /* Điều chỉnh chiều rộng của hình ảnh */
+    height: 32px; /* Điều chỉnh chiều cao của hình ảnh */
+    border-radius: 50%; /* Đảm bảo hình ảnh là hình tròn */
+    object-fit: cover; */
+  }
+
+
+  .logo-container {
+    flex: 1;
+  }
+  
+  .logo {
+    max-width: 100px;
+    font-size: 30px;
+    color: red;
+    margin-right: 30px;
+  }
+  

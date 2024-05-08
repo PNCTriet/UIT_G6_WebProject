@@ -9904,7 +9904,7 @@ a:focus {
 
 .bg-gradient-primary {
   background-color: #4e73df;
-  background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
+  background-image: linear-gradient(180deg, #0d0d0d 10%, #dc1b27 100%);
   background-size: cover;
 }
 
@@ -10385,7 +10385,9 @@ a:focus {
   font-size: 0.65rem;
   color: #b7b9cc;
 }
-
+.collapse.show {
+  visibility: visible;
+}
 .sidebar .nav-item .collapse .collapse-inner .collapse-item,
 .sidebar .nav-item .collapsing .collapse-inner .collapse-item {
   padding: 0.5rem 1rem;
