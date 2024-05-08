@@ -1,7 +1,7 @@
 CREATE TABLE `User` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
-  `fullname` varchar(50),
-  `dayofbirth` date,
+  `name` varchar(50),
+  `birthday` date,
   `email` varchar(150),
   `phoneNumber` varchar(20),
   `address` varchar(200),
@@ -23,10 +23,11 @@ CREATE TABLE `User_role` (
 
 CREATE TABLE `User_credential` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
-  `account` varchar(50),
-  `password` varchar(32),
+  `user_id`integer,
+  `email` varchar(50),
+  `password` varchar(250),
   `created_at` datetime,
-  `updated_at` datetime
+  `updated_at` datetime 
 );
 
 CREATE TABLE `User_deposit` (
@@ -129,7 +130,7 @@ ALTER TABLE `User` ADD FOREIGN KEY (`plan_id`) REFERENCES `User_plan` (`id`);
 
 ALTER TABLE `Deposit_detail` ADD FOREIGN KEY (`deposit_id`) REFERENCES `User_deposit` (`id`);
 
-ALTER TABLE `User_credential` ADD FOREIGN KEY (`id`) REFERENCES `User` (`id`);
+ALTER TABLE `User_credential` ADD FOREIGN KEY (`user_id`) REFERENCES `User` (`id`);
 
 ALTER TABLE `Movie` ADD FOREIGN KEY (`category_id`) REFERENCES `MovieCategory` (`id`);
 
@@ -153,14 +154,14 @@ VALUES ('Basic', NOW(), DATE_ADD(NOW(), INTERVAL 1 MONTH), NOW(), NOW()),
        ('Premium', NOW(), DATE_ADD(NOW(), INTERVAL 1 YEAR), NOW(), NOW());
 
 -- Chèn dữ liệu cho bảng User
-INSERT INTO User (fullname, dayofbirth, email, phoneNumber, address, avartar, role_id, plan_id, deposit_id, discount_id, created_at, updated_at)
+INSERT INTO User (name, birthday, email, phoneNumber, address, avartar, role_id, plan_id, deposit_id, discount_id, created_at, updated_at)
 VALUES ('John Doe', '1990-05-15', 'john.doe@example.com', '1234567890', '123 Main St, City, Country', 'avatar1.jpg', 1, 1, 1, NULL, NOW(), NOW()),
        ('Jane Smith', '1985-08-25', 'jane.smith@example.com', '9876543210', '456 Elm St, Town, Country', 'avatar2.jpg', 2, 2, 2, NULL, NOW(), NOW());
 
 -- Chèn dữ liệu cho bảng User_credential
-INSERT INTO User_credential (account, password, created_at, updated_at)
-VALUES ('john.doe@example.com', 'password123', NOW(), NOW()),
-       ('jane.smith@example.com', 'letmein', NOW(), NOW());
+INSERT INTO User_credential (user_id,email, password, created_at, updated_at)
+VALUES (1,'john.doe@example.com', 'password123', NOW(), NOW()),
+       (2,'jane.smith@example.com', 'letmein', NOW(), NOW());
 
 -- Chèn dữ liệu cho bảng User_deposit
 INSERT INTO User_deposit (user_id, total_money, deposit_detail_id, created_at, updated_at)

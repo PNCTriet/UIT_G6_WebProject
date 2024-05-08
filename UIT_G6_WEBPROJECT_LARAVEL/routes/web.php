@@ -10,6 +10,8 @@ use App\Http\Controllers\testController;
 //     return view('home');
 // });
 
+Route::get('/index', [App\Http\Controllers\ListFilmController::class, 'get_data']);
+
 Route::get('/home',[testController::class,'home']);
 
 // Movie 
@@ -36,7 +38,7 @@ Route::post('/add-user',[testController::class,'add_user']);
 
 // ============
 
-Route::get('/dashboard', function () {
+Route::get('dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -49,12 +51,12 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::get('register', [AuthController::class, 'registration'])->name('register');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('registration.post');
 
-// Route::get('/', [AuthController::class, 'dashboard']);
+Route::get('/', [AuthController::class, 'index'])->name('login');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get("/forget-password", [ForgetPasswordManager::class, "forgetPassword"])
     ->name('forget.password');

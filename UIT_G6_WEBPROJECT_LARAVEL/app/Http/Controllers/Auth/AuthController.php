@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\users;
+use App\Models\User_credential;
 use Session;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -36,35 +39,102 @@ class AuthController extends Controller
             'birthday' => 'required|date',
         ]);
         $data = $request->all();
+        //$data['password'] = Hash::make($data['password']); // Băm mật khẩu
         $this->create($data);
         return redirect('login')->withSuccess('You are registered successfully.');
     }
     public function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'birthday' => $data['birthday'],
-            'password' => $data['password']
+            'birthday' => $data['birthday']
+            //'password' => $data['password']
         ]);
+    
+        if ($user) {
+            User_credential::create([
+                'user_id' => $user->id,
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']) 
+            ]);
+
+            users::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                //'birthday' => $data['birthday'],
+                'password' => $data['password']
+            ]);
+        }
+    
+        return $user;
     }
     public function postLogin(Request $request)
-    {
+    { 
+        // $credentials = $request->only('email', 'password');
+        // $userCredential = User_credential::where('email', $credentials['email'])->first();
+        
+        // // // Log mật khẩu từ người dùng
+        // // info('Mật khẩu từ người dùng: ' . $credentials['password']);
+
+        // // // Log mật khẩu đã băm trong cơ sở dữ liệu
+        // // info('Mật khẩu đã băm trong cơ sở dữ liệu: ' . $userCredential->password);
+
+        // if (Hash::check($credentials['password'], $userCredential->password)) {
+        //     return redirect('home')->withSuccess('You are successfully logged in.');
+        // }
+    
+        // return redirect('login')->withSuccess('Your login credentials are incorrect.');
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        $checkLoginCredentials = $request->only('email', 'password');
-        if (Auth::attempt($checkLoginCredentials)) {
-            return redirect('home')->withSuccess('You are successfully loggedin.');
+        
+        $credentials = $request->only('email', 'password');
+        $users = users::where('email', $credentials['email'])->first();
+        $User = User::where('email', $credentials['email'])->first();
+         
+        if ($users){
+
+
+        // Log mật khẩu từ người dùng
+        info('Mật khẩu từ người dùng: ' . $credentials['password']);
+
+        // Log mật khẩu đã băm trong cơ sở dữ liệu
+        info('Mật khẩu đã băm trong cơ sở dữ liệu: ' . $users->password);
+
+        // Log mật khẩu đã băm trong cơ sở dữ liệu
+        info('ROLE_ID : ' . $User->role_id);
+
+        if (Hash::check($credentials['password'], $users->password)) {
+            //     return redirect('home')->withSuccess('You are successfully logged in.');
+            //info('Mật khẩu accepted ');
+            if ($User->role_id ==1) {
+                Auth::login($users);
+                return redirect('home')->withSuccess('You are successfully logged in.');
+            } else {
+                Auth::login($users);
+                return redirect('index')->withSuccess('You are successfully logged in.');
+            }
+            
         }
-        return redirect('login')->withSuccess('You login credentials are incorrect.');
+        
+        }
+        
+        // if ($user && Hash::check($credentials['password'], $user->password)) {
+        //     if (Auth::login($user)) {
+        //         return redirect('home')->withSuccess('You are successfully logged in.');
+        //     }
+        // }
+        return redirect('')->withSuccess('Your login credentials are incorrect'); 
     }
 
     public function logout()
     {
         Session::flush();
-        Auth::logout();
+         if (Auth::check()) {
+            return view('home');
+        }
         return redirect('login');
     }
     public function dashboard()
@@ -75,3 +145,4 @@ class AuthController extends Controller
         return redirect('login')->withSuccess('Please login to access the dashboard page.');
     }
 }
+?>
