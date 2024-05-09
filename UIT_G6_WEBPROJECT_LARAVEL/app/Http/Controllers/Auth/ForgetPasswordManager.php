@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
+use App\Models\users;
+use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -64,7 +65,7 @@ class ForgetPasswordManager extends Controller
             return redirect()->to(route("reset.password"))->with("error", "Invalid");
         }
 
-        User::where("email", $request->email)
+        users::where("email", $request->email)
             ->update((["password" => Hash::make($request->password)]));
 
         DB::table("password_reset_tokens")->where(["email"=> $request->email])->delete();

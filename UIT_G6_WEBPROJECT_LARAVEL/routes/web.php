@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\ForgetPasswordManager;
+use App\Http\Controllers\Auth\ForgetPasswordManager;
 use App\Http\Controllers\testController;
 
 // Route::get('/', function () {
