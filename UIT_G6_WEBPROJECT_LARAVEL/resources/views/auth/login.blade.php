@@ -1,6 +1,8 @@
 @extends('layout')
 @section('content')
-<div class="container">
+<div class="container" style=" border-radius: 5px; 
+background-color: rgba(1, 1, 1, 0.718); 
+padding: 20px;">
     <h1>Sign In</h1>
     @if (Session::has('success'))
         <div class="alert alert-success">{{ Session::get('success') }}

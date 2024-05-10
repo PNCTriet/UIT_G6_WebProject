@@ -26,6 +26,8 @@
     <link rel="modulepreload" href="http://127.0.0.1:8000/build/assets/app-CrG2wnyX.js" />
     <link rel="stylesheet" href="http://127.0.0.1:8000/build/assets/app-Czjw7esN.css" />
     <script type="module" src="http://127.0.0.1:8000/build/assets/app-CrG2wnyX.js"></script>
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
@@ -51,101 +53,100 @@
 
     <div class="overflow-container">
         <h2 style="color: white; margin-left: 20px; margin-top: 20px">
-            Top 10 phim hot trong ngày
+          Top 10 phim hot trong ngày
         </h2>
-
+  
         <div class="number-row">
-            <div class="number-cell">
-                <span>1</span>
-                <div class="empty-cell" style="position: relative">
-                    <a href="codesource_demo1/detail.html">
-                        <img src="datasources/imageranking/img1.png" alt="" />
-                    </a>
-                </div>
+          <div class="number-cell">
+            <span>1</span>
+            <div class="empty-cell" style="position: relative">
+              <a href="#">
+                <img src="datasources/imageranking/img1.png" alt="" />
+              </a>
             </div>
-
-            <div class="number-cell">
-                <span>2</span>
-                <div class="empty-cell" style="position: relative">
-                    <a href="#">
-                        <img src="datasources/imageranking/img2.png" alt="" />
-                    </a>
-                </div>
+          </div>
+  
+          <div class="number-cell">
+            <span>2</span>
+            <div class="empty-cell" style="position: relative">
+              <a href="#">
+                <img src="datasources/imageranking/img2.png" alt="" />
+              </a>
             </div>
-            <div class="number-cell">
-                <span>3</span>
-                <div class="empty-cell" style="position: relative">
-                    <a href="">
-                        <img src="datasources/imageranking/img3.png" alt="" />
-                    </a>
-                </div>
+          </div>
+          <div class="number-cell">
+            <span>3</span>
+            <div class="empty-cell" style="position: relative">
+              <a href="">
+                <img src="datasources/imageranking/img3.png" alt="" />
+              </a>
             </div>
-
-            <div class="number-cell">
-                <span>4</span>
-                <div class="empty-cell" style="position: relative">
-                    <a href="">
-                        <img src="datasources/imageranking/img4.png" alt="" />
-                    </a>
-                </div>
+          </div>
+  
+          <div class="number-cell">
+            <span>4</span>
+            <div class="empty-cell" style="position: relative">
+              <a href="">
+                <img src="datasources/imageranking/img4.png" alt="" />
+              </a>
             </div>
-            <div class="number-cell">
-                <span>5</span>
-                <div class="empty-cell" style="position: relative">
-                    <a href="">
-                        <img src="datasources/imageranking/img5.png" alt="" />
-                    </a>
-                </div>
+          </div>
+          <div class="number-cell">
+            <span>5</span>
+            <div class="empty-cell" style="position: relative">
+              <a href="">
+                <img src="datasources/imageranking/img5.png" alt="" />
+              </a>
             </div>
-
-            <div class="number-cell">
-                <span>6</span>
-                <div class="empty-cell" style="position: relative">
-                    <a href="">
-                        <img src="datasources/imageranking/img6.png" alt="" />
-                    </a>
-                </div>
+          </div>
+  
+          <div class="number-cell">
+            <span>6</span>
+            <div class="empty-cell" style="position: relative">
+              <a href="">
+                <img src="datasources/imageranking/img6.png" alt="" />
+              </a>
             </div>
-            <div class="number-cell">
-                <span>7</span>
-                <div class="empty-cell" style="position: relative">
-                    <a href="">
-                        <img src="datasources/imageranking/img7.png" alt="" />
-                    </a>
-                </div>
+          </div>
+          <div class="number-cell">
+            <span>7</span>
+            <div class="empty-cell" style="position: relative">
+              <a href="">
+                <img src="datasources/imageranking/img7.png" alt="" />
+              </a>
             </div>
-
-            <div class="number-cell">
-                <span>8</span>
-                <div class="empty-cell" style="position: relative">
-                    <a href="">
-                        <img src="datasources/imageranking/img8.png" alt="" />
-                    </a>
-                </div>
+          </div>
+  
+          <div class="number-cell">
+            <span>8</span>
+            <div class="empty-cell" style="position: relative">
+              <a href="">
+                <img src="datasources/imageranking/img8.png" alt="" />
+              </a>
             </div>
-            <div class="number-cell">
-                <span>9</span>
-                <div class="empty-cell" style="position: relative">
-                    <a href="">
-                        <img src="datasources/imageranking/img9.png" alt="" />
-                    </a>
-                </div>
+          </div>
+          <div class="number-cell">
+            <span>9</span>
+            <div class="empty-cell" style="position: relative">
+              <a href="">
+                <img src="datasources/imageranking/img9.png" alt="" />
+              </a>
             </div>
-
-            <div class="number-cell">
-                <span>10</span>
-                <div class="empty-cell" style="position: relative">
-                    <a href="">
-                        <img src="datasources/imageranking/img10.png" alt="" />
-                    </a>
-                </div>
+          </div>
+  
+          <div class="number-cell">
+            <span>10</span>
+            <div class="empty-cell" style="position: relative">
+              <a href="">
+                <img src="datasources/imageranking/img10.png" alt="" />
+              </a>
             </div>
-
-            <!-- Repeat this structure for the rest of the images -->
+          </div>
+          
+          <!-- Repeat this structure for the rest of the images -->
         </div>
-        <button class="scroll-right">▶</button>
-    </div>
-
+        <button class="scroll-right" >▶</button>
+      </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const numberRow = document.querySelector(".number-row");

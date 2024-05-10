@@ -43,7 +43,6 @@ class ForgetPasswordManager extends Controller
             ->with("success", "we have send an email to reset password.");
         
     }
-
     function resetPassword($token){
         return view("new-password", compact('token'));
     }
