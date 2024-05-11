@@ -39,24 +39,46 @@
         <div id="languageDisplay"></div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        function displayValue() {
-            var value = document.getElementById("language3").value;
+       $(document).ready(function() {
+        $('#language3').change(function() {
+            var x = $(this).val();
             $.ajax({
-                url: '{{ route("getValue") }}', // Assuming you define a route for getting value
-                type: 'post',
-                data: {x: value},
-                success: function(response){
+                url: '{{ route("getOptions") }}',
+                method: 'GET',
+                data: {
+                    x:x
+                },
+                success: function(response) {
                     $('#languageDisplay').html(response);
                 }
             });
-        }
-
-        // Trigger 'change' event when the webpage is loaded
-        $(document).ready(function(){
-            $('#language3').change();
+        });
         });
     </script>
+        @foreach($movies as $movie)
+        <div class="row-posters">
+            @for ($i = 1; $i <= 6; $i++)
+                @if($i==$movie->rank)
+                <img src="{{ $movie->poster_link }}" alt="" class="row-poster row-posterLarge">
+                @endif
+            @endfor
+        </div>
+        <div class="row-posters">
+            @for ($i = 7; $i <= 12; $i++)
+                @if($i==$movie->rank)
+                <img src="{{ $movie->poster_link }}" alt="" class="row-poster row-posterLarge">
+                @endif
+            @endfor
+        </div>
+        <div class="row-posters">
+            @for ($i = 13; $i <= 18; $i++)
+                @if($i==$movie->rank)
+                <img src="{{ $movie->poster_link }}" alt="" class="row-poster row-posterLarge">
+                @endif
+            @endfor
+        </div>
+        @endforeach
 </body>
 </html>

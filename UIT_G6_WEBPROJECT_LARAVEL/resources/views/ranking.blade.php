@@ -18,7 +18,7 @@
             <div class="number-cell">
             <span><p>{{ $movie->rank }}</p></span>
             <div class="empty-cell" style="position:relative;">
-            <img src="{{ $movie->poster_link }}" alt="">
+            <img src="{{ $movie->rank_link }}" alt="">
             </div>
             </div>
             @endforeach
