@@ -291,7 +291,9 @@
         <h2>Hiện đang thịnh hành</h2>
         <div class="row-posters" id="rowpost3">
             @foreach ($movie_link->skip(20)->take(10) as $item)
+            <a href="{{route('movies.redirect', $item->id)}}">
                 <img src="{{ $item->poster_link }}" class="row-poster">
+            </a>  
             @endforeach
         </div>
         <button class="scroll-right-poster" id="scrollpost3">▶</button>
@@ -301,7 +303,9 @@
         <h2>Phim truyền hình lãng mạng</h2>
         <div class="row-posters" id="rowpost4">
             @foreach ($movie_link->skip(30)->take(10) as $item)
+            <a href="{{route('movies.redirect', $item->id)}}">
                 <img src="{{ $item->poster_link }}" class="row-poster">
+            </a>  
             @endforeach
         </div>
         <button class="scroll-right-poster" id="scrollpost4">▶</button>
@@ -311,7 +315,9 @@
         <h2>Phim truyền hình Trung Quốc lãng mạng</h2>
         <div class="row-posters" id="rowpost5">
             @foreach ($movie_link->skip(40)->take(10) as $item)
+            <a href="{{route('movies.redirect', $item->id)}}">
                 <img src="{{ $item->poster_link }}" class="row-poster">
+            </a>  
             @endforeach
         </div>
         <button class="scroll-right-poster" id="scrollpost5">▶</button>
@@ -321,7 +327,9 @@
         <h2>Phim truyền hình giành giải thưởng châu Á</h2>
         <div class="row-posters" id="rowpost6">
             @foreach ($movie_link->skip(50)->take(10) as $item)
+            <a href="{{route('movies.redirect', $item->id)}}">
                 <img src="{{ $item->poster_link }}" class="row-poster">
+            </a>  
             @endforeach
         </div>
         <button class="scroll-right-poster" id="scrollpost6">▶</button>
