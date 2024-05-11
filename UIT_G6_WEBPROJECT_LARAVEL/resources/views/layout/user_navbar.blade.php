@@ -2,7 +2,7 @@
 <div class="navbar">
     <div class="navbar-container">
         <div class="logo-container">
-            {{-- <h1 class="logo">Netflop</h1> --}}
+            <!-- {{-- <h1 class="logo">Netflop</h1> --}} -->
             <a href="https://fontmeme.com/netflix-font/"><img class="logo" src="https://fontmeme.com/permalink/240508/a0a2db44cf95ee3c25441c8005f90516.png" alt="netflix-font" border="0"></a>
         </div>
         <div class="menu-container">
@@ -34,23 +34,23 @@
                 <img class="profile-picture" src="datasources/img/profile.jpg" alt="" />
             </a>
             <div class="profile-text-container">
-                {{-- <i class="fas fa-caret-down"></i> --}}
+                <!-- <i class="fas fa-caret-down"></i>  -->
                 <div class="">
                     <div class="flex justify-between h-2">
                         <div class="flex">
-                            {{-- <!-- Logo -->
+                             <!-- Logo
                             <div class="shrink-0 flex items-center">
                                 <a href="{{ route('dashboard') }}">
                                     <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                                 </a>
                             </div>
             
-                            <!-- Navigation Links -->
+                            
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                                     {{ __('Dashboard') }}
                                 </x-nav-link>
-                            </div> --}}
+                            </div>  -->
                         </div>
 
                         <!-- Settings Dropdown -->
