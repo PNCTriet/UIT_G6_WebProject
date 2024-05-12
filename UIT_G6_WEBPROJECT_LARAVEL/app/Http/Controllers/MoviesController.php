@@ -81,24 +81,41 @@ class MoviesController extends Controller
     //         abort(404, 'Movie not found');
     //     }
     // }
-    public function show($title)
+    public function show($description)
     {
         // Make API request to search for the movie
-        $response = Http::get('https://api.themoviedb.org/3/search/movie', [
+        // ID của TV show từ biến $description
+        ;
+
+        // Gọi API để lấy thông tin về TV show dựa trên ID
+        $response = Http::get("https://api.themoviedb.org/3/tv/$description", [
             'api_key' => '123113d4a4822456c35fc67ce8dd0c16',
-            'query' => $title,
         ]);
 
-        // Check if the request was successful
-        if ($response->successful()) {
-            // Get the first result
-            $movie = $response['results'][0];
 
-            // Pass movie details to view
+        // Make API request to get movie details by ID
+        // $response = Http::get('https://api.themoviedb.org/3/search/movie/' . $description, [
+        //     'api_key' => '123113d4a4822456c35fc67ce8dd0c16',
+        // ]);
+
+
+        // Check if the request was successful
+        // if ($response->successful()) {
+        //     // Get the first result
+        //     $movie = $response['results'][0];
+
+        //     // Pass movie details to view
+        //     return view('detail', compact('movie'));
+        // } else {
+        //     // Handle case where request was not successful
+        //     abort(404, 'Movie not found');
+        // }
+
+        if ($response->successful()) {
+            $movie = $response->json(); // Lấy dữ liệu bộ phim từ phản hồi JSON
             return view('detail', compact('movie'));
         } else {
-            // Handle case where request was not successful
-            abort(404, 'Movie not found');
+            abort(404, 'Failed to fetch movie data');
         }
     }
 
