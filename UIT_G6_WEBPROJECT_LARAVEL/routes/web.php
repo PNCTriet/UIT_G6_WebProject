@@ -5,14 +5,28 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\ForgetPasswordManager;
 use App\Http\Controllers\testController;
+use App\Http\Controllers\ListFilmController;
+use App\Http\Controllers\MoviesController;
 
 // Route::get('/', function () {
 //     return view('home');
 // });
 
-Route::get('/index', [App\Http\Controllers\ListFilmController::class, 'get_data']);
+Route::get('/index', [App\Http\Controllers\ListFilmController::class, 'get_movie_link']);
 
 Route::get('/home',[testController::class,'home']);
+Route::get("/test", function(){
+    return view('testapi');
+});
+
+Route::get("/detail", function(){
+    return view('detail');
+});
+
+//Route::get('/movies/{id}', 'ListFilmController@redirectToMovieDetail')->name('movies.redirect');
+Route::get('/movies/{id}', [App\Http\Controllers\ListFilmController::class, 'redirectToMovieDetail'])->name('movies.redirect');
+Route::get('/{name}', [App\Http\Controllers\MoviesController::class, 'show'])->name('detail');
+
 
 // Movie 
 Route::get('/tables',[testController::class,'table']);
@@ -66,3 +80,4 @@ Route::get("/reset-password/{token}", [ForgetPasswordManager::class, "resetPassw
     ->name("reset.password");
 Route::post("/reset-password", [ForgetPasswordManager::class, "resetPasswordPost"])
     ->name("reset.password.post");
+
