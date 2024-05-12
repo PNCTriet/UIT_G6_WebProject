@@ -56,100 +56,100 @@
 
     <div class="overflow-container">
         <h2 style="color: white; margin-left: 20px; margin-top: 20px">
-          Top 10 phim hot trong ngày
+            Top 10 phim hot trong ngày
         </h2>
-  
+
         <div class="number-row">
-          <div class="number-cell">
-            <span>1</span>
-            <div class="empty-cell" style="position: relative">
-              <a href="#">
-                <img src="datasources/imageranking/img1.png" alt="" />
-              </a>
+            <div class="number-cell">
+                <span>1</span>
+                <div class="empty-cell" style="position: relative">
+                    <a href="#">
+                        <img src="datasources/imageranking/img1.png" alt="" />
+                    </a>
+                </div>
             </div>
-          </div>
-  
-          <div class="number-cell">
-            <span>2</span>
-            <div class="empty-cell" style="position: relative">
-              <a href="#">
-                <img src="datasources/imageranking/img2.png" alt="" />
-              </a>
+
+            <div class="number-cell">
+                <span>2</span>
+                <div class="empty-cell" style="position: relative">
+                    <a href="#">
+                        <img src="datasources/imageranking/img2.png" alt="" />
+                    </a>
+                </div>
             </div>
-          </div>
-          <div class="number-cell">
-            <span>3</span>
-            <div class="empty-cell" style="position: relative">
-              <a href="">
-                <img src="datasources/imageranking/img3.png" alt="" />
-              </a>
+            <div class="number-cell">
+                <span>3</span>
+                <div class="empty-cell" style="position: relative">
+                    <a href="">
+                        <img src="datasources/imageranking/img3.png" alt="" />
+                    </a>
+                </div>
             </div>
-          </div>
-  
-          <div class="number-cell">
-            <span>4</span>
-            <div class="empty-cell" style="position: relative">
-              <a href="">
-                <img src="datasources/imageranking/img4.png" alt="" />
-              </a>
+
+            <div class="number-cell">
+                <span>4</span>
+                <div class="empty-cell" style="position: relative">
+                    <a href="">
+                        <img src="datasources/imageranking/img4.png" alt="" />
+                    </a>
+                </div>
             </div>
-          </div>
-          <div class="number-cell">
-            <span>5</span>
-            <div class="empty-cell" style="position: relative">
-              <a href="">
-                <img src="datasources/imageranking/img5.png" alt="" />
-              </a>
+            <div class="number-cell">
+                <span>5</span>
+                <div class="empty-cell" style="position: relative">
+                    <a href="">
+                        <img src="datasources/imageranking/img5.png" alt="" />
+                    </a>
+                </div>
             </div>
-          </div>
-  
-          <div class="number-cell">
-            <span>6</span>
-            <div class="empty-cell" style="position: relative">
-              <a href="">
-                <img src="datasources/imageranking/img6.png" alt="" />
-              </a>
+
+            <div class="number-cell">
+                <span>6</span>
+                <div class="empty-cell" style="position: relative">
+                    <a href="">
+                        <img src="datasources/imageranking/img6.png" alt="" />
+                    </a>
+                </div>
             </div>
-          </div>
-          <div class="number-cell">
-            <span>7</span>
-            <div class="empty-cell" style="position: relative">
-              <a href="">
-                <img src="datasources/imageranking/img7.png" alt="" />
-              </a>
+            <div class="number-cell">
+                <span>7</span>
+                <div class="empty-cell" style="position: relative">
+                    <a href="">
+                        <img src="datasources/imageranking/img7.png" alt="" />
+                    </a>
+                </div>
             </div>
-          </div>
-  
-          <div class="number-cell">
-            <span>8</span>
-            <div class="empty-cell" style="position: relative">
-              <a href="">
-                <img src="datasources/imageranking/img8.png" alt="" />
-              </a>
+
+            <div class="number-cell">
+                <span>8</span>
+                <div class="empty-cell" style="position: relative">
+                    <a href="">
+                        <img src="datasources/imageranking/img8.png" alt="" />
+                    </a>
+                </div>
             </div>
-          </div>
-          <div class="number-cell">
-            <span>9</span>
-            <div class="empty-cell" style="position: relative">
-              <a href="">
-                <img src="datasources/imageranking/img9.png" alt="" />
-              </a>
+            <div class="number-cell">
+                <span>9</span>
+                <div class="empty-cell" style="position: relative">
+                    <a href="">
+                        <img src="datasources/imageranking/img9.png" alt="" />
+                    </a>
+                </div>
             </div>
-          </div>
-  
-          <div class="number-cell">
-            <span>10</span>
-            <div class="empty-cell" style="position: relative">
-              <a href="">
-                <img src="datasources/imageranking/img10.png" alt="" />
-              </a>
+
+            <div class="number-cell">
+                <span>10</span>
+                <div class="empty-cell" style="position: relative">
+                    <a href="">
+                        <img src="datasources/imageranking/img10.png" alt="" />
+                    </a>
+                </div>
             </div>
-          </div>
-          
-          <!-- Repeat this structure for the rest of the images -->
+
+            <!-- Repeat this structure for the rest of the images -->
         </div>
-        <button class="scroll-right" >▶</button>
-      </div>
+        <button class="scroll-right">▶</button>
+    </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const numberRow = document.querySelector(".number-row");
@@ -197,7 +197,8 @@
         <h2>Danh sách của tôi</h2>
         <div class="row-posters" id="rowpost1">
             @foreach ($movie_link->take(10) as $item)
-                <img src={{ $item->poster_link }} class="row-poster">
+            <img src="{{ $item->poster_link }}" class="row-poster"
+            onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
             @endforeach
         </div>
         <button class="scroll-right-poster" id="scrollpost1">▶</button>
@@ -272,29 +273,29 @@
                 }
             });
         })
+
+        function redirectTo(url) {
+            window.location.href = url;
+        }
     </script>
 
     <div class="row">
         <h2>Danh sách tiếp tục xem</h2>
         <div class="row-posters" id="rowpost2">
             @foreach ($movie_link->skip(10)->take(10) as $item)
-            <a href="{{route('movies.redirect', $item->id)}}">
-                <img src="{{ $item->poster_link }}" class="row-poster">
-            </a>    
-                <!-- <img src="{{ $item->poster_link }}" class="row-poster"> -->
+                <img src="{{ $item->poster_link }}" class="row-poster"
+                    onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
             @endforeach
-
         </div>
         <button class="scroll-right-poster" id="scrollpost2">▶</button>
     </div>
 
     <div class="row">
         <h2>Hiện đang thịnh hành</h2>
-        <div class="row-posters" id="rowpost3">
+        <div class="row-posters " id="rowpost3">
             @foreach ($movie_link->skip(20)->take(10) as $item)
-            <a href="{{route('movies.redirect', $item->id)}}">
-                <img src="{{ $item->poster_link }}" class="row-poster">
-            </a>  
+                <img src="{{ $item->poster_link }}" class="row-poster"
+                    onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
             @endforeach
         </div>
         <button class="scroll-right-poster" id="scrollpost3">▶</button>
@@ -304,9 +305,8 @@
         <h2>Phim truyền hình lãng mạng</h2>
         <div class="row-posters" id="rowpost4">
             @foreach ($movie_link->skip(30)->take(10) as $item)
-            <a href="{{route('movies.redirect', $item->id)}}">
-                <img src="{{ $item->poster_link }}" class="row-poster">
-            </a>  
+                <img src="{{ $item->poster_link }}" class="row-poster"
+                    onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
             @endforeach
         </div>
         <button class="scroll-right-poster" id="scrollpost4">▶</button>
@@ -316,9 +316,8 @@
         <h2>Phim truyền hình Trung Quốc lãng mạng</h2>
         <div class="row-posters" id="rowpost5">
             @foreach ($movie_link->skip(40)->take(10) as $item)
-            <a href="{{route('movies.redirect', $item->id)}}">
-                <img src="{{ $item->poster_link }}" class="row-poster">
-            </a>  
+                <img src="{{ $item->poster_link }}" class="row-poster"
+                    onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
             @endforeach
         </div>
         <button class="scroll-right-poster" id="scrollpost5">▶</button>
@@ -328,9 +327,8 @@
         <h2>Phim truyền hình giành giải thưởng châu Á</h2>
         <div class="row-posters" id="rowpost6">
             @foreach ($movie_link->skip(50)->take(10) as $item)
-            <a href="{{route('movies.redirect', $item->id)}}">
-                <img src="{{ $item->poster_link }}" class="row-poster">
-            </a>  
+                <img src="{{ $item->poster_link }}" class="row-poster"
+                    onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
             @endforeach
         </div>
         <button class="scroll-right-poster" id="scrollpost6">▶</button>

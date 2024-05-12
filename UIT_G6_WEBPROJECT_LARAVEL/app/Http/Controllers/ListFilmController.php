@@ -35,7 +35,7 @@ class ListFilmController extends Controller
             abort(404);
         }
         
-        return redirect()->route('detail', $movie->description);
+        return redirect()->route('detail', $movie->description );
 
     }
 }
