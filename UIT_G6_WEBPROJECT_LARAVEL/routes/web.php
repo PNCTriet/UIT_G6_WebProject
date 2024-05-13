@@ -15,6 +15,7 @@ use App\Http\Controllers\MoviesController;
 Route::get('/index', [App\Http\Controllers\ListFilmController::class, 'get_movie_link']);
 
 Route::get('/home',[testController::class,'home']);
+
 Route::get("/test", function(){
     return view('testapi');
 });
