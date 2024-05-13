@@ -10,6 +10,8 @@ use App\Models\users;
 use App\Models\User_credential;
 use Session;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller
 {
@@ -17,7 +19,18 @@ class AuthController extends Controller
     {
         // return view('auth.login');
         if (Auth::check()) {
-            return view('home');
+            // dd(Auth::getUser()->role_id);
+            if(Auth::user()->role_id==1){
+                return Redirect::to('/index');
+            }else{
+                return view('home',[
+                    'heading' => 'khong phai chao',
+                    'res' => DB::select("SELECT movie.id,title,description,poster_link FROM movie 
+                                            INNER JOIN movie_link on movie_link.id =movie.link_id
+                                            ORDER BY created_at DESC
+                                            LIMIT 0,10")
+                ]);
+            }
         }   
         return view('auth.login');
     }
@@ -111,9 +124,11 @@ class AuthController extends Controller
             //info('Mật khẩu accepted ');
             if ($User->role_id ==1) {
                 Auth::login($users);
+               
                 return redirect('home')->withSuccess('You are successfully logged in.');
             } else {
                 Auth::login($users);
+               
                 return redirect('index')->withSuccess('You are successfully logged in.');
             }
             
@@ -129,13 +144,21 @@ class AuthController extends Controller
         return redirect('')->withSuccess('Your login credentials are incorrect'); 
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        Session::flush();
-         if (Auth::check()) {
-            return view('home');
-        }
-        return redirect('login');
+       
+        // Session::flush();
+        // if (Auth::check()) {
+        //     return view('home');
+        // }
+        // return redirect('login');
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        Auth::logout();
+        if(Auth::check())return Redirect::to('/home');
+
+        return Redirect::to('/login');
+
     }
     public function dashboard()
     {

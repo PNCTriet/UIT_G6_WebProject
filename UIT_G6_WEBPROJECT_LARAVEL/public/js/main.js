@@ -84,6 +84,24 @@ window.update_movie=async(tag)=>{
     document.getElementsByClassName('table-movie')[0].style.pointerEvents='none'
 }
 
+window.update_user=async(tag)=>{
+    const id =tag.value
+    const response =await fetch(`/get-user/${id}`)
+    const result = await response.json()
+    // console.log(result,result[0])
+    document.getElementById('update_form').style.display="flex";
+    document.getElementById('update_form').setAttribute('action',`/update-user/${id}`)
+    document.querySelector('#fullname_1').value=result[0].name
+    document.querySelector('#dayofbirth_1').value=result[0].birthday
+    document.querySelector('#email_1').value=result[0].email
+    document.querySelector('#phoneNumber_1').value=result[0].phoneNumber
+    document.querySelector('#address_1').value=result[0].address
+    
+
+    document.getElementsByTagName('body')[0].style.overflow='hidden';
+    document.getElementsByClassName('table-movie')[0].style.pointerEvents='none'
+}
+
 // close update or create 
 
 window.close_form =(id_tag)=>{
@@ -100,6 +118,14 @@ window.delete_ =(tag,routing)=>{
     document.getElementsByClassName('table-movie')[0].style.pointerEvents='none'
 }
 
+// send mail
+window.send_mail=function(tag){
+    const email =tag.getAttribute('email')
+    console.log(email)
+    document.getElementById("add_form").style.display='flex'
+    document.querySelector('.nameEmail').innerHTML=email
+    document.querySelector('#add_form').setAttribute('action',`/mail-to/${tag.value}`);
+}
 
 
 

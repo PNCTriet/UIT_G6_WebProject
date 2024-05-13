@@ -8,20 +8,28 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
-
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\SendEmailNotification;
+use App\Models\User;
+use App\Exports\MoviesExport;
+use App\Exports\UsersExport;
+use App\Models\user_model;
 use Symfony\Component\Console\Input\Input;
+use Illuminate\Support\Facades\Auth;
 
 class testController extends Controller
 {
     public function home()
     {
-
+        
         return view('home', [
             'heading' => 'khong phai chao',
             'res' => DB::select("SELECT movie.id,title,description,poster_link FROM movie 
                                     INNER JOIN movie_link on movie_link.id =movie.link_id
                                     ORDER BY created_at DESC
                                     LIMIT 0,10")
+            
 
 
         ]);
@@ -258,10 +266,13 @@ class testController extends Controller
     public function users_management()
     {
         return view('users', [
-            'res' => DB::table('user')->join('user_role', function ($join) {
-                $join->on('user.role_id', '=', 'user_role.id');
-            })->get(),
-            'role' => DB::table('user_role')->get(['id', 'role_type'])
+            'res'=>DB::select(" SELECT user.id as id,name,birthday,email,role_type FROM user
+            inner join user_role on user.role_id =user_role.id 
+            LIMIT 0,15
+            "),
+            'role'=>DB::table('user_role')->get(['id','role_type'])
+
+
         ]);
     }
     public function live_search_users(Request $request)
@@ -271,7 +282,7 @@ class testController extends Controller
 
             if ($request->has('query')) {
 
-                $query_user = DB::table('user')->where('fullname', 'like', "{$request->query('query')}%")->orderBy('id')->get();
+                $query_user = DB::table('user')->where('name', 'like', "{$request->query('query')}%")->orderBy('id')->get();
             } else {
                 $query_user = DB::table('user')->limit(10)->offset(0)->orderBy('id')->get();
             }
@@ -297,8 +308,8 @@ class testController extends Controller
                 $file_image->move('avartar/', $file_name);
             }
             DB::table('user')->insert([
-                'fullname' => $request->fullname,
-                'dayofbirth' => $request->dayofbirth,
+                'name' => $request->fullname,
+                'birthday' => $request->dayofbirth,
                 'email' => $request->email,
                 'phoneNumber' => $request->phoneNumber,
                 'address' => $request->address,
@@ -313,4 +324,107 @@ class testController extends Controller
             return Redirect::to('/users-management')->with(['msg' => $e->getMessage()]);
         }
     }
+    public function get_user($id){
+        $query_user =DB::table('user')->where('id',$id)->distinct()->get();
+        return response()->json($query_user);
+    }
+    public function update_user(Request $request,$id){
+        $request->validate([
+            'email'=>'email:rfc,dns',
+            'avartar'=>'nullable|mimes:png,jpg,jpeg,web',
+            'phoneNumber'=>'integer|required'
+
+        ]);
+        try{
+            $avt =DB::table('user')->where('id',$id)->distinct()->get('avartar');//get link image
+            // dd($avt[0]->avartar);
+            if($request->has('avartar')){
+                $file =$request->file('avartar');
+                $extension =$file->getClientOriginalExtension();
+                $filename =time().'.'.$extension;
+                $file->move("avartar/",$filename);
+                //delete old file in avartar directory
+                if(File::exists($avt[0]->avartar)){
+                    File::delete($avt[0]->avartar);
+                }
+                DB::table('user')->where('id',$id)->limit(1)->update([
+                    'avartar'=>"avartar/{$filename}"
+                ]);
+            }
+            $email =DB::table('user')->where('id',$id)->get('email');
+            
+            DB::table('user')->where('id',$id)->limit(1)->update([
+                'name'=>$request->fullname,
+                'birthday'=>$request->dayofbirth,
+                'email'=>$request->email,
+                'phoneNumber'=>$request->phoneNumber,
+                'address'=>$request->address,
+                'role_id'=>$request->role_id,
+                'plan_id'=>1,
+                
+                'updated_at'=>NOW()
+            ]);
+            DB::table('users')->where('email',$email[0]->email)->update([
+                'email'=>$request->email,
+                'name'=>$request->fullname,
+                'updated_at'=>NOW()
+
+            ]);
+
+            return Redirect::to('/users-management')->with(['msg'=>'User was updated']);
+           
+
+        }catch(\Exception $e){
+            return Redirect::to('/users-management')->with(['msg'=>$e->getMessage()]);
+        }
+    }
+    public function delete_user($id){
+        try{
+            DB::table('user')->where('id',$id)->distinct()->delete();
+            return Redirect::to('/users-management')->with(['msg'=>'User was deleted']);
+        }catch(\Exception $e){
+            return Redirect::to('/users-management')->with(['msg'=>$e->getMessage()]);
+        }
+    }
+
+    public function send_mail(){
+        return view('sendMail',[
+            'res'=>DB::select(" SELECT user.id as id,name,birthday,email,role_type FROM user
+                                inner join user_role on user.role_id =user_role.id 
+                                LIMIT 0,15
+            "),
+        ]);
+    }
+
+    public function mail_to(Request $request,$id){
+        // if($request->has('email')){
+        //     return response()->json(['email'=>$request->query('email')]);
+        // }else{
+        //     return response()->json(['email'=>'có cái đàu bùi']);
+        // }
+        $user =user_model::find($id);
+        
+        
+       
+
+        
+        $detail=[
+            'subject'=>$request->subject,
+            'greeting'=>'Dear Sir',
+            'content'=>$request->content
+
+        ];
+        // Notification::sendNow($data,new SendEmailNotification($detail));
+        $user->notify(new SendEmailNotification($detail));
+        return Redirect::to('/send-mail')->with(['msg'=>'Send Mail was successful']);
+    }
+    // export excel
+    public function export_user(){
+        return Excel::download(new UsersExport(),'users.xlsx');
+    }
+
+    public function export_movie(){
+        return Excel::download(new MoviesExport(),'movies.xlsx' );
+    }
+
 };
