@@ -30,10 +30,10 @@
 
 <body>
     <!-- nav bar -->
-    <!-- @include('layout.user_navbar') -->
-    @section('navbar')
+    @include('layout.user_navbar')
+    {{-- @section('navbar')
         @include('layout.user_navbar')
-    @endsection
+    @endsection --}}
     <!-- backround -->
     <!-- -----PART-2------ -->
     <!-- Lấy phần 2 -->
