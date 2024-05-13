@@ -7,6 +7,9 @@ use App\Http\Controllers\Auth\ForgetPasswordManager;
 use App\Http\Controllers\testController;
 use App\Http\Controllers\ListFilmController;
 use App\Http\Controllers\MoviesController;
+use App\Http\Middleware\EnsureTokenIsValid;
+use Illuminate\Console\View\Components\Mutators\EnsurePunctuation;
+use Illuminate\Routing\Controllers\Middleware;
 
 // Route::get('/', function () {
 //     return view('home');
@@ -14,7 +17,8 @@ use App\Http\Controllers\MoviesController;
 
 Route::get('/index', [App\Http\Controllers\ListFilmController::class, 'get_movie_link']);
 
-Route::get('/home',[testController::class,'home'])->middleware(['auth', 'verified']);
+Route::get('/home',[testController::class,'home'])->middleware(EnsureTokenIsValid::class);
+
 
 Route::get("/test", function(){
     return view('testapi');
@@ -25,12 +29,16 @@ Route::get("/detail", function(){
 });
 
 //Route::get('/movies/{id}', 'ListFilmController@redirectToMovieDetail')->name('movies.redirect');
-Route::get('/movies/{id}', [App\Http\Controllers\ListFilmController::class, 'redirectToMovieDetail'])->name('movies.redirect');
-Route::get('/{name}', [App\Http\Controllers\MoviesController::class, 'show'])->name('detail');
+//Route::get('/movies/{id}', [App\Http\Controllers\ListFilmController::class, 'redirectToMovieDetail'])->name('movies.redirect');
+//Route::get('/{name}', [App\Http\Controllers\MoviesController::class, 'show'])->name('detail');
 
 
 // Movie 
-Route::get('/tables',[testController::class,'table'])->middleware(['auth', 'verified']);
+Route::get('/tables',[testController::class,'table'])->middleware(EnsureTokenIsValid::class);
+// Route::get('/table',function(){
+//     return response()->json(['msg'=>'le hoang duc dep trai']);
+
+// });
 
 Route::put('/update-movie/{id}',[testController::class,'update_movie']);
 Route::get('/add-movie',[testController::class,'add_movie']);
@@ -40,7 +48,7 @@ Route::delete('/delete-movie/{id}',[testController::class,'delete_movie']);
 ;
 
 // Voucher
-Route::get('/live-search-voucher',[testController::class,'live_search_voucher']);
+Route::get('/live-search-voucher',[testController::class,'live_search_voucher'])->middleware(EnsureTokenIsValid::class);
 Route::get('/voucher-management',[testController::class,'voucher_management'])->middleware(['auth', 'verified']);
 Route::post('/add-voucher',[testController::class,'add_voucher']);
 Route::get('/get-voucher/{id}',[testController::class,'get_voucher']);
@@ -48,7 +56,7 @@ Route::delete('/delete-voucher/{id}',[testController::class,'delete_voucher']);
 Route::put('/update-voucher/{id}',[testController::class,'update_voucher']);
 
 // Users
-Route::get('/users-management',[testController::class,'users_management'])->middleware(['auth', 'verified']);
+Route::get('/users-management',[testController::class,'users_management'])->middleware(EnsureTokenIsValid::class);
 Route::get('/live-search-users',[testController::class,'live_search_users']);
 Route::post('/add-user',[testController::class,'add_user']);
 Route::get('/get-user/{id}',[testController::class,'get_user']);
@@ -56,7 +64,7 @@ Route::put('/update-user/{id}',[testController::class,'update_user']);
 Route::delete('/delete-user/{id}',[testController::class,'delete_user']);
 
 //Mail
-Route::get('/send-mail',[testController::class,'send_mail']);
+Route::get('/send-mail',[testController::class,'send_mail'])->middleware(EnsureTokenIsValid::class);
 Route::put('/mail-to/{id}',[testController::class,'mail_to']);
 
 // Export Excle
@@ -93,4 +101,7 @@ Route::get("/reset-password/{token}", [ForgetPasswordManager::class, "resetPassw
     ->name("reset.password");
 Route::post("/reset-password", [ForgetPasswordManager::class, "resetPasswordPost"])
     ->name("reset.password.post");
+
+Route::get('/movies/{id}', [ListFilmController::class, 'redirectToMovieDetail'])->name('movies.redirect');
+Route::get('/{name}', [MoviesController::class, 'show'])->name('detail');
 

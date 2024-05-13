@@ -31,7 +31,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle"
-                    src="uploads/1713541793.png">
+                    src="{{Auth::user()->avartar}}">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
                 
             </a>
@@ -44,7 +44,7 @@
                 @if(Auth::user()->role_id==1)
     
                     <a href="/home" class="dropdown-item">
-                        {{Auth::user()->role_id}}
+                        
                         <i class='bx bx-home-smile'></i>
                         Go To Dashboard
                     </a>

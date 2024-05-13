@@ -123,11 +123,12 @@ class AuthController extends Controller
             //     return redirect('home')->withSuccess('You are successfully logged in.');
             //info('Mật khẩu accepted ');
             if ($User->role_id ==1) {
-                Auth::login($users);
+                
+                Auth::login($User);
                
                 return redirect('home')->withSuccess('You are successfully logged in.');
             } else {
-                Auth::login($users);
+                Auth::login($User);
                
                 return redirect('index')->withSuccess('You are successfully logged in.');
             }
