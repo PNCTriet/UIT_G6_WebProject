@@ -148,7 +148,7 @@
   }
   .profile-container {
     display: none;
-    padding: 0 20px;
+    /* padding: 0 20px; */
     flex: 2;
     display: flex;
     align-items: center;
@@ -487,7 +487,7 @@
     white-space: nowrap;
     display: flex;
   }
-  
+
   .row-posters {
     position: relative;
     display: flex;
@@ -511,6 +511,11 @@
   
   .row-posterLarge:hover {
     transform: scale(1.09);
+  }
+
+  .img_poster {
+    width: 300px;
+    height: auto;
   }
   
   .row {

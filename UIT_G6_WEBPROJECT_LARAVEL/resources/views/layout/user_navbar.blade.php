@@ -2,7 +2,7 @@
 <div class="navbar">
     <div class="navbar-container">
         <div class="logo-container">
-            {{-- <h1 class="logo">Netflop</h1> --}}
+            <!-- {{-- <h1 class="logo">Netflop</h1> --}} -->
             <a href="https://fontmeme.com/netflix-font/"><img class="logo" src="https://fontmeme.com/permalink/240508/a0a2db44cf95ee3c25441c8005f90516.png" alt="netflix-font" border="0"></a>
         </div>
         <div class="menu-container">
@@ -28,9 +28,6 @@
         </div>
         <div class="nav-item dropdown no-arrow">  
             <i><a title="Phim" href="./search.html" class="fa-solid fa-magnifying-glass"></a></i>
-            {{-- <a href="" style="padding: 15px">Trẻ em</a> profile-container 
-            <i><a title="Phim" href="/" class="fa-regular fa-bell"></a></i> --}}
-
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle"
@@ -57,11 +54,6 @@
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     Logout
                 </a>
-            </div>
-    
-            
-            
-           
         </div>
     </div>
 </div>

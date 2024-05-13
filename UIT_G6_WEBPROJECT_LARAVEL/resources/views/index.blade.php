@@ -26,12 +26,14 @@
     <link rel="modulepreload" href="http://127.0.0.1:8000/build/assets/app-CrG2wnyX.js" />
     <link rel="stylesheet" href="http://127.0.0.1:8000/build/assets/app-Czjw7esN.css" />
     <script type="module" src="http://127.0.0.1:8000/build/assets/app-CrG2wnyX.js"></script>
-    
 </head>
 
 <body>
     <!-- nav bar -->
-    @include('layout.user_navbar')
+    <!-- @include('layout.user_navbar') -->
+    @section('navbar')
+        @include('layout.user_navbar')
+    @endsection
     <!-- backround -->
     <!-- -----PART-2------ -->
     <!-- Lấy phần 2 -->
@@ -59,7 +61,7 @@
             <div class="number-cell">
                 <span>1</span>
                 <div class="empty-cell" style="position: relative">
-                    <a href="codesource_demo1/detail.html">
+                    <a href="#">
                         <img src="datasources/imageranking/img1.png" alt="" />
                     </a>
                 </div>
@@ -146,7 +148,6 @@
         </div>
         <button class="scroll-right">▶</button>
     </div>
-
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const numberRow = document.querySelector(".number-row");
@@ -193,8 +194,9 @@
         <br>
         <h2>Danh sách của tôi</h2>
         <div class="row-posters" id="rowpost1">
-            @foreach ($data->take(10) as $item)
-                <img src={{ $item->poster_link }} class="row-poster">
+            @foreach ($movie_link->take(10) as $item)
+            <img src="{{ $item->poster_link }}" class="row-poster"
+            onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
             @endforeach
         </div>
         <button class="scroll-right-poster" id="scrollpost1">▶</button>
@@ -269,24 +271,29 @@
                 }
             });
         })
+
+        function redirectTo(url) {
+            window.location.href = url;
+        }
     </script>
 
     <div class="row">
         <h2>Danh sách tiếp tục xem</h2>
         <div class="row-posters" id="rowpost2">
-            @foreach ($data->skip(10)->take(10) as $item)
-                <img src="{{ $item->poster_link }}" class="row-poster">
+            @foreach ($movie_link->skip(10)->take(10) as $item)
+                <img src="{{ $item->poster_link }}" class="row-poster"
+                    onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
             @endforeach
-
         </div>
         <button class="scroll-right-poster" id="scrollpost2">▶</button>
     </div>
 
     <div class="row">
         <h2>Hiện đang thịnh hành</h2>
-        <div class="row-posters" id="rowpost3">
-            @foreach ($data->skip(20)->take(10) as $item)
-                <img src="{{ $item->poster_link }}" class="row-poster">
+        <div class="row-posters " id="rowpost3">
+            @foreach ($movie_link->skip(20)->take(10) as $item)
+                <img src="{{ $item->poster_link }}" class="row-poster"
+                    onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
             @endforeach
         </div>
         <button class="scroll-right-poster" id="scrollpost3">▶</button>
@@ -295,8 +302,9 @@
     <div class="row">
         <h2>Phim truyền hình lãng mạng</h2>
         <div class="row-posters" id="rowpost4">
-            @foreach ($data->skip(30)->take(10) as $item)
-                <img src="{{ $item->poster_link }}" class="row-poster">
+            @foreach ($movie_link->skip(30)->take(10) as $item)
+                <img src="{{ $item->poster_link }}" class="row-poster"
+                    onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
             @endforeach
         </div>
         <button class="scroll-right-poster" id="scrollpost4">▶</button>
@@ -305,8 +313,9 @@
     <div class="row">
         <h2>Phim truyền hình Trung Quốc lãng mạng</h2>
         <div class="row-posters" id="rowpost5">
-            @foreach ($data->skip(40)->take(10) as $item)
-                <img src="{{ $item->poster_link }}" class="row-poster">
+            @foreach ($movie_link->skip(40)->take(10) as $item)
+                <img src="{{ $item->poster_link }}" class="row-poster"
+                    onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
             @endforeach
         </div>
         <button class="scroll-right-poster" id="scrollpost5">▶</button>
@@ -315,8 +324,9 @@
     <div class="row">
         <h2>Phim truyền hình giành giải thưởng châu Á</h2>
         <div class="row-posters" id="rowpost6">
-            @foreach ($data->skip(50)->take(10) as $item)
-                <img src="{{ $item->poster_link }}" class="row-poster">
+            @foreach ($movie_link->skip(50)->take(10) as $item)
+                <img src="{{ $item->poster_link }}" class="row-poster"
+                    onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
             @endforeach
         </div>
         <button class="scroll-right-poster" id="scrollpost6">▶</button>
