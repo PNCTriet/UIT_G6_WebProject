@@ -27,7 +27,7 @@ padding: 20px;">
                 <input type="checkbox">
                 <label>Remember me</label>
             </div>
-            <a href="forget-password">Need help?</a>
+            <a href="forget-password">Forget password</a>
         </div>
     </form>
 

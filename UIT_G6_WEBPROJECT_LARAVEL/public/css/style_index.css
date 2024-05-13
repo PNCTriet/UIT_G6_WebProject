@@ -397,7 +397,6 @@
   }
   .video {
     position: relative;
-    margin-top: 0;
     object-fit: cover;
     background-position: center;
     transition: all 500ms ease-in-out;
