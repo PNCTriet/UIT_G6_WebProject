@@ -13,6 +13,14 @@
 @section('content')
     <?php
     $check=false;
+    if ($errors->any()){
+       
+        foreach ($errors->all() as $error){
+            echo "<div class='info_err'>{$error}</div>";
+        }
+      
+    }
+       
     $message =session()->get('msg');
     if($message){
         echo "<div class='notice'><p class='info bg-black text-white ps-3 '>{$message}</p></div>";
@@ -77,16 +85,33 @@
             <div class="closes" onclick="close_form('update_form')">
                 <i class='bx bx-x'></i>
             </div>
-            <h2>Update Voucher</h2>
-            <label for="name_voucher">Name Voucher</label>
-            <input type="text"  id="name_voucher" name="name_voucher" required>
-            <label for="code">Code Voucher</label>
-            <input type="text"  id="code" name="code" required>
-            <label for="discount">Discount Percentage</label>
-            <input type="number"  id="discount" name="discount" required>
-            <label for="status">Status</label>
-            <input type="text"  id="status" name="status" required>
-            <button type="submit" name="submit" class=" mt-4 text-white border-0 bg-warning ">Submit</button>
+            <h2>Update User</h2>
+            <label for="fullname_1">Name User</label>
+            <input type="text" placeholder="Enter fullname" id="fullname_1" name="fullname" required>
+            <label for="dayofbirth_1">Day of Birth</label>
+            <input type="date" placeholder="Enter your birth" id="dayofbirth_1" name="dayofbirth" required>
+            <label for="email_1">Email</label>
+            <input type="email" placeholder="Enter email" id="email_1" name="email" required>
+            @if($errors->has('email'))
+                <span class="error2">{{$errors->first('email')}}</span>
+                <?php
+                    $check=true;
+                ?>
+            @endif
+            <label for="phoneNumber_1">Phone Number</label>
+            <input type="number" placeholder="Enter you phone" id="phoneNumber_1" name="phoneNumber" required>
+            <label for="address_1">Address</label>
+            <input type="text" id="address_1" name="address" required placeholder="Enter your address">
+            <label for="role_id_1">Role</label>
+            <select id="role_id_1" name="role_id"  >
+                @foreach($role as $value)
+                    <option value="{{$value->id}}">{{$value->role_type}}</option>
+                @endforeach
+            </select>
+            <label for="avartar_1">Avartar</label>
+            <input type="file" name="avartar" id="avartar_1">
+            <button type="submit" class=" text-bg-light bg-primary border-0 mt-4 ">Submit</button>
+
         </form>
 
         <form id="form_dlt" class="form_delete" action="" method="post" enctype="multipart/form-data">
@@ -111,19 +136,21 @@
 
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center ">
-                    <h3>Voucher</h3>
+                    <h3>Users</h3>
                     <a href="#" id="add_voucher" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                        class="fas fa-download fa-sm text-white-50"></i>Create User</a>
+                        class="fas fa-download fa-sm text-white-50"></i>Add User</a>
                 </div>
                 
-                <p>A voucher is a certificate or document that either allows you to purchase something or proves that you paid for something,
-                    please visit <a href="#" target="_black">our website</a>
+                <p>When a user logs in or accesses a specific page, the website checks their assigned
+                    role and determines what content and features they can
+                    see or interact with.<a href="#" target="_black">our website</a>
 
                 </p>
 
                 <div class="card shadow mb-4">
-                    <div class="card-header ">
-                        <h6 class=" text-primary font-weight-bold ">Voucher Movie</h6>
+                    <div class="card-header d-flex justify-content-between align-items-center  ">
+                        <h6 class=" text-primary font-weight-bold ">User Movie</h6>
+                        <a href="/export-user" class=" btn bg-warning text-dark">Export Excel</a>
                     </div>
                     <div class="card-body table-movie">
                         <div class="w-50 mb-4">
@@ -134,8 +161,8 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Full Name</th>
-                                        <th>Day of Birth</th>
+                                        <th>Name</th>
+                                        <th>BirthDay</th>
                                         <th>email</th>
                                         <th>Role</th>
                                         <th>Edit</th>
@@ -150,10 +177,10 @@
                                             <td>{{$value->email}}</td>
                                             <td>{{$value->role_type}}</td>
                                             <td>
-                                                <button value="{{$value->id}}" onclick="update_voucher(this)" class="text-center bg-warning rounded update">Update</button>
+                                                <button value="{{$value->id}}" onclick="update_user(this)" class="text-center bg-warning rounded update">Update</button>
                                             </td>
                                             <td>
-                                                <button value="{{$value->id}}" onclick="delete_(this,'delete-voucher')" class="text-center bg-danger rounded delete">Delete</button>
+                                                <button value="{{$value->id}}" onclick="delete_(this,'delete-user')" class="text-center bg-danger rounded delete">Delete</button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -167,81 +194,86 @@
 
 
         </div>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#live_search").keyup(function(){
-            var input =$(this).val()
-            $.ajax({
-                // url:"live_search/live_search_voucher.php",
-                url:'/live-search-users',
-                data:{query:input}, //this is query parameter like /live-search-voucher?query=input
-                // method:"GET",
-                success:function(response){
-                    console.log(response.data.length)
-                    var result =response.data
-                    var output ="";
-                    if(!response.msg){
-                        output =`
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Full Name</th>
-                                    <th>Day of Birth</th>
-                                    <th>email</th>
-                                    <th>Role</th>
-                                    <th>Edit</th>
-                                    <th>Remove</th>
-                                </tr>
-                            </thead>
-                            </tbody>`
-                        ;
+        {{-- test function --}}
+       
+        
+    
+    <script type="text/javascript">
+        
+        $(document).ready(function(){
+            $("#live_search").keyup(function(){
+                var input =$(this).val()
+                $.ajax({
+                    // url:"live_search/live_search_voucher.php",
+                    url:'/live-search-users',
+                    data:{query:input}, //this is query parameter like /live-search-voucher?query=input
+                    // method:"GET",
+                    success:function(response){
+                        console.log(response.data.length)
+                        var result =response.data
+                        var output ="";
+                        if(!response.msg){
+                            output =`
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>BirthDay</th>
+                                        <th>email</th>
+                                        <th>Role</th>
+                                        <th>Edit</th>
+                                        <th>Remove</th>
+                                    </tr>
+                                </thead>
+                                </tbody>`
+                            ;
 
-                        
-                        
-                        result= Array.from(result)
-                        result.forEach(element => {
-                            output +=`
-                                <tr>
-                                    <td>${element.id}</td>
-                                    <td>${element.fullname}</td>
-                                    <td>${element.dayofbirth}</td>
-                                    <td>${element.email}</td>
-                                    <td>${element.role_type}</td>
-                                    <td>
-                                        <button value="${element.id}" onclick="update_voucher(this)" class="text-center bg-warning rounded update">Update</button>
-                                    </td>
-                                    <td>
-                                        <button value="${element.id}" onclick="delete_(this,'delete-voucher')" class="text-center bg-danger rounded delete">Delete</button>
-                                    </td>
+                            
+                            
+                            result= Array.from(result)
+                            result.forEach(element => {
+                                output +=`
+                                    <tr>
+                                        <td>${element.id}</td>
+                                        <td>${element.name}</td>
+                                        <td>${element.birthday}</td>
+                                        <td>${element.email}</td>
+                                        <td>${element.role_type}</td>
+                                        <td>
+                                            <button value="${element.id}" onclick="update_user(this)" class="text-center bg-warning rounded update">Update</button>
+                                        </td>
+                                        <td>
+                                            <button value="${element.id}" onclick="delete_(this,'delete-user')" class="text-center bg-danger rounded delete">Delete</button>
+                                        </td>
 
 
-                                </tr>
-                            `
-                        });
-                        output+=`</tbody>`
+                                    </tr>
+                                `
+                            });
+                            output+=`</tbody>`
 
-                        $("#table-data").html(output)
-                    }else{
-                        $("#table-data").html(response.msg)
+                            $("#table-data").html(output)
+                        }else{
+                            $("#table-data").html(response.msg)
+                        }
                     }
-                }
+                })
             })
         })
-    })
 
-    const add_voucher =document.querySelector('#add_voucher');
-    add_voucher.addEventListener('click',()=>{
-    console.log("ok em")
-    document.getElementById('add_form').style.display='flex';
-    document.getElementsByClassName('table-movie')[0].style.pointerEvents='none'
-    })
+        const add_voucher =document.querySelector('#add_voucher');
+        add_voucher.addEventListener('click',()=>{
+        console.log("ok em")
+        document.getElementById('add_form').style.display='flex';
+        document.getElementsByClassName('table-movie')[0].style.pointerEvents='none'
+        })
 
-    var jsvar = <?php echo json_encode($check); ?>;
-    if(jsvar){
-    // form.style.display='flex';
-    document.querySelector('.car').style.display='flex';
+        var jsvar = <?php echo json_encode($check); ?>;
+        if(jsvar){
+        // form.style.display='flex';
+            document.querySelector('.car').style.display='flex';
 
-    }
+        }
 
-</script>      
+    </script>      
 @endsection

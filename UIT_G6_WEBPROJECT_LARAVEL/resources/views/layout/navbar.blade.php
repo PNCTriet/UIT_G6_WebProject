@@ -42,6 +42,7 @@
                 <a class="collapse-item" href="/tables">Movies</a>
                 <a class="collapse-item" href="/voucher-management">Voucher Management</a>
                 <a class="collapse-item" href="/users-management">Users Management</a>
+                <a href="/send-mail" class="collapse-item">Send Mail</a>
             </div>
         </div>
     </li>
@@ -144,7 +145,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" href="/logout">Logout</a>
             </div>
         </div>
     </div>

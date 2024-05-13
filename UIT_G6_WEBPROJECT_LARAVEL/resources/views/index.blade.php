@@ -26,8 +26,6 @@
     <link rel="modulepreload" href="http://127.0.0.1:8000/build/assets/app-CrG2wnyX.js" />
     <link rel="stylesheet" href="http://127.0.0.1:8000/build/assets/app-Czjw7esN.css" />
     <script type="module" src="http://127.0.0.1:8000/build/assets/app-CrG2wnyX.js"></script>
-
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
@@ -337,5 +335,5 @@
     <!-- nav bar -->
     @include('layout.user_footer');
 </body>
-
+<script src="js/logout.js"></script>
 </html>

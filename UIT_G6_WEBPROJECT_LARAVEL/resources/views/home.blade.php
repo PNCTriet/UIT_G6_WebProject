@@ -243,14 +243,14 @@
                                         <th>Poster link</th>
                                     </tr>
                                     <?php
-                                    foreach ($res as $row) {
-                                        echo "<tr>
-                                                                                    <td>{$row->id}</td>
-                                                                                    <td>{$row->title}</td>
-                                                                                    <td>{$row->description}</td>
-                                                                                    <td>{$row->poster_link}</td>
-                                                                                </tr>";
-                                    }
+                                        foreach ($res as $row) {
+                                            echo "<tr>
+                                                    <td>{$row->id}</td>
+                                                    <td>{$row->title}</td>
+                                                    <td>{$row->description}</td>
+                                                    <td>{$row->poster_link}</td>
+                                                </tr>";
+                                        }
                                     
                                     ?>
                                 </table>
