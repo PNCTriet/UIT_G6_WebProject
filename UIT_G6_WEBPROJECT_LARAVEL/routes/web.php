@@ -20,14 +20,9 @@ Route::get("/test", function(){
     return view('testapi');
 });
 
-Route::get("/detail", function(){
-    return view('detail');
-});
-
-//Route::get('/movies/{id}', 'ListFilmController@redirectToMovieDetail')->name('movies.redirect');
-Route::get('/movies/{id}', [App\Http\Controllers\ListFilmController::class, 'redirectToMovieDetail'])->name('movies.redirect');
-Route::get('/{name}', [App\Http\Controllers\MoviesController::class, 'show'])->name('detail');
-
+// Route::get("/detail", function(){
+//     return view('detail');
+// });
 
 // Movie 
 Route::get('/tables',[testController::class,'table'])->middleware(['auth', 'verified']);
@@ -94,3 +89,6 @@ Route::get("/reset-password/{token}", [ForgetPasswordManager::class, "resetPassw
 Route::post("/reset-password", [ForgetPasswordManager::class, "resetPasswordPost"])
     ->name("reset.password.post");
 
+
+Route::get('/movies/{id}', [ListFilmController::class, 'redirectToMovieDetail'])->name('movies.redirect');
+Route::get('/{name}', [MoviesController::class, 'show'])->name('detail');

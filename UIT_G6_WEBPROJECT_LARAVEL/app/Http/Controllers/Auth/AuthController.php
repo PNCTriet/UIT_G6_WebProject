@@ -156,9 +156,7 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         Auth::logout();
         if(Auth::check())return Redirect::to('/home');
-
         return Redirect::to('/login');
-
     }
     public function dashboard()
     {
