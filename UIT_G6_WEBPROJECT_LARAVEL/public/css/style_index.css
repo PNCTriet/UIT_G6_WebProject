@@ -14,6 +14,32 @@
   }
 }
 
+body {
+  padding: 0;
+  margin: 0;
+  background: #000;
+}
+.logotitle {
+    width: 205px;
+    height: 372px;
+    background-image: linear-gradient(to right, #B30000 33%, #000 33%, #000 67%, #B30000 67%, #B30000 100%);
+      position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+.logo:before {
+ content: '';
+ width: 84px;
+ height: 100%;
+ position: absolute;
+ background: #E80000;
+ top: 0;
+ opacity: 1;
+ transform: skewX(18deg) ;
+ left: 29.55%;
+ box-shadow: inset 0 1px 2px rgba(0.2, 0.2,0.2,0.2), 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22), 0 0 100px rgba(0.3, 0.3,0.3,0.3);
+}
 
 @media screen and (min-width: 100%) and (max-width: 100%) and (orientation: landscape) {
     body,
@@ -165,7 +191,7 @@
     width: 32px; /* Điều chỉnh chiều rộng của hình ảnh */
     height: 32px; /* Điều chỉnh chiều cao của hình ảnh */
     border-radius: 50%; /* Đảm bảo hình ảnh là hình tròn */
-    object-fit: cover; */
+    object-fit: cover; 
   }
   
   .toggle {
@@ -270,7 +296,7 @@
   }
   
   .movie-list-item:hover .movie-list-item-img {
-    transform: scale(1.2);
+    transform: scale(1);
     margin: 0 30px;
     opacity: 0.5;
   }
@@ -485,10 +511,12 @@
     transition: transform 450ms;
     white-space: nowrap;
     display: flex;
+    border-radius: 2px;
   }
 
+
   .row-posters {
-    position: relative;
+    position: absolute;
     display: flex;
    /* overflow-x: hidden;
     overflow-y: scroll;*/ 
@@ -497,7 +525,7 @@
   }
   
   .row-poster:hover {
-    transform: scale(1.08);
+    transform: scale(1);
   }
   
   .row-posters::-webkit-scrollbar {
@@ -509,7 +537,7 @@
   }
   
   .row-posterLarge:hover {
-    transform: scale(1.09);
+    transform: scale(1);
   }
 
   .img_poster {
@@ -521,8 +549,9 @@
     color: white;
     margin-left: 20px;
     overflow: hidden;
-    position:relative;
-    height: 250px;
+    margin-top: 50px;
+    /* position: relative; */
+    /* height: 250px; */
   }
   
   .member-footer {
@@ -530,6 +559,7 @@
     margin: 20px auto 0;
     max-width: 100%;
     padding: 0 4%;
+    z-index: 1;
   }
   
   .member-footer .member-footer-links {

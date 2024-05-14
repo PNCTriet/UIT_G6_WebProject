@@ -1,32 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style_index.css" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet" />
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-    <!-- Scripts -->
-    <link rel="preload" as="style" href="http://127.0.0.1:8000/build/assets/app-Czjw7esN.css" />
-    <link rel="modulepreload" href="http://127.0.0.1:8000/build/assets/app-CrG2wnyX.js" />
-    <link rel="stylesheet" href="http://127.0.0.1:8000/build/assets/app-Czjw7esN.css" />
-    <script type="module" src="http://127.0.0.1:8000/build/assets/app-CrG2wnyX.js"></script>
-</head>
+@include('layout.user_header')
 
 <body>
     <!-- nav bar -->
@@ -191,142 +166,224 @@
 
     <!-- body -->
     <div class="row">
-        <br>
         <h2>Danh sách của tôi</h2>
         <div class="row-posters" id="rowpost1">
             @foreach ($movie_link->take(10) as $item)
-            <img src="{{ $item->poster_link }}" class="row-poster"
-            onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
+                <section class="d-flex">
+                    <div class="card">
+                        <img src="{{ $item->poster_link }}" class="row-poster"
+                            onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
+                        <div class="card-body" >
+                            <section class="d-flex justify-content-between">
+                                <div>
+                                    <i class="bi bi-play-circle-fill card-icon"></i>
+                                    <i class="bi bi-plus-circle card-icon"></i>
+                                </div>
+                                <div>
+                                    <i class="bi bi-arrow-down-circle card-icon"></i>
+                                </div>
+                            </section>
+                            <section class="d-flex align-items-center justify-content-between">
+                                <p class="netflix-card-text m-0" style="color: rgb(0, 186, 0);">97%
+                                    match
+                                </p>
+                                <span class="m-2 netflix-card-text text-white">Limited
+                                    Series</span>
+                                <span class="border netflix-card-text p-1 text-white">HD</span>
+
+                            </section>
+                            <span class="netflix-card-text text-white">Provocative •
+                                Psychological •
+                                Thriller</span>
+                        </div>
+                    </div>
+                </section>
             @endforeach
         </div>
         <button class="scroll-right-poster" id="scrollpost1">▶</button>
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const rowposterwidth = document.querySelector(".row-poster").offsetWidth;
-            const rowposters1 = document.getElementById('rowpost1');
-            const rowposters2 = document.getElementById('rowpost2');
-            const rowposters3 = document.getElementById('rowpost3');
-            const rowposters4 = document.getElementById('rowpost4');
-            const rowposters5 = document.getElementById('rowpost5');
-            const rowposters6 = document.getElementById('rowpost6');
-            const scrollRightPoster1 = document.getElementById('scrollpost1');
-            const scrollRightPoster2 = document.getElementById('scrollpost2');
-            const scrollRightPoster3 = document.getElementById('scrollpost3');
-            const scrollRightPoster4 = document.getElementById('scrollpost4');
-            const scrollRightPoster5 = document.getElementById('scrollpost5');
-            const scrollRightPoster6 = document.getElementById('scrollpost6');
-
-            scrollRightPoster1.addEventListener("click", function() {
-                const currentLeft = parseFloat(getComputedStyle(rowposters1).left);
-                const newLeft = currentLeft - rowposterwidth * 4;
-                rowposters1.style.left = newLeft + "px";
-                if (newLeft <= -rowposterwidth * 5) {
-                    rowposters1.style.left = "0";
-                }
-            });
-
-            scrollRightPoster2.addEventListener("click", function() {
-                const currentLeft = parseFloat(getComputedStyle(rowposters2).left);
-                const newLeft = currentLeft - rowposterwidth * 4;
-                rowposters2.style.left = newLeft + "px";
-                if (newLeft <= -rowposterwidth * 5) {
-                    rowposters2.style.left = "0";
-                }
-            });
-
-            scrollRightPoster3.addEventListener("click", function() {
-                const currentLeft = parseFloat(getComputedStyle(rowposters3).left);
-                const newLeft = currentLeft - rowposterwidth * 4;
-                rowposters3.style.left = newLeft + "px";
-                if (newLeft <= -rowposterwidth * 5) {
-                    rowposters3.style.left = "0";
-                }
-            });
-
-            scrollRightPoster4.addEventListener("click", function() {
-                const currentLeft = parseFloat(getComputedStyle(rowposters4).left);
-                const newLeft = currentLeft - rowposterwidth * 4;
-                rowposters4.style.left = newLeft + "px";
-                if (newLeft <= -rowposterwidth * 5) {
-                    rowposters4.style.left = "0";
-                }
-            });
-
-            scrollRightPoster5.addEventListener("click", function() {
-                const currentLeft = parseFloat(getComputedStyle(rowposters5).left);
-                const newLeft = currentLeft - rowposterwidth * 4;
-                rowposters5.style.left = newLeft + "px";
-                if (newLeft <= -rowposterwidth * 5) {
-                    rowposters5.style.left = "0";
-                }
-            });
-
-            scrollRightPoster6.addEventListener("click", function() {
-                const currentLeft = parseFloat(getComputedStyle(rowposters6).left);
-                const newLeft = currentLeft - rowposterwidth * 4;
-                rowposters6.style.left = newLeft + "px";
-                if (newLeft <= -rowposterwidth * 5) {
-                    rowposters6.style.left = "0";
-                }
-            });
-        })
-
-        function redirectTo(url) {
-            window.location.href = url;
-        }
-    </script>
 
     <div class="row">
         <h2>Danh sách tiếp tục xem</h2>
         <div class="row-posters" id="rowpost2">
             @foreach ($movie_link->skip(10)->take(10) as $item)
-                <img src="{{ $item->poster_link }}" class="row-poster"
-                    onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
+                <section class="d-flex">
+                    <div class="card">
+                        <img src="{{ $item->poster_link }}" class="row-poster"
+                            onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
+                        <div class="card-body" >
+                            <section class="d-flex justify-content-between">
+                                <div>
+                                    <i class="bi bi-play-circle-fill card-icon"></i>
+                                    <i class="bi bi-plus-circle card-icon"></i>
+                                </div>
+                                <div>
+                                    <i class="bi bi-arrow-down-circle card-icon"></i>
+                                </div>
+                            </section>
+                            <section class="d-flex align-items-center justify-content-between">
+                                <p class="netflix-card-text m-0" style="color: rgb(0, 186, 0);">97%
+                                    match
+                                </p>
+                                <span class="m-2 netflix-card-text text-white">Limited
+                                    Series</span>
+                                <span class="border netflix-card-text p-1 text-white">HD</span>
+
+                            </section>
+                            <span class="netflix-card-text text-white">Provocative •
+                                Psychological •
+                                Thriller</span>
+                        </div>
+                    </div>
+                </section>
             @endforeach
         </div>
         <button class="scroll-right-poster" id="scrollpost2">▶</button>
     </div>
-
     <div class="row">
         <h2>Hiện đang thịnh hành</h2>
-        <div class="row-posters " id="rowpost3">
+        <div class="row-posters" id="rowpost3">
             @foreach ($movie_link->skip(20)->take(10) as $item)
-                <img src="{{ $item->poster_link }}" class="row-poster"
-                    onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
+                <section class="d-flex">
+                    <div class="card">
+                        <img src="{{ $item->poster_link }}" class="row-poster"
+                            onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
+                        <div class="card-body" >
+                            <section class="d-flex justify-content-between">
+                                <div>
+                                    <i class="bi bi-play-circle-fill card-icon"></i>
+                                    <i class="bi bi-plus-circle card-icon"></i>
+                                </div>
+                                <div>
+                                    <i class="bi bi-arrow-down-circle card-icon"></i>
+                                </div>
+                            </section>
+                            <section class="d-flex align-items-center justify-content-between">
+                                <p class="netflix-card-text m-0" style="color: rgb(0, 186, 0);">97%
+                                    match
+                                </p>
+                                <span class="m-2 netflix-card-text text-white">Limited
+                                    Series</span>
+                                <span class="border netflix-card-text p-1 text-white">HD</span>
+
+                            </section>
+                            <span class="netflix-card-text text-white">Provocative •
+                                Psychological •
+                                Thriller</span>
+                        </div>
+                    </div>
+                </section>
             @endforeach
         </div>
         <button class="scroll-right-poster" id="scrollpost3">▶</button>
     </div>
-
     <div class="row">
         <h2>Phim truyền hình lãng mạng</h2>
         <div class="row-posters" id="rowpost4">
             @foreach ($movie_link->skip(30)->take(10) as $item)
-                <img src="{{ $item->poster_link }}" class="row-poster"
-                    onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
+                <section class="d-flex">
+                    <div class="card">
+                        <img src="{{ $item->poster_link }}" class="row-poster"
+                            onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
+                        <div class="card-body" >
+                            <section class="d-flex justify-content-between">
+                                <div>
+                                    <i class="bi bi-play-circle-fill card-icon"></i>
+                                    <i class="bi bi-plus-circle card-icon"></i>
+                                </div>
+                                <div>
+                                    <i class="bi bi-arrow-down-circle card-icon"></i>
+                                </div>
+                            </section>
+                            <section class="d-flex align-items-center justify-content-between">
+                                <p class="netflix-card-text m-0" style="color: rgb(0, 186, 0);">97%
+                                    match
+                                </p>
+                                <span class="m-2 netflix-card-text text-white">Limited
+                                    Series</span>
+                                <span class="border netflix-card-text p-1 text-white">HD</span>
+
+                            </section>
+                            <span class="netflix-card-text text-white">Provocative •
+                                Psychological •
+                                Thriller</span>
+                        </div>
+                    </div>
+                </section>
             @endforeach
         </div>
         <button class="scroll-right-poster" id="scrollpost4">▶</button>
     </div>
-
     <div class="row">
         <h2>Phim truyền hình Trung Quốc lãng mạng</h2>
         <div class="row-posters" id="rowpost5">
             @foreach ($movie_link->skip(40)->take(10) as $item)
-                <img src="{{ $item->poster_link }}" class="row-poster"
-                    onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
+                <section class="d-flex">
+                    <div class="card">
+                        <img src="{{ $item->poster_link }}" class="row-poster"
+                            onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
+                        <div class="card-body" >
+                            <section class="d-flex justify-content-between">
+                                <div>
+                                    <i class="bi bi-play-circle-fill card-icon"></i>
+                                    <i class="bi bi-plus-circle card-icon"></i>
+                                </div>
+                                <div>
+                                    <i class="bi bi-arrow-down-circle card-icon"></i>
+                                </div>
+                            </section>
+                            <section class="d-flex align-items-center justify-content-between">
+                                <p class="netflix-card-text m-0" style="color: rgb(0, 186, 0);">97%
+                                    match
+                                </p>
+                                <span class="m-2 netflix-card-text text-white">Limited
+                                    Series</span>
+                                <span class="border netflix-card-text p-1 text-white">HD</span>
+
+                            </section>
+                            <span class="netflix-card-text text-white">Provocative •
+                                Psychological •
+                                Thriller</span>
+                        </div>
+                    </div>
+                </section>
             @endforeach
         </div>
         <button class="scroll-right-poster" id="scrollpost5">▶</button>
     </div>
-
     <div class="row">
         <h2>Phim truyền hình giành giải thưởng châu Á</h2>
         <div class="row-posters" id="rowpost6">
             @foreach ($movie_link->skip(50)->take(10) as $item)
-                <img src="{{ $item->poster_link }}" class="row-poster"
-                    onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
+                <section class="d-flex">
+                    <div class="card">
+                        <img src="{{ $item->poster_link }}" class="row-poster"
+                            onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
+                        <div class="card-body" >
+                            <section class="d-flex justify-content-between">
+                                <div>
+                                    <i class="bi bi-play-circle-fill card-icon"></i>
+                                    <i class="bi bi-plus-circle card-icon"></i>
+                                </div>
+                                <div>
+                                    <i class="bi bi-arrow-down-circle card-icon"></i>
+                                </div>
+                            </section>
+                            <section class="d-flex align-items-center justify-content-between">
+                                <p class="netflix-card-text m-0" style="color: rgb(0, 186, 0);">97%
+                                    match
+                                </p>
+                                <span class="m-2 netflix-card-text text-white">Limited
+                                    Series</span>
+                                <span class="border netflix-card-text p-1 text-white">HD</span>
+
+                            </section>
+                            <span class="netflix-card-text text-white">Provocative •
+                                Psychological •
+                                Thriller</span>
+                        </div>
+                    </div>
+                </section>
             @endforeach
         </div>
         <button class="scroll-right-poster" id="scrollpost6">▶</button>
@@ -335,5 +392,81 @@
     <!-- nav bar -->
     @include('layout.user_footer');
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const rowposterwidth = document.querySelector(".row-poster").offsetWidth;
+        const rowposters1 = document.getElementById('rowpost1');
+        const rowposters2 = document.getElementById('rowpost2');
+        const rowposters3 = document.getElementById('rowpost3');
+        const rowposters4 = document.getElementById('rowpost4');
+        const rowposters5 = document.getElementById('rowpost5');
+        const rowposters6 = document.getElementById('rowpost6');
+        const scrollRightPoster1 = document.getElementById('scrollpost1');
+        const scrollRightPoster2 = document.getElementById('scrollpost2');
+        const scrollRightPoster3 = document.getElementById('scrollpost3');
+        const scrollRightPoster4 = document.getElementById('scrollpost4');
+        const scrollRightPoster5 = document.getElementById('scrollpost5');
+        const scrollRightPoster6 = document.getElementById('scrollpost6');
+
+        scrollRightPoster1.addEventListener("click", function() {
+            const currentLeft = parseFloat(getComputedStyle(rowposters1).left);
+            const newLeft = currentLeft - rowposterwidth * 4;
+            rowposters1.style.left = newLeft + "px";
+            if (newLeft <= -rowposterwidth * 5) {
+                rowposters1.style.left = "0";
+            }
+        });
+
+        scrollRightPoster2.addEventListener("click", function() {
+            const currentLeft = parseFloat(getComputedStyle(rowposters2).left);
+            const newLeft = currentLeft - rowposterwidth * 4;
+            rowposters2.style.left = newLeft + "px";
+            if (newLeft <= -rowposterwidth * 5) {
+                rowposters2.style.left = "0";
+            }
+        });
+
+        scrollRightPoster3.addEventListener("click", function() {
+            const currentLeft = parseFloat(getComputedStyle(rowposters3).left);
+            const newLeft = currentLeft - rowposterwidth * 4;
+            rowposters3.style.left = newLeft + "px";
+            if (newLeft <= -rowposterwidth * 5) {
+                rowposters3.style.left = "0";
+            }
+        });
+
+        scrollRightPoster4.addEventListener("click", function() {
+            const currentLeft = parseFloat(getComputedStyle(rowposters4).left);
+            const newLeft = currentLeft - rowposterwidth * 4;
+            rowposters4.style.left = newLeft + "px";
+            if (newLeft <= -rowposterwidth * 5) {
+                rowposters4.style.left = "0";
+            }
+        });
+
+        scrollRightPoster5.addEventListener("click", function() {
+            const currentLeft = parseFloat(getComputedStyle(rowposters5).left);
+            const newLeft = currentLeft - rowposterwidth * 4;
+            rowposters5.style.left = newLeft + "px";
+            if (newLeft <= -rowposterwidth * 5) {
+                rowposters5.style.left = "0";
+            }
+        });
+
+        scrollRightPoster6.addEventListener("click", function() {
+            const currentLeft = parseFloat(getComputedStyle(rowposters6).left);
+            const newLeft = currentLeft - rowposterwidth * 4;
+            rowposters6.style.left = newLeft + "px";
+            if (newLeft <= -rowposterwidth * 5) {
+                rowposters6.style.left = "0";
+            }
+        });
+    })
+
+    function redirectTo(url) {
+        window.location.href = url;
+    }
+</script>
 <script src="js/logout.js"></script>
+
 </html>

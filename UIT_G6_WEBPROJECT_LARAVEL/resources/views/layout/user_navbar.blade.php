@@ -2,8 +2,10 @@
 <div class="navbar">
     <div class="navbar-container">
         <div class="logo-container">
-             {{-- <h1 class="logo">Netflop</h1> --}} 
-            <a href="https://fontmeme.com/netflix-font/"><img class="logo" src="https://fontmeme.com/permalink/240508/a0a2db44cf95ee3c25441c8005f90516.png" alt="netflix-font" border="0"></a>
+            {{-- <h1 class="logo">Netflop</h1> --}}
+            <a style="display: flex; align-items: center; height: 100vh;" href="/index"><img class="logo"
+                    src="https://fontmeme.com/permalink/240508/a0a2db44cf95ee3c25441c8005f90516.png" alt="netflix-font"
+                    border="0"></a>
         </div>
         <div class="menu-container">
             <ul class="menu-list">
@@ -26,25 +28,18 @@
                 </li>
             </ul>
         </div>
-        <div class="nav-item dropdown no-arrow">  
+        <div class="nav-item dropdown no-arrow">
             <i><a title="Phim" href="./search.html" class="fa-solid fa-magnifying-glass"></a></i>
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="img-profile rounded-circle"
-                    src="uploads/1713541793.png">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
-                
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <img class="img-profile rounded-circle" src="uploads/1713541793.png">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
             </a>
+            <div class="form-info hidden" aria-labelledby="userDropdown">
 
-           
-               
-            <div class="form-info hidden"
-            aria-labelledby="userDropdown">
-                
-                @if(Auth::user()->role_id==1)
-    
+                @if (Auth::user()->role_id == 1)
                     <a href="/home" class="dropdown-item">
-                        {{Auth::user()->role_id}}
+                        {{ Auth::user()->role_id }}
                         <i class='bx bx-home-smile'></i>
                         Go To Dashboard
                     </a>
@@ -54,6 +49,7 @@
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     Logout
                 </a>
+            </div>
         </div>
     </div>
 </div>
