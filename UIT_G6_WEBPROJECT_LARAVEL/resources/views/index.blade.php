@@ -121,7 +121,7 @@
 
             <!-- Repeat this structure for the rest of the images -->
         </div>
-        <button class="scroll-right">▶</button>
+        <button class="scroll-right">></button>
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -200,8 +200,9 @@
                 </section>
             @endforeach
         </div>
-        <button class="scroll-right-poster" id="scrollpost1">▶</button>
+        <button class="scroll-right-poster" id="scrollpost1">></button>
     </div>
+   
 
     <div class="row">
         <h2>Danh sách tiếp tục xem</h2>
@@ -238,7 +239,7 @@
                 </section>
             @endforeach
         </div>
-        <button class="scroll-right-poster" id="scrollpost2">▶</button>
+        <button class="scroll-right-poster" id="scrollpost2">></button>
     </div>
     <div class="row">
         <h2>Hiện đang thịnh hành</h2>
@@ -275,7 +276,7 @@
                 </section>
             @endforeach
         </div>
-        <button class="scroll-right-poster" id="scrollpost3">▶</button>
+        <button class="scroll-right-poster" id="scrollpost3">></button>
     </div>
     <div class="row">
         <h2>Phim truyền hình lãng mạng</h2>
@@ -312,7 +313,7 @@
                 </section>
             @endforeach
         </div>
-        <button class="scroll-right-poster" id="scrollpost4">▶</button>
+        <button class="scroll-right-poster" id="scrollpost4">></button>
     </div>
     <div class="row">
         <h2>Phim truyền hình Trung Quốc lãng mạng</h2>
@@ -349,7 +350,7 @@
                 </section>
             @endforeach
         </div>
-        <button class="scroll-right-poster" id="scrollpost5">▶</button>
+        <button class="scroll-right-poster" id="scrollpost5">></button>
     </div>
     <div class="row">
         <h2>Phim truyền hình giành giải thưởng châu Á</h2>
@@ -386,7 +387,7 @@
                 </section>
             @endforeach
         </div>
-        <button class="scroll-right-poster" id="scrollpost6">▶</button>
+        <button class="scroll-right-poster" id="scrollpost6">></button>
     </div>
 
     <!-- nav bar -->

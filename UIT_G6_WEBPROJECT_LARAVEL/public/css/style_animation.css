@@ -169,6 +169,7 @@ i {
 }
 
 .card {
+    margin-left: 50px;
     width: 250px;
     background-color: #141414;
     border-radius: 4px;

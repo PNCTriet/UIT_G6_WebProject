@@ -547,9 +547,9 @@ transform: translate(-50%, -50%);
   
   .row {
     color: white;
-    margin-left: 20px;
+    margin-left: 10px;
     overflow: hidden;
-    margin-top: 50px;
+    padding: 20px;
     /* position: relative; */
     /* height: 250px; */
   }
@@ -621,50 +621,30 @@ transform: translate(-50%, -50%);
   }
   
   .scroll-right-poster:hover{
-    opacity:1;
-    margin-left: -20px;
+    opacity:0.5;
   }
   .scroll-right-poster{
-    outline:0 !important;
-    text-align: left;
+    margin-top: 15px;
+    outline: 0 !important;
+    text-align: center;
     transition: all 400ms ease-out;
-    -moz-transition: all 400ms ease-out;
-    -webkit-transition: all 400ms ease-out;
+    /* -moz-transition: all 400ms ease-out;
+    -webkit-transition: all 400ms ease-out; */
     position: relative;
-    left:98%;
+    left: 95.5%;
+    /* transform: translateY(-50%); */
     background-color: black;
-    border-radius: 12px;
-    border-bottom-style: hidden;
-    border-top-style: hidden;
-    border-left-style: hidden;
-    border-right-style: hidden;
+    border-radius: 5px;
     color: white;
-    bottom: 170px;
     opacity: 0.1;
-    width: 150px;
+    width: 55px;
     height: 150px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 40px;
+    font-size: 20px;
+    z-index: 1000; /* Đảm bảo nút lớp trên cùng */
+    /* margin-top: 70px; */
   }
-  .scroll-right:hover {
-    opacity:1;
-    margin-left: -20px; 
-  }
-  .scroll-right {
-    outline:0 !important;
-    text-align: left;
-    transition: all 400ms ease-out;
-    -moz-transition: all 400ms ease-out;
-    -webkit-transition: all 400ms ease-out;
-    position: relative;
-    left: 1750px;
-    bottom: 265px;
-    opacity: 0.1;
-    width: 150px;
-    height: 205px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 40px;
-  }
+  
 
 /* lehoanduc sửa phần logout trên thanh headerr */
 .form-info {
@@ -716,4 +696,16 @@ img.img-profile.rounded-circle {
   display: flex;
   align-items: center;
   gap: 30px;
+}
+
+.rowContainer .rowContent .slider .handle{
+  background: hsla(0, 0%, 8%, .5);
+}
+.slider .handle.handleNext {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  right: 0;
+}
+.slider .handle.active {
+  cursor: pointer;
 }
