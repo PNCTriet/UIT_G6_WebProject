@@ -32,7 +32,7 @@
         <?php
         // API Key của bạn từ TMDB
         $api_key = '123113d4a4822456c35fc67ce8dd0c16';
-
+        // https://api.themoviedb.org/3/tv/215720/videos?api_key=$123113d4a4822456c35fc67ce8dd0c16
         // Từ khóa tìm kiếm
         $query = $movie['name'];
 
@@ -125,9 +125,6 @@
         ?>
         
         <br></br>
-
-        
-
 
         <!-- footer -->
         <div class="member-footer">

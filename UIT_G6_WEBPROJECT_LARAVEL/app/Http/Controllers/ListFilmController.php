@@ -15,7 +15,7 @@ class ListFilmController extends Controller
 
         $movie_link = DB::table('movie_link')
                         ->join('movie', 'movie_link.id', '=', 'movie.link_id')
-                        ->select('movie_link.*', 'movie.title as movie_name')
+                        ->select('movie_link.*', 'movie.title as movie_name','movie.description as movie_api')
                         ->get();
         return view('index', compact('movie_link'));
     }

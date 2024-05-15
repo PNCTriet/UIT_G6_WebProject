@@ -709,3 +709,12 @@ img.img-profile.rounded-circle {
 .slider .handle.active {
   cursor: pointer;
 }
+
+.video-container{
+  position: relative;
+  align-items: center;
+}
+.videocontainer{
+  width:100%;
+  height:100%;
+}

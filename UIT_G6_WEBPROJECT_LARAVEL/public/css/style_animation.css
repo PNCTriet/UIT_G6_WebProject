@@ -185,6 +185,7 @@ i {
 }
 
 .card-body {
+    align-items: center;
     display: none;
     /* height: 0px; */
     padding: 10px 15px;
