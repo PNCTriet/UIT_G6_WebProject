@@ -397,7 +397,7 @@
                                         echo '<iframe class="videocontainer" id="youtubeVideo" src="https://www.youtube.com/embed/' . $youtube_key . '" frameborder="0" allowfullscreen></iframe>';
                                         echo '</div>';
                                     } else {
-                                        // echo '<p>Không tìm thấy video trailer cho bộ phim này.</p>';
+                                        echo '<p> </p>';
                                     }
                                     
                                     // URL của API của TMDB để lấy thông tin chi tiết của series

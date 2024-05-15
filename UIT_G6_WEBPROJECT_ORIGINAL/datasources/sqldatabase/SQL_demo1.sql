@@ -14,6 +14,10 @@ CREATE TABLE `User` (
   `updated_at` datetime
 );
 
+ALTER TABLE User
+ALTER COLUMN role_id SET DEFAULT 2;
+
+
 CREATE TABLE `User_role` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
   `role_type` varchar(255),
