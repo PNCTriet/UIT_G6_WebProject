@@ -42,12 +42,6 @@
         <button class="scroll-right">▶</button>
     </div>
 
-
-
-  
-
-
-
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const numberRow = document.querySelector(".number-row");
