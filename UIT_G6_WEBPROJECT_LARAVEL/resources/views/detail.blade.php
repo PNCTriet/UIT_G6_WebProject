@@ -69,6 +69,7 @@
             if (!empty($show['backdrop_path'])) {
                 echo '<div class="backdrop-container">';
                 echo '<img class="backdrop-img" src="https://image.tmdb.org/t/p/original/' . $show['backdrop_path'] . '" alt="' . $show['name'] . '">';
+                echo '<div class="backdrop-image" style="background-image: url("https://image.tmdb.org/t/p/original/' . $show['backdrop_path'] . '" alt="' . $show['name'] . '")"></div>';
                 // Lấy thêm nhiều backdrop và hiển thị ngẫu nhiên mỗi lần trang được tải lại
                 $backdrop_count = 5; // Số lượng backdrop muốn hiển thị
                 echo '</div>';
@@ -76,15 +77,69 @@
                 echo '<p>Không có backdrop.</p>';
             }
             echo '<h1>' . $show['name'] . '</h1>';
-            echo '<img src="https://image.tmdb.org/t/p/w500/' . $show['poster_path'] . '" alt="' . $show['name'] . '">';
-            echo '<p><strong>Ngày phát sóng:</strong> ' . $show['first_air_date'] . '</p>';
-            echo '<p><strong>Đánh giá:</strong> ' . $show['vote_average'] . '</p>';
-            echo '<p><strong>Tóm tắt:</strong> ' . $show['overview'] . '</p>';
-            echo '<p><strong>Ngôn ngữ gốc:</strong> ' . $show['original_language'] . '</p>';
-            echo '<p><strong>Quốc gia gốc:</strong> ' . implode(', ', $show['origin_country']) . '</p>';
-            echo '<p><strong>Thể loại:</strong> ' . implode(', ', $show['genre_ids']) . '</p>';
-            echo '<p><strong>Populariy:</strong> ' . $show['popularity'] . '</p>';
-            echo '<p><strong>Số lượt đánh giá:</strong> ' . $show['vote_count'] . '</p>';
+            //echo '<img src="https://image.tmdb.org/t/p/w500/' . $show['poster_path'] . '" alt="' . $show['name'] . '">';
+            echo '<figure class="poster-box movie-poster">
+                    <img src="https://image.tmdb.org/t/p/w342/' . $show['poster_path'] . '" alt="' . $show['name'] . '">
+                </figure>
+                <div class="detail-box">
+    
+                    <div class="detail-content">
+                    <h1 class="heading">${title}</h1>
+                
+                    <div class="meta-list">
+                
+                        <div class="meta-item">
+                        <img src="./assets/images/star.png" width="20" height="20" alt="rating">
+                
+                        <span class="span">'. $show['vote_average'] .'</span>
+                        
+                        </div>
+                
+                        <div class="separator"></div>
+                
+                        <div class="meta-item">${runtime}m</div>
+                
+                        <div class="separator"></div>
+                
+                        <div class="meta-item">' . $show['first_air_date'] . '</div>
+                
+                    </div>
+                
+                    <p class="genre">' . implode(', ', $show['genre_ids']) . '</p>
+                
+                    <p class="overview">' . $show['overview'] . '</p>
+                
+                    <ul class="detail-list">
+                
+                        <div class="list-item">
+                        <p class="list-name">Starring</p>
+                
+                        <p>${getCasts(cast)}</p>
+                        </div>
+                
+                        <div class="list-item">
+                        <p class="list-name">Directed By</p>
+                
+                        <p>${getDirectors(crew)}</p>
+                        </div>
+                
+                    </ul>
+                
+                    </div>
+                
+                </div>
+            </div>';
+            echo '
+            
+            ';
+            // echo '<p><strong>Ngày phát sóng:</strong> ' . $show['first_air_date'] . '</p>';
+            // echo '<p><strong>Đánh giá:</strong> ' . $show['vote_average'] . '</p>';
+            // echo '<p><strong>Tóm tắt:</strong> ' . $show['overview'] . '</p>';
+            // echo '<p><strong>Ngôn ngữ gốc:</strong> ' . $show['original_language'] . '</p>';
+            // echo '<p><strong>Quốc gia gốc:</strong> ' . implode(', ', $show['origin_country']) . '</p>';
+            // echo '<p><strong>Thể loại:</strong> ' . implode(', ', $show['genre_ids']) . '</p>';
+            // echo '<p><strong>Populariy:</strong> ' . $show['popularity'] . '</p>';
+            // echo '<p><strong>Số lượt đánh giá:</strong> ' . $show['vote_count'] . '</p>';
             
             // Gọi API để lấy thông tin về video trailer
             $video_url = "https://api.themoviedb.org/3/tv/{$show['id']}/videos?api_key=$api_key";
@@ -105,6 +160,10 @@
             $credits_url = "https://api.themoviedb.org/3/tv/{$show['id']}/credits?api_key=$api_key";
             $credits_response = file_get_contents($credits_url);
             $credits_data = json_decode($credits_response, true);
+
+            echo '<br>';
+            echo '<br>';
+            echo '<br>';
 
             // Hiển thị hình diễn viên
             if (!empty($credits_data['cast'])) {
