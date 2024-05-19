@@ -11,13 +11,14 @@
 .movie-card {
   font: 14px/22px "Lato", Arial, sans-serif;
   color: #A9A8A3;
-  padding: 40px 0;
+  padding: 40px 0 100px 0;
+  height: auto;
 }
 
 .container {
   margin: 0 auto;
   width: 780px;
-  height: 640px;
+  height: auto;
   background: #F0F0ED;
   border-radius: 5px;
   position: relative;
@@ -100,12 +101,16 @@
 .description {
   
   bottom: 0px;
-  height: 200px;
+  height: auto;
   font-size: 16px;
   line-height: 26px;
   color: #B1B0AC;
   padding-left: 250px;
   
+}
+
+.video-container{
+  padding-top: 50px;
 }
 
 .column1 {
@@ -249,3 +254,42 @@ a[data-tooltip][data-placement="top"]::after {
   margin-bottom: 4px;
 }
 
+.cast-container {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  padding: 10px 50px 10px 50px;
+  border-radius: 10px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cast-container::-webkit-scrollbar{
+  display: none;
+}
+
+.cast-img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cast-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.cast-name {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+h1{
+  color: white;
+  padding-left: 50px;
+}

@@ -62,9 +62,14 @@
 
         // Chuyển đổi JSON thành mảng
         $data = json_decode($response, true);
+        
         // Hiển thị thông tin trả về từ API
         if (isset($data['results'][0])) {
             $show = $data['results'][0];
+            $video_url = "https://api.themoviedb.org/3/tv/{$show['id']}/videos?api_key=$api_key";
+            $video_response = file_get_contents($video_url);
+            $video_data = json_decode($video_response, true);
+            $youtube_key = $video_data['results'][0]['key'];
             echo '<div class="movie-card" >
   
                     <div class="container">
@@ -100,7 +105,6 @@
                     
                     <div class="description">
                         
-                        <p class="genre">' . implode(', ', $show['genre_ids']) . '</p>
                         
                         <div class="column2">
                         
@@ -108,7 +112,7 @@
                         <p><strong>Đánh giá:</strong> ' . $show['vote_average'] . '</p>
                         <p><strong>Tóm tắt:</strong> ' . $show['overview'] . '</p>
                         <p><strong>Ngôn ngữ gốc:</strong> ' . $show['original_language'] . '</p>
-                         <strong>Quốc gia gốc:</strong> ' . implode(', ', $show['origin_country']) . '</p>
+                        <strong>Quốc gia gốc:</strong> ' . implode(', ', $show['origin_country']) . '</p>
                         <p><strong>Thể loại:</strong> ' . implode(', ', $show['genre_ids']) . '</p>
                         <p><strong>Populariy:</strong> ' . $show['popularity'] . '</p>
                         <p><strong>Số lượt đánh giá:</strong> ' . $show['vote_count'] . '</p>
@@ -116,10 +120,37 @@
                         
                         </div> <!-- end column2 -->
                     </div> <!-- end description -->
-                    
-                    
+                    <h2>Trailer</h2>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/' . $youtube_key . '" frameborder="0" allowfullscreen></iframe>
+                    </div>
                     </div>
                 </div> ';
+                
+            // Gọi API để lấy thông tin về diễn viên của bộ phim
+            $credits_url = "https://api.themoviedb.org/3/tv/{$show['id']}/credits?api_key=$api_key";
+            $credits_response = file_get_contents($credits_url);
+            $credits_data = json_decode($credits_response, true);
+
+            echo '<br>';
+            echo '<br>';
+            echo '<br>';
+
+            // Hiển thị hình diễn viên
+            if (!empty($credits_data['cast'])) {
+                echo '<h1>Diễn viên</h1>';
+                echo '<div class="cast-container">';
+                foreach ($credits_data['cast'] as $cast) {
+                    $profile_path = $cast['profile_path'];
+                    if ($profile_path) {
+                        echo '<img class="cast-img" src="https://image.tmdb.org/t/p/w200/' . $profile_path . '" alt="' . $cast['name'] . '">';
+                    }
+                }
+                echo '</div>';
+            } else {
+                echo '<p>Không tìm thấy thông tin về diễn viên cho bộ phim này.</p>';
+            }
+
             // // Hiển thị backdrop
             // if (!empty($show['backdrop_path'])) {
             //     echo '<div class="backdrop-container">';
