@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\ForgetPasswordManager;
 use App\Http\Controllers\testController;
 use App\Http\Controllers\ListFilmController;
 use App\Http\Controllers\MoviesController;
+use App\Http\Controllers\ProfileController1;
 
 // Route::get('/', function () {
 //     return view('home');
@@ -24,6 +25,8 @@ Route::get("/test", function(){
 // Route::get("/detail", function(){
 //     return view('detail');
 // });
+
+Route::get('/profile', [ProfileController::class, 'get_information'])->name('get_information');
 
 // Movie 
 Route::get('/tables',[testController::class,'table'])->middleware(['auth', 'verified']);
