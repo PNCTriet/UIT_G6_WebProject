@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\user_model;
+use DB;
 
 class ProfileController extends Controller
 {
@@ -56,5 +58,29 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'name' => 'required|max:32',
+            'email' => 'required|email',
+            'birthday' => 'required|date',
+            'address' => 'required|max:100',
+            'phoneNumber' => 'required|max:20'
+        ]);
+        $profile = new user_model();
+        $profile->name = $request->input('name');
+        $profile->email = $request->input('email');
+        $profile->birthday = $request->input('birthday');
+        $profile->address = $request->input('address');
+        $profile->phoneNumber = $request->input('phoneNumber');
+        $profile->save();
+
+        return redirect()->back()->with('success');
+    }
+
+    public function get_information(){
+        $infor = DB::table('user')->get();
+        return view('profile', compact('infor'));
     }
 }

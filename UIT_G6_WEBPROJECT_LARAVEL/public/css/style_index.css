@@ -14,6 +14,32 @@
   }
 }
 
+body {
+  padding: 0;
+  margin: 0;
+  background: #000;
+}
+.logotitle {
+    width: 205px;
+    height: 372px;
+    background-image: linear-gradient(to right, #B30000 33%, #000 33%, #000 67%, #B30000 67%, #B30000 100%);
+      position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+.logo:before {
+ content: '';
+ width: 84px;
+ height: 100%;
+ position: absolute;
+ background: #E80000;
+ top: 0;
+ opacity: 1;
+ transform: skewX(18deg) ;
+ left: 29.55%;
+ box-shadow: inset 0 1px 2px rgba(0.2, 0.2,0.2,0.2), 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22), 0 0 100px rgba(0.3, 0.3,0.3,0.3);
+}
 
 @media screen and (min-width: 100%) and (max-width: 100%) and (orientation: landscape) {
     body,
@@ -165,7 +191,7 @@
     width: 32px; /* Điều chỉnh chiều rộng của hình ảnh */
     height: 32px; /* Điều chỉnh chiều cao của hình ảnh */
     border-radius: 50%; /* Đảm bảo hình ảnh là hình tròn */
-    object-fit: cover; */
+    object-fit: cover; 
   }
   
   .toggle {
@@ -270,7 +296,7 @@
   }
   
   .movie-list-item:hover .movie-list-item-img {
-    transform: scale(1.2);
+    transform: scale(1);
     margin: 0 30px;
     opacity: 0.5;
   }
@@ -397,7 +423,6 @@
   }
   .video {
     position: relative;
-    margin-top: 0;
     object-fit: cover;
     background-position: center;
     transition: all 500ms ease-in-out;
@@ -486,10 +511,12 @@
     transition: transform 450ms;
     white-space: nowrap;
     display: flex;
+    border-radius: 2px;
   }
 
+
   .row-posters {
-    position: relative;
+    position: absolute;
     display: flex;
    /* overflow-x: hidden;
     overflow-y: scroll;*/ 
@@ -498,7 +525,7 @@
   }
   
   .row-poster:hover {
-    transform: scale(1.08);
+    transform: scale(1);
   }
   
   .row-posters::-webkit-scrollbar {
@@ -510,7 +537,7 @@
   }
   
   .row-posterLarge:hover {
-    transform: scale(1.09);
+    transform: scale(1);
   }
 
   .img_poster {
@@ -520,10 +547,11 @@
   
   .row {
     color: white;
-    margin-left: 20px;
+    margin-left: 10px;
     overflow: hidden;
-    position:relative;
-    height: 250px;
+    padding: 20px;
+    /* position: relative; */
+    /* height: 250px; */
   }
   
   .member-footer {
@@ -531,6 +559,7 @@
     margin: 20px auto 0;
     max-width: 100%;
     padding: 0 4%;
+    z-index: 1;
   }
   
   .member-footer .member-footer-links {
@@ -592,50 +621,30 @@
   }
   
   .scroll-right-poster:hover{
-    opacity:1;
-    margin-left: -20px;
+    opacity:0.5;
   }
   .scroll-right-poster{
-    outline:0 !important;
-    text-align: left;
+    margin-top: 15px;
+    outline: 0 !important;
+    text-align: center;
     transition: all 400ms ease-out;
-    -moz-transition: all 400ms ease-out;
-    -webkit-transition: all 400ms ease-out;
+    /* -moz-transition: all 400ms ease-out;
+    -webkit-transition: all 400ms ease-out; */
     position: relative;
-    left:98%;
+    left: 95.5%;
+    /* transform: translateY(-50%); */
     background-color: black;
-    border-radius: 12px;
-    border-bottom-style: hidden;
-    border-top-style: hidden;
-    border-left-style: hidden;
-    border-right-style: hidden;
+    border-radius: 5px;
     color: white;
-    bottom: 170px;
     opacity: 0.1;
-    width: 150px;
+    width: 55px;
     height: 150px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 40px;
+    font-size: 20px;
+    z-index: 1000; /* Đảm bảo nút lớp trên cùng */
+    /* margin-top: 70px; */
   }
-  .scroll-right:hover {
-    opacity:1;
-    margin-left: -20px; 
-  }
-  .scroll-right {
-    outline:0 !important;
-    text-align: left;
-    transition: all 400ms ease-out;
-    -moz-transition: all 400ms ease-out;
-    -webkit-transition: all 400ms ease-out;
-    position: relative;
-    left: 1750px;
-    bottom: 265px;
-    opacity: 0.1;
-    width: 150px;
-    height: 205px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 40px;
-  }
+  
 
 /* lehoanduc sửa phần logout trên thanh headerr */
 .form-info {
@@ -689,6 +698,52 @@ img.img-profile.rounded-circle {
   align-items: center;
   gap: 30px;
 }
+
+
+
+.rowContainer .rowContent .slider .handle{
+  background: hsla(0, 0%, 8%, .5);
+}
+.slider .handle.handleNext {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  right: 0;
+}
+.slider .handle.active {
+  cursor: pointer;
+}
+
+.video-container{
+  position: relative;
+  align-items: center;
+}
+.videocontainer{
+  width:100%;
+  height:100%;
+}
+
+.scroll-right{
+  outline:0 !important;
+  text-align: left;
+  transition: all 400ms ease-out;
+  -moz-transition: all 400ms ease-out;
+  -webkit-transition: all 400ms ease-out;
+  position: relative;
+  border-radius: 12px;
+  left: 98%;
+  bottom: 250px;
+  opacity: 1;
+  width: 150px;
+  height: 204px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 40px;
+  z-index: 1000;
+}
+.scroll-right:hover {
+  opacity:1;
+  margin-left: -20px; 
+}
+
 
 /* chat bot */
 

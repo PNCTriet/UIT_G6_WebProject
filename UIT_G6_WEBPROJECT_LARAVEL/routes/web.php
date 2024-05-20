@@ -7,10 +7,12 @@ use App\Http\Controllers\Auth\ForgetPasswordManager;
 use App\Http\Controllers\testController;
 use App\Http\Controllers\ListFilmController;
 use App\Http\Controllers\MoviesController;
+use App\Http\Controllers\ProfileController1;
 use App\Http\Middleware\EnsureTokenIsValid;
 use Illuminate\Console\View\Components\Mutators\EnsurePunctuation;
 use Illuminate\Routing\Controllers\Middleware;
 use App\Http\Controllers\GeminiController;
+
 
 // Route::get('/', function () {
 //     return view('home');
@@ -21,6 +23,7 @@ Route::get('/index', [App\Http\Controllers\ListFilmController::class, 'get_movie
 Route::get('/home',[testController::class,'home'])->middleware(EnsureTokenIsValid::class);
 
 
+
 // Route::post("/test", function(){
 //     return response()->json(['text'=>'hello anh trai']);
 // });
@@ -28,13 +31,11 @@ Route::get('/token', function () {
     return csrf_token(); 
 });
 
-Route::get("/detail", function(){
-    return view('detail');
-});
+// Route::get("/detail", function(){
+//     return view('detail');
+// });
 
 //Route::get('/movies/{id}', 'ListFilmController@redirectToMovieDetail')->name('movies.redirect');
-//Route::get('/movies/{id}', [App\Http\Controllers\ListFilmController::class, 'redirectToMovieDetail'])->name('movies.redirect');
-//Route::get('/{name}', [App\Http\Controllers\MoviesController::class, 'show'])->name('detail');
 
 
 // Movie 
@@ -79,11 +80,13 @@ Route::get('/export-movie',[testController::class,'export_movie']);
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
+Route::get('profile/create',[ProfileController::class,'create']);
+Route::post('profile/store',[ProfileController::class,'store'])->name('profile.store');
 
 require __DIR__.'/auth.php';
 
@@ -111,3 +114,5 @@ Route::post('/text-image',[GeminiController::class,'text_image']);
 Route::get('/movies/{id}', [ListFilmController::class, 'redirectToMovieDetail'])->name('movies.redirect');
 Route::get('/{name}', [MoviesController::class, 'show'])->name('detail');
 
+Route::get('/movies/{id}', [App\Http\Controllers\ListFilmController::class, 'redirectToMovieDetail'])->name('movies.redirect');
+Route::get('/{name}', [App\Http\Controllers\MoviesController::class, 'show'])->name('detail');

@@ -52,6 +52,7 @@ class AuthController extends Controller
             'birthday' => 'required|date',
         ]);
         $data = $request->all();
+        $data['role_id'] = 1;
         //$data['password'] = Hash::make($data['password']); // Băm mật khẩu
         $this->create($data);
         return redirect('login')->withSuccess('You are registered successfully.');
@@ -61,7 +62,8 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'birthday' => $data['birthday']
+            'birthday' => $data['birthday'],
+            'role_id' => $data['role_id'] ?? 1
             //'password' => $data['password']
         ]);
     
@@ -157,9 +159,7 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         Auth::logout();
         if(Auth::check())return Redirect::to('/home');
-
         return Redirect::to('/login');
-
     }
     public function dashboard()
     {

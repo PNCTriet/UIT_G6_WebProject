@@ -1,4 +1,3 @@
-
 // Data for rendering video random when reloading page
 function name1(){
     window.scrollTo({top:0,behavior:'smooth'})
