@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="css/style_index.css" />
+    <link rel="stylesheet" href="css/style_animation.css" />
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
         rel="stylesheet" />
@@ -327,9 +327,9 @@
                                     // ID của series
                                     $series_id = $item->movie_api;
                                     
-                                    // URL của API của TMDB để lấy thông tin chi tiết của series
-                                    $video_url = "https://api.themoviedb.org/3/tv/{$series_id}/videos?api_key={$api_key}";
-                                    $video_response = file_get_contents($video_url);
+                                    // Gọi API để lấy thông tin về video trailer
+                                    // $video_url = "https://api.themoviedb.org/3/tv/{$show['id']}/videos?api_key=$api_key";
+                                    $video_url = "https://api.themoviedb.org/3/tv/{$series_id}/videos?api_key=$api_key";
                                     $video_response = file_get_contents($video_url);
                                     $video_data = json_decode($video_response, true);
                                     
@@ -428,7 +428,7 @@
                                     
                                     // Gọi API để lấy thông tin về video trailer
                                     // $video_url = "https://api.themoviedb.org/3/tv/{$show['id']}/videos?api_key=$api_key";
-                                    $video_url = "https://api.themoviedb.org/3/tv/{$series_id}/videos?api_key={$api_key}";
+                                    $video_url = "https://api.themoviedb.org/3/tv/{$series_id}/videos?api_key=$api_key";
                                     $video_response = file_get_contents($video_url);
                                     $video_data = json_decode($video_response, true);
                                     
@@ -507,7 +507,6 @@
         </div>
         <button class="scroll-right-poster" id="scrollpost4">></button>
     </div>
-
     <div class="row">
         <h2>Phim truyền hình Trung Quốc lãng mạng</h2>
         <div class="row-posters" id="rowpost5">
@@ -528,7 +527,7 @@
                                     
                                     // Gọi API để lấy thông tin về video trailer
                                     // $video_url = "https://api.themoviedb.org/3/tv/{$show['id']}/videos?api_key=$api_key";
-                                    $video_url = "https://api.themoviedb.org/3/tv/{$series_id}/videos?api_key={$api_key}";
+                                    $video_url = "https://api.themoviedb.org/3/tv/{$series_id}/videos?api_key=$api_key";
                                     $video_response = file_get_contents($video_url);
                                     $video_data = json_decode($video_response, true);
                                     
@@ -607,7 +606,6 @@
         </div>
         <button class="scroll-right-poster" id="scrollpost5">></button>
     </div>
-
     <div class="row">
         <h2>Phim truyền hình giành giải thưởng châu Á</h2>
         <div class="row-posters" id="rowpost6">
@@ -628,7 +626,7 @@
                                     
                                     // Gọi API để lấy thông tin về video trailer
                                     // $video_url = "https://api.themoviedb.org/3/tv/{$show['id']}/videos?api_key=$api_key";
-                                    $video_url = "https://api.themoviedb.org/3/tv/{$series_id}/videos?api_key={$api_key}";
+                                    $video_url = "https://api.themoviedb.org/3/tv/{$series_id}/videos?api_key=$api_key";
                                     $video_response = file_get_contents($video_url);
                                     $video_data = json_decode($video_response, true);
                                     

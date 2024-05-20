@@ -797,7 +797,7 @@ i.bx.bx-message-dots {
   position: fixed;
   bottom: 30px;
   right: 40px;
-  z-index: 10;
+  z-index: 1000;
   max-width: 300px;
   height: 400px;
   width: 100%;
@@ -831,6 +831,7 @@ i.bx.bx-x {
   border-radius: 6px;
   height: 80%;
   overflow: auto;
+  z-index: 1000;
 }
 .message-text {
   display: flex;
