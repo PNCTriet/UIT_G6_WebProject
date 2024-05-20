@@ -37,9 +37,10 @@ class testController extends Controller
 
     public function table()
     {
-        if (isset($msg)) {
-            echo $msg;
-        }
+       
+        // if (isset($msg)) {
+        //     echo $msg;
+        // }
         return view('tables', [
             'res' => DB::select("SELECT movie.id,title,moviecategory.name as category from movie,moviecategory
                                     WHERE movie.category_id =moviecategory.id"),

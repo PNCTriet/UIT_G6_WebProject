@@ -150,7 +150,7 @@
                 <div class="card shadow mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center  ">
                         <h6 class=" text-primary font-weight-bold ">User Movie</h6>
-                        <a href="/export-user" class=" btn bg-warning text-dark">Export Excel</a>
+                        <a href="/export-user" class=" btn bg-warning text-dark fs-2 ">Export Excel</a>
                     </div>
                     <div class="card-body table-movie">
                         <div class="w-50 mb-4">

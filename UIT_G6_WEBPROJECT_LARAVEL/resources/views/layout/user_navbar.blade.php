@@ -31,7 +31,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle"
-                    src="uploads/1713541793.png">
+                    src="{{Auth::user()->avartar}}">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
                 
             </a>
@@ -44,7 +44,7 @@
                 @if(Auth::user()->role_id==1)
     
                     <a href="/home" class="dropdown-item">
-                        {{Auth::user()->role_id}}
+                        
                         <i class='bx bx-home-smile'></i>
                         Go To Dashboard
                     </a>
@@ -54,6 +54,57 @@
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     Logout
                 </a>
+        </div>
+    </div>
+    {{-- Chat bot --}}
+    <div class="chat-bot">
+        <div class="logo-chat" onclick="openChatBot(this)">
+            <span class="animation-logo">
+                
+            </span>
+            <div class="logo-message">
+                <i class='bx bx-message-dots'></i>
+            </div>
+        </div>
+        
+        <div class="chat-content">
+            <div class="close-chat" onclick="closeChatBot(this)">
+                <i class='bx bx-x'></i>
+            </div>
+            <div class="content-text" user="{{AUTH::user()->avartar}}">
+                {{-- <div class="message-text">
+                    <img class="img-chat" src="{{AUTH::user()->avartar}}">
+                    <div>
+                        <p class="msg msg_user">
+                            i am sory ser
+                        </p>
+                    </div>
+                </div>
+                <div class="message-text message-bot-text">
+                   
+                    <div>
+                        <p class="msg msg_bot">
+                            thank for watching me video
+                        </p>
+                    </div>
+                    <img class="img-chat" src="/uploads/1713541793.png">
+                </div> --}}
+            </div>
+            <div class="btn-sent">
+                <div class="btn-send-detail">
+                    <input type="file" name="image_file" class="add_img">
+                    <span class="icon_1" onclick="add_image()">
+                        <i class='bx bx-plus-circle'></i>
+                    </span>
+                    <input type="text" name="text_file" placeholder="Type a message">
+                    <span class="send" onclick="sendMessage()">
+                        <i class='bx bx-send'></i>
+                    </span>
+                </div>
+                <div class="temp_image">
+                    
+                </div>
+            </div>
         </div>
     </div>
 </div>
