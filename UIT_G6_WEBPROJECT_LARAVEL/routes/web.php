@@ -13,7 +13,6 @@ use Illuminate\Console\View\Components\Mutators\EnsurePunctuation;
 use Illuminate\Routing\Controllers\Middleware;
 use App\Http\Controllers\GeminiController;
 
-
 // Route::get('/', function () {
 //     return view('home');
 // });
@@ -21,7 +20,6 @@ use App\Http\Controllers\GeminiController;
 Route::get('/index', [App\Http\Controllers\ListFilmController::class, 'get_movie_link']);
 
 Route::get('/home',[testController::class,'home'])->middleware(EnsureTokenIsValid::class);
-
 
 
 // Route::post("/test", function(){
@@ -35,8 +33,7 @@ Route::get('/token', function () {
 //     return view('detail');
 // });
 
-//Route::get('/movies/{id}', 'ListFilmController@redirectToMovieDetail')->name('movies.redirect');
-
+Route::get('/profile', [ProfileController::class, 'get_information'])->name('get_information');
 
 // Movie 
 Route::get('/tables',[testController::class,'table'])->middleware(EnsureTokenIsValid::class);
@@ -107,6 +104,8 @@ Route::post("/reset-password", [ForgetPasswordManager::class, "resetPasswordPost
     ->name("reset.password.post");
 
 
+Route::get('/movies/{id}', [ListFilmController::class, 'redirectToMovieDetail'])->name('movies.redirect');
+Route::get('/{name}', [MoviesController::class, 'show'])->name('detail');
 //Gemini AI
 Route::post('/only-text',[GeminiController::class,'only_text']);
 Route::post('/text-image',[GeminiController::class,'text_image']);
@@ -114,5 +113,3 @@ Route::post('/text-image',[GeminiController::class,'text_image']);
 Route::get('/movies/{id}', [ListFilmController::class, 'redirectToMovieDetail'])->name('movies.redirect');
 Route::get('/{name}', [MoviesController::class, 'show'])->name('detail');
 
-Route::get('/movies/{id}', [App\Http\Controllers\ListFilmController::class, 'redirectToMovieDetail'])->name('movies.redirect');
-Route::get('/{name}', [App\Http\Controllers\MoviesController::class, 'show'])->name('detail');
