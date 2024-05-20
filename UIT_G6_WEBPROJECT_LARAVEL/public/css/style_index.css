@@ -22,7 +22,7 @@ body {
 .logotitle {
     width: 205px;
     height: 372px;
-    background-image: linear-gradient(to right, #B30000 33%, #000 33%, #000 67%, #B30000 67%, #B30000 100%);
+    background-image: linear-gradient(to right, #e50914 33%, #000 33%, #000 67%, #e50914 67%, #e50914 100%);
       position: absolute;
 top: 50%;
 left: 50%;
@@ -33,7 +33,7 @@ transform: translate(-50%, -50%);
  width: 84px;
  height: 100%;
  position: absolute;
- background: #E80000;
+ background: #e50914;
  top: 0;
  opacity: 1;
  transform: skewX(18deg) ;
@@ -149,7 +149,7 @@ transform: translate(-50%, -50%);
   .logo {
     max-width: 100px;
     font-size: 30px;
-    color: red;
+    color:#e50914;
     margin-right: 30px;
   }
   
@@ -415,7 +415,7 @@ transform: translate(-50%, -50%);
     z-index: 5;
   }
   .header-title {
-    color: red;
+    color: #e50914;
   }
   .sec-2 {
     height: 100vh;
@@ -762,7 +762,7 @@ span.animation-logo {
   padding: 10px;
   width: 100%;
   height: 100%;
-  background: red;
+  background: #e50914;
   border-radius: 50px;
   z-index: 0;
   opacity: 0.7;
@@ -770,8 +770,8 @@ span.animation-logo {
 }
 
 .logo-message {
-  background-color: rgb(208, 113, 65);
-  z-index: 10;
+  background-color: #e50914;
+  z-index: 1001;
   width: 100%;
   height: 100%;
   border-radius: 50px;
@@ -890,7 +890,7 @@ input[type="file"] {
 span.icon_1 {
   font-size: 20px;
   /* background: red; */
-  color: red;
+  color: #e50914;
   display: flex;
   text-align: center;
 }
@@ -904,7 +904,7 @@ input[type="text"] {
 
 span.send {
   font-size: 25px;
-  color: red;
+  color: #e50914;
   text-align: center;
   display: flex;
 }

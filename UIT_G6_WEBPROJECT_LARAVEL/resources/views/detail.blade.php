@@ -11,6 +11,7 @@
         href="datasources/img/netflop.png">
 </link>
     <link rel="stylesheet" href="css/style_detail.css" />
+    <link rel="stylesheet" href="css/style_index.css" />
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
         rel="stylesheet" />
@@ -347,5 +348,5 @@
             </ul>
         </div>
 </body>
-
+<script src="js/logout.js"></script>
 </html>

@@ -61,7 +61,7 @@
                 
             </span>
             <div class="logo-message">
-                <i class='bx bx-message-dots'></i>
+                <img src="datasources/img/logoai.png" style="height: 40px; weight:40px;" alt="Chat Logo" class="chat-logo">
             </div>
         </div>
         
