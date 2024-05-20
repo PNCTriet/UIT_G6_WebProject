@@ -10,6 +10,7 @@ use App\Http\Controllers\MoviesController;
 use App\Http\Middleware\EnsureTokenIsValid;
 use Illuminate\Console\View\Components\Mutators\EnsurePunctuation;
 use Illuminate\Routing\Controllers\Middleware;
+use App\Http\Controllers\GeminiController;
 
 // Route::get('/', function () {
 //     return view('home');
@@ -20,8 +21,11 @@ Route::get('/index', [App\Http\Controllers\ListFilmController::class, 'get_movie
 Route::get('/home',[testController::class,'home'])->middleware(EnsureTokenIsValid::class);
 
 
-Route::get("/test", function(){
-    return view('testapi');
+// Route::post("/test", function(){
+//     return response()->json(['text'=>'hello anh trai']);
+// });
+Route::get('/token', function () {
+    return csrf_token(); 
 });
 
 Route::get("/detail", function(){
@@ -35,11 +39,6 @@ Route::get("/detail", function(){
 
 // Movie 
 Route::get('/tables',[testController::class,'table'])->middleware(EnsureTokenIsValid::class);
-// Route::get('/table',function(){
-//     return response()->json(['msg'=>'le hoang duc dep trai']);
-
-// });
-
 Route::put('/update-movie/{id}',[testController::class,'update_movie']);
 Route::get('/add-movie',[testController::class,'add_movie']);
 Route::post('/add-movie',[testController::class,'post_movie'])    ;
@@ -71,11 +70,13 @@ Route::put('/mail-to/{id}',[testController::class,'mail_to']);
 Route::get('/export-user',[testController::class,'export_user']);
 Route::get('/export-movie',[testController::class,'export_movie']);
 
+
+
 // ============
 
-Route::get('dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::middleware('auth')->group(function () {
@@ -101,6 +102,11 @@ Route::get("/reset-password/{token}", [ForgetPasswordManager::class, "resetPassw
     ->name("reset.password");
 Route::post("/reset-password", [ForgetPasswordManager::class, "resetPasswordPost"])
     ->name("reset.password.post");
+
+
+//Gemini AI
+Route::post('/only-text',[GeminiController::class,'only_text']);
+Route::post('/text-image',[GeminiController::class,'text_image']);
 
 Route::get('/movies/{id}', [ListFilmController::class, 'redirectToMovieDetail'])->name('movies.redirect');
 Route::get('/{name}', [MoviesController::class, 'show'])->name('detail');

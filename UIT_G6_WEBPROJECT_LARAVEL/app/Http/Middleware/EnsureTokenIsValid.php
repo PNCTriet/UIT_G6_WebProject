@@ -16,9 +16,13 @@ class EnsureTokenIsValid
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->role_id==1)
-            return $next($request);
-        else
-            return Redirect::to('/index');
+        if(Auth::check()){
+            if(Auth::user()->role_id==1)
+                return $next($request);
+            else
+                return Redirect::to('/index');
+        }else{
+            return Redirect::to('/');
+        }
     }
 }

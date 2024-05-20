@@ -20,11 +20,11 @@ class AuthController extends Controller
         // return view('auth.login');
         if (Auth::check()) {
             // dd(Auth::getUser()->role_id);
-            if(Auth::user()->role_id==1){
+            if(Auth::user()->role_id!=1){
                 return Redirect::to('/index');
             }else{
                 return view('home',[
-                    'heading' => 'khong phai chao',
+                    
                     'res' => DB::select("SELECT movie.id,title,description,poster_link FROM movie 
                                             INNER JOIN movie_link on movie_link.id =movie.link_id
                                             ORDER BY created_at DESC
