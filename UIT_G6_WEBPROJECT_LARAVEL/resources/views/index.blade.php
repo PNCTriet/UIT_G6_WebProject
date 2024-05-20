@@ -104,13 +104,9 @@
                                     
                                     // Gọi API để lấy thông tin về video trailer
                                     // $video_url = "https://api.themoviedb.org/3/tv/{$show['id']}/videos?api_key=$api_key";
-                                    $video_url = "https://api.themoviedb.org/3/tv/{$series_id}/videos?api_key=$api_key";
+                                    $video_url = "https://api.themoviedb.org/3/tv/{$series_id}/videos?api_key={$api_key}";
                                     $video_response = file_get_contents($video_url);
                                     $video_data = json_decode($video_response, true);
-                                    
-                                    // Lưu dữ liệu video thành file JSON
-                                    $video_json_file = "json/{$series_id}_videotrailer.json";
-                                    file_put_contents($video_json_file, json_encode($video_data));
                                     
                                     // Kiểm tra xem có video trailer không và hiển thị nó
                                     if (!empty($video_data['results'])) {
@@ -149,10 +145,6 @@
                                     
                                     // Chuyển đổi JSON thành mảng
                                     $datajson = json_decode($response, true);
-                                    
-                                    // Lưu dữ liệu video thành file JSON
-                                    $video_json_file ="json/{$series_id}_detailinfo.json";
-                                    file_put_contents($video_json_file, json_encode($video_data));
                                     
                                     echo '<section class="d-flex justify-content-between">';
                                     echo '<div>';
@@ -195,111 +187,12 @@
     <div class="row">
         <h2>Danh sách tiếp tục xem</h2>
         <div class="row-posters" id="rowpost2">
-            @foreach ($movie_link->skip(10)->take(10) as $item)
+            @foreach ($data->skip(10)->take(10) as $item)
                 <section class="d-flex">
                     <div class="card">
                         <img src="{{ $item->poster_link }}" class="row-poster"
                             onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
-                            <div class="card-body">
-                                <section class="d-flex align-items-center">
-                                    <div>
-                                        <?php
-                                        // API Key của bạn từ TMDB
-                                        $api_key = '123113d4a4822456c35fc67ce8dd0c16';
-                                        
-                                        // ID của series
-                                        $series_id = $item->movie_api;
-                                        
-                                        // Gọi API để lấy thông tin về video trailer
-                                        // $video_url = "https://api.themoviedb.org/3/tv/{$show['id']}/videos?api_key=$api_key";
-                                        $video_url = "https://api.themoviedb.org/3/tv/{$series_id}/videos?api_key=$api_key";
-                                        $video_response = file_get_contents($video_url);
-                                        $video_data = json_decode($video_response, true);
-                                        
-                                        // Kiểm tra xem có video trailer không và hiển thị nó
-                                        if (!empty($video_data['results'])) {
-                                            $youtube_key = $video_data['results'][0]['key'];
-                                            echo '<div class="video-container">';
-                                            // echo '<iframe class="videocontainer" src="https://www.youtube.com/embed/' . $youtube_key . '" frameborder="0" allowfullscreen autoplay></iframe>';
-                                            echo '<iframe class="videocontainer" id="youtubeVideo" src="https://www.youtube.com/embed/' . $youtube_key . '" frameborder="0" allowfullscreen></iframe>';
-                                            echo '</div>';
-                                        } else {
-                                            // echo '<p>Không tìm thấy video trailer cho bộ phim này.</p>';
-                                        }
-                                        
-                                        // URL của API của TMDB để lấy thông tin chi tiết của series
-                                        $url = "https://api.themoviedb.org/3/tv/{$series_id}?api_key={$api_key}";
-                                        
-                                        // Khởi tạo curl
-                                        $curl = curl_init();
-                                        
-                                        // Cài đặt các tùy chọn cho curl
-                                        curl_setopt_array($curl, [
-                                            CURLOPT_URL => $url,
-                                            CURLOPT_RETURNTRANSFER => true,
-                                            CURLOPT_FOLLOWLOCATION => true,
-                                            CURLOPT_ENCODING => '',
-                                            CURLOPT_MAXREDIRS => 10,
-                                            CURLOPT_TIMEOUT => 0,
-                                            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                                            CURLOPT_CUSTOMREQUEST => 'GET',
-                                        ]);
-                                        
-                                        // Gửi yêu cầu và nhận kết quả
-                                        $response = curl_exec($curl);
-                                        
-                                        // Đóng curl
-                                        curl_close($curl);
-                                        
-                                        // Chuyển đổi JSON thành mảng
-                                        $data = json_decode($response, true);
-                                        
-                                        echo '<section class="d-flex justify-content-between">';
-                                        echo '<div>';
-                                        echo '<i class="bi bi-play-circle-fill card-icon"></i>';
-                                        echo '<i class="bi bi-plus-circle card-icon"></i>';
-                                        echo '</div>';
-                                        echo '<div>';
-                                        echo '<i class="bi bi-arrow-down-circle card-icon" onclick="redirectTo(\'' . route('movies.redirect', $item->id) . '\')"></i>';
-                                        echo '</div>';
-                                        echo '</section>';
-                                        echo '<section class="d-flex align-items-center justify-content-between">';
-                                        echo '<p class="netflix-card-text m-0" style="color: rgb(0, 186, 0);">';
-                                        echo $data['vote_average'] * 10;
-                                        echo '% Score</p>';
-                                        echo '<span class="m-2 netflix-card-text text-white">' . $data['number_of_episodes'] . ' Episodes</span>';
-                                        echo '<span class="border netflix-card-text p-1 text-white">HD</span>';
-                                        echo '</section>';
-                                        echo '<span class="netflix-card-text text-white">';
-                                        //echo '<p>';
-                                        $genre_count = count($data['genres']);
-                                        for ($i = 0; $i < min($genre_count, 3); $i++) {
-                                            echo $data['genres'][$i]['name'];
-                                            if ($i < min($genre_count, 3) - 1) {
-                                                echo ' • ';
-                                            }
-                                        }
-                                        //echo '</p>';
-                                        echo '</span>';
-                                        ?>
-                                    </div>
-                                </section>
-                            </div>
-                    </div>
-                </section>
-            @endforeach
-        </div>
-        <button class="scroll-right-poster" id="scrollpost2">></button>
-    </div>
-    <div class="row">
-        <h2>Hiện đang thịnh hành</h2>
-        <div class="row-posters" id="rowpost3">
-            @foreach ($movie_link->skip(20)->take(10) as $item)
-                <section class="d-flex">
-                    <div class="card">
-                        <img src="{{ $item->poster_link }}" class="row-poster"
-                            onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
-                       <div class="card-body">
+                        <div class="card-body">
                             <section class="d-flex align-items-center">
                                 <div>
                                     <?php
@@ -312,6 +205,105 @@
                                     // Gọi API để lấy thông tin về video trailer
                                     // $video_url = "https://api.themoviedb.org/3/tv/{$show['id']}/videos?api_key=$api_key";
                                     $video_url = "https://api.themoviedb.org/3/tv/{$series_id}/videos?api_key=$api_key";
+                                    $video_response = file_get_contents($video_url);
+                                    $video_data = json_decode($video_response, true);
+                                    
+                                    // Kiểm tra xem có video trailer không và hiển thị nó
+                                    if (!empty($video_data['results'])) {
+                                        $youtube_key = $video_data['results'][0]['key'];
+                                        echo '<div class="video-container">';
+                                        // echo '<iframe class="videocontainer" src="https://www.youtube.com/embed/' . $youtube_key . '" frameborder="0" allowfullscreen autoplay></iframe>';
+                                        echo '<iframe class="videocontainer" id="youtubeVideo" src="https://www.youtube.com/embed/' . $youtube_key . '" frameborder="0" allowfullscreen></iframe>';
+                                        echo '</div>';
+                                    } else {
+                                        // echo '<p>Không tìm thấy video trailer cho bộ phim này.</p>';
+                                    }
+                                    
+                                    // URL của API của TMDB để lấy thông tin chi tiết của series
+                                    $url = "https://api.themoviedb.org/3/tv/{$series_id}?api_key={$api_key}";
+                                    
+                                    // Khởi tạo curl
+                                    $curl = curl_init();
+                                    
+                                    // Cài đặt các tùy chọn cho curl
+                                    curl_setopt_array($curl, [
+                                        CURLOPT_URL => $url,
+                                        CURLOPT_RETURNTRANSFER => true,
+                                        CURLOPT_FOLLOWLOCATION => true,
+                                        CURLOPT_ENCODING => '',
+                                        CURLOPT_MAXREDIRS => 10,
+                                        CURLOPT_TIMEOUT => 0,
+                                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                        CURLOPT_CUSTOMREQUEST => 'GET',
+                                    ]);
+                                    
+                                    // Gửi yêu cầu và nhận kết quả
+                                    $response = curl_exec($curl);
+                                    
+                                    // Đóng curl
+                                    curl_close($curl);
+                                    
+                                    // Chuyển đổi JSON thành mảng
+                                    $datajson = json_decode($response, true);
+                                    
+                                    echo '<section class="d-flex justify-content-between">';
+                                    echo '<div>';
+                                    echo '<i class="bi bi-play-circle-fill card-icon"></i>';
+                                    echo '<i class="bi bi-plus-circle card-icon"></i>';
+                                    echo '</div>';
+                                    echo '<div>';
+                                    echo '<i class="bi bi-arrow-down-circle card-icon" onclick="redirectTo(\'' . route('movies.redirect', $item->id) . '\')"></i>';
+                                    echo '</div>';
+                                    echo '</section>';
+                                    echo '<section class="d-flex align-items-center justify-content-between">';
+                                    echo '<p class="netflix-card-text m-0" style="color: rgb(0, 186, 0);">';
+                                    echo $datajson['vote_average'] * 10;
+                                    echo '% Score</p>';
+                                    echo '<span class="m-2 netflix-card-text text-white">' . $datajson['number_of_episodes'] . ' Episodes</span>';
+                                    echo '<span class="border netflix-card-text p-1 text-white">HD</span>';
+                                    echo '</section>';
+                                    echo '<span class="netflix-card-text text-white">';
+                                    //echo '<p>';
+                                    $genre_count = count($datajson['genres']);
+                                    for ($i = 0; $i < min($genre_count, 3); $i++) {
+                                        echo $datajson['genres'][$i]['name'];
+                                        if ($i < min($genre_count, 3) - 1) {
+                                            echo ' • ';
+                                        }
+                                    }
+                                    //echo '</p>';
+                                    echo '</span>';
+                                    ?>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+            @endforeach
+        </div>
+        <button class="scroll-right-poster" id="scrollpost2">></button>
+    </div>
+    <div class="row">
+        <h2>Hiện đang thịnh hành</h2>
+        <div class="row-posters" id="rowpost3">
+            @foreach ($data->skip(20)->take(10) as $item)
+                <section class="d-flex">
+                    <div class="card">
+                        <img src="{{ $item->poster_link }}" class="row-poster"
+                            onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
+                        <div class="card-body">
+                            <section class="d-flex align-items-center">
+                                <div>
+                                    <?php
+                                    // API Key của bạn từ TMDB
+                                    $api_key = '123113d4a4822456c35fc67ce8dd0c16';
+                                    
+                                    // ID của series
+                                    $series_id = $item->movie_api;
+                                    
+                                    // URL của API của TMDB để lấy thông tin chi tiết của series
+                                    $video_url = "https://api.themoviedb.org/3/tv/{$series_id}/videos?api_key={$api_key}";
+                                    $video_response = file_get_contents($video_url);
                                     $video_response = file_get_contents($video_url);
                                     $video_data = json_decode($video_response, true);
                                     
@@ -351,7 +343,7 @@
                                     curl_close($curl);
                                     
                                     // Chuyển đổi JSON thành mảng
-                                    $data = json_decode($response, true);
+                                    $datajson = json_decode($response, true);
                                     
                                     echo '<section class="d-flex justify-content-between">';
                                     echo '<div>';
@@ -364,16 +356,16 @@
                                     echo '</section>';
                                     echo '<section class="d-flex align-items-center justify-content-between">';
                                     echo '<p class="netflix-card-text m-0" style="color: rgb(0, 186, 0);">';
-                                    echo $data['vote_average'] * 10;
+                                    echo $datajson['vote_average'] * 10;
                                     echo '% Score</p>';
-                                    echo '<span class="m-2 netflix-card-text text-white">' . $data['number_of_episodes'] . ' Episodes</span>';
+                                    echo '<span class="m-2 netflix-card-text text-white">' . $datajson['number_of_episodes'] . ' Episodes</span>';
                                     echo '<span class="border netflix-card-text p-1 text-white">HD</span>';
                                     echo '</section>';
                                     echo '<span class="netflix-card-text text-white">';
                                     //echo '<p>';
-                                    $genre_count = count($data['genres']);
+                                    $genre_count = count($datajson['genres']);
                                     for ($i = 0; $i < min($genre_count, 3); $i++) {
-                                        echo $data['genres'][$i]['name'];
+                                        echo $datajson['genres'][$i]['name'];
                                         if ($i < min($genre_count, 3) - 1) {
                                             echo ' • ';
                                         }
@@ -393,12 +385,12 @@
     <div class="row">
         <h2>Phim truyền hình lãng mạng</h2>
         <div class="row-posters" id="rowpost4">
-            @foreach ($movie_link->skip(30)->take(10) as $item)
+            @foreach ($data->skip(30)->take(10) as $item)
                 <section class="d-flex">
                     <div class="card">
                         <img src="{{ $item->poster_link }}" class="row-poster"
                             onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
-                       <div class="card-body">
+                        <div class="card-body">
                             <section class="d-flex align-items-center">
                                 <div>
                                     <?php
@@ -410,7 +402,7 @@
                                     
                                     // Gọi API để lấy thông tin về video trailer
                                     // $video_url = "https://api.themoviedb.org/3/tv/{$show['id']}/videos?api_key=$api_key";
-                                    $video_url = "https://api.themoviedb.org/3/tv/{$series_id}/videos?api_key=$api_key";
+                                    $video_url = "https://api.themoviedb.org/3/tv/{$series_id}/videos?api_key={$api_key}";
                                     $video_response = file_get_contents($video_url);
                                     $video_data = json_decode($video_response, true);
                                     
@@ -450,7 +442,7 @@
                                     curl_close($curl);
                                     
                                     // Chuyển đổi JSON thành mảng
-                                    $data = json_decode($response, true);
+                                    $datajson = json_decode($response, true);
                                     
                                     echo '<section class="d-flex justify-content-between">';
                                     echo '<div>';
@@ -463,16 +455,16 @@
                                     echo '</section>';
                                     echo '<section class="d-flex align-items-center justify-content-between">';
                                     echo '<p class="netflix-card-text m-0" style="color: rgb(0, 186, 0);">';
-                                    echo $data['vote_average'] * 10;
+                                    echo $datajson['vote_average'] * 10;
                                     echo '% Score</p>';
-                                    echo '<span class="m-2 netflix-card-text text-white">' . $data['number_of_episodes'] . ' Episodes</span>';
+                                    echo '<span class="m-2 netflix-card-text text-white">' . $datajson['number_of_episodes'] . ' Episodes</span>';
                                     echo '<span class="border netflix-card-text p-1 text-white">HD</span>';
                                     echo '</section>';
                                     echo '<span class="netflix-card-text text-white">';
                                     //echo '<p>';
-                                    $genre_count = count($data['genres']);
+                                    $genre_count = count($datajson['genres']);
                                     for ($i = 0; $i < min($genre_count, 3); $i++) {
-                                        echo $data['genres'][$i]['name'];
+                                        echo $datajson['genres'][$i]['name'];
                                         if ($i < min($genre_count, 3) - 1) {
                                             echo ' • ';
                                         }
@@ -489,15 +481,16 @@
         </div>
         <button class="scroll-right-poster" id="scrollpost4">></button>
     </div>
+
     <div class="row">
         <h2>Phim truyền hình Trung Quốc lãng mạng</h2>
         <div class="row-posters" id="rowpost5">
-            @foreach ($movie_link->skip(40)->take(10) as $item)
+            @foreach ($data->skip(40)->take(10) as $item)
                 <section class="d-flex">
                     <div class="card">
                         <img src="{{ $item->poster_link }}" class="row-poster"
                             onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
-                       <div class="card-body">
+                        <div class="card-body">
                             <section class="d-flex align-items-center">
                                 <div>
                                     <?php
@@ -509,7 +502,7 @@
                                     
                                     // Gọi API để lấy thông tin về video trailer
                                     // $video_url = "https://api.themoviedb.org/3/tv/{$show['id']}/videos?api_key=$api_key";
-                                    $video_url = "https://api.themoviedb.org/3/tv/{$series_id}/videos?api_key=$api_key";
+                                    $video_url = "https://api.themoviedb.org/3/tv/{$series_id}/videos?api_key={$api_key}";
                                     $video_response = file_get_contents($video_url);
                                     $video_data = json_decode($video_response, true);
                                     
@@ -549,7 +542,7 @@
                                     curl_close($curl);
                                     
                                     // Chuyển đổi JSON thành mảng
-                                    $data = json_decode($response, true);
+                                    $datajson = json_decode($response, true);
                                     
                                     echo '<section class="d-flex justify-content-between">';
                                     echo '<div>';
@@ -562,16 +555,16 @@
                                     echo '</section>';
                                     echo '<section class="d-flex align-items-center justify-content-between">';
                                     echo '<p class="netflix-card-text m-0" style="color: rgb(0, 186, 0);">';
-                                    echo $data['vote_average'] * 10;
+                                    echo $datajson['vote_average'] * 10;
                                     echo '% Score</p>';
-                                    echo '<span class="m-2 netflix-card-text text-white">' . $data['number_of_episodes'] . ' Episodes</span>';
+                                    echo '<span class="m-2 netflix-card-text text-white">' . $datajson['number_of_episodes'] . ' Episodes</span>';
                                     echo '<span class="border netflix-card-text p-1 text-white">HD</span>';
                                     echo '</section>';
                                     echo '<span class="netflix-card-text text-white">';
                                     //echo '<p>';
-                                    $genre_count = count($data['genres']);
+                                    $genre_count = count($datajson['genres']);
                                     for ($i = 0; $i < min($genre_count, 3); $i++) {
-                                        echo $data['genres'][$i]['name'];
+                                        echo $datajson['genres'][$i]['name'];
                                         if ($i < min($genre_count, 3) - 1) {
                                             echo ' • ';
                                         }
@@ -588,15 +581,16 @@
         </div>
         <button class="scroll-right-poster" id="scrollpost5">></button>
     </div>
+
     <div class="row">
         <h2>Phim truyền hình giành giải thưởng châu Á</h2>
         <div class="row-posters" id="rowpost6">
-            @foreach ($movie_link->skip(50)->take(10) as $item)
+            @foreach ($data->skip(50)->take(10) as $item)
                 <section class="d-flex">
                     <div class="card">
                         <img src="{{ $item->poster_link }}" class="row-poster"
                             onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
-                       <div class="card-body">
+                        <div class="card-body">
                             <section class="d-flex align-items-center">
                                 <div>
                                     <?php
@@ -608,7 +602,7 @@
                                     
                                     // Gọi API để lấy thông tin về video trailer
                                     // $video_url = "https://api.themoviedb.org/3/tv/{$show['id']}/videos?api_key=$api_key";
-                                    $video_url = "https://api.themoviedb.org/3/tv/{$series_id}/videos?api_key=$api_key";
+                                    $video_url = "https://api.themoviedb.org/3/tv/{$series_id}/videos?api_key={$api_key}";
                                     $video_response = file_get_contents($video_url);
                                     $video_data = json_decode($video_response, true);
                                     
@@ -648,7 +642,7 @@
                                     curl_close($curl);
                                     
                                     // Chuyển đổi JSON thành mảng
-                                    $data = json_decode($response, true);
+                                    $datajson = json_decode($response, true);
                                     
                                     echo '<section class="d-flex justify-content-between">';
                                     echo '<div>';
@@ -661,16 +655,16 @@
                                     echo '</section>';
                                     echo '<section class="d-flex align-items-center justify-content-between">';
                                     echo '<p class="netflix-card-text m-0" style="color: rgb(0, 186, 0);">';
-                                    echo $data['vote_average'] * 10;
+                                    echo $datajson['vote_average'] * 10;
                                     echo '% Score</p>';
-                                    echo '<span class="m-2 netflix-card-text text-white">' . $data['number_of_episodes'] . ' Episodes</span>';
+                                    echo '<span class="m-2 netflix-card-text text-white">' . $datajson['number_of_episodes'] . ' Episodes</span>';
                                     echo '<span class="border netflix-card-text p-1 text-white">HD</span>';
                                     echo '</section>';
                                     echo '<span class="netflix-card-text text-white">';
                                     //echo '<p>';
-                                    $genre_count = count($data['genres']);
+                                    $genre_count = count($datajson['genres']);
                                     for ($i = 0; $i < min($genre_count, 3); $i++) {
-                                        echo $data['genres'][$i]['name'];
+                                        echo $datajson['genres'][$i]['name'];
                                         if ($i < min($genre_count, 3) - 1) {
                                             echo ' • ';
                                         }
