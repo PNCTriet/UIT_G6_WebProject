@@ -120,7 +120,7 @@ transform: translate(-50%, -50%);
     display: inline-block;
   }
   .overflow-container {
-    width: 100%;
+    width: 200%;
     height: 300px;
     /* background-color:black; */
     overflow: hidden;
@@ -728,7 +728,7 @@ img.img-profile.rounded-circle {
   -webkit-transition: all 400ms ease-out;
   position: relative;
   border-radius: 12px;
-  left: 98%;
+  right:100%;
   bottom: 250px;
   opacity: 1;
   width: 150px;
@@ -738,8 +738,7 @@ img.img-profile.rounded-circle {
   z-index: 1000;
 }
 .scroll-right:hover {
-  opacity:1;
-  margin-left: -20px; 
+  opacity:1; 
 }
 
 /* chat bot */
