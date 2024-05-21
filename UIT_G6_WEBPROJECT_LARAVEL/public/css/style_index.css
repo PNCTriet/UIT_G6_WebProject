@@ -641,7 +641,7 @@ transform: translate(-50%, -50%);
     height: 150px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
-    z-index: 1000; /* Đảm bảo nút lớp trên cùng */
+    z-index: 900; /* Đảm bảo nút lớp trên cùng */
     /* margin-top: 70px; */
   }
   

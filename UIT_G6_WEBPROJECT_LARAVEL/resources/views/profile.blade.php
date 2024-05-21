@@ -9,7 +9,12 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/css/style_profile.css">
-    <title>Profile</title>
+    <title>
+      Netflop Profile
+  </title>
+  <link rel="shortcut icon" type="image/png"
+      href="datasources/img/netflop.png">
+  <link>
 </head>
 
 

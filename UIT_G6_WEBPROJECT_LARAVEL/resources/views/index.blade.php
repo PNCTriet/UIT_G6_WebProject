@@ -4,7 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>
+        Netflop
+    </title>
+    <link rel="shortcut icon" type="image/png"
+        href="datasources/img/netflop.png">
+    <link>
     <link rel="stylesheet" href="css/style_index.css" />
     <link rel="stylesheet" href="css/style_animation.css" />
     <link
@@ -727,16 +732,16 @@
 
         scrollRightPoster1.addEventListener("click", function() {
             const currentLeft = parseFloat(getComputedStyle(rowposters1).left);
-            const newLeft = currentLeft - rowposterwidth * 5;
+            const newLeft = currentLeft - rowposterwidth * 3.5;
             rowposters1.style.left = newLeft + "px";
-            if (newLeft <= -rowposterwidth * 6) {
+            if (newLeft <= -rowposterwidth * 5) {
                 rowposters1.style.left = "0";
             }
         });
 
         scrollRightPoster2.addEventListener("click", function() {
             const currentLeft = parseFloat(getComputedStyle(rowposters2).left);
-            const newLeft = currentLeft - rowposterwidth * 4;
+            const newLeft = currentLeft - rowposterwidth * 3.5;
             rowposters2.style.left = newLeft + "px";
             if (newLeft <= -rowposterwidth * 5) {
                 rowposters2.style.left = "0";
@@ -745,7 +750,7 @@
 
         scrollRightPoster3.addEventListener("click", function() {
             const currentLeft = parseFloat(getComputedStyle(rowposters3).left);
-            const newLeft = currentLeft - rowposterwidth * 4;
+            const newLeft = currentLeft - rowposterwidth * 3.5;
             rowposters3.style.left = newLeft + "px";
             if (newLeft <= -rowposterwidth * 5) {
                 rowposters3.style.left = "0";
@@ -754,7 +759,7 @@
 
         scrollRightPoster4.addEventListener("click", function() {
             const currentLeft = parseFloat(getComputedStyle(rowposters4).left);
-            const newLeft = currentLeft - rowposterwidth * 4;
+            const newLeft = currentLeft - rowposterwidth * 3.5;
             rowposters4.style.left = newLeft + "px";
             if (newLeft <= -rowposterwidth * 5) {
                 rowposters4.style.left = "0";
@@ -763,7 +768,7 @@
 
         scrollRightPoster5.addEventListener("click", function() {
             const currentLeft = parseFloat(getComputedStyle(rowposters5).left);
-            const newLeft = currentLeft - rowposterwidth * 4;
+            const newLeft = currentLeft - rowposterwidth * 3.5;
             rowposters5.style.left = newLeft + "px";
             if (newLeft <= -rowposterwidth * 5) {
                 rowposters5.style.left = "0";
@@ -772,7 +777,7 @@
 
         scrollRightPoster6.addEventListener("click", function() {
             const currentLeft = parseFloat(getComputedStyle(rowposters6).left);
-            const newLeft = currentLeft - rowposterwidth * 4;
+            const newLeft = currentLeft - rowposterwidth * 3.5;
             rowposters6.style.left = newLeft + "px";
             if (newLeft <= -rowposterwidth * 5) {
                 rowposters6.style.left = "0";

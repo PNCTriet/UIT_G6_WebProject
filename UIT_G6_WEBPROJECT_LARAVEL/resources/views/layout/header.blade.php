@@ -9,7 +9,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Netflop-Dashboard</title>
+    <title>Netflop Dashboard</title>
+    <link rel="shortcut icon" type="image/png"
+        href="datasources/img/netflop.png">
+    <link>
     <link rel="shortcut icon" type="image/png"
         href="datasources/img/netflop.png">
     <link
