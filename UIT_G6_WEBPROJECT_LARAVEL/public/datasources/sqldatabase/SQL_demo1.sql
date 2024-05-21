@@ -284,7 +284,8 @@ VALUES
 ('datasources/filmphoto_[body]/filmphoto_[body]_97.png', 'trailer_link_97', 'movie_link_97','datasources/imageranking/img97.jpg'),
 ('datasources/filmphoto_[body]/filmphoto_[body]_98.png', 'trailer_link_98', 'movie_link_98','datasources/imageranking/img98.jpg'),
 ('datasources/filmphoto_[body]/filmphoto_[body]_99.png', 'trailer_link_99', 'movie_link_99','datasources/imageranking/img99.jpg'),
-('datasources/filmphoto_[body]/filmphoto_[body]_100.png', 'trailer_link_100', 'movie_link_100','datasources/imageranking/img100.jpg');
+('datasources/filmphoto_[body]/filmphoto_[body]_100.png', 'trailer_link_100', 'movie_link_100','datasources/imageranking/img100.jpg'),
+('datasources/filmphoto_[body]/filmphoto_[body]_101.png', 'trailer_link_101', 'movie_link_101','datasources/imageranking/img100.jpg');
 
 -- Chèn dữ liệu cho bảng MovieCategory
 INSERT INTO MovieCategory (name)
