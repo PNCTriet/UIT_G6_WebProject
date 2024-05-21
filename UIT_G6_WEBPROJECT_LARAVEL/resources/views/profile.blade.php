@@ -97,7 +97,7 @@
                 </div>
               </div>
               <div class="text-center">
-                    {{$infor->last()->first_name}}
+                    {{$infor->last()->name}}
                     <br>
                     {{$infor->last()->email}}
               <div class="h5 font-weight-300">
@@ -144,7 +144,7 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Username</label>
-                        <input type="text" name="username" id="input-username" class="form-control form-control-alternative" placeholder="Username">
+                        <input type="text" name="name" id="input-username" class="form-control form-control-alternative" placeholder="Username">
                       </div>
                     </div>
                     <div class="col-lg-6">
@@ -156,21 +156,9 @@
                   </div>
                   <div class="row">
                     <div class="col-lg-6">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-first-name">First name</label>
-                        <input type="text" name="first_name" id="input-first-name" class="form-control form-control-alternative" placeholder="First name">
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-last-name">Last name</label>
-                        <input type="text" name="last_name" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name">
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-birthday">Birthday</label>
-                          <input type="date" name="dob" id="input-birthday" class="form-control form-control-alternative" placeholder="Birthday">
+                          <input type="date" name="birthday" id="input-birthday" class="form-control form-control-alternative" placeholder="Birthday">
                         </div>
                       </div>
                   </div>
@@ -186,7 +174,7 @@
                         <input id="input-address" name="address" class="form-control form-control-alternative" placeholder="Home Address"  type="text">
                       </div>
                       <label class="form-control-label" for="input-phone">Phone Number</label>
-                        <input id="input-address" name="phone" class="form-control form-control-alternative" placeholder="Phone Number"  type="tel">
+                        <input id="input-address" name="phoneNumber" class="form-control form-control-alternative" placeholder="Phone Number"  type="tel">
                       </div>
                     </div>
                   </div>

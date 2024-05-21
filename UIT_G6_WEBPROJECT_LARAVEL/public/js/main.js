@@ -59,7 +59,7 @@ window.update_voucher=async(tag)=>{
     document.querySelector('#status').value=result[0].status
     
 
-    document.getElementsByTagName('body')[0].style.overflow='hidden';
+    // document.getElementsByTagName('body')[0].style.overflow='hidden';
     document.getElementsByClassName('table-movie')[0].style.pointerEvents='none'
 }
 
@@ -80,7 +80,7 @@ window.update_movie=async(tag)=>{
     document.querySelector('#movie_link').value =movie[0].movie_link
 
     
-    document.getElementsByTagName('body')[0].style.overflow='hidden';
+    // document.getElementsByTagName('body')[0].style.overflow='hidden';
     document.getElementsByClassName('table-movie')[0].style.pointerEvents='none'
 }
 
@@ -98,7 +98,7 @@ window.update_user=async(tag)=>{
     document.querySelector('#address_1').value=result[0].address
     
 
-    document.getElementsByTagName('body')[0].style.overflow='hidden';
+    // document.getElementsByTagName('body')[0].style.overflow='hidden';
     document.getElementsByClassName('table-movie')[0].style.pointerEvents='none'
 }
 
