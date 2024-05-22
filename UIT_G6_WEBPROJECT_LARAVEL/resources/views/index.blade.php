@@ -65,7 +65,9 @@
                 <div class="number-cell">
                     <span>{{ $moviespart->rank }}</span>
                     <div class="empty-cell" style="position:relative;">
-                        <img src="{{ $moviespart->rank_link }}" alt="">
+                        <a href="http://127.0.0.1:8000/movies/{{$moviespart->id}}">
+                        <img src="{{ $moviespart->rank_link }}" alt="" style="height:205px">
+                        </a>
                     </div>
                 </div>
             @endforeach
