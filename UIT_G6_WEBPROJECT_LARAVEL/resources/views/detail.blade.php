@@ -36,6 +36,7 @@
         // https://api.themoviedb.org/3/tv/215720/videos?api_key=$123113d4a4822456c35fc67ce8dd0c16
         // Từ khóa tìm kiếm
         $query = $movie['name'];
+        
 
         // URL của API của TMDB để tìm kiếm TV show
         $url = "https://api.themoviedb.org/3/search/tv?api_key=$api_key&query=" . urlencode($query);

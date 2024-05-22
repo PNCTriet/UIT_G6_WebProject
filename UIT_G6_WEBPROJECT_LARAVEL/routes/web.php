@@ -103,9 +103,6 @@ Route::get("/reset-password/{token}", [ForgetPasswordManager::class, "resetPassw
 Route::post("/reset-password", [ForgetPasswordManager::class, "resetPasswordPost"])
     ->name("reset.password.post");
 
-
-Route::get('/movies/{id}', [ListFilmController::class, 'redirectToMovieDetail'])->name('movies.redirect');
-Route::get('/{name}', [MoviesController::class, 'show'])->name('detail');
 //Gemini AI
 Route::post('/only-text',[GeminiController::class,'only_text']);
 Route::post('/text-image',[GeminiController::class,'text_image']);

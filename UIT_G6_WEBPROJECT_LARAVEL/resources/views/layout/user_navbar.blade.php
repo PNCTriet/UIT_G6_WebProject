@@ -30,25 +30,23 @@
         </div>
         <div class="nav-item dropdown no-arrow">
             <i><a title="Phim" href="./search.html" class="fa-solid fa-magnifying-glass"></a></i>
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="img-profile rounded-circle"
-                    src="{{Auth::user()->avartar}}">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
-                
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <img class="img-profile rounded-circle" src="{{ Auth::user()->avartar }}">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+
             </a>
             <div class="form-info hidden" aria-labelledby="userDropdown">
 
                 @if (Auth::user()->role_id == 1)
                     <a href="/home" class="dropdown-item">
-                        
-                        <i class='bx bx-home-smile'></i>
+                        <i class='bx bx-home-smile' style="color:black"></i>
                         Go To Dashboard
                     </a>
                 @endif
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/logout" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" style="color:black"></i>
                     Logout
                 </a>
             </div>
@@ -58,18 +56,19 @@
     <div class="chat-bot">
         <div class="logo-chat" onclick="openChatBot(this)">
             <span class="animation-logo">
-                
+
             </span>
             <div class="logo-message">
-                <img src="datasources/img/logoai.png" style="height: 40px; weight:40px;" alt="Chat Logo" class="chat-logo">
+                <img src="datasources/img/logoai.png" style="height: 40px; weight:40px;" alt="Chat Logo"
+                    class="chat-logo">
             </div>
         </div>
-        
+
         <div class="chat-content">
             <div class="close-chat" onclick="closeChatBot(this)">
                 <i class='bx bx-x'></i>
             </div>
-            <div class="content-text" user="{{AUTH::user()->avartar}}">
+            <div class="content-text" user="{{ AUTH::user()->avartar }}">
                 {{-- <div class="message-text">
                     <img class="img-chat" src="{{AUTH::user()->avartar}}">
                     <div>
@@ -100,7 +99,7 @@
                     </span>
                 </div>
                 <div class="temp_image">
-                    
+
                 </div>
             </div>
         </div>
