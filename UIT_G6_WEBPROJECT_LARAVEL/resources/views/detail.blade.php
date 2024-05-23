@@ -38,7 +38,7 @@
         $query = $movie['name'];
         
         // URL của API của TMDB để tìm kiếm TV show
-        $url = "https://api.themoviedb.org/3/search/tv?api_key=$api_key&query=" . urlencode($query);
+        $url = "https://api.themoviedb.org/3/search/tv?api_key=$api_key&query=".urlencode($query);
         
         // Khởi tạo curl
         $curl = curl_init();

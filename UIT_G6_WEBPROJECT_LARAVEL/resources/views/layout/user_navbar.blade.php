@@ -1,3 +1,5 @@
+
+
 <!--  Navbar -->
 <div class="navbar">
     <div class="navbar-container">
@@ -10,21 +12,21 @@
         <div class="menu-container">
             <ul class="menu-list">
                 <li class="menu-list-item">
-                    <a href="">Trang chủ</a>
+                    <a href="/index">Trang chủ</a>
                 </li>
 
                 <li class="menu-list-item">
                     <a title="Phim" href="">Phim T.Hình</a>
                 </li>
-                <li class="menu-list-item"><a title="Phim" href="">Phim</a></li>
+                <li class="menu-list-item"><a title="Phim" href="/index">Phim</a></li>
                 <li class="menu-list-item">
-                    <a title="Phim" href="">Mới &amp Phổ biến</a>
+                    <a title="Phim" href="/profile">Hồ sơ</a>
                 </li>
                 <li class="menu-list-item">
-                    <a title="Phim" href="">Danh sách của tôi</a>
+                    <a title="Phim" href="/index">Danh sách của tôi</a>
                 </li>
                 <li class="menu-list-item">
-                    <a title="Phim" href="">Duyệt tìm theo ngôn ngữ</a>
+                    <a title="Phim" href="/search">Duyệt tìm theo ngôn ngữ</a>
                 </li>
             </ul>
         </div>

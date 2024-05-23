@@ -878,7 +878,7 @@ i.bx.bx-message-dots {
   height: 100%;
   outline: none;
   position: relative;
-  color: var(--chat-text-color) !important; /* Thêm !important để tăng độ ưu tiên */
+  color: #a3a3a3 !important; /* Thêm !important để tăng độ ưu tiên */
   font-size: 13px;
   background: transparent;
   border: 0;
@@ -889,7 +889,7 @@ i.bx.bx-message-dots {
 /* Đảm bảo rằng không có pseudo-classes nào thay đổi màu sắc */
 .chat-content-input:focus,
 .chat-content-input:hover {
-  color: var(--chat-text-color) !important;
+  color: #a3a3a3 !important;
 }
 
 
@@ -923,7 +923,7 @@ i.bx.bx-x {
     z-index: 1000;
     scrollbar-width: thin; /* Cho Firefox */
     scrollbar-color: #131719; /* Cho Firefox */
-    background-color: rgba(10, 14, 14, 0.95);
+    background-color: rgba(10, 14, 14, 0.5);
     box-shadow: 10px 10px 10px 3px rgba(0, 0, 0, 0.5);
 }
 

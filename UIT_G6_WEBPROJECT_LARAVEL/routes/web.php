@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
@@ -35,6 +37,8 @@ Route::get('/token', function () {
 
 Route::get('/profile', [ProfileController::class, 'get_information'])->name('get_information');
 
+Route::get('/search', [SearchController::class, 'showSearchPage'])->name('search.page');
+Route::get('/search/results', [SearchController::class, 'search']);
 // Movie 
 Route::get('/tables',[testController::class,'table'])->middleware(EnsureTokenIsValid::class);
 Route::put('/update-movie/{id}',[testController::class,'update_movie']);
