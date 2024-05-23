@@ -43,7 +43,6 @@ window.sendMessage = () => {
 
     if (url) {
         img_html = `<img class="img-chatbox " src="${url}" onload="window.URL.revokeObjectURL(this.src)"/>`; 
-        // onload="window.URL.revokeObjectURL(this.src)" dung khi can xoa
     }
 
     contentText.innerHTML += `

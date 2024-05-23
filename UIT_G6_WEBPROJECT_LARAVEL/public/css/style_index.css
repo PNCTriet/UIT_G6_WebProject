@@ -825,7 +825,13 @@ span.animation-logo {
     z-index: 0;
     opacity: 0.7;
     animation: zoom_out 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    transition: left 0.5s ease-out;
+  }
+
+.logo-message :hover {
+  transform: scale(1.1);
 }
+
 
 .logo-message {
     background-color: #e50914;
@@ -837,6 +843,7 @@ span.animation-logo {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: transform 450ms;
 }
 
 i.bx.bx-message-dots {
