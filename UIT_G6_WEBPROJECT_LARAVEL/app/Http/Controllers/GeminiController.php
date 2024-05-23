@@ -12,7 +12,8 @@ class GeminiController extends Controller
 {
     public function only_text(Request $request)
     {
-        $question = $request->question ?? "Xin chào ngài";
+        $prefix = "bạn là tư vấn viên của web xem phim Netflop, hãy chỉ tư vấn về chủ đề phim ảnh và nhắc tới netflop nhiều (không phải netflix), hãy giúp tôi tư vấn cho khách hàng cùng hình ảnh đính kèm sau : ";
+        $question = $prefix . ($request->question ?? "");
         $res_AI = Gemini::geminiPro()->generateContent($question);
         return response()->json(["text" => $res_AI->text()]);
     }

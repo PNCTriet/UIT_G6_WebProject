@@ -72,7 +72,10 @@
             </div>
         </div>
 
-        <div class="chat-content">
+        <div class="chat-content" id="cha">
+            <i class="logochat">
+                <img class="logochatimg" src="datasources/img/netflop_chatboxlogo.png" alt="netflix-font" border="0">
+            </i>
             <div class="close-chat" onclick="closeChatBot(this)">
                 <i class='bx bx-x'></i>
             </div>
@@ -95,15 +98,24 @@
                     <img class="img-chat" src="/uploads/1713541793.png">
                 </div> --}}
             </div>
-            <div class="btn-sent">
-                <div class="btn-send-detail">
+            <div class="btn-sent" id="chat">
+                <div class="btn-send-detail" style="opacity: 0.5;">
                     <input type="file" name="image_file" class="add_img">
                     <span class="icon_1" onclick="add_image()">
                         <i class='bx bx-plus-circle'></i>
                     </span>
-                    <input type="text" name="text_file" placeholder="Type a message">
+                    <input class="chat-content-input" type="text" name="text_file" placeholder="Type a message">
                     <span class="send" onclick="sendMessage()">
-                        <i class='bx bx-send'></i>
+                        {{-- <i class='bx bx-send'></i> --}}
+                        <button id="send-button" style="opacity: 1;"
+                            class="btn-icon send-message-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" aria-hidden="true" data-reactid="1036">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
                     </span>
                 </div>
                 <div class="temp_image">

@@ -156,7 +156,7 @@
                                         echo '<iframe class="videocontainer" id="youtubeVideo" src="https://www.youtube.com/embed/' . $youtube_key . '" frameborder="0" allowfullscreen></iframe>';
                                         echo '</div>';
                                     } else {
-                                        // No video trailer found message (if needed)
+                                        // No video trailer found message (if needed)   
                                     }
                                     
                                     // Read the series details from the JSON file

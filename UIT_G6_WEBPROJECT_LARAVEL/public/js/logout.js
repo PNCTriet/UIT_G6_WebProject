@@ -1,94 +1,93 @@
-const form_info =document.querySelector('.form-info');
-const dropdown_toggle = document.querySelector('.dropdown-toggle')
+const form_info = document.querySelector(".form-info");
+const dropdown_toggle = document.querySelector(".dropdown-toggle");
 
-dropdown_toggle.addEventListener('click',()=>{
-    form_info.classList.toggle('show')
-    form_info.classList.toggle('hidden')
-  
-})
+dropdown_toggle.addEventListener("click", () => {
+    form_info.classList.toggle("show");
+    form_info.classList.toggle("hidden");
+});
 
+window.openChatBot = (tag) => {
+    const chatContent = document.querySelector(".chat-content");
+    tag.style.display = "none";
+    chatContent.style.display = "flex";
+};
 
+window.closeChatBot = (tag) => {
+    const logoChat = document.querySelector(".logo-chat");
+    document.querySelector(".chat-content").style.display = "none";
+    logoChat.style.display = "flex";
+};
 
-window.openChatBot=(tag)=>{
-    const chatContent =document.querySelector('.chat-content')
-    tag.style.display="none"
-    chatContent.style.display="flex"
-}
-
-window.closeChatBot=(tag)=>{
-    const logoChat =document.querySelector('.logo-chat')
-    document.querySelector(".chat-content").style.display="none"
-    logoChat.style.display="flex"
-}
-
-window.add_image =()=>{
-    const add_image =document.querySelector('.add_img')
-    add_image.click()
-    add_image.addEventListener('input',()=>{
-        // console.log(add_image.value,add_image.files) 
+let url;
+window.add_image = () => {
+    const add_image = document.querySelector(".add_img");
+    add_image.click();
+    add_image.addEventListener("input", () => {
+        // console.log(add_image.value,add_image.files)
         const thumbnailsEl = document.querySelector(".temp_image");
         thumbnailsEl.innerHTML = "";
-        const file =add_image.files[0]
-        const url = URL.createObjectURL(file);
-        thumbnailsEl.innerHTML += `<img class="thumb img-thumbnail" src="${url}" onload="window.URL.revokeObjectURL(this.src)" />`;
-        
-    })
-    
-    
-}
-let dem=0;
-window.sendMessage =()=>{
-    const contentText =document.querySelector('.content-text')
-    const text =document.querySelector('[name="text_file"]').value
-    const csrf_token =document.head.querySelector('[name="csrf-token"]').content
-    const add_image =document.querySelector('.add_img')
-    contentText.innerHTML+=`
-        <div class="message-text">
-            <img class="img-chat" src="${contentText.getAttribute("user")}">
+        const file = add_image.files[0];
+        url = URL.createObjectURL(file);
+        thumbnailsEl.innerHTML += `<img class="thumb img-thumbnail" src="${url}" />`;
+    });
+};
+let dem = 0;
+window.sendMessage = () => {
+    const contentText = document.querySelector(".content-text");
+    const text = document.querySelector('[name="text_file"]').value;
+    const csrf_token = document.head.querySelector(
+        '[name="csrf-token"]'
+    ).content;
+    const add_image = document.querySelector(".add_img");
+    let img_html = "";
+
+    if (url) {
+        img_html = `<img class="img-chatbox " src="${url}"/>`; 
+        // onload="window.URL.revokeObjectURL(this.src) dung khi can xoa
+    }
+
+    contentText.innerHTML += `
+        <div class="message-text message-bot-text" style="display: flex; justify-content: flex-end;">
             <div>
+                ${img_html}
                 <p class="msg msg_user">
                     ${text}
                 </p>
             </div>
+            <img class="img-chat" src="${contentText.getAttribute("user")}"/>
         </div>
-        <div class="message-text message-bot-text">       
+        <div class="message-text ">   
+            <img class="img-chat" src="datasources/img/netflop_chatbox.png"/>    
             <div>
-                <p class="msg msg_bot skeleton">
-                    
-                </p>
-            </div>
-            <img class="img-chat" src="/uploads/1713541793.png">
+                <p class="msg msg_bot skeleton"></p>
+            </div> 
         </div>
-    `
-    let text_bot =document.querySelectorAll(".msg_bot");
-    text_bot =text_bot[text_bot.length-1]
-    
-   
-    
-   
-    const file =add_image.files[0]
-    const formData =new FormData()
-    formData.append('image',file)
-    formData.append('question',text)
-    document.querySelector(".temp_image").innerHTML=""
-    document.querySelector('[name="text_file"]').value=""
-    fetch('/text-image',{
-        method:"POST",
-        body:formData,
-        headers:{
-            "X-CSRF-Token":csrf_token
-        }
-        
-    }).then(
-        (res)=>res.json()
-    ).then(
-        (data)=>{
-            text_bot.classList.remove('skeleton')
-            text_bot.innerHTML=data.text
-            // console.log(data)
-        }
-    ).catch(
-        (err)=>console.log(err.message)
-    )
-}
+    `;
 
+    let text_bot = document.querySelectorAll(".msg_bot");
+    text_bot = text_bot[text_bot.length - 1];
+
+    const file = add_image.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    formData.append("question", text);
+    document.querySelector(".temp_image").innerHTML = "";
+    document.querySelector('[name="text_file"]').value = "";
+
+    fetch("/text-image", {
+        method: "POST",
+        body: formData,
+        headers: {
+            "X-CSRF-Token": csrf_token,
+        },
+    })
+        .then((res) => res.json())
+        .then((data) => {
+            text_bot.classList.remove("skeleton");
+            text_bot.innerHTML = data.text;
+        })
+        .catch((err) => console.log(err.message));
+
+    // Reset the URL after sending the message
+    url = "";
+};
