@@ -750,7 +750,7 @@ img.img-profile.rounded-circle {
     right: 40px;
     bottom: 40px;
     padding: 10px;
-    z-index: 5;
+    z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;

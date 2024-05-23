@@ -8,8 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
-use App\Models\user_model;
-use DB;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 
 class ProfileController extends Controller
 {
@@ -28,15 +29,17 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = Auth::user();
+        $user->fill($request->validated());
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        // Kiểm tra xem có sự thay đổi trong email không
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
         }
 
-        $request->user()->save();
+        $user->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return redirect()->route('profile.edit')->with('status', 'Profile updated successfully.');
     }
 
     /**
@@ -44,8 +47,8 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
+        $request->validate([
+            'password' => 'required|current_password',
         ]);
 
         $user = $request->user();
@@ -57,30 +60,12 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
-    }
-
-    public function store(Request $request){
-        $request->validate([
-            'name' => 'required|max:32',
-            'email' => 'required|email',
-            'birthday' => 'required|date',
-            'address' => 'required|max:100',
-            'phoneNumber' => 'required|max:20'
-        ]);
-        $profile = new user_model();
-        $profile->name = $request->input('name');
-        $profile->email = $request->input('email');
-        $profile->birthday = $request->input('birthday');
-        $profile->address = $request->input('address');
-        $profile->phoneNumber = $request->input('phoneNumber');
-        $profile->save();
-
-        return redirect()->back()->with('success');
+        return redirect()->to('/');
     }
 
     public function get_information(){
         $infor = DB::table('user')->get();
         return view('profile', compact('infor'));
     }
+    
 }

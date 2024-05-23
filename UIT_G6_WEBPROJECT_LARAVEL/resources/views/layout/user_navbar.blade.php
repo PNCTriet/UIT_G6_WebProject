@@ -45,10 +45,18 @@
                     </a>
                 @endif
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/logout" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" style="color:black"></i>
-                    Logout
-                </a>
+                <div style="margin-bottom: 10px;">
+                    <a class="dropdown-item" style="margin-bottom: 10px;" href="/profile">
+                        <i class="bi bi-person-circle fa-sm fa-fw mr-2 text-gray-400" style="color:black"></i>
+                        Profile
+                    </a>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <a class="dropdown-item" href="/logout" data-toggle="modal" data-target="#logoutModal">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" style="color:black"></i>
+                        Logout
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -105,3 +113,5 @@
         </div>
     </div>
 </div>
+
+<script src="js/logout.js"></script>

@@ -69,22 +69,14 @@ Route::get('/export-user',[testController::class,'export_user']);
 Route::get('/export-movie',[testController::class,'export_movie']);
 
 
+Route::get('/profile', [ProfileController::class, 'get_information']);
 
-// ============
+// Route để hiển thị form chỉnh sửa profile
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 
-// Route::get('dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
-Route::get('profile/create',[ProfileController::class,'create']);
-Route::post('profile/store',[ProfileController::class,'store'])->name('profile.store');
-
+Route::post('/update-profile', [ProfileController::class, 'update'])->name('update-profile');
+// Route để xóa tài khoản người dùng
+Route::post('/profile/delete', [ProfileController::class, 'destroy'])->name('profile.destroy');
 require __DIR__.'/auth.php';
 
 Route::get('login', [AuthController::class, 'index'])->name('login');
