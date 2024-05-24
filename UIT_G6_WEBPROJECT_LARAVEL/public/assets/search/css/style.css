@@ -11,15 +11,15 @@
     --on-surface: #eae5ff;
     --on-surface-variant: #6f6f71;
     --primary: #db0028;
-    --primary-variant: #d82c4b;
+    --primary-variant: #e32727;
     --rating-color: #fab700;
     --surface: #1a1820;
     --text-color: #959499;
     --white: #ffffff;
 
     /* gradient colors */
-    --banner-overlay: 90deg, rgb(15, 17, 21) 0%, rgba(15, 17, 21, 0.5) 100%;
-    --bottom-overlay: 180deg, rgba(26, 24, 32, 0), rgb(26, 24, 32);
+    --banner-overlay: 90deg, rgba(32, 24, 24, 0), rgb(32, 24, 24) 100%;
+    --bottom-overlay: 180deg, rgba(32, 24, 24, 0), rgb(24, 11, 11);
 
     /* TYPOGRAPHY */
 
@@ -44,7 +44,7 @@
     /* border radius */
     --radius-4: 4px;
     --radius-8: 8px;
-    --radius-16: 16px;
+    --radius-16: 5px;
     --radius-24: 24px;
     --radius-36: 36px;
 
@@ -256,6 +256,13 @@ body {
     background-color: var(--banner-background);
     border-radius: var(--radius-16);
     overflow: hidden;
+    transition: transform 600ms;
+    object-fit: contain;
+}
+
+.video-card:hover{
+    transform: scale(1.08);
+    display: inline-block;
 }
 
 .title-wrapper {
@@ -396,7 +403,7 @@ body {
 
 .search-field:focus {
     box-shadow: 0 0 0 2px var(--on-surface);
-    padding-inline-start: 16px !important;
+    padding-inline-start: 16px !;
 }
 
 .search-wrapper .leading-icon {
@@ -655,10 +662,19 @@ body {
 .movie-card {
     position: relative;
     width: 200px;
+    object-fit: contain;
+    transition: transform 600ms;
+}
+
+.movie-card:hover{
+    transform: scale(1.08);
+    z-index: 1000;
 }
 
 .movie-card .card-banner {
     width: 200px;
+    object-fit: contain;
+    transition: transform 600ms;
 }
 
 .movie-card .title {
@@ -751,6 +767,7 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     column-gap: 16px;
     row-gap: 20px;
+    padding: 0px 10px 0px 10px;
 }
 
 :is(.genre-list, .search-modal) :is(.movie-card, .card-banner) {
@@ -763,7 +780,6 @@ body {
 
 .search-modal {
     position: relative;
-    
     left: 0;
     bottom: 0;
     width: 100%;
@@ -864,7 +880,7 @@ body {
 
     .movie-detail .slider-list {
         margin-inline-start: 0;
-        border-radius: var(--radius-16) 0 0 var(--radius-16);
+        border-radius: var(--radius-8) 0 0 var(--radius-8);
     }
 
     .movie-detail .slider-inner::before {

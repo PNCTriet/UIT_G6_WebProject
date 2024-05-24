@@ -33,6 +33,7 @@
     <!-- Search Container -->
     <div id="search" style="min-height: 500px; max-height:fit-content; background-color: #151515; color: white;">
         <div class="header">
+            <img src="datasources/img/netsearch.png" alt="search" style=" max-width:130px; " class="leading-icon" />
             <div class="search-box" search-box>
                 <div class="search-wrapper" search-wrapper>
                     <input id="searchInput" style="align-items: center" type="text" name="search"
@@ -50,60 +51,10 @@
     @include('layout.user_footer')
 
     <script src="js/logout.js"></script>
-    {{-- <script>
-        document.getElementById('searchInput').addEventListener('input', function() {
-            console.log('Input event triggered'); // Thêm dòng này để kiểm tra
-            const query = this.value;
-            fetch(`/search/results?query=${query}`)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data); // Thêm dòng này để kiểm tra
-                    const searchResults = document.getElementById('searchResults');
-                    searchResults.innerHTML = '';
+    <script>
+        const movieRedirectUrl = '{{ route('movies.redirectmovies', ':id') }}';
+    </script>
 
-                    if (data.length === 0) {
-                        searchResults.innerHTML = '<p>No results found</p>';
-                        return;
-                    }
-
-                    data.forEach(item => {
-                        let resultItem = document.createElement('div');
-                        resultItem.classList.add('card', 'mb-3');
-                        resultItem.innerHTML = `
-                            <div class="card-body">
-                                <h5 class="card-title">${item.title}</h5>
-                                <p class="card-text">${item.overview}</p>
-                                <img src="${item.poster_link}" class="row-poster" onclick="redirectTo('${item.redirect_url}')">
-                                <div class="video-container">
-                                    <iframe class="videocontainer" id="youtubeVideo" src="https://www.youtube.com/embed/${item.youtube_key}" frameborder="0" allowfullscreen></iframe>
-                                </div>
-                                <section class="d-flex justify-content-between">
-                                    <div>
-                                        <i class="bi bi-play-circle-fill card-icon"></i>
-                                        <i class="bi bi-plus-circle card-icon"></i>
-                                    </div>
-                                    <div>
-                                        <i class="bi bi-arrow-down-circle card-icon" onclick="redirectTo('${item.redirect_url}')"></i>
-                                    </div>
-                                </section>
-                                <section class="d-flex align-items-center justify-content-between">
-                                    <p class="netflix-card-text m-0" style="color: rgb(0, 186, 0);">${item.vote_average * 10}% Score</p>
-                                    <span class="m-2 netflix-card-text text-white">${item.number_of_episodes} Episodes</span>
-                                    <span class="border netflix-card-text p-1 text-white">HD</span>
-                                </section>
-                                <span class="netflix-card-text text-white">${item.genres.join(' • ')}</span>
-                            </div>
-                        `;
-                        searchResults.appendChild(resultItem);
-                    });
-                })
-                .catch(error => console.error('Error:', error));
-        });
-
-        function redirectTo(url) {
-            window.location.href = url;
-        }
-    </script> --}}
 </body>
 
 </html>

@@ -36,9 +36,9 @@ export function search() {
                     searchResultModal.innerHTML = ""; // remove old results
 
                     searchResultModal.innerHTML = `
-            <p class="label">Results for</p>
+            <p class="label" style="margin-left:10px;">Results for</p>
             
-            <p class="label" style="font-size:20px; color:white;">${searchField.value}<p class="label">
+            <p class="label" style="margin-left:10px; font-size:20px; color:white;">${searchField.value}<p class="label">
             
             <div class="movie-list-search">
               <div class="grid-list"></div>

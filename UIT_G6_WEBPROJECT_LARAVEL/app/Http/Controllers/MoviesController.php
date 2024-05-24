@@ -32,55 +32,7 @@ class MoviesController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
-    // public function show(string $name)
-    // {
-    //     //
-    //     // API Key của bạn từ TMDB
-    //     $api_key = '123113d4a4822456c35fc67ce8dd0c16';
-
-    //     // Từ khóa tìm kiếm
-
-    //     // URL của API của TMDB để tìm kiếm TV show
-    //     $url = "https://api.themoviedb.org/3/search/tv?api_key=$api_key&query=" . urlencode($name);
-
-    //     // Khởi tạo curl
-    //     $curl = curl_init();
-
-    //     // Cài đặt các tùy chọn cho curl
-    //     curl_setopt_array($curl, [
-    //         CURLOPT_URL => $url,
-    //         CURLOPT_RETURNTRANSFER => true,
-    //         CURLOPT_FOLLOWLOCATION => true,
-    //         CURLOPT_ENCODING => '',
-    //         CURLOPT_MAXREDIRS => 10,
-    //         CURLOPT_TIMEOUT => 0,
-    //         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    //         CURLOPT_CUSTOMREQUEST => 'GET',
-    //     ]);
-
-    //     // Gửi yêu cầu và nhận kết quả
-    //     $response = curl_exec($curl);
-
-    //     // Đóng curl
-    //     curl_close($curl);
-
-    //     // Chuyển đổi JSON thành mảng
-    //     $data = json_decode($response, true);
-
-    //     // Check if any movies are found
-    //     if (isset($data['results']) && count($data['results']) > 0) {
-    //         // Get details of the first movie found
-    //         $movieDetails = $data['results'][0];
-    //         // Pass movie details to view
-    //         return view('detail', compact('movieDetails'));
-    //     } else {
-    //         // Handle case where no movie is found
-    //         abort(404, 'Movie not found');
-    //     }
-    // }
+    
     public function show($description)
     {
         // Make API request to search for the movie
@@ -92,28 +44,24 @@ class MoviesController extends Controller
             'api_key' => '123113d4a4822456c35fc67ce8dd0c16',
         ]);
 
-
-        // Make API request to get movie details by ID
-        // $response = Http::get('https://api.themoviedb.org/3/search/movie/' . $description, [
-        //     'api_key' => '123113d4a4822456c35fc67ce8dd0c16',
-        // ]);
-
-
-        // Check if the request was successful
-        // if ($response->successful()) {
-        //     // Get the first result
-        //     $movie = $response['results'][0];
-
-        //     // Pass movie details to view
-        //     return view('detail', compact('movie'));
-        // } else {
-        //     // Handle case where request was not successful
-        //     abort(404, 'Movie not found');
-        // }
-
         if ($response->successful()) {
             $movie = $response->json(); // Lấy dữ liệu bộ phim từ phản hồi JSON
             return view('detail', compact('movie'));
+        } else {
+            abort(404, 'Failed to fetch movie data');
+        }
+    }
+
+    public function showmovies($id)
+    {
+        // Gọi API để lấy thông tin về TV show dựa trên ID
+        $response = Http::get("https://api.themoviedb.org/3/movie/$id", [
+            'api_key' => '123113d4a4822456c35fc67ce8dd0c16',
+        ]);
+
+        if ($response->successful()) {
+            $movie = $response->json(); // Lấy dữ liệu bộ phim từ phản hồi JSON
+            return view('detailmovies', compact('movie'));
         } else {
             abort(404, 'Failed to fetch movie data');
         }

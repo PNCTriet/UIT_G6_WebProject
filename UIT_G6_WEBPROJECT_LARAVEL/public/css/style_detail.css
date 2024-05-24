@@ -55,6 +55,8 @@
   top: 160px;
   left: 40px;
   z-index: 2;
+  border-radius: 5px;
+  box-shadow: 10px 10px 10px 3px rgba(0, 0, 0, 0.5);
 }
 
 .details {

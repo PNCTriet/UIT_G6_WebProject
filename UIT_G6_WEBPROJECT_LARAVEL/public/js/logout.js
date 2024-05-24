@@ -56,7 +56,7 @@ window.sendMessage = () => {
             <img class="img-chat" src="${contentText.getAttribute("user")}"/>
         </div>
         <div class="message-text ">   
-            <img class="img-chat" src="datasources/img/netflop_chatbox.png"/>    
+            <img class="img-chat" src="../datasources/img/netflop_chatbox.png"/>    
             <div>
                 <p class="msg msg_bot skeleton"></p>
             </div> 

@@ -27,15 +27,16 @@
     <div class="navbar">
 
         @include('layout.user_navbar')
-        <?php
+        <?php 
+
         // API Key của bạn từ TMDB
         $api_key = '123113d4a4822456c35fc67ce8dd0c16';
-        // https://api.themoviedb.org/3/tv/215720/videos?api_key=$123113d4a4822456c35fc67ce8dd0c16
-        // Từ khóa tìm kiếm
-        $query = $movie['name'];
-        
+        $id = $movie['id'];
+           
         // URL của API của TMDB để tìm kiếm TV show
-        $url = "https://api.themoviedb.org/3/search/tv?api_key=$api_key&query=" . urlencode($query);
+        // https://api.themoviedb.org/3/movie/786892?api_key=123113d4a4822456c35fc67ce8dd0c16
+        
+        $url = "https://api.themoviedb.org/3/movie/$id?api_key=$api_key";
         
         // Khởi tạo curl
         $curl = curl_init();
@@ -62,9 +63,9 @@
         $data = json_decode($response, true);
         
         // Hiển thị thông tin trả về từ API
-        if (isset($data['results'][0])) {
-            $show = $data['results'][0];
-            $video_url = "https://api.themoviedb.org/3/tv/{$show['id']}/videos?api_key=$api_key";
+        if (isset($data)) {
+            $show = $data;
+            $video_url = "https://api.themoviedb.org/3/movie/{$id}/videos?api_key=$api_key";
             $video_response = file_get_contents($video_url);
             $video_data = json_decode($video_response, true);
         
@@ -82,8 +83,8 @@
                                                                     <a href="#"><img src="https://image.tmdb.org/t/p/w200/' .
                 $show['poster_path'] .
                 '" alt="' .
-                $show['name'] .
-                '" class="cover" /></a>
+                $show['title'] .
+                '" class="cover" loading="lazy/></a>
                                                 
                                                                     <div class="hero" style="background-image: url(\'https://image.tmdb.org/t/p/w780/' .
                 $show['backdrop_path'] .
@@ -92,7 +93,7 @@
                                                                         <div class="details">
                                                                         
                                                                         <div class="title">' .
-                $show['name'] .
+                $show['title'] .
                 ' </div>
                                                                 
                                                                             
@@ -123,9 +124,6 @@
                                                                         
                                                                         <div class="column2">
                                                                         
-                                                                        <p><strong>Ngày phát sóng:</strong> ' .
-                $show['first_air_date'] .
-                '</p>
                                                                         <p><strong>Đánh giá:</strong> ' .
                 $show['vote_average'] .
                 '</p>
@@ -138,138 +136,138 @@
                                                                         <strong>Quốc gia gốc:</strong> ' .
                 implode(', ', $show['origin_country']) .
                 '</p>
-                                                                        <p><strong>Thể loại:</strong> ' .
-                implode(', ', $show['genre_ids']) .
-                '</p>
-                                                                        <p><strong>Populariy:</strong> ' .
-                $show['popularity'] .
-                '</p>
-                                                                        <p><strong>Số lượt đánh giá:</strong> ' .
-                $show['vote_count'] .
-                '</p>
-                                                
                                                                         
-                                                                        </div> <!-- end column2 -->
-                                                                    </div> <!-- end description -->
-                                                                    <h2>Trailer</h2>
-                                                                    <div class="video-container">
-                                                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/' .
+        <p><strong>Populariy:</strong> ' .
+            $show['popularity'] .
+            '</p>
+        <p><strong>Số lượt đánh giá:</strong> ' .
+            $show['vote_count'] .
+            '</p>
+
+
+    </div> <!-- end column2 -->
+    </div> <!-- end description -->
+    <h2>Trailer</h2>
+    <div class="video-container">
+        <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/' .
                 $youtube_key .
-                '" frameborder="0" allowfullscreen></iframe>
-                                                                    </div>
-                                                                    </div>
-                                                                </div> ';
-        
-            // Gọi API để lấy thông tin về diễn viên của bộ phim
-            $credits_url = "https://api.themoviedb.org/3/tv/{$show['id']}/credits?api_key=$api_key";
-            $credits_response = file_get_contents($credits_url);
-            $credits_data = json_decode($credits_response, true);
-        
-            echo '<br>';
-            echo '<br>';
-            echo '<br>';
-        
-            // Hiển thị hình diễn viên
-            if (!empty($credits_data['cast'])) {
-                echo '<h1>Diễn viên</h1>';
-                echo '<div class="cast-container">';
-                foreach ($credits_data['cast'] as $cast) {
-                    $profile_path = $cast['profile_path'];
-                    if ($profile_path) {
-                        echo '<img class="cast-img" src="https://image.tmdb.org/t/p/w200/' . $profile_path . '" alt="' . $cast['name'] . '">';
-                    }
-                }
-                echo '</div>';
-            } else {
-                echo '<p>Không tìm thấy thông tin về diễn viên cho bộ phim này.</p>';
-            }
-        
-        } else {
-            echo '<p>Không có kết quả.</p>';
+                '" frameborder="0"
+            allowfullscreen></iframe>
+    </div>
+    </div>
+    </div> ';
+
+    // Gọi API để lấy thông tin về diễn viên của bộ phim
+    $credits_url = "https://api.themoviedb.org/3/movie/{$id}/credits?api_key=$api_key";
+    $credits_response = file_get_contents($credits_url);
+    $credits_data = json_decode($credits_response, true);
+
+    echo '<br>';
+    echo '<br>';
+    echo '<br>';
+
+    // Hiển thị hình diễn viên
+    if (!empty($credits_data['cast'])) {
+    echo '<h1>Diễn viên</h1>';
+    echo '<div class="cast-container">';
+        foreach ($credits_data['cast'] as $cast) {
+        $profile_path = $cast['profile_path'];
+        if ($profile_path) {
+        echo '<img class="cast-img" src="https://image.tmdb.org/t/p/w200/' . $profile_path . '"
+            alt="' . $cast['name'] . '">';
         }
-        ?>
+        }
+        echo '</div>';
+    } else {
+    echo '<p>Không tìm thấy thông tin về diễn viên cho bộ phim này.</p>';
+    }
 
-        <br></br>
-
-        <!-- footer -->
-        <div class="member-footer">
-            <div class="social-links">
-                <a class="social-link" href="">
-                    <i class="fa-brands fa-facebook fa-xl" style="color: #aaaaaa"></i>
-                </a>
-                <a class="social-link" href="">
-                    <i class="fa-brands fa-instagram fa-xl" style="color: #aaaaaa"></i>
-                </a>
-                <a class="social-link" href="">
-                    <i class="fa-brands fa-twitter fa-xl" style="color: #aaaaaa"></i>
-                </a>
-                <a class="social-link" href="">
-                    <i class="fa-brands fa-youtube fa-xl" style="color: #aaaaaa"></i>
-                </a>
-            </div>
-            <ul class="member-footer-links">
-                <li class="member-footer-link-wrapper">
-                    <a href="">
-                        <span>Mô tả âm thanh</span>
-                    </a>
-                </li>
-                <li class="member-footer-link-wrapper">
-                    <a href="">
-                        <span>Thẻ quà tặng</span>
-                    </a>
-                </li>
-                <li class="member-footer-link-wrapper">
-                    <a href="">
-                        <span>Quan hệ với nhà đầu tư</span>
-                    </a>
-                </li>
-                <li class="member-footer-link-wrapper">
-                    <a href="">
-                        <span>Điều khoản sử dụng</span>
-                    </a>
-                </li>
-                <li class="member-footer-link-wrapper">
-                    <a href="">
-                        <span>Thông tin pháp lý</span>
-                    </a>
-                </li>
-                <li class="member-footer-link-wrapper">
-                    <a href="">
-                        <span>Thông tin doanh nghiệp</span>
-                    </a>
-                </li>
-                <li class="member-footer-link-wrapper">
-                    <a href="">
-                        <span>Trung tâm trợ giúp</span>
-                    </a>
-                </li>
-                <li class="member-footer-link-wrapper">
-                    <a href="">
-                        <span>Trung tâm đa phương tiện</span>
-                    </a>
-                </li>
-                <li class="member-footer-link-wrapper">
-                    <a href="">
-                        <span>Việc làm</span>
-                    </a>
-                </li>
-                <li class="member-footer-link-wrapper">
-                    <a href="">
-                        <span>Quyền riêng tư</span>
-                    </a>
-                </li>
-                <li class="member-footer-link-wrapper">
-                    <a href="">
-                        <span>Tuỳ chọn cookie</span>
-                    </a>
-                </li>
-                <li class="member-footer-link-wrapper">
-                    <a href="">
-                        <span>Liên hệ với chúng tôi</span>
-                    </a>
-                </li>
-            </ul>
+    } else {
+    echo '<p>--Không có kết quả.</p>';
+    echo '<p>--id movie : '.$id.'</p>';
+    }
+    ?>
+    <br></br>
+    <!-- footer -->
+    <div class="member-footer">
+        <div class="social-links">
+            <a class="social-link" href="">
+                <i class="fa-brands fa-facebook fa-xl" style="color: #aaaaaa"></i>
+            </a>
+            <a class="social-link" href="">
+                <i class="fa-brands fa-instagram fa-xl" style="color: #aaaaaa"></i>
+            </a>
+            <a class="social-link" href="">
+                <i class="fa-brands fa-twitter fa-xl" style="color: #aaaaaa"></i>
+            </a>
+            <a class="social-link" href="">
+                <i class="fa-brands fa-youtube fa-xl" style="color: #aaaaaa"></i>
+            </a>
         </div>
+        <ul class="member-footer-links">
+            <li class="member-footer-link-wrapper">
+                <a href="">
+                    <span>Mô tả âm thanh</span>
+                </a>
+            </li>
+            <li class="member-footer-link-wrapper">
+                <a href="">
+                    <span>Thẻ quà tặng</span>
+                </a>
+            </li>
+            <li class="member-footer-link-wrapper">
+                <a href="">
+                    <span>Quan hệ với nhà đầu tư</span>
+                </a>
+            </li>
+            <li class="member-footer-link-wrapper">
+                <a href="">
+                    <span>Điều khoản sử dụng</span>
+                </a>
+            </li>
+            <li class="member-footer-link-wrapper">
+                <a href="">
+                    <span>Thông tin pháp lý</span>
+                </a>
+            </li>
+            <li class="member-footer-link-wrapper">
+                <a href="">
+                    <span>Thông tin doanh nghiệp</span>
+                </a>
+            </li>
+            <li class="member-footer-link-wrapper">
+                <a href="">
+                    <span>Trung tâm trợ giúp</span>
+                </a>
+            </li>
+            <li class="member-footer-link-wrapper">
+                <a href="">
+                    <span>Trung tâm đa phương tiện</span>
+                </a>
+            </li>
+            <li class="member-footer-link-wrapper">
+                <a href="">
+                    <span>Việc làm</span>
+                </a>
+            </li>
+            <li class="member-footer-link-wrapper">
+                <a href="">
+                    <span>Quyền riêng tư</span>
+                </a>
+            </li>
+            <li class="member-footer-link-wrapper">
+                <a href="">
+                    <span>Tuỳ chọn cookie</span>
+                </a>
+            </li>
+            <li class="member-footer-link-wrapper">
+                <a href="">
+                    <span>Liên hệ với chúng tôi</span>
+                </a>
+            </li>
+        </ul>
+    </div>
     </div>
 </body>
 <script src="js/logout.js"></script>

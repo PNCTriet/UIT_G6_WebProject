@@ -64,4 +64,9 @@ class ListFilmController extends Controller
 
         return redirect()->route('detail', $movie->description);
     }
+
+    public function redirectToMovieDetail_movies($id)
+    {
+        return redirect()->route('detailmovies', ['id' => $id]);
+    }
 }

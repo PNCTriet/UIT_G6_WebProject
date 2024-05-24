@@ -104,5 +104,10 @@ Route::post('/only-text',[GeminiController::class,'only_text']);
 Route::post('/text-image',[GeminiController::class,'text_image']);
 
 Route::get('/movies/{id}', [ListFilmController::class, 'redirectToMovieDetail'])->name('movies.redirect');
-Route::get('/{name}', [MoviesController::class, 'show'])->name('detail');
+Route::get('/moviesmv/{id}', [ListFilmController::class, 'redirectToMovieDetail_movies'])->name('movies.redirectmovies');
 
+Route::get('/tv/{name}', [MoviesController::class, 'show'])->name('detail');
+Route::get('/mv/{id}', [MoviesController::class, 'showmovies'])->name('detailmovies');
+
+//  onclick="redirectTo('' . route('movies.redirectmovies', 168259}) . '')"></a>
+//  onclick="redirectTo('http://127.0.0.1:8000/movies/2')">
