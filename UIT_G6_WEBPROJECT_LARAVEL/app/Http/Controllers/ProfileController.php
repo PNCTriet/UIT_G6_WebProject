@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\User;
+use App\Models\users;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 
 class ProfileController extends Controller
@@ -17,29 +19,49 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
-    public function edit(Request $request): View
-    {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
-    }
+    // public function edit(Request $request): View
+    // {
+    //     return view('profile', [
+    //         'user' => $request->user(),
+    //     ]);
+    // }
 
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    // public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(Request $request)
     {
-        $user = Auth::user();
-        $user->fill($request->validated());
-
-        // Kiểm tra xem có sự thay đổi trong email không
-        if ($user->isDirty('email')) {
-            $user->email_verified_at = null;
+        $email = Auth::user()->email;
+        $user =User::where('email',$email)->first();
+        $users =users::where('email',$email)->first();
+        if($request->has('avatar')){
+            $file =$request->file('avatar');
+            $img_type =$file->getClientOriginalExtension();
+            $img_name =time().".".$img_type;
+            $file->move('avartar',$img_name);
+            if(File::exists($user->avartar)){
+                File::delete($user->avartar);
+            }
+            $user->avartar="avartar/{$img_name}";
+           
         }
-
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->phoneNumber=$request->phone;
+        $user->address=$request->address;
+        $user->updated_at =NOW();
         $user->save();
 
-        return redirect()->route('profile.edit')->with('status', 'Profile updated successfully.');
+        $users->name=$request->name;
+        $users->email=$request->email;
+        $users->updated_at=NOW();
+        $users->save();
+
+
+      
+
+        return redirect()->to('/profile')->with('status', 'Profile updated successfully.');
     }
 
     /**

@@ -18,7 +18,9 @@ window.closeChatBot = (tag) => {
     logoChat.style.display = "flex";
 };
 
-let url;
+
+let url
+window.dem=0
 window.add_image = () => {
     const add_image = document.querySelector(".add_img");
     add_image.click();
@@ -28,10 +30,12 @@ window.add_image = () => {
         thumbnailsEl.innerHTML = "";
         const file = add_image.files[0];
         url = URL.createObjectURL(file);
+      
+        dem=1
         thumbnailsEl.innerHTML += `<img class="thumb img-thumbnail" src="${url}" />`;
     });
 };
-let dem = 0;
+
 window.sendMessage = () => {
     const contentText = document.querySelector(".content-text");
     const text = document.querySelector('[name="text_file"]').value;
@@ -42,7 +46,8 @@ window.sendMessage = () => {
     let img_html = "";
 
     if (url) {
-        img_html = `<img class="img-chatbox " src="${url}" onload="window.URL.revokeObjectURL(this.src)"/>`; 
+        // img_html = `<img class="img-chatbox " src="${url}" onload="window.URL.revokeObjectURL(this.src)"/>`; 
+        img_html = `<img class="img-chatbox " src="${url}">`; 
     }
 
     contentText.innerHTML += `
@@ -68,7 +73,13 @@ window.sendMessage = () => {
 
     const file = add_image.files[0];
     const formData = new FormData();
-    formData.append("image", file);
+    if(dem==1){
+        console.log("check active")
+       
+        formData.append("image", file);
+        dem=0
+    }
+    
     formData.append("question", text);
     document.querySelector(".temp_image").innerHTML = "";
     document.querySelector('[name="text_file"]').value = "";
@@ -85,8 +96,30 @@ window.sendMessage = () => {
             text_bot.classList.remove("skeleton");
             text_bot.innerHTML = data.text;
         })
-        .catch((err) => console.log(err.message));
+        .catch((err) => {
+            text_bot.classList.remove("skeleton");
+            text_bot.innerHTML = "Lỗi hệ thống.Vui lòng thử lại!."
+            console.log(err.message)});
 
     // Reset the URL after sending the message
     url = "";
 };
+
+window.UserImage =(tag)=>{
+   
+       
+    let avatarInput =document.getElementById('avatarInput')
+    avatarInput.click();
+    avatarInput.addEventListener("input",()=>{
+        let image_url =avatarInput.files[0]
+        let create_url = URL.createObjectURL(image_url)
+        tag.src=`${create_url}`
+
+    })
+        
+     
+}
+
+   
+
+

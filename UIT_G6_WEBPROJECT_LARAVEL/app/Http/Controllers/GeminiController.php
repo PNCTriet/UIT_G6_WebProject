@@ -48,6 +48,11 @@ class GeminiController extends Controller
                 File::delete("chatBot/{$name_file}");
             }
             return response()->json(['text' => $res_AI->text()]);
+        }else{
+            $prefix = "bạn là tư vấn viên của web xem phim Netflop, hãy chỉ tư vấn về chủ đề phim ảnh và nhắc tới netflop nhiều (không phải netflix), hãy giúp tôi tư vấn cho khách hàng có câu hỏi sau: ";
+            $question = $prefix . ($request->question ?? "");
+            $res_AI = Gemini::geminiPro()->generateContent($question);
+            return response()->json(["text" => $res_AI->text()]);
         }
     }
 }
