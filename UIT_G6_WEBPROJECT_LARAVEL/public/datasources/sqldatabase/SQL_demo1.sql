@@ -1,4 +1,4 @@
-CREATE TABLE `User` (
+CREATE TABLE `user` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(50),
   `birthday` date,
@@ -14,18 +14,18 @@ CREATE TABLE `User` (
   `updated_at` datetime
 );
 
-ALTER TABLE User
+ALTER TABLE user
 ALTER COLUMN role_id SET DEFAULT 2;
 
 
-CREATE TABLE `User_role` (
+CREATE TABLE `user_role` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
   `role_type` varchar(255),
   `created_at` datetime,
   `updated_at` datetime
 );
 
-CREATE TABLE `User_credential` (
+CREATE TABLE `user_credential` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
   `user_id`integer,
   `email` varchar(50),
@@ -34,7 +34,7 @@ CREATE TABLE `User_credential` (
   `updated_at` datetime 
 );
 
-CREATE TABLE `User_deposit` (
+CREATE TABLE `user_deposit` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
   `user_id` integer,
   `total_money` integer,
@@ -43,7 +43,7 @@ CREATE TABLE `User_deposit` (
   `updated_at` datetime
 );
 
-CREATE TABLE `Deposit_detail` (
+CREATE TABLE `deposit_detail` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
   `deposit_id` integer,
   `total_money` integer,
@@ -53,7 +53,7 @@ CREATE TABLE `Deposit_detail` (
   `updated_at` datetime
 );
 
-CREATE TABLE `User_plan` (
+CREATE TABLE `user_plan` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
   `plan_type` varchar(50),
   `planstart_at` datetime,
@@ -62,7 +62,7 @@ CREATE TABLE `User_plan` (
   `updated_at` datetime
 );
 
-CREATE TABLE `User_playlist` (
+CREATE TABLE `user_playlist` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
   `user_id` integer,
   `playlist_detail_id` integer,
@@ -70,7 +70,7 @@ CREATE TABLE `User_playlist` (
   `updated_at` datetime
 );
 
-CREATE TABLE `Playlist_detail` (
+CREATE TABLE `playlist_detail` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
   `user_playlist_id` integer,
   `movie_id` integer,
@@ -81,7 +81,7 @@ CREATE TABLE `Playlist_detail` (
   `updated_at` datetime
 );
 
-CREATE TABLE `Movie` (
+CREATE TABLE `movie` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
   `category_id` integer,
   `specialgroup_id` integer,
@@ -96,7 +96,7 @@ CREATE TABLE `Movie` (
 );
 
 
-CREATE TABLE `Movie_link` (
+CREATE TABLE `movie_link` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
   `poster_link` varchar(255),
   `trailer_link` varchar(255),
@@ -105,17 +105,17 @@ CREATE TABLE `Movie_link` (
   `rank_link` varchar(255) NULL
 );
 
-CREATE TABLE `MovieCategory` (
+CREATE TABLE `movieCategory` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(100)
 );
 
-CREATE TABLE `SpecialGroup` (
+CREATE TABLE `specialgroup` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(100)
 );
 
-CREATE TABLE `Voucher` (
+CREATE TABLE `voucher` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(100),
   `voucherstart_date` datetime,
@@ -125,65 +125,65 @@ CREATE TABLE `Voucher` (
   `status` varchar(50)
 );
 
-ALTER TABLE `Playlist_detail` ADD FOREIGN KEY (`movie_id`) REFERENCES `Movie` (`id`);
+ALTER TABLE `playlist_detail` ADD FOREIGN KEY (`movie_id`) REFERENCES `movie` (`id`);
 
-ALTER TABLE `Playlist_detail` ADD FOREIGN KEY (`user_playlist_id`) REFERENCES `User_playlist` (`id`);
+ALTER TABLE `playlist_detail` ADD FOREIGN KEY (`user_playlist_id`) REFERENCES `user_playlist` (`id`);
 
-ALTER TABLE `User_playlist` ADD FOREIGN KEY (`user_id`) REFERENCES `User` (`id`);
+ALTER TABLE `user_playlist` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
-ALTER TABLE `User_deposit` ADD FOREIGN KEY (`user_id`) REFERENCES `User` (`id`);
+ALTER TABLE `user_deposit` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
-ALTER TABLE `User` ADD FOREIGN KEY (`role_id`) REFERENCES `User_role` (`id`);
+ALTER TABLE `user` ADD FOREIGN KEY (`role_id`) REFERENCES `user_role` (`id`);
 
-ALTER TABLE `User` ADD FOREIGN KEY (`plan_id`) REFERENCES `User_plan` (`id`);
+ALTER TABLE `user` ADD FOREIGN KEY (`plan_id`) REFERENCES `user_plan` (`id`);
 
-ALTER TABLE `Deposit_detail` ADD FOREIGN KEY (`deposit_id`) REFERENCES `User_deposit` (`id`);
+ALTER TABLE `deposit_detail` ADD FOREIGN KEY (`deposit_id`) REFERENCES `user_deposit` (`id`);
 
-ALTER TABLE `User_credential` ADD FOREIGN KEY (`user_id`) REFERENCES `User` (`id`);
+ALTER TABLE `user_credential` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
-ALTER TABLE `Movie` ADD FOREIGN KEY (`category_id`) REFERENCES `MovieCategory` (`id`);
+ALTER TABLE `movie` ADD FOREIGN KEY (`category_id`) REFERENCES `movieCategory` (`id`);
 
-ALTER TABLE `Movie` ADD FOREIGN KEY (`SpecialGroup_id`) REFERENCES `SpecialGroup` (`id`);
+ALTER TABLE `movie` ADD FOREIGN KEY (`specialgroup_id`) REFERENCES `specialgroup` (`id`);
 
-ALTER TABLE `Movie` ADD FOREIGN KEY (`link_id`) REFERENCES `Movie_link` (`id`);
+ALTER TABLE `movie` ADD FOREIGN KEY (`link_id`) REFERENCES `movie_link` (`id`);
 
-ALTER TABLE `User` ADD FOREIGN KEY (`discount_id`) REFERENCES `Voucher` (`id`);
+ALTER TABLE `user` ADD FOREIGN KEY (`discount_id`) REFERENCES `voucher` (`id`);
 
 
 -- Chèn dữ liệu mẫu
 
--- Chèn dữ liệu cho bảng User_role
-INSERT INTO User_role (role_type, created_at, updated_at)
+-- Chèn dữ liệu cho bảng user_role
+INSERT INTO user_role (role_type, created_at, updated_at)
 VALUES ('Admin', NOW(), NOW()),
-       ('User', NOW(), NOW());
+       ('user', NOW(), NOW());
 
--- Chèn dữ liệu cho bảng User_plan
-INSERT INTO User_plan (plan_type, planstart_at, planend_at, created_at, updated_at)
+-- Chèn dữ liệu cho bảng user_plan
+INSERT INTO user_plan (plan_type, planstart_at, planend_at, created_at, updated_at)
 VALUES ('Basic', NOW(), DATE_ADD(NOW(), INTERVAL 1 MONTH), NOW(), NOW()),
        ('Premium', NOW(), DATE_ADD(NOW(), INTERVAL 1 YEAR), NOW(), NOW());
 
--- Chèn dữ liệu cho bảng User
-INSERT INTO User (name, birthday, email, phoneNumber, address, avartar, role_id, plan_id, deposit_id, discount_id, created_at, updated_at)
+-- Chèn dữ liệu cho bảng user
+INSERT INTO user (name, birthday, email, phoneNumber, address, avartar, role_id, plan_id, deposit_id, discount_id, created_at, updated_at)
 VALUES ('John Doe', '1990-05-15', 'john.doe@example.com', '1234567890', '123 Main St, City, Country', 'avatar1.jpg', 1, 1, 1, NULL, NOW(), NOW()),
        ('Jane Smith', '1985-08-25', 'jane.smith@example.com', '9876543210', '456 Elm St, Town, Country', 'avatar2.jpg', 2, 2, 2, NULL, NOW(), NOW());
 
--- Chèn dữ liệu cho bảng User_credential
-INSERT INTO User_credential (user_id,email, password, created_at, updated_at)
+-- Chèn dữ liệu cho bảng user_credential
+INSERT INTO user_credential (user_id,email, password, created_at, updated_at)
 VALUES (1,'john.doe@example.com', 'password123', NOW(), NOW()),
        (2,'jane.smith@example.com', 'letmein', NOW(), NOW());
 
--- Chèn dữ liệu cho bảng User_deposit
-INSERT INTO User_deposit (user_id, total_money, deposit_detail_id, created_at, updated_at)
+-- Chèn dữ liệu cho bảng user_deposit
+INSERT INTO user_deposit (user_id, total_money, deposit_detail_id, created_at, updated_at)
 VALUES (1, 100, 1, NOW(), NOW()),
        (2, 200, 2, NOW(), NOW());
 
--- Chèn dữ liệu cho bảng Deposit_detail
-INSERT INTO Deposit_detail (deposit_id, total_money, method, status, created_at, updated_at)
+-- Chèn dữ liệu cho bảng deposit_detail
+INSERT INTO deposit_detail (deposit_id, total_money, method, status, created_at, updated_at)
 VALUES (1, 100, 'Credit Card', 'Success', NOW(), NOW()),
        (2, 200, 'PayPal', 'Success', NOW(), NOW());
 
--- Chèn dữ liệu cho bảng Movie_link
-INSERT INTO Movie_link (poster_link, trailer_link, movie_link, rank_link)
+-- Chèn dữ liệu cho bảng movie_link
+INSERT INTO movie_link (poster_link, trailer_link, movie_link, rank_link)
 VALUES 
 ('datasources/filmphoto_[body]/filmphoto_[body]_1.png', 'https://www.youtube.com/watch?v=nvdSbuizTUA&pp=ygUgZ2nhu69hIGPGoW4gYsOjbyB0dXnhur90IHRyYWlsZXI%3D', 'https://www.youtube.com/watch?v=nvdSbuizTUA&pp=ygUgZ2nhu69hIGPGoW4gYsOjbyB0dXnhur90IHRyYWlsZXI%3D', 'datasources/imageranking/img1.jpg'),
 ('datasources/filmphoto_[body]/filmphoto_[body]_2.png', 'https://www.youtube.com/watch?v=9SdYFYflVbw&pp=ygUlbuG7ryBsdeG6rXQgc8awIHdvbyB5b3VuZyB3b28gdHJhaWxlcg%3D%3D', 'https://www.youtube.com/watch?v=9SdYFYflVbw&pp=ygUlbuG7ryBsdeG6rXQgc8awIHdvbyB5b3VuZyB3b28gdHJhaWxlcg%3D%3D', 'datasources/imageranking/img2.jpg'),
@@ -287,25 +287,25 @@ VALUES
 ('datasources/filmphoto_[body]/filmphoto_[body]_100.png', 'trailer_link_100', 'movie_link_100','datasources/imageranking/img100.jpg'),
 ('datasources/filmphoto_[body]/filmphoto_[body]_101.png', 'trailer_link_101', 'movie_link_101','datasources/imageranking/img100.jpg');
 
--- Chèn dữ liệu cho bảng MovieCategory
-INSERT INTO MovieCategory (name)
+-- Chèn dữ liệu cho bảng movieCategory
+INSERT INTO movieCategory (name)
 VALUES ('Action'),
        ('Comedy'),
        ('Drama');
 
--- Chèn dữ liệu cho bảng SpecialGroup
-INSERT INTO SpecialGroup (name)
+-- Chèn dữ liệu cho bảng specialgroup
+INSERT INTO specialgroup (name)
 VALUES ('New Releases'),
        ('Top Rated');
 
--- Chèn dữ liệu cho bảng Voucher
-INSERT INTO Voucher (name, voucherstart_date, voucherend_date, code, discount_percentage, status)
+-- Chèn dữ liệu cho bảng voucher
+INSERT INTO voucher (name, voucherstart_date, voucherend_date, code, discount_percentage, status)
 VALUES ('Spring Sale', NOW(), DATE_ADD(NOW(), INTERVAL 1 MONTH), 'SPRING2024', 20, 'Active'),
        ('Summer Discount', NOW(), DATE_ADD(NOW(), INTERVAL 2 MONTH), 'SUMMER2024', 15, 'Active');
 
 
--- Chèn dữ liệu cho bảng Movie
-INSERT INTO Movie (category_id, specialgroup_id, title, description, link_id, created_at, updated_at, point)
+-- Chèn dữ liệu cho bảng movie
+INSERT INTO movie (category_id, specialgroup_id, title, description, link_id, created_at, updated_at, point)
 VALUES (1, 1, 'Giữa cơn bão tuyết', '221112', 1, NOW(), NOW(),807),
 (1, 1, 'Nữ luật sư kỳ lạ', '197067', 2, NOW(), NOW(),182),
 (1, 1, 'Lấy danh nghĩa người nhà', '107329', 3, NOW(), NOW(),822),
@@ -410,13 +410,13 @@ VALUES (1, 1, 'Giữa cơn bão tuyết', '221112', 1, NOW(), NOW(),807),
 
 
 
--- Chèn dữ liệu cho bảng User_playlist
-INSERT INTO User_playlist (user_id, playlist_detail_id, created_at, updated_at)
+-- Chèn dữ liệu cho bảng user_playlist
+INSERT INTO user_playlist (user_id, playlist_detail_id, created_at, updated_at)
 VALUES (1, 1, NOW(), NOW()),
        (2, 2, NOW(), NOW());
 
--- Chèn dữ liệu cho bảng Playlist_detail
-INSERT INTO Playlist_detail (user_playlist_id, movie_id, status, currentime, currentepisode, created_at, updated_at)
+-- Chèn dữ liệu cho bảng playlist_detail
+INSERT INTO playlist_detail (user_playlist_id, movie_id, status, currentime, currentepisode, created_at, updated_at)
 VALUES (1, 1, 'Watching', 120, 3, NOW(), NOW()),
        (2, 2, 'Paused', 90, 2, NOW(), NOW());
 
