@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 networks:
   laravel:
@@ -66,27 +66,25 @@ services:
       - laravel
 
   composer:
-      build:
-        context: ./dockerfiles
-        dockerfile: composer.dockerfile
-        args:
-          - UID=${UID:-1000}
-          - GID=${GID:-1000}
-          - USER=${USER:-youruser}
-      container_name: composer
-      volumes:
-        - ./:/var/www/html
-      working_dir: /var/www/html
-      depends_on:
-        - php
-      user: "${UID}:${GID}"
-      command: ["composer", "install"]
-      networks:
-        - laravel
-      
+    build:
+      context: ./dockerfiles
+      dockerfile: composer.dockerfile # Đảm bảo Dockerfile nằm trong thư mục dockerfiles và có tên composer.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+        - USER=${USER:-youruser}
+    container_name: composer
+    volumes:
+      - ./:/var/www/html
+    working_dir: /var/www/html
+    depends_on:
+      - php
+    user: "${UID:-1000}:${GID:-1000}"
+    entrypoint: ["composer"]
+    command: ["create-project", "--prefer-dist", "laravel/laravel", "my-laravel-app2"]
 
   # npm:
-  #     image: node:13.7
+  #     image: node:latest
   #     container_name: npm
   #     volumes:
   #       - ./:/var/www/html
@@ -111,7 +109,8 @@ services:
     depends_on:
       - mysql
     working_dir: /var/www/html
-    entrypoint: ['php', '/var/www/html/artisan']
+    entrypoint: ['sh', '-c', 'php /var/www/html/artisan serve && tail -f /dev/null']
+
     networks:
       - laravel
 
