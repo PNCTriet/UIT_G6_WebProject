@@ -19,18 +19,31 @@
 <body>
     @include('layout.user_navbar')
     <!-- Navbar -->
-
+    <?php
+        $msg =session()->get('status');
+        if($msg){
+            echo "
+            <div class='msg_profile'>
+                <p class='info_profile'>{$msg}</p>
+            </div>";
+        }
+    ?>
+        
+    
+        
+    
     <!-- Profile Update Section -->
     <div class="profile-container-p" id="backround">
         <div class="container-profile">
-            <h2 style="color: aliceblue">User Profile</h2>
+            <h2 style="color: aliceblue" class="sm:bg-red-600">User Profile</h2>
             <form action="/update-profile" method="POST" enctype="multipart/form-data">
               @csrf <!-- CSRF token -->
+              @method("PUT")
               <!-- Thông tin hình đại diện -->
               <div class="profile-pic">
-                  <img src="{{ Auth::user()->avartar }}" alt="Avatar" class="avatar" id="avatar">
+                  <img src="{{ Auth::user()->avartar }}" alt="Avatar" class="avatar" id="avatar" onclick="UserImage(this)" onload="window.URL.revokeObjectURL(this.src)">
                   <!-- Trường input cho việc upload avatar mới -->
-                  <input type="file" name="avatar" accept="image/*">
+                  <input type="file" name="avatar" accept="image/*" id="avatarInput">
               </div>
               <!-- Thông tin cá nhân -->
               <div class="profile-info">
@@ -41,7 +54,7 @@
                   <input type="email" id="email" name="email" value="{{ Auth::user()->email }}" readonly>
           
                   <label for="phone">Phone</label>
-                  <input type="text" id="phone" name="phone" value="{{ Auth::user()->phone }}" required>
+                  <input type="text" id="phone" name="phone" value="{{ Auth::user()->phoneNumber }}" required>
           
                   <label for="address">Address</label>
                   <input type="text" id="address" name="address" value="{{ Auth::user()->address }}" required>
@@ -82,10 +95,19 @@
         </ul>
     </div>
 
-    <script>
-      document.getElementById('avatar').addEventListener('click', function() {
-          document.getElementById('avatarInput').click();
-      });
+    <script src="js/msg_profile.js">
+    //   document.getElementById('avatar').addEventListener('click', function(event) {
+    //     event.preventDefault()
+    //     let avatarInput =document.getElementById('avatarInput')
+    //     avatarInput.click();
+    //     avatarInput.addEventListener("click",()=>{
+    //         let image_url =avatarInput.files[0]
+    //         let create_url = URL.createObjectURL(image_url)
+    //         document.getElementById('avatar').src=`${create_url}`
+
+    //     })
+        
+    //   });
   </script>
     < </body>
 

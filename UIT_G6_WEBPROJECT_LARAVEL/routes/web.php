@@ -75,10 +75,11 @@ Route::get('/export-movie',[testController::class,'export_movie']);
 
 Route::get('/profile', [ProfileController::class, 'get_information']);
 
-// Route để hiển thị form chỉnh sửa profile
-Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+// // Route để hiển thị form chỉnh sửa profile
+// Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 
-Route::post('/update-profile', [ProfileController::class, 'update'])->name('update-profile');
+Route::put('/update-profile', [ProfileController::class, 'update'])->name('profile.update');
+// Route::put('/update-profile', [ProfileController::class, 'update']);
 // Route để xóa tài khoản người dùng
 Route::post('/profile/delete', [ProfileController::class, 'destroy'])->name('profile.destroy');
 require __DIR__.'/auth.php';
@@ -100,7 +101,7 @@ Route::post("/reset-password", [ForgetPasswordManager::class, "resetPasswordPost
     ->name("reset.password.post");
 
 //Gemini AI
-Route::post('/only-text',[GeminiController::class,'only_text']);
+// Route::post('/only-text',[GeminiController::class,'only_text']);
 Route::post('/text-image',[GeminiController::class,'text_image']);
 
 Route::get('/movies/{id}', [ListFilmController::class, 'redirectToMovieDetail'])->name('movies.redirect');

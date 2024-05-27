@@ -884,6 +884,7 @@ i.bx.bx-message-dots {
   border: 0;
   font-family: "Lato", sans-serif;
   resize: none;
+  background-color: white;
 }
 
 /* Đảm bảo rằng không có pseudo-classes nào thay đổi màu sắc */
@@ -1043,10 +1044,10 @@ img.thumb.img-thumbnail {
 
 @keyframes skeleton {
     0% {
-        opacity: 20%;
+        opacity: 40%;
     }
     100% {
-        opacity: 40%;
+        opacity: 80%;
     }
 }
 
