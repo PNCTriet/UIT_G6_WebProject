@@ -27,7 +27,7 @@ class StreamingController extends Controller
     // Truy vấn movie_link từ bảng movie_link dựa trên link_id
     $movie_link = DB::table('movie_link')
         ->where('id', $link_id)
-        ->select('movie_link')
+        ->select('movie_link','episode_status')
         ->first();
 
     // Gọi API từ The Movie Database (TMDb)
@@ -37,13 +37,14 @@ class StreamingController extends Controller
 
     // Kiểm tra phản hồi từ API
     if ($response->successful()) {
-        $movie_data = $response->json(); // Lấy dữ liệu bộ phim từ phản hồi JSON
+        $movie = $response->json(); // Lấy dữ liệu bộ phim từ phản hồi JSON
 
         // Kết hợp dữ liệu từ cơ sở dữ liệu với dữ liệu từ API
-        $movie_data['link_id'] = $link_id;
-        $movie_data['movie_link'] = $movie_link->movie_link;
+        $movie['link_id'] = $link_id;
+        $movie['movie_link'] = $movie_link->movie_link;
+        $movie['episode_status'] = $movie_link->episode_status;
 
-        return view('streaming', compact('movie_data'));
+        return view('streaming', compact('movie'));
     } else {
         abort(404, 'Failed to fetch movie data');
     }

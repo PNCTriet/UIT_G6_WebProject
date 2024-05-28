@@ -83,10 +83,10 @@
                                 @if($errors->has('poster_link'))
                                     <span class="error2">{{$errors->first('poster_link')}}</span>
                                 @endif
-                                <label for="trailer_link">Trailer Link</label>
-                                <input type="text" name="trailer_link" id="trailer_link" required>
-                                @if($errors->has('trailer_link'))
-                                    <span class="error3">{{$errors->first('trailer_link')}}</span>
+                                <label for="episode_status">Episode Status </label>
+                                <input type="text" name="episode_status" id="episode_status" required>
+                                @if($errors->has('episode_status'))
+                                    <span class="error3">{{$errors->first('episode_status')}}</span>
                                 @endif
                             </div>
                             
