@@ -34,6 +34,7 @@
         // Từ khóa tìm kiếm
         $query = $movie['name'];
         
+
         // URL của API của TMDB để tìm kiếm TV show
         $url = "https://api.themoviedb.org/3/search/tv?api_key=$api_key&query=" . urlencode($query);
         
@@ -84,6 +85,8 @@
                 '" alt="' .
                 $show['name'] .
                 '" class="cover" /></a>
+                <a href="' . route('stream', $show['id']) . '" class="watch-movie-button cover">Xem phim</a>
+
                                                 
                                                                     <div class="hero" style="background-image: url(\'https://image.tmdb.org/t/p/w780/' .
                 $show['backdrop_path'] .

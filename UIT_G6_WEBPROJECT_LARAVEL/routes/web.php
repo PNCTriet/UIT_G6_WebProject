@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StreamingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\ForgetPasswordManager;
@@ -36,6 +37,7 @@ Route::get('/token', function () {
 // });
 
 Route::get('/profile', [ProfileController::class, 'get_information'])->name('get_information');
+Route::get('/streaming/tv/{id}', [StreamingController::class, 'streamingmovie'])->name('stream');
 
 Route::get('/search', [SearchController::class, 'showSearchPage'])->name('search.page');
 Route::get('/search/results', [SearchController::class, 'search']);
