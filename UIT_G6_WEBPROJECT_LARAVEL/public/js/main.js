@@ -76,7 +76,7 @@ window.update_movie=async(tag)=>{
     document.querySelector('#description').value =movie[0].description
     document.querySelector('#category').value=movie[0].category_id
     document.querySelector('#specialgroup').value=movie[0].specialgroup_id
-    document.querySelector('#trailer_link').value=movie[0].trailer_link
+    document.querySelector('#episode_status').value=movie[0].episode_status
     document.querySelector('#movie_link').value =movie[0].movie_link
 
     

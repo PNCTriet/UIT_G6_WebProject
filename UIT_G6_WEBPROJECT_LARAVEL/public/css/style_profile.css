@@ -198,7 +198,7 @@
   border: 1px solid #333;
   border-radius: 5px;
   background-color: #1c1c1c;
-  color: #fff;
+  color: #fff !important;
 }
 
 .send {
@@ -280,4 +280,30 @@
       flex-direction: column;
       gap: 10px;
   }
+}
+
+
+/* promt Profile */
+.info_profile{
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 600px;
+  width: 100%;
+  background-color: firebrick;
+  padding: 10px;
+  border-radius: 6px;
+  transition: all 3s ease-in-out;
+  animation: profile 4s ease-in-out forwards;
+}
+@keyframes profile{
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  10%,95% {height: 48px;opacity: 1;}
+}
+.msg_profile{
+  color: #fff;
 }

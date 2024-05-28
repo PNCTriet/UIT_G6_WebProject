@@ -54,8 +54,8 @@
                 </div>
                 <label for="movie_link">Movie Link</label>
                 <input type="text" id="movie_link" placeholder="Insert Link movie" name="movie_link">
-                <label for="trailer_link">Trailer Link</label>
-                <input type="text" id="trailer_link" placeholder="Insert trailer" name="trailer_link">
+                <label for="episode_status">Episode Status</label>
+                <input type="number" id="episode_status" placeholder="Insert Episode Status" name="episode_status">
                 <label for="poster_link">Poster Movie</label>
                 <input type="file" id="poster_link" placeholder="Insert poster" name="poster_link">
                 <button type="submit" name="submit" class=" mt-4 text-white border-0 bg-primary ">Submit</button>

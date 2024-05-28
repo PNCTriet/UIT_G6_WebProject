@@ -73,7 +73,7 @@ CREATE TABLE `User_playlist` (
 CREATE TABLE `Playlist_detail` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
   `user_playlist_id` integer,
-  `movie_id` integer,
+  `episode_status` integer,
   `status` varchar(50),
   `currentime` integer,
   `currentepisode` integer,
@@ -125,7 +125,7 @@ CREATE TABLE `Voucher` (
   `status` varchar(50)
 );
 
-ALTER TABLE `Playlist_detail` ADD FOREIGN KEY (`movie_id`) REFERENCES `Movie` (`id`);
+ALTER TABLE `Playlist_detail` ADD FOREIGN KEY (`episode_status`) REFERENCES `Movie` (`id`);
 
 ALTER TABLE `Playlist_detail` ADD FOREIGN KEY (`user_playlist_id`) REFERENCES `User_playlist` (`id`);
 
@@ -416,7 +416,7 @@ VALUES (1, 1, NOW(), NOW()),
        (2, 2, NOW(), NOW());
 
 -- Chèn dữ liệu cho bảng Playlist_detail
-INSERT INTO Playlist_detail (user_playlist_id, movie_id, status, currentime, currentepisode, created_at, updated_at)
+INSERT INTO Playlist_detail (user_playlist_id, episode_status, status, currentime, currentepisode, created_at, updated_at)
 VALUES (1, 1, 'Watching', 120, 3, NOW(), NOW()),
        (2, 2, 'Paused', 90, 2, NOW(), NOW());
 

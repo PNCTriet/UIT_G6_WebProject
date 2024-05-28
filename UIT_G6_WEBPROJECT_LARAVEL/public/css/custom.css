@@ -102,7 +102,7 @@ form > textarea {
 :has(.error2) #discount{
     border: 1px solid rgb(218, 55, 55);
 }
-.link:has(.error3) #trailer_link{
+.link:has(.error3) #episode_status{
     border: 1px solid rgb(218, 55, 55);
 }
 
@@ -218,7 +218,7 @@ form > textarea {
     width: 32px; /* Điều chỉnh chiều rộng của hình ảnh */
     height: 32px; /* Điều chỉnh chiều cao của hình ảnh */
     border-radius: 50%; /* Đảm bảo hình ảnh là hình tròn */
-    object-fit: cover; */
+    object-fit: cover; 
   }
 
 
