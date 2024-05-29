@@ -38,6 +38,7 @@ Route::get('/token', function () {
 
 Route::get('/profile', [ProfileController::class, 'get_information'])->name('get_information');
 Route::get('/streamingtv/{id}', [StreamingController::class, 'streamingmovie'])->name('stream');
+Route::get('/streamingmv/{id}', [StreamingController::class, 'streamingmoviemv'])->name('streammv');
 
 Route::get('/search', [SearchController::class, 'showSearchPage'])->name('search.page');
 Route::get('/search/results', [SearchController::class, 'search']);

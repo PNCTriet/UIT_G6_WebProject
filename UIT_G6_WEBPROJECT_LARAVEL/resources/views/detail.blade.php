@@ -34,7 +34,6 @@
         // Từ khóa tìm kiếm
         $query = $movie['name'];
         
-
         // URL của API của TMDB để tìm kiếm TV show
         $url = "https://api.themoviedb.org/3/search/tv?api_key=$api_key&query=" . urlencode($query);
         
@@ -76,92 +75,94 @@
                 // Đặt giá trị video key mặc định
                 $youtube_key = 'udSCzGAAt2E?si';
             }
+            $movie = DB::table('movie')
+                ->where('description', $show['id'])
+                ->select('link_id')
+                ->first();
+        
+            $buttonLabel = $movie ? 'Xem phim' : 'Opps !';
+            $buttonLink = $movie ? route('stream', $show['id']) : '#';
+        
             echo '<div class="movie-card">
-                                                  
-                                                                    <div class="container">
-                                                                    
-                                                                    <a href="#"><img src="https://image.tmdb.org/t/p/w200/' .
+                <div class="container">
+                    <div class="column">
+                        <a href="' .
+                $buttonLink .
+                '">
+                            <img src="https://image.tmdb.org/t/p/w200/' .
                 $show['poster_path'] .
                 '" alt="' .
                 $show['name'] .
-                '" class="cover" /></a>
-                <a href="' . route('stream', $show['id']) . '" class="watch-movie-button cover">Xem phim</a>
-
-                                                
-                                                                    <div class="hero" style="background-image: url(\'https://image.tmdb.org/t/p/w780/' .
+                '" class="cover" />
+                        </a>
+                        <a href="' .
+                $buttonLink .
+                '" class="watch-movie-button cover" style="text-align: center;">
+                            <i class="fa fa-play"></i>' .
+                $buttonLabel .
+                '
+                        </a>
+                    </div>
+                    <div class="hero" style="background-image: url(\'https://image.tmdb.org/t/p/w780/' .
                 $show['backdrop_path'] .
                 '\');">
-                                                                            
-                                                                        <div class="details">
-                                                                        
-                                                                        <div class="title">' .
+                        <div class="details">
+                            <div class="title">' .
                 $show['name'] .
                 ' </div>
-                                                                
-                                                                            
-                                                                        
-                                                                        <fieldset class="rating">
-                                                                            <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                                                                            <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-                                                                            <input type="radio" id="star4" name="rating" value="4" checked /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                                                                            <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                                                                            <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                                                                            <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-                                                                            <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-                                                                            <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                                                                            <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-                                                                            <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-                                                                            </fieldset>
-                                                                        
-                                                                        <span class="likes">' .
+                            <fieldset class="rating">
+                                <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
+                                <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                                <input type="radio" id="star4" name="rating" value="4" checked /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                                <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                                <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label>
+                                <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                                <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                                <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                                <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                                <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                            </fieldset>
+                            <span class="likes">' .
                 $show['vote_average'] .
                 '</span>
-                                                                        
-                                                                        </div> <!-- end details -->
-                                                                        
-                                                                    </div> <!-- end hero -->
-                                                                    
-                                                                    <div class="description">
-                                                                        
-                                                                        
-                                                                        <div class="column2">
-                                                                        
-                                                                        <p><strong>Ngày phát sóng:</strong> ' .
+                        </div> <!-- end details -->
+                    </div> <!-- end hero -->
+                    <div class="description">
+                        <div class="column2">
+                            <p><strong>Ngày phát sóng:</strong> ' .
                 $show['first_air_date'] .
                 '</p>
-                                                                        <p><strong>Đánh giá:</strong> ' .
+                            <p><strong>Đánh giá:</strong> ' .
                 $show['vote_average'] .
                 '</p>
-                                                                        <p><strong>Tóm tắt:</strong> ' .
+                            <p><strong>Tóm tắt:</strong> ' .
                 $show['overview'] .
                 '</p>
-                                                                        <p><strong>Ngôn ngữ gốc:</strong> ' .
+                            <p><strong>Ngôn ngữ gốc:</strong> ' .
                 $show['original_language'] .
                 '</p>
-                                                                        <strong>Quốc gia gốc:</strong> ' .
+                            <p><strong>Quốc gia gốc:</strong> ' .
                 implode(', ', $show['origin_country']) .
                 '</p>
-                                                                        <p><strong>Thể loại:</strong> ' .
+                            <p><strong>Thể loại:</strong> ' .
                 implode(', ', $show['genre_ids']) .
                 '</p>
-                                                                        <p><strong>Populariy:</strong> ' .
+                            <p><strong>Populariy:</strong> ' .
                 $show['popularity'] .
                 '</p>
-                                                                        <p><strong>Số lượt đánh giá:</strong> ' .
+                            <p><strong>Số lượt đánh giá:</strong> ' .
                 $show['vote_count'] .
                 '</p>
-                                                
-                                                                        
-                                                                        </div> <!-- end column2 -->
-                                                                    </div> <!-- end description -->
-                                                                    <h2>Trailer</h2>
-                                                                    <div class="video-container">
-                                                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/' .
+                        </div> <!-- end column2 -->
+                    </div> <!-- end description -->
+                    <h2>Trailer</h2>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/' .
                 $youtube_key .
                 '" frameborder="0" allowfullscreen></iframe>
-                                                                    </div>
-                                                                    </div>
-                                                                </div> ';
+                    </div>
+                </div>
+            </div>';
         
             // Gọi API để lấy thông tin về diễn viên của bộ phim
             $credits_url = "https://api.themoviedb.org/3/tv/{$show['id']}/credits?api_key=$api_key";
@@ -186,7 +187,6 @@
             } else {
                 echo '<p>Không tìm thấy thông tin về diễn viên cho bộ phim này.</p>';
             }
-        
         } else {
             echo '<p>Không có kết quả.</p>';
         }

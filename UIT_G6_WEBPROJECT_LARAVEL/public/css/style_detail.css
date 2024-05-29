@@ -8,11 +8,34 @@
 
 
 
+
 .movie-card {
   font: 14px/22px "Lato", Arial, sans-serif;
   color: #A9A8A3;
   padding: 40px 0 100px 0;
   height: auto;
+}
+
+.watch-movie-button{
+  background-color: #ff0000; /* Màu nền của nút */
+    color: #ffffff; /* Màu chữ của nút */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    display: inline-flex;
+    padding: 10px 20px;
+    position: absolute;
+    margin-top: 320px;
+    width: 25%;
+    font-size: 20px;
+    text-align: center;
+    font-weight: lighter;
+    align-items: center;
+    
+}
+.watch-movie-button:hover {
+  background-color: #cc0000; /* Màu nền khi hover */
+  color: #ffffff !important; 
 }
 
 .container {
