@@ -33,7 +33,7 @@ class testController extends Controller
 
 
         ]);
-    }
+    } 
 
     public function table()
     {
@@ -42,16 +42,16 @@ class testController extends Controller
         //     echo $msg;
         // }
         return view('tables', [
-            'res' => DB::select("SELECT movie.id,title,moviecategory.name as category from movie,moviecategory
-                                    WHERE movie.category_id =moviecategory.id"),
-            'category' => DB::table('moviecategory')->distinct()->get(),
+            'res' => DB::select("SELECT movie.id,title,movieCategory.name as category from movie,movieCategory
+                                    WHERE movie.category_id =movieCategory.id"),
+            'category' => DB::table('movieCategory')->distinct()->get(),
             'specialgroup' => DB::table('specialgroup')->distinct()->get()
         ]);
     }
     public function add_movie()
     {
         return view('addmovie', [
-            'category' => DB::table('moviecategory')->distinct()->get(),
+            'category' => DB::table('movieCategory')->distinct()->get(),
             'specialgroup' => DB::table('specialgroup')->distinct()->get()
         ]);
     }

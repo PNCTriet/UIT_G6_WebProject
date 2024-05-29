@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use App\Models\user;
 use App\Models\users;
 use App\Models\User_credential;
 use Session;
@@ -59,7 +59,7 @@ class AuthController extends Controller
     }
     public function create(array $data)
     {
-        $user = User::create([
+        $user = user::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'birthday' => $data['birthday'],
@@ -107,7 +107,7 @@ class AuthController extends Controller
         
         $credentials = $request->only('email', 'password');
         $users = users::where('email', $credentials['email'])->first();
-        $User = User::where('email', $credentials['email'])->first();
+        $User = user::where('email', $credentials['email'])->first();
          
         if ($users){
 
