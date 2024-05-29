@@ -12,6 +12,126 @@
     <link rel="stylesheet" href="{{ asset('css/style_index.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="shortcut icon" type="image/png" href="datasources/img/netflop.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        /* Watch */
+        .episode-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            /* Khoảng cách giữa các button */
+        }
+
+        .episode-button {
+            font-weight: bold;
+            background-color: transparent;
+            border: none;
+            background-color: red;
+            color: rgb(253, 253, 253);
+            /* Màu chữ đỏ */
+            padding: 10px 20px;
+            /* Kích thước button */
+            border-radius: 5px;
+            /* Bo tròn các góc */
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            /* Hiệu ứng hover */
+            text-decoration: none;
+        }
+
+        .episode-button:hover {
+            background-color: rgb(146, 22, 22);
+            /* Màu nền đỏ khi hover */
+            color: white;
+            /* Màu chữ trắng khi hover */
+        }
+
+        .episode-button.active {
+            background-color: rgb(100, 10, 10);
+            /* Màu nền đậm hơn cho nút hiện tại */
+            color: white;
+            /* Màu chữ trắng */
+        }
+
+        .video_container h2 {
+            font-size: 50px;
+            color: #ffffff;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .video_container {
+
+            margin-top: 10px;
+            margin-left: 95px;
+            text-align: left;
+            display: flex;
+            justify-content: left;
+            /* Canh giữa theo chiều ngang */
+            align-items: left;
+            /* Canh giữa theo chiều dọc */
+        }
+
+        .video-card {
+            font: 20px/28px "Lato", Arial, sans-serif;
+            color: #A9A8A3;
+            padding: 10px 0 20px 0;
+            height: auto;
+        }
+
+
+        .video_streaming {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .video_streaming video {
+            width: 90%;
+            /* width: auto; */
+            margin-top: 30px;
+            border-radius: 5px;
+            animation: slideRight 0.6s ease-in-out;
+            align-self: center;
+        }
+
+        .video_streaming .trailer {
+            width: 60%;
+            height: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            background-image: url(../img/movie-4.jpg);
+            background-position: top;
+        }
+
+        .video_streaming .trailer:nth-of-type(2) {
+            background-image: url(../img/movie-2.jpg);
+        }
+
+        .video_streaming .trailer:nth-of-type(3) {
+            background-image: url(../img/movie-3.jpg);
+        }
+
+        .video_containervideo {
+            display: flex;
+            justify-content: center;
+            /* Canh giữa theo chiều ngang */
+            align-items: center;
+            /* Canh giữa theo chiều dọc */
+        }
+
+        video::cue {
+            opacity: 1;
+            background-color: rgb(233, 15, 15);
+            font-size: 20px !important;
+        }
+
+        /* End Watch */
+    </style>
 </head>
 @include('layout.user_header')
 
@@ -23,8 +143,10 @@
     <!-- Watch -->
     <div class="video_streaming">
         <div class="video_containervideo">
-            <video controls autoplay>
+            <video controls autoplay controlsList="nodownload" crossorigin="anonymous" >
                 <source src="" type="video/mp4" />
+                <track style="width: fit-content;" kind="subtitles" src="https://dl8r043njp66m.cloudfront.net/endgame_bluray_299534_sub1.vtt"
+                    srclang="vi" label="Tiếng Việt" >
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -38,20 +160,20 @@
                 echo '<h2>' . $movie['name'] . '</h2>';
             }
             echo '<fieldset class="rating">
-                        <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                        <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-                        <input type="radio" id="star4" name="rating" value="4" checked /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                        <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                        <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                        <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-                        <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-                        <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                        <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-                        <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-                    </fieldset>
-                    </p>
-
-                    </div>';
+                                                                                    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                                                                                    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                                                                                    <input type="radio" id="star4" name="rating" value="4" checked /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                                                                                    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                                                                                    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                                                                                    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                                                                                    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                                                                                    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                                                                                    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                                                                                    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                                                                                </fieldset>
+                                                                                </p>
+                                                            
+                                                                                </div>';
             ?>
         </div>
         <div class="video_container">
