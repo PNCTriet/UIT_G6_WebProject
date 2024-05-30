@@ -2,7 +2,7 @@
 <div class="navbar">
     <div class="navbar-container">
         <div class="logo-container">
-            {{-- <h1 class="logo">Netflop</h1> --}}
+            <h1 class="logo">Netflop</h1>
             <a style="display: flex; align-items: center; height: 100vh;" href="/index"><img class="logo"
                     src="https://fontmeme.com/permalink/240508/a0a2db44cf95ee3c25441c8005f90516.png" alt="netflix-font"
                     border="0"></a>

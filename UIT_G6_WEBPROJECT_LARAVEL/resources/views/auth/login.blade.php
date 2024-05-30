@@ -32,7 +32,7 @@ padding: 20px;">
     </form>
 
     <div class="content">
-        <h2>New to Netflix? <a href="register">Sign up now.</a> </h2> <br>
+        <h2>New to Netflop? <a href="register">Sign up now.</a> </h2> <br>
         <h2>This page is protected by Google reCAPTCHA to ensure you're not a bot. Learn more.</h2>
     </div>
 </div>

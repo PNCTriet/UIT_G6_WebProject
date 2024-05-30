@@ -25,7 +25,7 @@ CREATE TABLE `user_role` (
   `updated_at` datetime
 );
 
-CREATE TABLE `user_credential` (
+CREATE TABLE `User_credential` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
   `user_id`integer,
   `email` varchar(50),
@@ -137,7 +137,7 @@ ALTER TABLE `user` ADD FOREIGN KEY (`plan_id`) REFERENCES `user_plan` (`id`);
 
 ALTER TABLE `deposit_detail` ADD FOREIGN KEY (`deposit_id`) REFERENCES `user_deposit` (`id`);
 
-ALTER TABLE `user_credential` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+ALTER TABLE `User_credential` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 ALTER TABLE `movie` ADD FOREIGN KEY (`category_id`) REFERENCES `movieCategory` (`id`);
 
@@ -165,8 +165,8 @@ INSERT INTO user (name, birthday, email, phoneNumber, address, avartar, role_id,
 VALUES ('John Doe', '1990-05-15', 'john.doe@example.com', '1234567890', '123 Main St, City, Country', 'avatar1.jpg', 1, 1, 1, NULL, NOW(), NOW()),
        ('Jane Smith', '1985-08-25', 'jane.smith@example.com', '9876543210', '456 Elm St, Town, Country', 'avatar2.jpg', 2, 2, 2, NULL, NOW(), NOW());
 
--- Chèn dữ liệu cho bảng user_credential
-INSERT INTO user_credential (user_id,email, password, created_at, updated_at)
+-- Chèn dữ liệu cho bảng User_credential
+INSERT INTO User_credential (user_id,email, password, created_at, updated_at)
 VALUES (1,'john.doe@example.com', 'password123', NOW(), NOW()),
        (2,'jane.smith@example.com', 'letmein', NOW(), NOW());
 

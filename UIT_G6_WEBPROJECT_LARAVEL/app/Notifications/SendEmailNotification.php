@@ -40,7 +40,7 @@ class SendEmailNotification extends Notification
                 ->greeting($this->detail['greeting'])
                 ->line($this->detail['content'])
                 ->action('Notification Action', url('/'))
-                ->line('Thank you for using our application!')
+                ->line('Thank you for using our movie platform!')
                 ->salutation('Netflop');
     }
 

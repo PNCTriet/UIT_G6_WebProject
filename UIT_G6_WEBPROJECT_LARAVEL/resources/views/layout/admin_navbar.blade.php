@@ -1,6 +1,12 @@
 <head>
 
     {{-- <link rel="stylesheet" href="css/style_index.css" /> --}}
+    <div class="logo-container">
+        <h1 class="logo">Netflop Admin</h1>
+        <a style="display: flex; align-items: center; height: 100vh;" href="/index"><img class="logo"
+                src="https://fontmeme.com/permalink/240508/a0a2db44cf95ee3c25441c8005f90516.png" alt="netflix-font"
+                border="0"></a>
+    </div>
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
         rel="stylesheet" />

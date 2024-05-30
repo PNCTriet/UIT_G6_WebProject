@@ -398,11 +398,7 @@ class testController extends Controller
     }
 
     public function mail_to(Request $request,$id){
-        // if($request->has('email')){
-        //     return response()->json(['email'=>$request->query('email')]);
-        // }else{
-        //     return response()->json(['email'=>'có cái đàu bùi']);
-        // }
+     
         $user =user_model::find($id);
         
         
