@@ -16,7 +16,7 @@ Trang web phải đảm bảo được các mục tiêu:
 | 3  | Lê Hoàng Đức             | 22520351@gm.uit.edu.vn |
 | 4  | Nguyễn Trần Thành Tâm    | 21521404@gm.uit.edu.vn |
 | 5  | Nguyễn Hoàng Vĩ          | 21522786@gm.uit.edu.vn |
-| 6  | N
+
 
 # Mô hình usecase   
 ![admin_usecase](https://github.com/PNCTriet/UIT_G6_WebProject/blob/main/UIT_G6_WEBPROJECT_ORIGINAL/datasources/photodata_readme/admin_usecase.jpg)
