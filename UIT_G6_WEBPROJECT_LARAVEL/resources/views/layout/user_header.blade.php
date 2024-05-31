@@ -7,19 +7,6 @@
     <title>Netflop</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('datasources/img/netflop.png') }}">
     
-     <!-- Thẻ meta cho tiêu đề của trang -->
-     <meta property="og:title" content="{{ $show['name'] }}">
-     <!-- Thẻ meta cho mô tả của trang -->
-     <meta property="og:description" content="{{ $show['overview'] }}">
-     <!-- Thẻ meta cho hình ảnh hiển thị khi chia sẻ -->
-     <meta property="og:image" content="https://image.tmdb.org/t/p/w780/{{ $show['backdrop_path'] }}">
-     <!-- Thẻ meta cho URL của trang -->
-     <meta property="og:url" content="{{ Request::url() }}">
-     <!-- Thẻ meta cho loại trang -->
-     <meta property="og:type" content="website">
-     <!-- Thẻ meta cho tên website -->
-     <meta property="og:site_name" content="Netflop">
-
     <link rel="stylesheet" href="{{ asset('css/style_index.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/style_animation.css') }}" />
     
