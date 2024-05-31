@@ -51,5 +51,49 @@ Trang web phải đảm bảo được các mục tiêu:
 # Yêu cầu hệ thống
 
 # Cài đặt và sử dụng
+### Git Clone
+```
+$ git clone https://github.com/PNCTriet/UIT_G6_WebProject.git
+$ cd UIT_G6_WEBPROJECT_LARAVEL
+$ composer update
+$ php artisan migrate
+
+```
+**GEMINI AI API**
+Đầu tiên, cài đặt Gemini thông qua  [Composer](https://getcomposer.org/) package manager:
+
+```bash
+composer require google-gemini-php/laravel
+```
+
+Sau đó, thực thi  câu lệnh cài đặt sau:
+
+```bash
+php artisan gemini:install
+```
+
+Lệnh trên sẽ cấu hình gemini AI vào trong project.Biến môi trường có tên GEMINI_API_KEY
+đã được tạo trong file .env:
+
+```
+GEMINI_API_KEY=
+```
+### Setup your API key
+
+Để sử dụng Gemini API, bạn cần phải có API key.Nếu bạn không có Key, tạo một cái trong Google AI Studio
+
+[Get an API key](https://makersuite.google.com/app/apikey)
+
+### LARAVEL EXCEL
+Cài đặt lệnh phía dưới để dùng thư viện laravel excel
+```
+composer require maatwebsite/excel:^3.1
+```
+### Chạy chương trình
+Trước tiên, bật Apache serve và mysql php lên (Sử dụng XAMPP tool ).
+Sau đó dùng lệnh phía dưới để khởi động chương trình
+```
+php artisan serve
+```
 
 # Nguồn tham khảo
