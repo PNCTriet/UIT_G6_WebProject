@@ -10,7 +10,7 @@ pipeline {
             steps {
                 // Bước này để triển khai mã nguồn lên máy EC2
                 script {
-                    sshagent(['web1']) {
+                    sshagent(['NetflopServer_Sub4_US_Green']) {
                         sh "scp -o StrictHostKeyChecking=no -r * ubuntu@${EC2_HOST}:/var/www/html/UIT_G6_WEBPROJECT_LARAVEL"
                     }
                 }
