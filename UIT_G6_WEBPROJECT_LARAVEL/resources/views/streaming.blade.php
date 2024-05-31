@@ -8,6 +8,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style_detail.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/style_index.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="shortcut icon" type="image/png" href="datasources/img/netflop.png">
 </head>
@@ -15,23 +17,108 @@
 
 <body>
     @include('layout.user_navbar')
+
     <!-- Navbar -->
-    <?php
-    $msg = session()->get('status');
-    if ($msg) {
-        echo "
-                <div class='msg_profile'>
-                    <p class='info_profile'>{$msg}</p>
-                </div>";
-    }
-    ?>
     <!-- Streaming Section -->
     <!-- Watch -->
     <div class="video_streaming">
-        <div class="video_container">
-            <video controls>
-                <source src="https://dl8r043njp66m.cloudfront.net/queenoftears_ 215720_ep1.mp4" type="video/mp4" />
+        <div class="video_containervideo">
+            <video controls autoplay>
+                <source src="" type="video/mp4" />
+                Your browser does not support the video tag.
             </video>
+        </div>
+        <div class="video_container">
+            <?php
+            // dd($movie);
+            echo '<div class="video-card">
+                                    <h2>' .
+                $movie['name'] .
+                '</h2>
+                                    <fieldset class="rating">
+                                        <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                                        <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                                        <input type="radio" id="star4" name="rating" value="4" checked /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                                        <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                                        <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                                        <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                                        <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                                        <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                                        <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                                        <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                                    </fieldset>
+                                    </p>
+            
+                                    </div>';
+            ?>
+            </div>
+            <div class="video_container">
+            <div class="episode-buttons">
+                @for ($i = 1; $i <= $movie['episode_status']; $i++)
+                    <a href="?episode={{ $i }}" class="episode-button">Tập {{ $i }}</a>
+                @endfor
+            </div>
+            
+            <script>
+                // Function to get URL parameter
+                function getParameterByName(name) {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    return urlParams.get(name);
+                }
+
+                // Event listener for when the page is unloaded
+                // window.addEventListener('beforeunload', saveVideoState);
+
+                // // Event listener for when the page is loaded
+                // window.addEventListener('load', restoreVideoState);
+
+                // Function to save video state and current episode to localStorage
+                function saveVideoState() {
+                    const videoElement = document.querySelector('video');
+                    localStorage.setItem('videoTime', videoElement.currentTime);
+
+                    const currentEpisode = getParameterByName('episode') || 1;
+                    localStorage.setItem('currentEpisode', currentEpisode);
+                }
+
+                // Function to restore video state and episode from localStorage
+                function restoreVideoState() {
+                    const videoElement = document.querySelector('video');
+                    const savedTime = localStorage.getItem('videoTime');
+                    if (savedTime) {
+                        videoElement.currentTime = parseFloat(savedTime);
+                    }
+
+                    const currentEpisode = localStorage.getItem('currentEpisode');
+                    if (currentEpisode) {
+                        const clickedButton = document.querySelector(`.episode-button:nth-child(${currentEpisode})`);
+                        clickedButton.style.backgroundColor = 'rgb(100, 10, 10)'; // Change background color of clicked button
+                    }
+                }
+
+                document.addEventListener('DOMContentLoaded', (event) => {
+                    const episode = getParameterByName('episode') || 1; // Default to episode 1 if no parameter is present
+                    const movieLink = "{{ $movie['movie_link'] }}";
+                    const videoElement = document.querySelector('video source');
+
+                    // Update video source based on the episode
+                    videoElement.src = `${movieLink}_ep${episode}.mp4`;
+
+                    // Reload video element to apply new source
+                    videoElement.parentElement.load();
+
+                    // Change color of clicked button
+                    const buttons = document.querySelectorAll('.episode-button');
+                    buttons.forEach(button => {
+                        button.style.backgroundColor = 'red'; // Reset background color of all buttons
+                    });
+                    const clickedButton = document.querySelector(`.episode-button:nth-child(${episode})`);
+                    clickedButton.style.backgroundColor = 'rgb(100, 10, 10)'; // Change background color of clicked button
+                });
+            </script>
+
+
+
         </div>
     </div>
     <!-- End Watch -->

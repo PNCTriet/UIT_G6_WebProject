@@ -62,7 +62,7 @@ class testController extends Controller
             'description' => 'required|max:255',
             'movie_link' => 'required|url',
             'poster_link' => 'nullable|mimes:png,jpg,jpeg,webp',
-            'trailer_link' => 'required|url'
+            'episode_status' => 'required|integer'
         ]);
 
         if ($request->has('poster_link')) {
@@ -78,15 +78,15 @@ class testController extends Controller
         // insert into movie_link table
         $query_movie = DB::select(
             "SELECT * FROM movie_link
-                WHERE movie_link='{$request->movie_link}' and trailer_link='{$request->trailer_link}' LIMIT 0,1 "
+                WHERE movie_link='{$request->movie_link}' and episode_status='{$request->episode_status}' LIMIT 0,1 "
         );
-        // $query_movie =DB::table('movie_link')->where('movie_link',$request->movie_link)->where('trailer_link',$request->trailer_link)->limit(1)->get();
+        // $query_movie =DB::table('movie_link')->where('movie_link',$request->movie_link)->where('episode_status',$request->episode_status)->limit(1)->get();
 
         if (!$query_movie) {
             $insert_link = DB::table('movie_link')->insert([
                 'movie_link' => $request->movie_link,
                 'poster_link' => "uploads/{$filename}",
-                'trailer_link' => $request->trailer_link
+                'episode_status' => $request->episode_status
             ]);
         } else {
 
@@ -99,7 +99,7 @@ class testController extends Controller
             return Redirect::to('/add-movie')->with(['msg' => 'The Movie has been existed in the database']);
         }
         if ($insert_link) {
-            $id_link = DB::table('movie_link')->where('movie_link', $request->movie_link)->where('trailer_link', $request->trailer_link)->distinct()->get('id');
+            $id_link = DB::table('movie_link')->where('movie_link', $request->movie_link)->where('episode_status', $request->episode_status)->distinct()->get('id');
 
             $insert_movie = DB::table('movie')->insert([
                 'category_id' => $request->category,
@@ -120,7 +120,7 @@ class testController extends Controller
     public function get_movie($id)
     {
         $respose = DB::select(
-            "SELECT category_id,specialgroup_id,title,description,movie_link,poster_link,trailer_link FROM movie
+            "SELECT category_id,specialgroup_id,title,description,movie_link,poster_link,episode_status FROM movie
                 INNER JOIN movie_link ON link_id =movie_link.id
                 WHERE movie.id={$id}
                 "
@@ -145,12 +145,12 @@ class testController extends Controller
                 DB::table('movie_link')->where('id', $record_movie->link_id)->limit(1)->update([
                     'movie_link' => $request->movie_link,
                     'poster_link' => "uploads/{$filename}",
-                    'trailer_link' => $request->trailer_link
+                    'episode_status' => $request->episode_status
                 ]);
             } else {
                 DB::table('movie_link')->where('id', $record_movie->link_id)->limit(1)->update([
                     'movie_link' => $request->movie_link,
-                    'trailer_link' => $request->trailer_link
+                    'episode_status' => $request->episode_status
                 ]);
             }
 
