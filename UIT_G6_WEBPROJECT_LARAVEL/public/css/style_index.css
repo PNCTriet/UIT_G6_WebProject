@@ -1086,3 +1086,16 @@ img.thumb.img-thumbnail {
         opacity: 80%;
     }
 }
+
+@media only screen and (max-width:600px) {
+   
+    .video{
+        height: auto;
+    }
+    section.video-section {
+        width: 100%;
+    }
+    .movie-detail{
+        display: none;
+    }
+}

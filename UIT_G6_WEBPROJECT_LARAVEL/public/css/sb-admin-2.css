@@ -11334,4 +11334,22 @@ body.sidebar-toggled footer.sticky-footer {
   
 }
 
+.card-table {
+  overflow-x: auto;
+}
+
+@media only screen and (max-width:500px) {
+   
+  .video{
+      height: auto;
+  }
+  section.video-section {
+      width: 100%;
+  }
+  .movie-detail{
+      display: none;
+  }
+}
+
+
 

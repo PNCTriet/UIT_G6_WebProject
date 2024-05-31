@@ -9452,6 +9452,21 @@ a:focus {
     width: 6.5rem;
     min-height: 100vh;
 }
+.open{
+    display: block !important;
+}
+.close{
+    display: none !important;
+}
+@media only screen and (max-width:500px) {
+    .sidebar{
+        display: none;
+    }
+}
+
+
+
+
 .sidebar .nav-item {
     position: relative;
 }
@@ -10328,3 +10343,4 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
     width: 100%;
 }
+

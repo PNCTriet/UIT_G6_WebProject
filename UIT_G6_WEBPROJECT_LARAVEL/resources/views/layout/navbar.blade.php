@@ -1,4 +1,4 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion open" id="accordionSidebar" open="block">
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
         <!-- <div class="sidebar-brand-icon rotate-n-15">
@@ -43,6 +43,7 @@
                 <a class="collapse-item" href="/voucher-management">Voucher Management</a>
                 <a class="collapse-item" href="/users-management">Users Management</a>
                 <a href="/send-mail" class="collapse-item">Send Mail</a>
+                <a href="/get-json" class="collapse-item">JSON</a>
             </div>
         </div>
     </li>

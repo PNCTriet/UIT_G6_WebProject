@@ -35,14 +35,21 @@ const delete_btn =document.querySelectorAll('.delete')
 const delete_form =document.querySelector('#form_dlt')
 // const table_movie =document.querySelector('.card-body')
 
-const cancel =document.querySelector('#cancel')
-cancel.addEventListener('click',()=>{
+// const cancel =document.querySelector('#cancel')
+// cancel.addEventListener('click',()=>{
+//     delete_form.style.display='none'
+//     delete_form.classList.remove('no_active')
+//     delete_form.setAttribute('action',"")
+//     document.getElementsByClassName('table-movie')[0].style.pointerEvents='auto'
+
+// })
+
+window.cancel_btn =()=>{
     delete_form.style.display='none'
     delete_form.classList.remove('no_active')
     delete_form.setAttribute('action',"")
     document.getElementsByClassName('table-movie')[0].style.pointerEvents='auto'
-
-})
+}
 
 
 window.update_voucher=async(tag)=>{
@@ -127,5 +134,23 @@ window.send_mail=function(tag){
     document.querySelector('#add_form').setAttribute('action',`/mail-to/${tag.value}`);
 }
 
+document.querySelector('#sidebarToggleTop').addEventListener("click",()=>{
+    document.querySelector(".sidebar").classList.toggle("open")
+    document.querySelector(".sidebar").classList.toggle("close")
+    
+})
 
-
+window.addEventListener('resize',()=>{
+    if(window.innerWidth<=500){
+        if(document.querySelector('.sidebar').classList.contains('open')){
+            document.querySelector('.sidebar').classList.remove('open')
+        }
+        document.querySelector('.sidebar').classList.add("close")
+    }else{
+        if(document.querySelector('.sidebar').classList.contains('close')){
+            document.querySelector('.sidebar').classList.remove('close')
+        }
+        document.querySelector('.sidebar').classList.add("open")
+    }
+    
+})

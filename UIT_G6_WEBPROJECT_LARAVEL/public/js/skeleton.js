@@ -6,3 +6,5 @@ info.addEventListener("animationend",()=>{
     notice.removeChild(info);
     
 })
+
+// hello wellcome

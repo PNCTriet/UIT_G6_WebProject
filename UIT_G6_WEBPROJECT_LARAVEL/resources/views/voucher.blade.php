@@ -73,7 +73,7 @@
             <p>Không thể khôi phục lại sau khi xóa </p>
             <div class="row gap-lg-4 gap-sm-1  ">
                 <button type="submit" class=" bg-danger text-bg-light rounded col-5 btn-outline-danger  ">Delete</button>
-                <button type="reset" id="cancel"
+                <button type="reset" id="cancel" onclick="cancel_btn()"
                     class=" bg-success text-bg-light rounded col-5 btn-outline-success">Cancel</button>
             </div>
 

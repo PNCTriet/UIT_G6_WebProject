@@ -420,6 +420,9 @@ class testController extends Controller
         return Redirect::to('/send-mail')->with(['msg'=>'Send Mail was successful']);
     }
     // export excel
+    public function get_json(){
+        return view('index_json');
+    }
     public function export_user(){
         return Excel::download(new UsersExport(),'users.xlsx');
     }

@@ -35,6 +35,7 @@ Route::get('/token', function () {
 // Route::get("/detail", function(){
 //     return view('detail');
 // });
+Route::get("/get-json",[testController::class,'get_json'])->middleware(EnsureTokenIsValid::class);
 
 Route::get('/profile', [ProfileController::class, 'get_information'])->name('get_information');
 Route::get('/streaming/tv/{id}', [StreamingController::class, 'streamingmovie'])->name('stream');
