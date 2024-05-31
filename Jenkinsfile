@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        EC2_HOST = '18.207.2.58'  // Địa chỉ IP của máy EC2
+        EC2_HOST = '184.72.192.165'  // Địa chỉ IP của máy EC2
     }
 
     stages {
@@ -10,7 +10,7 @@ pipeline {
             steps {
                 // Bước này để triển khai mã nguồn lên máy EC2
                 script {
-                    sshagent(['19521698']) {
+                    sshagent(['web1']) {
                         sh "scp -o StrictHostKeyChecking=no -r * ubuntu@${EC2_HOST}:/var/www/html/UIT_G6_WEBPROJECT_LARAVEL"
                     }
                 }
