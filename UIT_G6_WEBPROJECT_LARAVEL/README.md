@@ -90,8 +90,8 @@ Cài đặt lệnh phía dưới để dùng thư viện laravel excel
 composer require maatwebsite/excel:^3.1
 ```
 ### Chạy chương trình
-Trước tiên, bật Apache serve và mysql php lên (Sử dụng XAMPP tool )
-Sau đó dùng lên phía để khởi động chương trình
+Trước tiên, bật Apache serve và mysql php lên (Sử dụng XAMPP tool ).
+Sau đó dùng lệnh phía dưới để khởi động chương trình
 ```
 php artisan serve
 ```
