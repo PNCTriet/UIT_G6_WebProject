@@ -19,6 +19,11 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="/netjson">
+            <i class="fas fa-fw fa-file-code icon"></i>
+            <span>Netjson</span></a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">

@@ -248,12 +248,15 @@ h3 {
     flex: 1;
 }
 
-.logo {
+.logos {
     max-width: 100px;
     font-size: 30px;
     color: #e50914;
     margin-right: 30px;
+    
 }
+
+
 
 .logochat {
     max-width: 50px;

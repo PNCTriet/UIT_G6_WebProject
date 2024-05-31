@@ -1,12 +1,10 @@
 <!--  Navbar -->
 <div class="navbar">
     <div class="navbar-container">
-        <div class="logo-container">
-            <h1 class="logo">Netflop</h1>
-            <a style="display: flex; align-items: center; height: 100vh;" href="/index"><img class="logo"
-                    src="https://fontmeme.com/permalink/240508/a0a2db44cf95ee3c25441c8005f90516.png" alt="netflix-font"
-                    border="0"></a>
-        </div>
+        <a style="display: flex; align-items: center; height: 100vh;" href="/index"><img class="logos"
+                src="https://fontmeme.com/permalink/240508/a0a2db44cf95ee3c25441c8005f90516.png" alt="netflix-font"
+                border="0"></a>
+
         <div class="menu-container">
             <ul class="menu-list">
                 <li class="menu-list-item">
@@ -71,21 +69,21 @@
             </span>
             <div class="logo-message">
 
-                <img src="{{ asset('../datasources/img/logoai.png') }}" style="height: 40px; weight:40px;" alt="Chat Logo"
-                    class="chat-logo">
+                <img src="{{ asset('../datasources/img/logoai.png') }}" style="height: 40px; weight:40px;"
+                    alt="Chat Logo" class="chat-logo">
             </div>
         </div>
 
         <div class="chat-content" id="cha">
             <i class="logochat">
-                <img class="logochatimg" src="{{ asset('../datasources/img/netflop_chatboxlogo.png') }}" alt="netflix-font"
-                    border="0">
+                <img class="logochatimg" src="{{ asset('../datasources/img/netflop_chatboxlogo.png') }}"
+                    alt="netflix-font" border="0">
             </i>
             <div class="close-chat" onclick="closeChatBot(this)">
                 <i class='bx bx-x'></i>
             </div>
             <div class="content-text" user="../{{ AUTH::user()->avartar }}">
-                
+
             </div>
             <div class="btn-sent" id="chat">
                 <div class="btn-send-detail" style="opacity: 0.5;">
@@ -115,4 +113,4 @@
     </div>
 </div>
 
-<script src="{{ asset('js/logout.js')}}"></script>
+<script src="{{ asset('js/logout.js') }}"></script>

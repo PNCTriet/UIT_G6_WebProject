@@ -1,0 +1,395 @@
+body,
+html {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 2;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Khóa cuộn ngang */
+  overflow-x: hidden;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: 100%;
+  background-color: #f8f9fa;
+  overflow-y: auto; /* Add this line to enable vertical scrolling */
+  padding: 20px;
+  margin-right: 10px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+  text-align: center;
+}
+
+.sidebar .folder {
+  margin-top: 20px;
+}
+
+.folder {
+  max-height: calc(100vh - 120px); /* Adjust to fit within the sidebar */
+  overflow-y: auto; /* Add this line to enable vertical scrolling */
+  padding-right: 10px; /* Add padding for scrollbar space */
+}
+
+.caret {
+  cursor: pointer;
+  user-select: none;
+}
+
+.caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.caret-down::before {
+  transform: rotate(90deg);
+}
+
+.nested {
+  display: none;
+  padding-left: 20px;
+}
+
+.active {
+  display: block;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 220px;
+  margin-right: 10px;
+  width: fit-content;
+  align-items: center;
+}
+
+.container {
+  text-align: center;
+  /* background: #fff; */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: auto;
+}
+
+.file-upload {
+  margin-bottom: 20px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+label {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+label:hover {
+  background-color: #0056b3;
+}
+
+.output {
+  text-align: left;
+  margin-top: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #eaeaea;
+  border-radius: 4px;
+  overflow-y: auto; /* Bật cuộn dọc */
+  max-height: 400px; /* Chiều cao tối đa của .output */
+  overflow-wrap: break-word;
+}
+
+/* Dark Mode styles */
+body.dark-mode .output {
+  background: #3c3c3c;
+  color: #f1f1f1;
+}
+.editjson {
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  width: 650px;
+  height: 400px;
+  padding: 10px;
+  font-family: monospace;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  color: #333;
+  overflow-y: auto;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+
+/* Dark Mode styles */
+body.dark-mode .editjson {
+  background-color: #333;
+  color: #f1f1f1;
+}
+body.dark-mode .nav-tabs {
+  /* background-color: #333; */
+  color: #71ec38;
+}
+
+body.dark-mode .sidebar {
+  background-color: #333;
+  color: #f1f1f1;
+}
+
+/* Dark Mode styles */
+body.dark-mode .api-settings {
+  background-color: #2c2c2c;
+  color: #f1f1f1;
+}
+
+/* Dark Mode styles */
+body.dark-mode .editjson {
+  background-color: #2c2c2c;
+  color: #f1f1f1;
+  border-color: #555;
+}
+
+/* File Explorer Styles */
+.tree {
+  list-style-type: none;
+  padding: 0;
+}
+
+.tree li {
+  margin-bottom: 6px;
+}
+
+.tree span {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.tree span:hover {
+  background-color: #ddd;
+}
+
+.tree span.selected {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.api-button {
+  background-color: #28a745;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 10px;
+}
+
+.api-button:hover {
+  background-color: #218838;
+}
+
+.api-setting {
+  padding: 5px;
+  align-items: left;
+}
+
+/* CSS cho chế độ Dark Mode */
+body.dark-mode {
+  background-color: #222;
+  color: #fff;
+}
+
+/* CSS cho Dark Mode */
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Các quy tắc CSS khác cho chế độ Dark Mode */
+
+.sidebar.dark-mode {
+  background-color: #333;
+}
+
+.container.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+.label.dark-mode {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+.tree span.dark-mode {
+  background-color: #444;
+  color: #fff;
+}
+
+.api-button.dark-mode {
+  background-color: #218838;
+}
+
+.api-button.dark-mode:hover {
+  background-color: #1e7e34;
+}
+
+/* Các kiểu khác cho chế độ Dark Mode */
+
+#output_api iframe {
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.slider img {
+  width: 100px;
+  border-radius: 10px;
+}
+
+
+.editjson img {
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+
+.slider .slide {
+  display: none;
+}
+
+.slider .slide.active {
+  display: block;
+}
+
+.cast-container {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  padding: 10px 50px 10px 50px;
+  border-radius: 10px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cast-container::-webkit-scrollbar {
+  display: none;
+}
+
+.cast-img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cast-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.cast-name {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* CSS for the merge JSON feature */
+#mergeContainer {
+  margin-top: 20px;
+}
+
+#mergeButton {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#mergeFileInput {
+  margin-right: 10px;
+}
+
+#mergeFileLabel {
+  font-weight: bold;
+}
+
+#mergeResult {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+
+/* Flex container for logo */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+/* Styles for logo image */
+.logo img {
+  width: 50px; /* Adjust width as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 10px; /* Space between image and text */
+}
+
+/* Styles for logo text */
+.logo h2 {
+  margin: 0; /* Remove default margin */
+  font-size: 1.5em; /* Adjust font size as needed */
+}
+
+/* Light mode styles */
+.light-mode {
+  background-color: #ffffff; /* Light background */
+  color: #000000; /* Dark text */
+}
+
+.light-mode .logo h2 {
+  color: #000000; /* Dark text for logo */
+}
+
+/* Dark mode styles */
+.dark-mode {
+  background-color: #333333; /* Dark background */
+  color: #ffffff; /* Light text */
+}
+
+.dark-mode .logo h2 {
+  color: #ffffff; /* Light text for logo */
+}

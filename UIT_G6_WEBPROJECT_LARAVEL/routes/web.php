@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\NetjsonController;
 use App\Http\Controllers\StreamingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
@@ -77,6 +78,7 @@ Route::get('/export-movie',[testController::class,'export_movie']);
 
 
 Route::get('/profile', [ProfileController::class, 'get_information']);
+Route::get('/netjson', [NetjsonController::class, 'get_information']);
 
 // // Route để hiển thị form chỉnh sửa profile
 // Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
