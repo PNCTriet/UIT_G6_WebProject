@@ -73,7 +73,7 @@ php artisan gemini:install
 ```
 
 Lệnh trên sẽ cấu hình gemini AI vào trong project.Biến môi trường có tên GEMINI_API_KEY
-đã được tạo trong file .env
+đã được tạo trong file .env:
 
 ```
 GEMINI_API_KEY=
@@ -84,12 +84,12 @@ GEMINI_API_KEY=
 
 [Get an API key](https://makersuite.google.com/app/apikey)
 
-**LARAVEL EXCEL**
+### LARAVEL EXCEL
 Cài đặt lệnh phía dưới để dùng thư viện laravel excel
 ```
 composer require maatwebsite/excel:^3.1
 ```
-**Chạy chương trình**
+### Chạy chương trình
 Trước tiên, bật Apache serve và mysql php lên (Sử dụng XAMPP tool )
 Sau đó dùng lên phía để khởi động chương trình
 ```
