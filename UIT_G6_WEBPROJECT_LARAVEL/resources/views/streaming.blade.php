@@ -143,10 +143,8 @@
     <!-- Watch -->
     <div class="video_streaming">
         <div class="video_containervideo">
-            <video controls autoplay controlsList="nodownload" crossorigin="anonymous" >
+            <video controls autoplay controlsList="nodownload">
                 <source src="" type="video/mp4" />
-                <track style="width: fit-content;" kind="subtitles" src="https://dl8r043njp66m.cloudfront.net/endgame_bluray_299534_sub1.vtt"
-                    srclang="vi" label="Tiếng Việt" >
                 Your browser does not support the video tag.
             </video>
         </div>
