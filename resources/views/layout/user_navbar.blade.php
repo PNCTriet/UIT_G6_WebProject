@@ -8,7 +8,7 @@
         <div class="menu-container">
             <ul class="menu-list">
                 <li class="menu-list-item">
-                    <a href="/index"> chủ</a>
+                    <a href="/index">Trang chủ</a>
                 </li>
 
                 <li class="menu-list-item">
