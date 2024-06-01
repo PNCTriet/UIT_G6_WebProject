@@ -49,16 +49,30 @@ Trang web phải đảm bảo được các mục tiêu:
 # Các modules
 
 # Yêu cầu hệ thống
+- [XAMPP](https://www.apachefriends.org/index.html) (Phiên bản khuyến nghị: X.X.X)
+- [Composer](https://getcomposer.org/download/)
+- PHP >= 7.3 (Tích hợp sẵn trong XAMPP)
+
 
 # Cài đặt và sử dụng
-### Git Clone
-```
-$ git clone https://github.com/PNCTriet/UIT_G6_WebProject.git
-$ cd UIT_G6_WEBPROJECT_LARAVEL
-$ composer update
-$ php artisan migrate
+## Bước 1: Cài đặt XAMPP
+1. Tải và cài đặt [XAMPP](https://www.apachefriends.org/index.html).
+2. Khởi động XAMPP Control Panel và bật `Apache` và `MySQL`.
 
-```
+## Bước 2: Cài đặt Composer
+1. Tải và cài đặt [Composer](https://getcomposer.org/download/).
+
+## Bước 3: Thiết lập dự án Laravel
+1. Clone hoặc tải về mã nguồn của dự án Laravel vào thư mục `htdocs` của XAMPP.
+    ```bash
+    cd C:\xampp\htdocs
+    git git clone https://github.com/PNCTriet/UIT_G6_WebProject.git
+    cd UIT_G6_WEBPROJECT_LARAVEL
+    ```
+2. Cài đặt các gói phụ thuộc của Laravel:
+    ```bash
+    composer install
+    ```
 **GEMINI AI API**
 Đầu tiên, cài đặt Gemini thông qua  [Composer](https://getcomposer.org/) package manager:
 
@@ -89,11 +103,33 @@ Cài đặt lệnh phía dưới để dùng thư viện laravel excel
 ```
 composer require maatwebsite/excel:^3.1
 ```
-### Chạy chương trình
-Trước tiên, bật Apache serve và mysql php lên (Sử dụng XAMPP tool ).
-Sau đó dùng lệnh phía dưới để khởi động chương trình
+3.Sao chép file `.env.xample` thành `.env` và cấu hình cơ sở dữ liệu:
+```bash
+cp .env.example .env
 ```
-php artisan serve
+## Bước 4:Cấu hình cơ sở dữ liệu
+1. Mở phpMyAdmin qua [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
+2. Tạo một cơ sở dữ liệu mới.
+3. Cập nhật file `.env` với thông tin cơ sở dữ liệu:
+    ```env
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=<tên-cơ-sở-dữ-liệu>
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
+## Bước 5: Chạy các migration và database
+1. Đầu tiên,Chạy lệnh truy vấn trực triếp trên hệ QTCSDL MySQL PHP
+Copy tất các các câu truy vấn trong file SQL_demo1.sql `datasources/sqldatabase/SQL_demo1.sql` sau đó Paste vào MySQL.Nhấn Run để tạo bảng và dữ liệu.
+2.Tiếp theo,chạy lệnh sau để thêm các bảng cần thiết:
+```bash
+php artisan migrate
 ```
-
+### Bước 6:Chạy ứng dụng
+1. Khởi động server Laravel:
+    ```bash
+    php artisan serve
+    ```
+2. Truy cập ứng dụng tại [http://localhost:8000](http://localhost:8000).
 # Nguồn tham khảo
