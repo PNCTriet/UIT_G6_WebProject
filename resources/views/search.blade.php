@@ -33,7 +33,7 @@
     <!-- Search Container -->
     <div id="search" style="min-height: 500px; max-height:fit-content; background-color: #151515; color: white;">
         <div class="header">
-            <img src="datasources/img/netsearch_sp.png" alt="search" style=" max-width:130px; " class="leading-icon" />
+            <img src="datasources/img/netsearch.png" alt="search" style=" max-width:130px; " class="leading-icon" />
             <div class="search-box" search-box>
                 <div class="search-wrapper" search-wrapper>
                     <input id="searchInput" style="align-items: center" type="text" name="search"
