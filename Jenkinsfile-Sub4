@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        EC2_HOST = '34.227.52.230'  // Địa chỉ IP của máy EC2
+        EC2_HOST = '52.201.235.19'  // Địa chỉ IP của máy EC2
     }
 
     stages {
@@ -10,8 +10,8 @@ pipeline {
             steps {
                 // Bước này để triển khai mã nguồn lên máy EC2
                 script {
-                    sshagent(['groups deployuser']) {
-                        sh "scp -o StrictHostKeyChecking=no -r * deployuser@${EC2_HOST}:/var/www/html/"
+                    sshagent(['NetflopServer_Sub4_US_Green']) {
+                        sh "scp -o StrictHostKeyChecking=no -r * ubuntu@${EC2_HOST}:/var/www/html/"
                     }
                 }
             }
