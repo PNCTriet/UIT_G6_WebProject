@@ -8,6 +8,7 @@
     <link rel="shortcut icon" type="image/png" href="{{ asset('datasources/img/netflop.png') }}">
     <link rel="stylesheet" href="{{ asset('css/style_detail.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/style_index.css') }}" />
+    <link rel="stylesheet" href="{{asset('css/custom_web.css')}}" />
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
         rel="stylesheet" />
@@ -61,171 +62,114 @@
     <div class="navbar">
 
         @include('layout.user_navbar')
-        <?php
-        // API Key của bạn từ TMDB
-        $api_key = '123113d4a4822456c35fc67ce8dd0c16';
-        // https://api.themoviedb.org/3/tv/215720/videos?api_key=$123113d4a4822456c35fc67ce8dd0c16
-        // Từ khóa tìm kiếm
-        $query = $movie['name'];
-        
-        // URL của API của TMDB để tìm kiếm TV show
-        $url = "https://api.themoviedb.org/3/search/tv?api_key=$api_key&query=" . urlencode($query);
-        
-        // Khởi tạo curl
-        $curl = curl_init();
-        
-        // Cài đặt các tùy chọn cho curl
-        curl_setopt_array($curl, [
-            CURLOPT_URL => $url,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'GET',
-        ]);
-        
-        // Gửi yêu cầu và nhận kết quả
-        $response = curl_exec($curl);
-        
-        // Đóng curl
-        curl_close($curl);
-        
-        // Chuyển đổi JSON thành mảng
-        $data = json_decode($response, true);
-        
-        // Hiển thị thông tin trả về từ API
-        if (isset($data['results'][0])) {
-            $show = $data['results'][0];
-            $video_url = "https://api.themoviedb.org/3/tv/{$show['id']}/videos?api_key=$api_key";
-            $video_response = file_get_contents($video_url);
-            $video_data = json_decode($video_response, true);
-        
-            // Kiểm tra xem có video key hay không
-            if (isset($video_data['results'][0]['key'])) {
-                $youtube_key = $video_data['results'][0]['key'];
-            } else {
-                // Đặt giá trị video key mặc định
-                $youtube_key = 'udSCzGAAt2E?si';
-            }
-            $movie = DB::table('movie')
-                ->where('description', $show['id'])
-                ->select('link_id')
-                ->first();
-        
-            $buttonLabel = $movie ? 'Xem phim' : 'Opps !';
-            $buttonLink = $movie ? route('stream', $show['id']) : '#';
-        
-            echo '<div class="movie-card">
-                        <div class="container">
-                            <div class="column">
-                                <a href="' .
-                $buttonLink .
-                '">
-                                    <img src="https://image.tmdb.org/t/p/w200/' .
-                $show['poster_path'] .
-                '" alt="' .
-                $show['name'] .
-                '" class="cover" />
-                                </a>
-                                <a href="' .
-                $buttonLink .
-                '" class="watch-movie-button cover" style="text-align: center;">
-                                    <i class="fa fa-play"></i>' .
-                $buttonLabel .
-                '
-                                </a>
-                            </div>
-                            <div class="hero" style="background-image: url(\'https://image.tmdb.org/t/p/w780/' .
-                $show['backdrop_path'] .
-                '\');">
-                                <div class="details">
-                                    <div class="title">' .
-                $show['name'] .
-                ' </div>
-                                    <fieldset class="rating">
-                                        <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
-                                        <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-                                        <input type="radio" id="star4" name="rating" value="4" checked /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
-                                        <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                                        <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label>
-                                        <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-                                        <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-                                        <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                                        <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
-                                        <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-                                    </fieldset>
-                                    <span class="likes">' .
-                $show['vote_average'] .
-                '</span>
-                                </div> <!-- end details -->
-                            </div> <!-- end hero -->
-                            <div class="description">
-                                <div class="column2">
-                                    <p><strong>Ngày phát sóng:</strong> ' .
-                $show['first_air_date'] .
-                '</p>
-                                    <p><strong>Đánh giá:</strong> ' .
-                $show['vote_average'] .
-                '</p>
-                                    <p><strong>Tóm tắt:</strong> ' .
-                $show['overview'] .
-                '</p>
-                                    <p><strong>Ngôn ngữ gốc:</strong> ' .
-                $show['original_language'] .
-                '</p>
-                                    <p><strong>Quốc gia gốc:</strong> ' .
-                implode(', ', $show['origin_country']) .
-                '</p>
-                                    <p><strong>Thể loại:</strong> ' .
-                implode(', ', $show['genre_ids']) .
-                '</p>
-                                    <p><strong>Populariy:</strong> ' .
-                $show['popularity'] .
-                '</p>
-                                    <p><strong>Số lượt đánh giá:</strong> ' .
-                $show['vote_count'] .
-                '</p>
-                                </div> <!-- end column2 -->
-                            </div> <!-- end description -->
-                            <h2>Trailer</h2>
-                            <div class="video-container">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/' .
-                $youtube_key .
-                '" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>';
-        
-            // Gọi API để lấy thông tin về diễn viên của bộ phim
-            $credits_url = "https://api.themoviedb.org/3/tv/{$show['id']}/credits?api_key=$api_key";
-            $credits_response = file_get_contents($credits_url);
-            $credits_data = json_decode($credits_response, true);
-        
-            echo '<br>';
-            echo '<br>';
-            echo '<br>';
-        
-            // Hiển thị hình diễn viên
-            if (!empty($credits_data['cast'])) {
-                echo '<h1>Diễn viên</h1>';
-                echo '<div class="cast-container">';
-                foreach ($credits_data['cast'] as $cast) {
-                    $profile_path = $cast['profile_path'];
-                    if ($profile_path) {
-                        echo '<img class="cast-img" src="https://image.tmdb.org/t/p/w200/' . $profile_path . '" alt="' . $cast['name'] . '">';
-                    }
-                }
-                echo '</div>';
-            } else {
-                echo '<p>Không tìm thấy thông tin về diễn viên cho bộ phim này.</p>';
-            }
-        } else {
-            echo '<p>Không có kết quả.</p>';
-        }
-        ?>
-
+        <main style="color: white" class="main-detail">
+            <div class="manga-container">
+                <div class="manga-header">
+                  <img src="{{$manga->thumb}}" alt="Shy Cover" class="manga-cover">
+                  <div class="manga-info">
+                    <h1 class="manga-title">{{$manga->title}}</h1>
+                    <button class="read-now">📖 Đọc ngay</button>
+                    <button class="bookmark">💾 Thêm vào danh sách yêu thích</button>
+                    <div class="genres">
+                      <p>Thể loại :</p>
+                      <span class="genre">Action</span>
+                      <span class="genre">Drama</span>
+                      <span class="genre">Fantasy</span>
+                      <span class="genre">{{$genre_name}}</span>
+                      
+                    </div>
+                    <p class="description">
+                        {{$manga->description}}
+                        <a href="#" class="read-more">Đọc thêm</a>
+                    </p>
+                    <div class="details">
+                        <div><strong>🗂️ Danh mục:</strong> Truyện tranh</div>
+                        <div><strong>📅 Ngày tạo:</strong>{{$manga->updated_at}}</div>
+                        <div><strong>👁️ Lượt xem:</strong> 18,088</div>
+                        <div><strong>⭐ Đánh giá:</strong> 0.0 (0 đánh giá)</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="rating">
+                  <h3>Đánh giá của bạn</h3>
+                  <div class="rating-options">
+                    <button class="rating-btn">😐 Chán</button>
+                    <button class="rating-btn">🙂 Hay</button>
+                    <button class="rating-btn">😍 Tuyệt vời</button>
+                  </div>
+                </div>
+            </div>
+            <div class="detail-container">
+                <!-- Left Section -->
+                <div class="chapter-list">
+                  <h2>Danh sách chương</h2>
+                  <div class="tab-menu">
+                    <button class="tab active">Mới nhất</button>
+                    <button class="tab">Cũ nhất</button>
+                  </div>
+                  <div class="chapters">
+                    <div class="chapter">
+                      <span>📄 Chương 107</span>
+                      <button class="read-btn">📖 Read</button>
+                    </div>
+                    <div class="chapter">
+                      <span>📄 Chương 106</span>
+                      <button class="read-btn">📖 Read</button>
+                    </div>
+                    <div class="chapter">
+                      <span>📄 Chương 105</span>
+                      <button class="read-btn">📖 Read</button>
+                    </div>
+                    <div class="chapter">
+                      <span>📄 Chương 104</span>
+                      <button class="read-btn">📖 Read</button>
+                    </div>
+                    <!-- Add more chapters as needed -->
+                  </div>
+                  <div class="pagination">1</div>
+                </div>
+            
+                <!-- Right Section -->
+                <div class="sidebar_detail">
+                  <h3>Thể loại</h3>
+                  <div class="tags">
+                    <span class="tag latest-updated">⚡ Latest Updated</span>
+                    <span class="tag new-release">✨ New Release</span>
+                    <span class="tag most-viewed">🔥 Most Viewed</span>
+                    <span class="tag completed">✔ Completed</span>
+                    <span class="tag">16+</span>
+                    <span class="tag">Action</span>
+                    <span class="tag">Drama</span>
+                    <span class="tag">Fantasy</span>
+                    <span class="tag">Historical</span>
+                    <!-- Add more tags as needed -->
+                    <a href="#" class="more-tags">+ Xem thêm</a>
+                  </div>
+                  <h3>Có thể bạn sẽ thích</h3>
+                  <div class="recommendations">
+                    <div class="recommendation">
+                      <img src="image1.jpg" alt="Cuồng Long Kiếm Thần">
+                      <div>
+                        <h4>Cuồng Long Kiếm Thần</h4>
+                        <p>Action, Manhwa</p>
+                        <span>3,990 lượt xem</span>
+                      </div>
+                    </div>
+                    <div class="recommendation">
+                      <img src="image2.jpg" alt="Raising Hell">
+                      <div>
+                        <h4>Raising Hell: Khúc Ca Nổi Loạn</h4>
+                        <p>Manga, Mystery</p>
+                        <span>1,863 lượt xem</span>
+                      </div>
+                    </div>
+                    <!-- Add more recommendations as needed -->
+                  </div>
+                </div>
+            </div>
+        </main>
+       
         <br></br>
 
         <!-- footer -->

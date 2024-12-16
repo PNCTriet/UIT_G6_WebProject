@@ -43,13 +43,13 @@ Route::get('/streamingmv/{id}', [StreamingController::class, 'streamingmoviemv']
 
 Route::get('/search', [SearchController::class, 'showSearchPage'])->name('search.page');
 Route::get('/search/results', [SearchController::class, 'search']);
-// Movie 
+// Manga 
 Route::get('/tables',[testController::class,'table'])->middleware(EnsureTokenIsValid::class);
-Route::put('/update-movie/{id}',[testController::class,'update_movie']);
-Route::get('/add-movie',[testController::class,'add_movie']);
-Route::post('/add-movie',[testController::class,'post_movie'])    ;
-Route::get('/get-movie/{id}',[testController::class,'get_movie']); 
-Route::delete('/delete-movie/{id}',[testController::class,'delete_movie']);  
+Route::put('/update-manga/{id}',[testController::class,'update_manga']);
+Route::get('/add-manga',[testController::class,'add_manga']);
+Route::post('/add-manga',[testController::class,'post_manga_test'])    ;
+Route::get('/get-manga/{id}',[testController::class,'get_manga']); 
+Route::delete('/delete-manga/{id}',[testController::class,'delete_manga']);  
 ;
 
 // Voucher
@@ -109,7 +109,7 @@ Route::post("/reset-password", [ForgetPasswordManager::class, "resetPasswordPost
 // Route::post('/only-text',[GeminiController::class,'only_text']);
 Route::post('/text-image',[GeminiController::class,'text_image']);
 
-Route::get('/movies/{id}', [ListFilmController::class, 'redirectToMovieDetail'])->name('movies.redirect');
+Route::get('/manga/{id}', [ListFilmController::class, 'redirectToMangaDetail']);
 Route::get('/moviesmv/{id}', [ListFilmController::class, 'redirectToMovieDetail_movies'])->name('movies.redirectmovies');
 
 Route::get('/tv/{name}', [MoviesController::class, 'show'])->name('detail');

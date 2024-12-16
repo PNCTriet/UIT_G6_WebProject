@@ -221,6 +221,11 @@ h3 {
     transform: scale(1.08);
     display: inline-block;
 }
+.empty-cell a{
+    position: absolute;
+    left: -40px;
+    top: -130px;
+}
 .overflow-container {
     width: 200%;
     height: 300px;
@@ -475,15 +480,7 @@ h3 {
     transition: 1s all ease-in-out;
 }
 
-.arrow {
-    font-size: 120px;
-    position: absolute;
-    top: 90px;
-    right: 0;
-    color: lightgray;
-    opacity: 0.5;
-    cursor: pointer;
-}
+
 
 .container.active {
     background-color: white;
@@ -625,9 +622,9 @@ body {
 }
 
 .row-poster {
-    width: 100%;
+    
     object-fit: contain;
-    max-height: 150px;
+   
     margin-right: 10px;
     transition: transform 450ms;
     white-space: nowrap;
@@ -665,14 +662,7 @@ body {
     height: auto;
 }
 
-.row {
-    color: white;
-    margin-left: 10px;
-    overflow: hidden;
-    padding: 20px;
-    /* position: relative; */
-    /* height: 250px; */
-}
+
 
 .member-footer {
     color: grey;

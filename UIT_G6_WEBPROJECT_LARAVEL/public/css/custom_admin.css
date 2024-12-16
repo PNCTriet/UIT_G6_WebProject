@@ -1,0 +1,59 @@
+.red-dot {
+    color: red;
+    font-size: 12px;
+  }
+  .dashed-box {
+    border: 1px dashed #ccc;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 5px;
+  }
+  .btn-custom {
+    color: red;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .btn-custom:hover {
+    text-decoration: underline;
+  }
+
+  /* chapter */
+  .container-box {
+    background-color: #f6f6f6;
+    border-radius: 5px;
+    padding: 15px;
+    position: relative;
+  }
+  .close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  .input-group-text {
+    background-color: #fff;
+    border: none;
+  }
+  .icon-buttons {
+    display: flex;
+    align-items: center;
+  }
+  .icon-buttons i {
+    font-size: 1rem;
+    cursor: pointer;
+    margin-right: 8px;
+    color: gray;
+  }
+  .icon-buttons i:hover {
+    color: black;
+  }
+
+.chapter-form {
+    display: flex;
+
+    flex-direction: column;
+    gap: 20px;
+}
+
+/*  */

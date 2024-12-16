@@ -5,8 +5,10 @@
 }
 
 body {
-  background: rgba(0, 0, 0, 0.5) url("../images/netflix.jpg");
+  background: rgba(0, 0, 0, 0.5) url("http://localhost:8000/uploads/lufy_login.jpg");
   background-blend-mode: darken;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .container {

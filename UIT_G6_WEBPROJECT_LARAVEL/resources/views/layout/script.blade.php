@@ -12,6 +12,7 @@
  <!-- <script src="js/sb-admin-2.min.js"></script> -->
  <script src="js/main.js"></script>
  <script src="js/skeleton.js"></script>
+ <script src="js/mangaAdmin.js"></script>
  
  
  

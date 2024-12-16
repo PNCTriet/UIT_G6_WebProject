@@ -38,7 +38,9 @@
 
             </a>
             <div class="form-info hidden" aria-labelledby="userDropdown">
-
+                {{-- @php
+                    dd(Auth::user());
+                @endphp --}}
                 @if (Auth::user()->role_id == 1)
                     <a href="/home" class="dropdown-item">
                         <i class='bx bx-home-smile' style="color:black"></i>

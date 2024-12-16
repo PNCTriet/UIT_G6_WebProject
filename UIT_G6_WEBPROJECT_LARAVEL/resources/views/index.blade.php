@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+
+?>
 
 <head>
     <meta charset="UTF-8" />
@@ -12,6 +15,7 @@
     <link>
     <link rel="stylesheet" href="css/style_index.css" />
     <link rel="stylesheet" href="css/style_animation.css" />
+    <link rel="stylesheet" href="{{asset('css/custom_web.css')}}" />
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
         rel="stylesheet" />
@@ -28,645 +32,204 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Scripts -->
     <link rel="preload" as="style" href="http://127.0.0.1:8000/build/assets/app-Czjw7esN.css" />
     <link rel="modulepreload" href="http://127.0.0.1:8000/build/assets/app-CrG2wnyX.js" />
     <link rel="stylesheet" href="http://127.0.0.1:8000/build/assets/app-Czjw7esN.css" />
     <script type="module" src="http://127.0.0.1:8000/build/assets/app-CrG2wnyX.js"></script>
+    
 </head>
 
 <body>
     <!-- nav bar -->
     @include('layout.user_navbar')
-    {{-- @section('navbar')
-        @include('layout.user_navbar')
-    @endsection --}}
-    <!-- backround -->
-    <!-- -----PART-2------ -->
-    <!-- Lấy phần 2 -->
-    <section class="video-section">
-        <article class="video-article">
-            <div class="video-detail">
-                <video class="video" width="100%" autoplay muted>
-                    <source type="video/mp4" class="video-source">
-                    Your browser does not support this video
-                </video>
-            </div>
-        </article>
-    </section>
-    <!-- ---------------------------- -->
+    
+    {{-- banner --}}
+    <div class="manga-banner">
+        <div class="banner-content">
+          <h4>Chương 3775 [Mới]</h4>
+          <h1>Võ Luyện Đỉnh Phong</h1>
+          <p>
+            Võ đạo đỉnh phong, là cô độc, là tịch mịch, là dài dằng dặc cầu tác, là cao xử bất thắng hàn.
+            Phát triển trong nghịch cảnh, cầu sinh nơi tuyệt địa, bất khuất không buông tha, mới...
+          </p>
+          <div class="tags">
+            <span class="tag">Shounen</span>
+            <span class="tag">Supernatural</span>
+            <span class="tag">Truyện Màu</span>
+          </div>
+          <div class="buttons">
+            <button class="btn btn-primary">Đọc ngay</button>
+            <button class="btn btn-secondary">Thông tin</button>
+          </div>
+        </div>
+        <div class="banner-image">
+            <img src="../uploads/manga-shounen.jpg" alt="Manga Cover">
+        </div>
+    </div>
+   
+    
     <script src="js/backround.js"></script>
-    <!-- RankBar -->
-    <!-- <br /><br /><br /><br /><br /><br /><br /><br /><br /> -->
-
-    <div class="overflow-container">
-        <h2 style="color: white; margin-left: 20px; margin-top: 20px">Top 10 phim hot trong ngày</h2>
-        <div class="number-row">
-            @foreach ($movies as $moviespart)
-                <div class="number-cell">
-                    <span>{{ $moviespart->rank }}</span>
-                    <div class="empty-cell" style="position:relative;">
-                        
-                        <a  onclick="redirectTo('{{ route('movies.redirect', $moviespart->id) }}')">
-                            <img src="{{ $moviespart->rank_link }}" alt="" style="height:205px">
-                        </a>
+    {{-- slider đề xuất --}}
+    <div class="slider-container">
+        <button class="arrow left"  id="leftArrow">&lt;</button>
+        <div class="slider" id="slider">
+            <div class="manga-card">
+                <img src="https://via.placeholder.com/200x300" draggable="false" alt="Manga 1">
+                <div class="info">
+                    <div class="title">Ta Trở Sinh Đã Là Nhân ...</div>
+                    <div class="details">Chapter 239 · 1 tuần trước</div>
+                </div>
+            </div>
+            <div class="manga-card">
+                <img src="https://via.placeholder.com/200x300" draggable="false" alt="Manga 2">
+                <div class="info">
+                    <div class="title">Thể Thao Cực Hạn</div>
+                    <div class="details">Chapter 489 · 9 tháng trước</div>
+                </div>
+            </div>
+            <div class="manga-card">
+                <img src="https://via.placeholder.com/200x300" draggable="false" alt="Manga 3">
+                <div class="info">
+                    <div class="title">Cuộc Hôn Nhân Vụ Lợi</div>
+                    <div class="details">Chapter 119 · 7 tháng trước</div>
+                </div>
+            </div>
+            <div class="manga-card">
+                <img src="https://via.placeholder.com/200x300" draggable="false" alt="Manga 4">
+                <div class="info">
+                    <div class="title">Ta Bị Kẹt Cùng Một Ngày</div>
+                    <div class="details">Chapter 124 · 1 tháng trước</div>
+                </div>
+            </div>
+            <div class="manga-card">
+                <img src="https://via.placeholder.com/200x300" draggable="false" alt="Manga 5">
+                <div class="info">
+                    <div class="title">Ái Phi, Dao Của Nàng Rở...</div>
+                    <div class="details">Chapter 97 · 2 tuần trước</div>
+                </div>
+            </div>
+        </div>
+        <button class="arrow right" id="rightArrow">&gt;</button>
+    </div>
+    <!-- body -->
+    
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title text-warning">Truyện tranh HOT đọc nhiều nhất</h2>
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <a href="/manga/{{$data[0]->id}}" class="card">
+                                    <img src="{{$data[0]->thumb}}" class="card-img-top" alt="Manga 1">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">{{$data[0]->title}}</h5>
+                                        <p class="card-text">Chapter 42</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="https://via.placeholder.com/200x300" class="card-img-top" alt="Manga 2">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Đại Quản Gia Là Ma Hoàng</h5>
+                                        <p class="card-text">Chapter 633</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="https://via.placeholder.com/200x300" class="card-img-top" alt="Manga 2">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Đại Quản Gia Là Ma Hoàng</h5>
+                                        <p class="card-text">Chapter 633</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="https://via.placeholder.com/200x300" class="card-img-top" alt="Manga 2">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Đại Quản Gia Là Ma Hoàng</h5>
+                                        <p class="card-text">Chapter 633</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="https://via.placeholder.com/200x300" class="card-img-top" alt="Manga 2">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Đại Quản Gia Là Ma Hoàng</h5>
+                                        <p class="card-text">Chapter 633</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="https://via.placeholder.com/200x300" class="card-img-top" alt="Manga 2">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Đại Quản Gia Là Ma Hoàng</h5>
+                                        <p class="card-text">Chapter 633</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="https://via.placeholder.com/200x300" class="card-img-top" alt="Manga 2">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Đại Quản Gia Là Ma Hoàng</h5>
+                                        <p class="card-text">Chapter 633</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="https://via.placeholder.com/200x300" class="card-img-top" alt="Manga 2">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Đại Quản Gia Là Ma Hoàng</h5>
+                                        <p class="card-text">Chapter 633</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="https://via.placeholder.com/200x300" class="card-img-top" alt="Manga 2">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Đại Quản Gia Là Ma Hoàng</h5>
+                                        <p class="card-text">Chapter 633</p>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- Add more manga items as needed -->
+                        </div>
                     </div>
                 </div>
-            @endforeach
-        </div>
-        <button class="scroll-right">▶</button>
-    </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const numberRow = document.querySelector(".number-row");
-            const scrollRightButton = document.querySelector(".scroll-right");
-            const numberCellWidth = document.querySelector(".number-cell").offsetWidth;
-            const arrowKeys = [37, 38, 39, 40];
-            const emptycell = document.querySelectorAll(".empty-cell");
-            const popup = document.querySelectorAll(".pop-up");
-
-            emptycell.forEach(function(cell, index) {
-                cell.addEventListener("mouseover", function() {
-                    popup[index].style.display = "block";
-                });
-
-                cell.addEventListener("mouseout", function() {
-                    popup[index].style.display = "none";
-                });
-            });
-            scrollRightButton.addEventListener("click", function() {
-                const currentLeft = parseFloat(getComputedStyle(numberRow).left);
-                const newLeft = currentLeft - numberCellWidth * 5.3;
-                numberRow.style.left = newLeft + "px";
-                if (newLeft <= -numberCellWidth * 6.3) {
-                    numberRow.style.left = "0";
-                }
-            });
-
-            document.addEventListener("keydown", function(event) {
-                if (arrowKeys.includes(event.keyCode)) {
-                    event.preventDefault();
-                    if (event.keyCode === 37) {
-                        currentPosition--;
-                    } else if (event.keyCode === 39) {
-                        currentPosition++;
-                    }
-                    updatePosition();
-                }
-            });
-        });
-    </script>
-
-    <!-- body -->
-    <div class="row">
-        <h2>Danh sách của tôi</h2>
-        <div class="row-posters" id="rowpost1">
-            @foreach ($data->take(10) as $item)
-                <section class="d-flex">
-                    <div class="card">
-                        <img src="{{ $item->poster_link }}" class="row-poster"
-                            onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
-                        <div class="card-body">
-                            <section class="d-flex align-items-center">
-                                <div>
-                                    <?php
-                                    // API Key của bạn từ TMDB
-                                    $api_key = '123113d4a4822456c35fc67ce8dd0c16';
-                                    
-                                    // ID của series
-                                    $series_id = $item->movie_api;
-                                    
-                                    // Path to your JSON files
-                                    $video_json_file = 'json/json_videos.json'; // Replace with the actual path to your video data JSON file
-                                    $details_json_file = 'json/json_details.json'; // Replace with the actual path to your series details JSON file
-                                    
-                                    // Read the video trailer data from the JSON file
-                                    $video_json_content = file_get_contents($video_json_file);
-                                    $video_data_all = json_decode($video_json_content, true);
-                                    
-                                    // Extract the specific video data for the given series ID
-                                    $video_data_key = $series_id . '_videos';
-                                    $video_data = isset($video_data_all[$video_data_key]) ? $video_data_all[$video_data_key] : null;
-                                    
-                                    // Check if there are any video trailers and display the first one
-                                    if ($video_data && !empty($video_data['results'])) {
-                                        $youtube_key = $video_data['results'][0]['key'];
-                                        echo '<div class="video-container">';
-                                        echo '<iframe class="videocontainer" id="youtubeVideo" src="https://www.youtube.com/embed/' . $youtube_key . '" frameborder="0" allowfullscreen></iframe>';
-                                        echo '</div>';
-                                    } else {
-                                        // No video trailer found message (if needed)   
-                                    }
-                                    
-                                    // Read the series details from the JSON file
-                                    $details_json_content = file_get_contents($details_json_file);
-                                    $details_data_all = json_decode($details_json_content, true);
-                                    
-                                    // Extract the specific series details for the given series ID
-                                    $details_data_key = $series_id . '_details';
-                                    $datajson = isset($details_data_all[$details_data_key]) ? $details_data_all[$details_data_key] : null;
-                                    
-                                    // Display series details if data is available
-                                    if ($datajson) {
-                                        echo '<section class="d-flex justify-content-between">';
-                                        echo '<div>';
-                                        echo '<i class="bi bi-play-circle-fill card-icon"></i>';
-                                        echo '<i class="bi bi-plus-circle card-icon"></i>';
-                                        echo '</div>';
-                                        echo '<div>';
-                                        echo '<i class="bi bi-arrow-down-circle card-icon" onclick="redirectTo(\'' . route('movies.redirect', $item->id) . '\')"></i>';
-                                        echo '</div>';
-                                        echo '</section>';
-                                        echo '<section class="d-flex align-items-center justify-content-between">';
-                                        echo '<p class="netflix-card-text m-0" style="color: rgb(0, 186, 0);">';
-                                        echo $datajson['vote_average'] * 10;
-                                        echo '% Score</p>';
-                                        echo '<span class="m-2 netflix-card-text text-white">' . $datajson['number_of_episodes'] . ' Episodes</span>';
-                                        echo '<span class="border netflix-card-text p-1 text-white">HD</span>';
-                                        echo '</section>';
-                                        echo '<span class="netflix-card-text text-white">';
-                                    
-                                        // Display genres
-                                        $genre_count = count($datajson['genres']);
-                                        for ($i = 0; $i < min($genre_count, 3); $i++) {
-                                            echo $datajson['genres'][$i]['name'];
-                                            if ($i < min($genre_count, 3) - 1) {
-                                                echo ' • ';
-                                            }
-                                        }
-                                        echo '</span>';
-                                    } else {
-                                        // No series details found message (if needed)
-                                    }
-                                    ?>
-
-                                </div>
-                            </section>
-                        </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                      <h3 class="card-title text-warning">Top Tháng</h3>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex align-items-center">
+                          <span class="ranking-number me-3">01</span>
+                          <span>Đại Quản Gia Là Ma Hoàng</span>
+                        </li>
+                        <li class="list-group-item d-flex align-items-center">
+                          <span class="ranking-number me-3">02</span>
+                          <span>Cao Võ: Hạ Cánh Đến Một Vạn Năm Sau</span>
+                        </li>
+                      </ul>
                     </div>
-                </section>
-            @endforeach
+                </div>
+            </div>
         </div>
-        <button class="scroll-right-poster" id="scrollpost1">></button>
     </div>
-
-    <div class="row">
-        <h2>Danh sách tiếp tục xem</h2>
-        <div class="row-posters" id="rowpost2">
-            @foreach ($data->skip(10)->take(10) as $item)
-                <section class="d-flex">
-                    <div class="card">
-                        <img src="{{ $item->poster_link }}" class="row-poster"
-                            onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
-                        <div class="card-body">
-                            <section class="d-flex align-items-center">
-                                <div>
-                                    <?php
-                                    // API Key của bạn từ TMDB
-                                    $api_key = '123113d4a4822456c35fc67ce8dd0c16';
-                                    
-                                    // ID của series
-                                    $series_id = $item->movie_api;
-                                    
-                                    // Path to your JSON files
-                                    $video_json_file = 'json/json_videos.json'; // Replace with the actual path to your video data JSON file
-                                    $details_json_file = 'json/json_details.json'; // Replace with the actual path to your series details JSON file
-                                    
-                                    // Read the video trailer data from the JSON file
-                                    $video_json_content = file_get_contents($video_json_file);
-                                    $video_data_all = json_decode($video_json_content, true);
-                                    
-                                    // Extract the specific video data for the given series ID
-                                    $video_data_key = $series_id . '_videos';
-                                    $video_data = isset($video_data_all[$video_data_key]) ? $video_data_all[$video_data_key] : null;
-                                    
-                                    // Check if there are any video trailers and display the first one
-                                    if ($video_data && !empty($video_data['results'])) {
-                                        $youtube_key = $video_data['results'][0]['key'];
-                                        echo '<div class="video-container">';
-                                        echo '<iframe class="videocontainer" id="youtubeVideo" src="https://www.youtube.com/embed/' . $youtube_key . '" frameborder="0" allowfullscreen></iframe>';
-                                        echo '</div>';
-                                    } else {
-                                        // No video trailer found message (if needed)
-                                    }
-                                    
-                                    // Read the series details from the JSON file
-                                    $details_json_content = file_get_contents($details_json_file);
-                                    $details_data_all = json_decode($details_json_content, true);
-                                    
-                                    // Extract the specific series details for the given series ID
-                                    $details_data_key = $series_id . '_details';
-                                    $datajson = isset($details_data_all[$details_data_key]) ? $details_data_all[$details_data_key] : null;
-                                    
-                                    // Display series details if data is available
-                                    if ($datajson) {
-                                        echo '<section class="d-flex justify-content-between">';
-                                        echo '<div>';
-                                        echo '<i class="bi bi-play-circle-fill card-icon"></i>';
-                                        echo '<i class="bi bi-plus-circle card-icon"></i>';
-                                        echo '</div>';
-                                        echo '<div>';
-                                        echo '<i class="bi bi-arrow-down-circle card-icon" onclick="redirectTo(\'' . route('movies.redirect', $item->id) . '\')"></i>';
-                                        echo '</div>';
-                                        echo '</section>';
-                                        echo '<section class="d-flex align-items-center justify-content-between">';
-                                        echo '<p class="netflix-card-text m-0" style="color: rgb(0, 186, 0);">';
-                                        echo $datajson['vote_average'] * 10;
-                                        echo '% Score</p>';
-                                        echo '<span class="m-2 netflix-card-text text-white">' . $datajson['number_of_episodes'] . ' Episodes</span>';
-                                        echo '<span class="border netflix-card-text p-1 text-white">HD</span>';
-                                        echo '</section>';
-                                        echo '<span class="netflix-card-text text-white">';
-                                    
-                                        // Display genres
-                                        $genre_count = count($datajson['genres']);
-                                        for ($i = 0; $i < min($genre_count, 3); $i++) {
-                                            echo $datajson['genres'][$i]['name'];
-                                            if ($i < min($genre_count, 3) - 1) {
-                                                echo ' • ';
-                                            }
-                                        }
-                                        echo '</span>';
-                                    } else {
-                                        // No series details found message (if needed)
-                                    }
-                                    ?>
-
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                </section>
-            @endforeach
-        </div>
-        <button class="scroll-right-poster" id="scrollpost2">></button>
-    </div>
-    <div class="row">
-        <h2>Hiện đang thịnh hành</h2>
-        <div class="row-posters" id="rowpost3">
-            @foreach ($data->skip(20)->take(10) as $item)
-                <section class="d-flex">
-                    <div class="card">
-                        <img src="{{ $item->poster_link }}" class="row-poster"
-                            onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
-                        <div class="card-body">
-                            <section class="d-flex align-items-center">
-                                <div>
-                                    <?php
-                                    // API Key của bạn từ TMDB
-                                    $api_key = '123113d4a4822456c35fc67ce8dd0c16';
-                                    
-                                    // ID của series
-                                    $series_id = $item->movie_api;
-                                    
-                                    // Path to your JSON files
-                                    $video_json_file = 'json/json_videos.json'; // Replace with the actual path to your video data JSON file
-                                    $details_json_file = 'json/json_details.json'; // Replace with the actual path to your series details JSON file
-                                    
-                                    // Read the video trailer data from the JSON file
-                                    $video_json_content = file_get_contents($video_json_file);
-                                    $video_data_all = json_decode($video_json_content, true);
-                                    
-                                    // Extract the specific video data for the given series ID
-                                    $video_data_key = $series_id . '_videos';
-                                    $video_data = isset($video_data_all[$video_data_key]) ? $video_data_all[$video_data_key] : null;
-                                    
-                                    // Check if there are any video trailers and display the first one
-                                    if ($video_data && !empty($video_data['results'])) {
-                                        $youtube_key = $video_data['results'][0]['key'];
-                                        echo '<div class="video-container">';
-                                        echo '<iframe class="videocontainer" id="youtubeVideo" src="https://www.youtube.com/embed/' . $youtube_key . '" frameborder="0" allowfullscreen></iframe>';
-                                        echo '</div>';
-                                    } else {
-                                        // No video trailer found message (if needed)
-                                    }
-                                    
-                                    // Read the series details from the JSON file
-                                    $details_json_content = file_get_contents($details_json_file);
-                                    $details_data_all = json_decode($details_json_content, true);
-                                    
-                                    // Extract the specific series details for the given series ID
-                                    $details_data_key = $series_id . '_details';
-                                    $datajson = isset($details_data_all[$details_data_key]) ? $details_data_all[$details_data_key] : null;
-                                    
-                                    // Display series details if data is available
-                                    if ($datajson) {
-                                        echo '<section class="d-flex justify-content-between">';
-                                        echo '<div>';
-                                        echo '<i class="bi bi-play-circle-fill card-icon"></i>';
-                                        echo '<i class="bi bi-plus-circle card-icon"></i>';
-                                        echo '</div>';
-                                        echo '<div>';
-                                        echo '<i class="bi bi-arrow-down-circle card-icon" onclick="redirectTo(\'' . route('movies.redirect', $item->id) . '\')"></i>';
-                                        echo '</div>';
-                                        echo '</section>';
-                                        echo '<section class="d-flex align-items-center justify-content-between">';
-                                        echo '<p class="netflix-card-text m-0" style="color: rgb(0, 186, 0);">';
-                                        echo $datajson['vote_average'] * 10;
-                                        echo '% Score</p>';
-                                        echo '<span class="m-2 netflix-card-text text-white">' . $datajson['number_of_episodes'] . ' Episodes</span>';
-                                        echo '<span class="border netflix-card-text p-1 text-white">HD</span>';
-                                        echo '</section>';
-                                        echo '<span class="netflix-card-text text-white">';
-                                    
-                                        // Display genres
-                                        $genre_count = count($datajson['genres']);
-                                        for ($i = 0; $i < min($genre_count, 3); $i++) {
-                                            echo $datajson['genres'][$i]['name'];
-                                            if ($i < min($genre_count, 3) - 1) {
-                                                echo ' • ';
-                                            }
-                                        }
-                                        echo '</span>';
-                                    } else {
-                                        // No series details found message (if needed)
-                                    }
-                                    ?>
-
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                </section>
-            @endforeach
-        </div>
-        <button class="scroll-right-poster" id="scrollpost3">></button>
-    </div>
-    <div class="row">
-        <h2>Phim truyền hình lãng mạng</h2>
-        <div class="row-posters" id="rowpost4">
-            @foreach ($data->skip(30)->take(10) as $item)
-                <section class="d-flex">
-                    <div class="card">
-                        <img src="{{ $item->poster_link }}" class="row-poster"
-                            onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
-                        <div class="card-body">
-                            <section class="d-flex align-items-center">
-                                <div>
-                                    <?php
-                                    // API Key của bạn từ TMDB
-                                    $api_key = '123113d4a4822456c35fc67ce8dd0c16';
-                                    
-                                    // ID của series
-                                    $series_id = $item->movie_api;
-                                    
-                                    // Path to your JSON files
-                                    $video_json_file = 'json/json_videos.json'; // Replace with the actual path to your video data JSON file
-                                    $details_json_file = 'json/json_details.json'; // Replace with the actual path to your series details JSON file
-                                    
-                                    // Read the video trailer data from the JSON file
-                                    $video_json_content = file_get_contents($video_json_file);
-                                    $video_data_all = json_decode($video_json_content, true);
-                                    
-                                    // Extract the specific video data for the given series ID
-                                    $video_data_key = $series_id . '_videos';
-                                    $video_data = isset($video_data_all[$video_data_key]) ? $video_data_all[$video_data_key] : null;
-                                    
-                                    // Check if there are any video trailers and display the first one
-                                    if ($video_data && !empty($video_data['results'])) {
-                                        $youtube_key = $video_data['results'][0]['key'];
-                                        echo '<div class="video-container">';
-                                        echo '<iframe class="videocontainer" id="youtubeVideo" src="https://www.youtube.com/embed/' . $youtube_key . '" frameborder="0" allowfullscreen></iframe>';
-                                        echo '</div>';
-                                    } else {
-                                        // No video trailer found message (if needed)
-                                    }
-                                    
-                                    // Read the series details from the JSON file
-                                    $details_json_content = file_get_contents($details_json_file);
-                                    $details_data_all = json_decode($details_json_content, true);
-                                    
-                                    // Extract the specific series details for the given series ID
-                                    $details_data_key = $series_id . '_details';
-                                    $datajson = isset($details_data_all[$details_data_key]) ? $details_data_all[$details_data_key] : null;
-                                    
-                                    // Display series details if data is available
-                                    if ($datajson) {
-                                        echo '<section class="d-flex justify-content-between">';
-                                        echo '<div>';
-                                        echo '<i class="bi bi-play-circle-fill card-icon"></i>';
-                                        echo '<i class="bi bi-plus-circle card-icon"></i>';
-                                        echo '</div>';
-                                        echo '<div>';
-                                        echo '<i class="bi bi-arrow-down-circle card-icon" onclick="redirectTo(\'' . route('movies.redirect', $item->id) . '\')"></i>';
-                                        echo '</div>';
-                                        echo '</section>';
-                                        echo '<section class="d-flex align-items-center justify-content-between">';
-                                        echo '<p class="netflix-card-text m-0" style="color: rgb(0, 186, 0);">';
-                                        echo $datajson['vote_average'] * 10;
-                                        echo '% Score</p>';
-                                        echo '<span class="m-2 netflix-card-text text-white">' . $datajson['number_of_episodes'] . ' Episodes</span>';
-                                        echo '<span class="border netflix-card-text p-1 text-white">HD</span>';
-                                        echo '</section>';
-                                        echo '<span class="netflix-card-text text-white">';
-                                    
-                                        // Display genres
-                                        $genre_count = count($datajson['genres']);
-                                        for ($i = 0; $i < min($genre_count, 3); $i++) {
-                                            echo $datajson['genres'][$i]['name'];
-                                            if ($i < min($genre_count, 3) - 1) {
-                                                echo ' • ';
-                                            }
-                                        }
-                                        echo '</span>';
-                                    } else {
-                                        // No series details found message (if needed)
-                                    }
-                                    ?>
-
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                </section>
-            @endforeach
-        </div>
-        <button class="scroll-right-poster" id="scrollpost4">></button>
-    </div>
-    <div class="row">
-        <h2>Phim truyền hình Trung Quốc lãng mạng</h2>
-        <div class="row-posters" id="rowpost5">
-            @foreach ($data->skip(40)->take(10) as $item)
-                <section class="d-flex">
-                    <div class="card">
-                        <img src="{{ $item->poster_link }}" class="row-poster"
-                            onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
-                        <div class="card-body">
-                            <section class="d-flex align-items-center">
-                                <div>
-                                    <?php
-                                    // API Key của bạn từ TMDB
-                                    $api_key = '123113d4a4822456c35fc67ce8dd0c16';
-                                    
-                                    // ID của series
-                                    $series_id = $item->movie_api;
-                                    
-                                    // Path to your JSON files
-                                    $video_json_file = 'json/json_videos.json'; // Replace with the actual path to your video data JSON file
-                                    $details_json_file = 'json/json_details.json'; // Replace with the actual path to your series details JSON file
-                                    
-                                    // Read the video trailer data from the JSON file
-                                    $video_json_content = file_get_contents($video_json_file);
-                                    $video_data_all = json_decode($video_json_content, true);
-                                    
-                                    // Extract the specific video data for the given series ID
-                                    $video_data_key = $series_id . '_videos';
-                                    $video_data = isset($video_data_all[$video_data_key]) ? $video_data_all[$video_data_key] : null;
-                                    
-                                    // Check if there are any video trailers and display the first one
-                                    if ($video_data && !empty($video_data['results'])) {
-                                        $youtube_key = $video_data['results'][0]['key'];
-                                        echo '<div class="video-container">';
-                                        echo '<iframe class="videocontainer" id="youtubeVideo" src="https://www.youtube.com/embed/' . $youtube_key . '" frameborder="0" allowfullscreen></iframe>';
-                                        echo '</div>';
-                                    } else {
-                                        // No video trailer found message (if needed)
-                                    }
-                                    
-                                    // Read the series details from the JSON file
-                                    $details_json_content = file_get_contents($details_json_file);
-                                    $details_data_all = json_decode($details_json_content, true);
-                                    
-                                    // Extract the specific series details for the given series ID
-                                    $details_data_key = $series_id . '_details';
-                                    $datajson = isset($details_data_all[$details_data_key]) ? $details_data_all[$details_data_key] : null;
-                                    
-                                    // Display series details if data is available
-                                    if ($datajson) {
-                                        echo '<section class="d-flex justify-content-between">';
-                                        echo '<div>';
-                                        echo '<i class="bi bi-play-circle-fill card-icon"></i>';
-                                        echo '<i class="bi bi-plus-circle card-icon"></i>';
-                                        echo '</div>';
-                                        echo '<div>';
-                                        echo '<i class="bi bi-arrow-down-circle card-icon" onclick="redirectTo(\'' . route('movies.redirect', $item->id) . '\')"></i>';
-                                        echo '</div>';
-                                        echo '</section>';
-                                        echo '<section class="d-flex align-items-center justify-content-between">';
-                                        echo '<p class="netflix-card-text m-0" style="color: rgb(0, 186, 0);">';
-                                        echo $datajson['vote_average'] * 10;
-                                        echo '% Score</p>';
-                                        echo '<span class="m-2 netflix-card-text text-white">' . $datajson['number_of_episodes'] . ' Episodes</span>';
-                                        echo '<span class="border netflix-card-text p-1 text-white">HD</span>';
-                                        echo '</section>';
-                                        echo '<span class="netflix-card-text text-white">';
-                                    
-                                        // Display genres
-                                        $genre_count = count($datajson['genres']);
-                                        for ($i = 0; $i < min($genre_count, 3); $i++) {
-                                            echo $datajson['genres'][$i]['name'];
-                                            if ($i < min($genre_count, 3) - 1) {
-                                                echo ' • ';
-                                            }
-                                        }
-                                        echo '</span>';
-                                    } else {
-                                        // No series details found message (if needed)
-                                    }
-                                    ?>
-
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                </section>
-            @endforeach
-        </div>
-        <button class="scroll-right-poster" id="scrollpost5">></button>
-    </div>
-    <div class="row">
-        <h2>Phim truyền hình giành giải thưởng châu Á</h2>
-        <div class="row-posters" id="rowpost6">
-            @foreach ($data->skip(50)->take(10) as $item)
-                <section class="d-flex">
-                    <div class="card">
-                        <img src="{{ $item->poster_link }}" class="row-poster"
-                            onclick="redirectTo('{{ route('movies.redirect', $item->id) }}')">
-                        <div class="card-body">
-                            <section class="d-flex align-items-center">
-                                <div>
-                                    <?php
-                                    // API Key của bạn từ TMDB
-                                    $api_key = '123113d4a4822456c35fc67ce8dd0c16';
-                                    
-                                    // ID của series
-                                    $series_id = $item->movie_api;
-                                    
-                                    // Path to your JSON files
-                                    $video_json_file = 'json/json_videos.json'; // Replace with the actual path to your video data JSON file
-                                    $details_json_file = 'json/json_details.json'; // Replace with the actual path to your series details JSON file
-                                    
-                                    // Read the video trailer data from the JSON file
-                                    $video_json_content = file_get_contents($video_json_file);
-                                    $video_data_all = json_decode($video_json_content, true);
-                                    
-                                    // Extract the specific video data for the given series ID
-                                    $video_data_key = $series_id . '_videos';
-                                    $video_data = isset($video_data_all[$video_data_key]) ? $video_data_all[$video_data_key] : null;
-                                    
-                                    // Check if there are any video trailers and display the first one
-                                    if ($video_data && !empty($video_data['results'])) {
-                                        $youtube_key = $video_data['results'][0]['key'];
-                                        echo '<div class="video-container">';
-                                        echo '<iframe class="videocontainer" id="youtubeVideo" src="https://www.youtube.com/embed/' . $youtube_key . '" frameborder="0" allowfullscreen></iframe>';
-                                        echo '</div>';
-                                    } else {
-                                        // No video trailer found message (if needed)
-                                    }
-                                    
-                                    // Read the series details from the JSON file
-                                    $details_json_content = file_get_contents($details_json_file);
-                                    $details_data_all = json_decode($details_json_content, true);
-                                    
-                                    // Extract the specific series details for the given series ID
-                                    $details_data_key = $series_id . '_details';
-                                    $datajson = isset($details_data_all[$details_data_key]) ? $details_data_all[$details_data_key] : null;
-                                    
-                                    // Display series details if data is available
-                                    if ($datajson) {
-                                        echo '<section class="d-flex justify-content-between">';
-                                        echo '<div>';
-                                        echo '<i class="bi bi-play-circle-fill card-icon"></i>';
-                                        echo '<i class="bi bi-plus-circle card-icon"></i>';
-                                        echo '</div>';
-                                        echo '<div>';
-                                        echo '<i class="bi bi-arrow-down-circle card-icon" onclick="redirectTo(\'' . route('movies.redirect', $item->id) . '\')"></i>';
-                                        echo '</div>';
-                                        echo '</section>';
-                                        echo '<section class="d-flex align-items-center justify-content-between">';
-                                        echo '<p class="netflix-card-text m-0" style="color: rgb(0, 186, 0);">';
-                                        echo $datajson['vote_average'] * 10;
-                                        echo '% Score</p>';
-                                        echo '<span class="m-2 netflix-card-text text-white">' . $datajson['number_of_episodes'] . ' Episodes</span>';
-                                        echo '<span class="border netflix-card-text p-1 text-white">HD</span>';
-                                        echo '</section>';
-                                        echo '<span class="netflix-card-text text-white">';
-                                    
-                                        // Display genres
-                                        $genre_count = count($datajson['genres']);
-                                        for ($i = 0; $i < min($genre_count, 3); $i++) {
-                                            echo $datajson['genres'][$i]['name'];
-                                            if ($i < min($genre_count, 3) - 1) {
-                                                echo ' • ';
-                                            }
-                                        }
-                                        echo '</span>';
-                                    } else {
-                                        // No series details found message (if needed)
-                                    }
-                                    ?>
-
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                </section>
-            @endforeach
-        </div>
-        <button class="scroll-right-poster" id="scrollpost6">></button>
-    </div>
+   
+   
+  
 
     <!-- nav bar -->
     @include('layout.user_footer');
@@ -748,5 +311,6 @@
 </script>
 <script src="js/logout.js"></script>
 <script src="js/script.js"></script>
+<script src="js/manga.js" defer></script>
 
 </html>

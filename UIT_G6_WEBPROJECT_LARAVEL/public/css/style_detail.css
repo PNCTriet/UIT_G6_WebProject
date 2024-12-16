@@ -82,29 +82,16 @@
   box-shadow: 10px 10px 10px 3px rgba(0, 0, 0, 0.5);
 }
 
-.details {
-  
-  padding: 190px 0 0 280px;
+
   
   
-  .title {
+.title {
     color: white;
     font-size: 30px;
     margin-bottom: 13px;
     position: relative;
     
-    span {
-      position: absolute;
-      top: 3px;
-      margin-left: 12px;
-      background: #C4AF3D;
-      border-radius: 5px;
-      color: #544C21;
-      font-size: 14px;
-      padding: 0px 4px;
-      
-    }
-  }
+}
 
 
   
@@ -123,7 +110,7 @@
 
 }
 
-.description {
+/* .description {
   
   bottom: 0px;
   height: auto;
@@ -132,7 +119,7 @@
   color: #B1B0AC;
   padding-left: 250px;
   
-}
+} */
 
 .video-container{
   padding-top: 50px;

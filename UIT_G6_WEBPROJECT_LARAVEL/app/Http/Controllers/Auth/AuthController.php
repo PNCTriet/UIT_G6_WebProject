@@ -23,12 +23,17 @@ class AuthController extends Controller
             if(Auth::user()->role_id!=1){
                 return Redirect::to('/index');
             }else{
-                return view('home',[
-                    
-                    'res' => DB::select("SELECT movie.id,title,description,poster_link FROM movie 
-                                            INNER JOIN movie_link on movie_link.id =movie.link_id
+               
+                return view('home', [
+                    'heading' => 'khong phai chao',
+                    'res' => DB::select("SELECT manga.id,title,description,thumb FROM manga 
                                             ORDER BY created_at DESC
                                             LIMIT 0,10")
+                    
+            
+            
+                  
+                    
                 ]);
             }
         }   

@@ -19,12 +19,6 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
-    <li class="nav-item active">
-        <a class="nav-link" href="/netjson">
-            <i class="fas fa-fw fa-file-code icon"></i>
-            <span>Netjson</span></a>
-    </li>
-
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -42,11 +36,10 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Movies:</h6>
-                <a class="collapse-item" href="/add-movie">Add Movies</a>
-                <a class="collapse-item" href="/tables">Movies</a>
-                <a class="collapse-item" href="/voucher-management">Voucher Management</a>
-                <a class="collapse-item" href="/users-management">Users Management</a>
+                <h6 class="collapse-header">Custom Manga:</h6>
+                <a class="collapse-item" href="/add-manga">Add Manga</a>
+                <a class="collapse-item" href="/tables">Manage Manga</a>
+                <a class="collapse-item" href="/users-management">Manage User</a>
                 <a href="/send-mail" class="collapse-item">Send Mail</a>
             </div>
         </div>
@@ -54,7 +47,7 @@
 
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
@@ -69,7 +62,7 @@
                 <a class="collapse-item" href="#">Other</a>
             </div>
         </div>
-    </li>
+    </li> --}}
 
     <!-- Divider -->
     <hr class="sidebar-divider">
